@@ -1,0 +1,795 @@
+/*
+Author: Tres Pi S.C.P
+
+MAPA DE CONTENIDOS:
+
+1) =ROOT:
+  1.1) =Variables de personalizacion de pagina:
+
+2) =TIPOGRAFIAS:
+
+3) =ETIQUETAS GLOBALES:
+
+4) =ESTRUCTURA:
+
+5) =COMPONENTES:
+*/
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              1) =ROOT:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+            1.1) =Variables de personalizacion de pagina:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+:root {
+
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              2) =TIPOGRAFIAS:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Lato Black";
+  src: url("../../fonts/Lato-Black.ttf");
+}
+
+@font-face {
+  font-family: "Lato Bold";
+  src: url("../../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato Regular";
+  src: url("../../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato Light";
+  src: url("../../fonts/Lato-Light.ttf");
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              3) =ETIQUETAS GLOBALES:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img{object-fit:cover;width:100%;display:block}
+video{width:100%;height:100%;display: block;object-fit: cover;}
+a{text-decoration:none; color:inherit;}
+ul{
+  list-style: none;
+}
+.rowcol1{grid-row:1;grid-column:1}
+
+:root {
+  font-size: 20px;
+}
+
+body {
+  background: black;
+  display: flex;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4) =ESTRUCTURA:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.1) =full_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.full_screen {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.2) =panel:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel {
+  align-items: start;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  left: 0;
+  padding: 83px 68px 0px 68px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 12;
+}
+
+.panel_title {
+  font-family: 'Lato Bold';
+  font-size: 25px;
+  line-height: 25px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.panel_language {
+  font-family: 'Lato Regular';
+  font-size: 19px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.panel_info {
+  font-size: 30px;
+  line-height: 30px;
+  font-family: 'Lato Black';
+  color: #D6001C;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.panel_text {
+  color: #fff;
+  font-family: 'Lato Regular';
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.panel_stick {
+  font-family: 'Lato Light';
+}
+
+.panel .selected {
+  font-family: 'Lato Black';
+  color: rgb(214, 0, 28);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.3) =language_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.lang_screen {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  background: url('../../images/background/flota-fondo.jpg') no-repeat center center;
+  height: 100vh;
+  width: 100vh;
+  border-radius: 50%;
+  margin: auto;
+  box-shadow: inset 0px 0px 2000px 2000px rgba(0,0,0,0.3), 0px 0px 150px 150px rgba(0,0,0,0.3) inset;
+}
+
+.lang_screen_icon {
+  width: 5.8rem;
+  transform: translate(-22px, 110px);
+  filter: drop-shadow(0px 0px 1.5px #fff);
+  margin-bottom: 150px;
+}
+
+.lang_screen_title {
+  font-family: 'Lato Regular';
+  color: #fff;
+  font-size: 72px;
+  margin-bottom: 130px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255,255,255,.3), 0 0 15px rgba(255,255,255,.3);
+}
+
+.lang_screen_list {
+  list-style: none;
+  display: grid;
+  row-gap: 20px;
+  justify-items: center;
+  text-shadow: 0 0 10px rgba(0,0,0,.3), 0 0 5px rgba(0,0,0,.3);
+}
+
+.lang_screen_btn {
+  background: none;
+  border: none;
+  font-family: 'Lato Regular';
+  font-size: 38px;
+  font-weight: 600;
+  color: rgb(154, 183, 204);
+  text-transform: uppercase;
+  filter: drop-shadow( 0px 0px 1.5px #000);
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.lang_screen .selected {
+  color: rgb(214, 0, 28);
+  font-family: 'Lato Black';
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.4) =interactive_map:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.interactive_map{
+  display: grid;
+  width: 100%;
+  overflow: hidden;
+}
+.interactive_map .map {
+  width: 100vh;
+  height: 100vh;
+  border-radius: 50%;
+  margin: auto;
+  z-index: 1;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.5) =boat_positioning_layer:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boat_positioning_layer{
+  grid-column: 1;
+  grid-row: 1;
+  height: 100vh;
+  width: 100vh;
+  display: grid;
+  margin: auto;
+  border-radius: 50%;
+  position: relative;
+  box-shadow: 0px 0px 150px 150px rgb(0 0 0 / 30%) inset;
+  z-index: 5;
+}
+
+.boat_position {
+  display: grid;
+  grid-row-gap: 10px;
+  position: absolute;
+  transition: 0.5s;
+}
+
+.boat_position:nth-child(1n) .led_light{animation-delay: .1s;}
+.boat_position:nth-child(2n) .led_light{animation-delay: .2s;}
+.boat_position:nth-child(3n) .led_light{animation-delay: .3s;}
+.boat_position:nth-child(5n) .led_light{animation-delay: .4s;}
+
+.boat_position_hidden {
+  opacity: 0;
+  transform: translateY(100%);
+}
+.boat_icon, .boat_type_icon{
+  width: 38px;
+  height: auto;
+  margin: auto;
+}
+.led_light.boat_type_icon{
+  margin:auto 10px auto 0;
+}
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.6) =boat_type_selector:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boat_type_selector{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 35px;
+  grid-row-gap: 15px;
+  z-index: 2;
+  width: max-content;
+  margin: auto auto 3% auto;
+}
+.boat_type{
+  display: flex;
+  align-items: center;
+  transition: 0.5s;
+}
+.boat_type_hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.boat_type .boat_icon{
+  margin: auto 0;
+  margin-right: 15px;
+}
+.boat_type_name{
+  font-family: "Lato Regular";
+  font-size: 16px;
+  color: white;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.7) =led_light:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.led_light{
+  margin:auto;
+  width: 12px;
+  height: 12px;
+  background-color: #F00;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+  -webkit-animation: blinkRed 0.5s infinite;
+  -moz-animation: blinkRed 0.5s infinite;
+  -ms-animation: blinkRed 0.5s infinite;
+  -o-animation: blinkRed 0.5s infinite;
+  animation: blinkRed 0.5s infinite;
+}
+.circle_light{
+  border-radius: 50%;
+}
+.triangle_light{
+  border-radius: 0;
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+}
+.squared_light{
+  border-radius: 0;
+}
+.diamond_light{
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+@-webkit-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-moz-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-ms-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@-o-keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+@keyframes blinkRed {
+    from { background-color: #F00; }
+    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { background-color: #F00; }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.8) =in_animate_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.in_animate_screen {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vh;
+  height: 100vh;
+  border-radius: 50%;
+  background-color: transparent;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.in_animate_screen_display {
+  z-index: 100;
+  background-color: #00587C;
+}
+
+.in_screen_icon {
+  width: 250px;
+  fill: transparent;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  transition: 0.5s;
+}
+
+.in_animate_screen_display .in_screen_icon {
+  fill: #fff;
+}
+
+.in_screen_icon_animate {
+  animation: boat 2s ease-in-out;
+  transform-origin: left;
+}
+
+@keyframes boat {
+  50% {
+    transform: translate(-50%, -50%) rotate(-10deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          7.72) =boax:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boax{
+  --size:58vh;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  display:grid;
+  grid-gap: 20px;
+  height: var(--size);
+  margin:auto;
+  place-items: center;
+  place-content: center;
+  position: relative;
+  text-align: center;
+  width:  var(--size);
+  z-index: 5;
+
+  pointer-events: none;
+  opacity: 0;
+
+  /* transform: translate(-50%, -50%) scale(0); */
+  transform: scale(0);
+
+  /* https://css-tricks.com/reversing-an-easing-curve/ */
+  /* normal animation */
+  --x1: 0.18;
+  --y1: 1;
+  --x2: 0.2;
+  --y2: 1.5;
+
+  --normal_curve: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
+
+  /* reversed animation */
+  --x1_r: calc(1 - var(--x2));
+  --y1_r: calc(1 - var(--y2));
+  --x2_r: calc(1 - var(--x1));
+  --y2_r: calc(1 - var(--y1));
+
+  --reversed_curve: cubic-bezier(var(--x1_r), var(--y1_r), var(--x2_r), var(--y2_r));
+
+  transition: all 0.5s var(--reversed_curve), opacity 0.5s;
+}
+
+.boax::before{
+  --margin:10px;
+  content:'';
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  top:0;
+  left:0;
+  border-radius: 50%;
+  border: solid 5px #9AB7CC;
+  box-sizing: border-box;
+  display:grid;
+  height: calc(100% - var(--margin) * 2);
+  margin: var(--margin);
+  width:  calc(100% - var(--margin) * 2);
+}
+
+.boax_title{
+  color: #d6001c;
+  font-size: 28px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-family: 'Lato Bold';
+}
+.boax_deco{width:58%}
+.boax_main_icon{width:75px}
+
+.boax_txt{
+  font-family: 'Lato Regular';
+  font-size: 20px;
+  line-height: 27px;
+  margin: 14px auto;
+  width: 60%;
+  text-align: center;
+}
+.boax_perk{
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap:15px;
+  align-items: center;
+  width: 50%;
+}
+.boax_perk_icon{
+  height: 25px;
+  width: auto;
+  object-fit: contain;
+}
+.boax_perk_txt{
+  text-align: left;
+  font-family: 'Lato Regular';
+  font-size: 15px;
+  line-height: 18px;
+}
+.boax_perk_txt strong{color:#00587C}
+.dark_blue_color{color:#00587C;}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.83) =viday:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.viday {
+  --size: 58vh;
+
+  /* background: white; */
+  align-items: center;
+  border-radius: 50%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  /* overflow: hidden; */
+  height: var(--size);
+  margin: auto;
+  position: absolute;
+  top:50%;
+  left:50%;
+  width: var(--size);
+  z-index: 3;
+
+  overflow: hidden;
+
+  pointer-events: none;
+  opacity:0;
+  transform: translate(-50%, -50%) scale(0);
+
+  /* https://css-tricks.com/reversing-an-easing-curve/ */
+  /* normal animation */
+  --x1: 0.18;
+  --y1: 1;
+  --x2: 0.2;
+  --y2: 1.5;
+
+  --normal_curve: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
+
+  /* reversed animation */
+  --x1_r: calc(1 - var(--x2));
+  --y1_r: calc(1 - var(--y2));
+  --x2_r: calc(1 - var(--x1));
+  --y2_r: calc(1 - var(--y1));
+
+  --reversed_curve: cubic-bezier(var(--x1_r), var(--y1_r), var(--x2_r), var(--y2_r));
+
+  transition: all 0.5s var(--reversed_curve), opacity 0.5s;
+}
+.viday::before{
+  --margin:10px;
+  content:'';
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+  top:0;
+  left:0;
+  border-radius: 50%;
+  border: solid 5px #9AB7CC;
+  box-sizing: border-box;
+  display:grid;
+  height: calc(100% - var(--margin) * 2);
+  margin: var(--margin);
+  width:  calc(100% - var(--margin) * 2);
+}
+/* .viday.active {
+  pointer-events: all;
+  opacity: 1;
+} */
+.viday.play {
+  width: 100vh;
+  height: 100vh;
+}
+
+.viday_media{
+  border-radius: 50%;
+  z-index: -1;
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.viday_caption {
+  display: grid;
+  grid-column: 1;
+  grid-row: 1;
+  justify-items: center;
+  row-gap: 20px;
+  font-family: 'Lato Black';
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.viday_title {
+  letter-spacing: 5px;
+  font-size: 28px;
+}
+
+.viday_play {
+  letter-spacing: 3px;
+  font-size: 18px;
+  position: relative;
+}
+.viday_play::before {
+  border-top: 10px solid transparent;
+  border-left: 12px solid #D6001C;
+  border-bottom: 10px solid transparent;
+  height: 0;
+  content:'';
+  position: absolute;
+  top:0;
+  left: -25px;
+  width: 0;
+}
+
+.viday.play .close_boat_lightbox {
+  transform: translate(-50%, calc(-60px - 70px));
+
+  opacity:0;
+  pointer-events: none;
+}
+.close_boat_lightbox.back{
+  /* display:none; */
+  opacity:0;
+  pointer-events: none;
+}
+.viday.play .close_boat_lightbox.back{
+  display:block;
+  opacity:1;
+  pointer-events: all;
+}
+.close_boat_lightbox{
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+  width: 40px;
+  transition: 1s;
+  opacity:1;
+  pointer-events: all;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.7) =boat_lightbox:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boat_lightbox{
+  --boat_lightbox_size: 58vh;
+  margin: auto;
+  border-radius: 50%;
+  background: white;
+  width: var(--boat_lightbox_size);
+  height: var(--boat_lightbox_size);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  z-index: 5;
+  display: none;
+  position: relative;
+  transition: 1s;
+}
+.boat_lightbox_inner{
+  --boat_lightbox_inner_size: 96.5%;
+  width: var(--boat_lightbox_inner_size);
+  height: var(--boat_lightbox_inner_size);
+  border: solid 5px #9AB7CC;
+  margin: auto;
+  border-radius: 50%;
+  display: grid;
+  grid-auto-rows: min-content;
+}
+.boat_lightbox_inner_center {
+  align-items: center;
+  justify-items: center;
+  grid-auto-rows: auto;
+}
+.boat_lightbox_title{
+  margin: 72px auto 0 auto;
+  display: grid;
+  grid-gap: 25px;
+  grid-auto-rows: min-content;
+}
+.boat_lightbox_title_icon{
+  width: 75px;
+  margin: auto;
+}
+.boat_lightbox_title_txt{
+  color: #d6001c;
+  font-size: 30px;
+  letter-spacing: 4px;
+  font-family: 'Lato Bold';
+}
+.boat_lightbox_deco{
+  width: 58%;
+  margin: 30px auto;
+}
+.boat_lightbox_txt{
+  font-family: 'Lato Regular';
+  font-size: 23px;
+  line-height: 27px;
+  margin: 18px auto;
+  width: 60%;
+  text-align: center;
+}
+.boat_lightbox_perk_container{
+  display: grid;
+  grid-row-gap: 30px;
+  width: 48%;
+  margin: 30px auto;
+}
+.boat_lightbox_perk{
+  display: flex;
+}
+.boat_lightbox_perk_icon{
+  height: 25px;
+  width: auto;
+  margin: auto;
+  margin-right: 15px;
+  object-fit: contain;
+}
+.boat_lightbox_perk_txt{
+  font-family: 'Lato Regular';
+  font-size: 16px;
+  line-height: 19px;
+}
+.boat_lightbox_perk_txt strong{color:#00587C}
+.dark_blue_color{color:#00587C;}
+
+
+.boat_lightbox_center_title {
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  font-size: 28px;
+  font-family: 'Lato Black';
+  color: #fff;
+}
+
+/* https://css-tricks.com/almanac/properties/o/offset-path/ */
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 10px #fff;
+  position: absolute;
+  transform: scale(0);
+  opacity: 0;
+  transition: 0.5s;
+  offset-path: path('m 414.99998,598.72072 c 0,0 -49.82806,2.53699 -87.10953,-28.21451 -19.26822,-15.89333 -26.84822,-63.51014 -26.84822,-63.51014');
+}
+
+.in_animate_screen_display .bubble {
+  animation: bubble 1s ease-in-out;
+}
+
+.bubble:nth-child(1) { animation-delay: 0s; }
+.bubble:nth-child(2) { animation-delay: 0.2s; }
+.bubble:nth-child(3) { animation-delay: 0.4s; }
+.bubble:nth-child(4) { animation-delay: 0.6s; }
+.bubble:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes bubble {
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    transform: scale(0);
+    opacity: 0;
+  }
+}

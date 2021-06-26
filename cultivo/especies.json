@@ -1,0 +1,28 @@
+{
+  "crustaceos":{
+    "a":{
+      "alga":{
+        "data"
+      }
+    },
+    "b":{
+      "blah blah":{}
+    },
+    "l":{
+      "langostino_de_rio":{
+        "titulo": "Langostino De Rio",
+        "nombre_cientifico": "Lorem Ipsum",
+        "tipo_agricultura": "Lorem Ipsum",
+        "periodo_cultimo": "Git anditis suntiorpore volore ne ad modis dolo maximolo inus. Aturem dolorest, qui debitatur.",
+        "descripcion": "Ovide nustiat atquae dolendiatet quatemp orestrum et et, tes auta quatum alibusci aut eatet la aut etur? Qui non porem fuga. Mus ressiti busdae maiorum lam qui ipic tenditiatem qui dem sinulpa ruptatio. Unt ipsa sitat eos atemperia corro con plaut am, nate nos dolorercia ex eossitatium enist doluptius audionsed ut que si dollatquid.",
+        "lugar": "Venezuela",
+        "mapa": "ejemplo_mapa.png",
+        "foto": "ejemplo_foto.jpc",
+        "video": "video.mp4",
+      }
+    }
+  },
+  "peces":{
+    "should I use letter categories?"
+  }
+}

@@ -1,0 +1,373 @@
+/*
+Author: Tres Pi
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img{object-fit:cover;width:100%;display:block}
+a{text-decoration:none; color:inherit;}
+ul{
+  list-style: none;
+}
+.rowcol1{grid-row:1;grid-column:1}
+
+:root {
+  font-size: 20px;
+}
+
+/* ?FONTS */
+@font-face {
+  font-family: "Lato Black";
+  src: url("../../fonts/Lato-Black.ttf");
+}
+
+@font-face {
+  font-family: "Lato Bold";
+  src: url("../../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato Regular";
+  src: url("../../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato Light";
+  src: url("../../fonts/Lato-Light.ttf");
+}
+
+
+/* ?full_screen */
+.full_screen {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+
+/* ?top_panel */
+.top_panel {
+  position: absolute;
+  left: 68px;
+  right: 68px;
+  top: 68px;
+  width: max-content;
+  z-index: 12;
+}
+
+.top_panel .title {
+  font-family: 'Lato Bold';
+  font-size: 28px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.top_panel .language {
+  font-family: 'Lato Regular';
+  font-size: 18px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+.top_panel .selected {
+  font-family: 'Lato Black';
+  color: rgb(214, 0, 28);
+}
+
+.top_panel .stick {
+  font-family: 'Lato Light';
+}
+
+/* ?language_screen */
+.lang_screen {
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  background: url('../../images/background/hidrofonos-fondo.jpg') no-repeat center center;
+}
+
+.lang_screen_icon {
+  width: 8.2rem;
+  transform: translate(-25px, -35px);
+  filter: drop-shadow(0px 0px 1.5px #fff);
+  margin-bottom: 20px;
+}
+
+.lang_screen_title {
+  font-family: 'Lato Bold';
+  color: #fff;
+  font-size: 95px;
+  filter: drop-shadow( 0px 0px 1.5px #fff);
+  width: 75%;
+  margin: 0 auto;
+  margin-bottom: 65px;
+  text-align: center;
+}
+
+.lang_screen_list {
+  list-style: none;
+  display: grid;
+  row-gap: 20px;
+  justify-items: center;
+}
+
+.lang_screen_btn {
+  background: none;
+  border: none;
+  font-family: 'Lato Regular';
+  font-size: 38px;
+  font-weight: 600;
+  color: rgb(154, 183, 204);
+  text-transform: uppercase;
+  filter: drop-shadow( 0px 0px 1.5px #000);
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.lang_screen .selected {
+  color: rgb(214, 0, 28);
+  font-family: 'Lato Black';
+}
+
+
+/* ?back_grid */
+.back_grid {
+  display: grid;
+  grid-template-columns: min-content auto;
+  /* column-gap: 32px; */
+  align-items: start;
+}
+.back_grid_row{
+  width: max-content;
+}
+.back_btn {
+  background: none;
+  border: none;
+  margin-right: 32px;
+  position: relative;
+  top:20px;
+  transition:.4s;
+  transition-delay: 1.2s;
+  transform: translateY(-50%);
+  width: 40px;
+}
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              6.4) =hydrophone_main:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.hydrophone_main{
+  background: url('../../images/background/hidrofonos-fondo.jpg') no-repeat center center;
+  display: grid;
+
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ?info_content */
+
+.step2 .info_content_box.step2{opacity:1}
+.step2 .info_content_box:not(.step2){
+  opacity:0;
+  pointer-events: none;
+}
+.info_content_box.step2{opacity:0}
+.info_content_box{
+  grid-column: 1;
+  grid-row: 1;
+  display: grid;
+  transition: .4s;
+  opacity:1;
+  grid-template-columns: 1fr 1fr;
+  margin: auto;
+  width: 75%;
+  text-align: center;
+  grid-row-gap: 63px;
+  grid-column-gap: 165px;
+}
+.full_col_text{
+  grid-column: 1/-1;
+}
+.info_content_box_title{
+  text-transform: capitalize;
+  font-family: 'Lato Black';
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: rgb(154,183,204);
+  text-transform: uppercase;
+}
+.info_content_box_txt{
+  font-family: 'Lato Regular';
+  font-size: 40px;
+  color: white;
+  margin-bottom: 21px;
+}
+.info_content_box_txt .strong{
+  font-family: 'Lato Bold';
+}
+.info_content_cta{
+  font-family: 'Lato Black';
+  font-size: 40px;
+  color: rgb(214, 0, 28);
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.1);
+}
+/* .content_box_img_container{
+  display: flex;
+  border-radius: 50%;
+  padding: 8px;
+  border: 4px solid rgb(154,183,204);
+  width: min-content;
+  height: min-content;
+}
+.content_box_img{
+  width: 315px;
+  height: auto;
+  padding: 4px;
+  border: 2px solid rgb(214, 0, 28);
+  border-radius: 50%;
+}
+.content_box_img_container.left{margin:auto 0 auto auto;}
+.content_box_img_container.right{margin:auto auto auto 0;} */
+
+
+/* ?arrow_next */
+.step2 .arrow_next{
+  opacity:0;
+  pointer-events: none;
+}
+.arrow_next{
+  position: absolute;
+  bottom: 64px;
+  opacity: 1;
+  transition:.5s;
+  right: 64px;
+}
+.arrow_next_img{
+  width: 45px;
+  height: auto;
+}
+
+/* ?full_screen_media_option_selector */
+.selector .full_screen_media_option_selector{
+  opacity: 1;
+  pointer-events: all;
+}
+.full_screen_media_option_selector{
+  display: flex;
+  grid-row: 1;
+  grid-column: 1;
+  height: 100%;
+  opacity:0;
+  transition:.5s;
+  pointer-events: none;
+}
+.full_screen_media_option{
+  flex: 1 1 33%;
+}
+
+/* ?icon_sequence */
+
+
+.icon_sequence_container{
+  display: grid;
+  grid-gap: 20px;
+}
+.icon_sequence{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 15px;
+  margin: 445px auto auto auto;
+  width: min-content;
+  position: relative;
+}
+.icon_sequence_img{margin: auto 0;}
+.audio_icon{
+  height: 60px;
+  width: auto;
+}
+.fish_icon{
+  height: 50px;
+  width: auto;
+}
+.wave_icon{
+  height: 40px;
+  width: auto;
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.wave_icon.active{
+  animation-name: wave_moving;
+  animation-duration: 1s;
+  animation-iteration-count:3;
+}
+@keyframes wave_moving{
+  from{
+    height: 40px;
+    right: -17px;
+  }
+  50%{
+    height: 44px;
+    right: -20px;
+  }
+  to {
+    height: 48px;
+    right: -23px;
+  }
+}
+
+.icon_sequence_txt{
+  text-transform: uppercase;
+  font-size: 28px;
+  letter-spacing: 5px;
+  color: white;
+  text-align: center;
+  font-family: 'Lato Bold';
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          6.69) =in_animate_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.in_animate_screen {
+  position: fixed;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.in_animate_screen_display {
+  z-index: 100;
+  background-color: #00587C;
+}
+
+.in_animate_screen_icon {
+  width: 250px;
+  fill: transparent;
+  transition: 0.5s;
+}
+
+.in_animate_screen_display .in_animate_screen_icon {
+  fill: #fff;
+}
