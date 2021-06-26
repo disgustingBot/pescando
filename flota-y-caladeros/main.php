@@ -144,6 +144,6 @@
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>
-  <script>window.onload = () => { in_animate_screen(); }</script>
+  <script>window.onload = () => { out_animate_screen(); }</script>
 </body>
 </html>

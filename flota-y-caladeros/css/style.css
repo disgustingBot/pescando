@@ -758,6 +758,11 @@ body {
   color: #fff;
 }
 
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.8) =bubble:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
 /* https://css-tricks.com/almanac/properties/o/offset-path/ */
 .bubble {
   width: 40px;
@@ -775,11 +780,11 @@ body {
   animation: bubble 1s ease-in-out;
 }
 
-.bubble:nth-child(1) { animation-delay: 0s; }
-.bubble:nth-child(2) { animation-delay: 0.2s; }
-.bubble:nth-child(3) { animation-delay: 0.4s; }
-.bubble:nth-child(4) { animation-delay: 0.6s; }
-.bubble:nth-child(5) { animation-delay: 0.8s; }
+.bubble:nth-child(2) { animation-delay: 0s; }
+.bubble:nth-child(3) { animation-delay: 0.2s; }
+.bubble:nth-child(4) { animation-delay: 0.4s; }
+.bubble:nth-child(5) { animation-delay: 0.6s; }
+.bubble:nth-child(6) { animation-delay: 0.8s; }
 
 @keyframes bubble {
   50% {
