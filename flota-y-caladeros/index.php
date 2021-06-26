@@ -63,15 +63,5 @@
   </section>
 
   <script type="text/javascript" src="js/main.js"></script>
-  <script>
-    function in_animate_screen(e) {
-      e.preventDefault();
-      altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
-
-      setTimeout(() => {
-        location.href = e.target.href;
-      }, parseFloat(500));
-    }
-  </script>
 </body>
 </html>
