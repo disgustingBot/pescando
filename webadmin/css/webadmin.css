@@ -1,0 +1,70 @@
+/*
+ * CUSTOM WEBADMIN CSS
+ */
+.page-header {
+    margin: 30px 0 15px !important;
+    border-bottom: 1px solid #ccc;
+}
+.logo-mini, .logo-lg, .logo {
+  background-color: #ecf0f5;
+}
+
+/*
+ * Colores tipos de tiquets
+ */
+.bg-libres, .bg-guiadas, .bg-talleres, .bg-agenda, .bg-promos, .bg-eventos, .bg-visitantes {
+  color: #fff !important;
+}
+.bg-libres {
+  background-color: #00c0ef !important;
+}
+.bg-guiadas {
+  background-color: #00a65a !important;
+}
+.bg-talleres {
+  background-color: #ff851b !important;
+}
+.bg-agenda {
+  background-color: #1d71b8 !important;
+}
+.bg-promos {
+  background-color: #95C11f !important;
+}
+.bg-eventos {
+  background-color: #dedc00 !important;
+}
+.bg-visitantes {
+  background-color: #c22b23 !important;
+}
+
+/*
+ * Tabs modified...
+ */
+.nav-tabs-custom > .tab-content {
+  background-color: #eeeeee;
+}
+.nav-tabs-custom > .nav-tabs > li > a,
+.nav-tabs-custom > .nav-tabs > li > a:hover {
+  color: #c22b23;
+  font-weight: bold;
+}
+.nav-tabs-custom > .nav-tabs > li > a:hover {
+  background-color: #f4f4f4;
+}
+.nav-tabs-custom > .nav-tabs > li.active {
+  border-top-color: #c22b23;
+}
+.nav-tabs-custom > .nav-tabs > li.active > a,
+.nav-tabs-custom > .nav-tabs > li.active:hover > a {
+  background-color: #eeeeee;
+  color: #c22b23;
+  font-weight: bold;
+}
+
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > a > span:not(.pull-right),
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > .treeview-menu {
+  z-index: 50;
+}
+.sidebar-mini:not(.sidebar-mini-expand-feature).sidebar-collapse .sidebar-menu > li:hover > a > span {
+  z-index:50;
+}
