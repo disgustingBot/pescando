@@ -245,7 +245,7 @@ body {
   grid-column: 1;
   grid-row: 1;
   height: 100vh;
-  width: 100vh;
+  width: 100vw;
   display: grid;
   margin: auto;
   border-radius: 50%;
@@ -253,18 +253,26 @@ body {
   box-shadow: 0px 0px 150px 150px rgb(0 0 0 / 30%) inset;
   z-index: 5;
 }
-
+[class="boat_positioning_layer"] .boat_position {
+    opacity:1;
+    pointer-events: all;
+    transform: translate(-50%, -50%) scale(1);
+    transition: all 0.5s var(--normal_curve), opacity 0.5s;
+    overflow: visible;
+}
 .boat_position {
+    opacity:0;
+    pointer-events: none;
   display: grid;
   grid-row-gap: 10px;
   position: absolute;
   transition: 0.5s;
 }
 
-.boat_position:nth-child(1n) .led_light{animation-delay: .1s;}
+/* .boat_position:nth-child(1n) .led_light{animation-delay: .1s;}
 .boat_position:nth-child(2n) .led_light{animation-delay: .2s;}
 .boat_position:nth-child(3n) .led_light{animation-delay: .3s;}
-.boat_position:nth-child(5n) .led_light{animation-delay: .4s;}
+.boat_position:nth-child(5n) .led_light{animation-delay: .4s;} */
 
 .boat_position_hidden {
   opacity: 0;
@@ -758,11 +766,6 @@ body {
   color: #fff;
 }
 
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-                              4.8) =bubble:
-------------------------------------------------------------------------------
---------------------------------------------------------------------------- */
 /* https://css-tricks.com/almanac/properties/o/offset-path/ */
 .bubble {
   width: 40px;
@@ -780,11 +783,11 @@ body {
   animation: bubble 1s ease-in-out;
 }
 
-.bubble:nth-child(2) { animation-delay: 0s; }
-.bubble:nth-child(3) { animation-delay: 0.2s; }
-.bubble:nth-child(4) { animation-delay: 0.4s; }
-.bubble:nth-child(5) { animation-delay: 0.6s; }
-.bubble:nth-child(6) { animation-delay: 0.8s; }
+.bubble:nth-child(1) { animation-delay: 0s; }
+.bubble:nth-child(2) { animation-delay: 0.2s; }
+.bubble:nth-child(3) { animation-delay: 0.4s; }
+.bubble:nth-child(4) { animation-delay: 0.6s; }
+.bubble:nth-child(5) { animation-delay: 0.8s; }
 
 @keyframes bubble {
   50% {
