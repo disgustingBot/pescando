@@ -57,8 +57,12 @@ const back_btn = () => {
   try { clearTimeout(obse_timeout) } catch {}
   obse_timeout = setTimeout(()=>{ obseController.setup() },1400)
 
-  altClassFromSelector('', '.anakin', ['anakin'])
-  altClassFromSelector('', '.general', ['general'])
+  if (document.querySelector('.general').classList.length != 1) {
+    altClassFromSelector('', '.general', ['general'])
+    return
+  } else {
+    altClassFromSelector('', '.anakin', ['anakin'])
+  }
 }
 
 
@@ -70,6 +74,13 @@ const alt_ficha = slug =>{
   })
   obseController.obses=[];
   altClassFromSelector(slug, '.general', ['general'])
+  let map   = document.querySelector('.leia.' + slug + ' .leia_map')
+  let icon  = document.querySelector('.leia.' + slug + ' .leia_hier_icon')
+  let image = document.querySelector('.leia.' + slug + ' .leia_image')
+  map.setAttribute('src', map.dataset.url)
+  icon.setAttribute('data', icon.dataset.url)
+  image.setAttribute('src', image.dataset.url)
+  // console.log(image);
   try { clearTimeout(obse_timeout) } catch {}
   obse_timeout = setTimeout(()=>{ obseController.setup() },1400)
 }

@@ -308,6 +308,7 @@ ul{
 
 .shape_screen_img {
   position: relative;
+  /* display:none; */
   padding: var(--top_padding) var(--square_padding) 0px var(--square_padding);
 }
 
