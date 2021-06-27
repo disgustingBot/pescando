@@ -12,26 +12,6 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 $ELEMS      = get_strings();
 
-// TODO: cambiar el svg
-// DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
-// Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
-$clickables = array(
-  array(
-    'slug' => 'salamaquinas',
-    'image' => 'timothy.jpg',
-    'media' => 'timothy.jpg',
-    // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
-  ),
-  // array(
-  //   'slug' => 'deck',
-  //   'image' => 'fondobarco-sin-flechas.jpg'
-  // ),
-  // array(
-  //   'slug' => 'diner',
-  //   'image' => 'gerson.jpg'
-  // ),
-
-);
 
 ?>
 <!DOCTYPE html>
@@ -93,13 +73,13 @@ $clickables = array(
         'image' => 'tangonero.jpg',
         'nombre' => 'Tangonero',
         'slug' => 'tangonero',
-        'svg' => 'barco-esp-sin-sombra-letras.svg',
+        'svg' => 'timbue-esp.svg',
       ),
       array(
         'image' => 'arrastrero.jpg',
         'nombre' => 'Arrastrero',
         'slug' => 'arrastrero',
-        'svg' => 'barco-esp-sin-sombra-letras.svg',
+        'svg' => 'timbue-esp.svg',
       ),
     );
      ?>
@@ -132,7 +112,7 @@ $clickables = array(
           <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['image'] ?>" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])">
           <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['nombre'] ?></button>
           <div class="shape_screen_img ponta rowcol1">
-            <?= file_get_contents($DIR_IMG.'barco-esp-sin-sombra-letras.svg') ?>
+            <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
             <!-- <img src="<?=$DIR_IMG?>silueta-barco-con-bolas.svg"> -->
             <!-- <button class="control">Sala de mandos</button>
             <button class="deck">Cubierta</button>
@@ -168,122 +148,38 @@ $clickables = array(
 
 
   <script type="text/javascript" src="js/main.js"></script>
-  <!-- Image 360 view -->
-  <script type="text/javascript" src="js/three.min.js"></script>
+  <?php
 
-  <script>
-    // Scene
-    let scene = new THREE.Scene();
+  // TODO: cambiar el svg
+  // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
+  // Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
+  $clickables = array(
+    array(
+      'slug' => 'salamaquinas',
+      'type' => 'image',
+      // 'image' => 'panorama8K.jpeg',
+      'media' => 'panorama8K.jpeg',
+      // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
+    ),
+    array(
+      'slug' => 'salacontrol',
+      'type' => 'video',
+      // 'image' => 'panorama8K.jpeg',
+      'media' => 'barco_previo360_low.mp4',
+      // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
+    ),
+    // array(
+    //   'slug' => 'deck',
+    //   'image' => 'fondobarco-sin-flechas.jpg'
+    // ),
+    // array(
+    //   'slug' => 'diner',
+    //   'image' => 'gerson.jpg'
+    // ),
 
-    // Camera
-    let camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.01, 1);
-    camera.target = new THREE.Vector3(0, 0, 0);
+  );
 
-    // Renderer
-    let renderer = new THREE.WebGLRenderer();
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
-
-    // Add the renderer to three_container
-    let three_container = document.getElementById('three_container');
-    three_container.appendChild(renderer.domElement);
-
-    // Variables
-    let is_touching = false;
-    let longitude = 0;
-    let latitude = 0;
-    let phi = 0; theta = 0;
-    let touch_init_position_x = 0;
-    let touch_init_position_y = 0;
-    let touch_last_position_x = 0;
-    let touch_last_position_y = 0;
-
-    // start(ulr);
-    update_frame();
-
-    // Create a 360 image
-    function create_image(image_url) {
-      // Texture with image
-      let image_loader = new THREE.TextureLoader();
-      let image_texture = image_loader.load(image_url, () => {
-        // Set the background to scene
-        let cube_render = new THREE.WebGLCubeRenderTarget(image_texture.image.height);
-        cube_render.fromEquirectangularTexture(renderer, image_texture);
-        scene.background = cube_render.texture;
-      });
-    }
-
-    // Create scene full screen events
-    function create_full_screen_events() {
-      three_container.addEventListener('touchstart', on_touch_down, { passive: false });
-      three_container.addEventListener('touchmove', on_touch_move, { passive: false  });
-      three_container.addEventListener('touchend', on_touch_up, { passive: false });
-    }
-
-    // Initial configuration
-    function start(url) {
-      // Add a 360 image to scene
-      create_image(url);
-      // create_image('<?=$DIR_IMG?>background/timothy.jpg');
-      // create_image('<?=$DIR_IMG?>background/fondobarco-sin-flechas.jpg');
-
-      // Add the events to full screen
-      create_full_screen_events();
-    }
-
-    function on_touch_down(event) {
-      event.preventDefault();
-      is_touching = true;
-
-      let touch = event.touches[0] || event.changedTouches[0];
-
-      touch_init_position_x = touch.pageX;
-      touch_init_position_y = touch.pageY;
-
-      touch_last_position_x = longitude;
-      touch_last_position_y = latitude;
-    }
-
-    function on_touch_move(event) {
-      if (is_touching === true) {
-        let touch = event.touches[0] || event.changedTouches[0];
-
-        longitude = (touch_init_position_x - touch.pageX) * 0.1 + touch_last_position_x;
-        latitude = (touch.pageY - touch_init_position_y) * 0.1 + touch_last_position_y;
-      }
-    }
-
-    function on_touch_up(event) {
-      is_touching = false;
-    }
-
-    function update_frame() {
-      requestAnimationFrame(update_frame);
-      update();
-    }
-
-    // Update the camera rotation
-    function update_camera() {
-      latitude = Math.max(-85, Math.min(85, latitude));
-      phi = THREE.Math.degToRad(90 - latitude);
-      theta = THREE.Math.degToRad(longitude);
-
-      camera.target.x = 1 * Math.sin(phi) * Math.cos(theta);
-      camera.target.y = 1 * Math.cos(phi);
-      camera.target.z = 1 * Math.sin(phi) * Math.sin(theta);
-
-      camera.lookAt(camera.target);
-    }
-
-    function update() {
-      update_camera();
-
-      // Render the scene
-      renderer.render(scene, camera);
-    }
-  </script>
-
-
+   ?>
       <?php foreach ($clickables as $object) { ?>
         <style media="screen">
           .<?= $object['slug'] ?> * {
@@ -292,9 +188,13 @@ $clickables = array(
         </style>
         <script type="text/javascript">
         // document.querySelector('.<?= $object['slug'] ?>').setAttribute('onclick', 'console.log("test")');
-          document.querySelector('.<?= $object['slug'] ?>').onclick = ()=>{
+          document.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
             console.log('test');
-            // let url = '<?=$DIR_IMG?>background/<?= $object['image'] ?>'
+            let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?"
+            // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
+            let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>';
+            console.log(url);
+            location.href = url;
             // start(url);
             // altClassFromSelector('image_active', '.shape_screen')
           }
