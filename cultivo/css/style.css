@@ -510,7 +510,6 @@ ul{
 .leia_content{
   position:absolute;
   right:0;
-  /* transform: translateY(100%); */
   transition: .5s;
   transition-delay: 0s;
   display:grid;
@@ -609,8 +608,7 @@ ul{
 }
 .leia_map{
   grid-column: 2;
-  grid-row: 10 / span 2;
-  height:100%;
+  /* grid-row: 10 / span 2; */
   max-width: 100%;
   object-fit: contain;
   object-position: top;
@@ -621,7 +619,6 @@ ul{
 
 .leia_image{
   grid-column: 1/-1;
-  height: 100%;
   object-fit: contain;
   max-height: 260px;
 }
