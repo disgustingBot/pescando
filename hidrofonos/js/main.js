@@ -69,3 +69,15 @@ const back_btn = () => {
 //   altClassFromSelector(slug, '.general', ['general'])
 //   set_obses()
 // }
+
+function stop_icon_wave_anim() {
+  let specie_sounds = document.querySelectorAll('.full_screen_media_option + audio');
+
+  specie_sounds.forEach((sound) => {
+    sound.addEventListener('ended', () => {
+      let option_specie = sound.previousElementSibling.dataset.specie;
+      altClassFromSelector('active', `[data-specie=${option_specie}] .wave_icon`);
+    });
+  });
+}
+stop_icon_wave_anim();

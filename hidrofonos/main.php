@@ -63,7 +63,7 @@
 
         <div class="full_screen_media_option_selector">
           <?php foreach ($sounds as $specie) { ?>
-            <div class="full_screen_media_option" onclick="playAudioFromSelector('#<?= $specie['slug'] ?>_sound'); altClassFromSelector('active', '.wave_icon')"
+            <div class="full_screen_media_option" data-specie="<?= $specie['slug'] ?>" onclick="playAudioFromSelector('#<?= $specie['slug'] ?>_sound'); altClassFromSelector('active', '[data-specie=<?= $specie['slug'] ?>] .wave_icon')"
             style="background: url('<?= $DIR_IMG.$specie['son_fondo'] ?>') no-repeat center center;">
               <div class="icon_sequence_container">
                 <div class="icon_sequence">
