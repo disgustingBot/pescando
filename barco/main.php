@@ -17,17 +17,19 @@ $ELEMS      = get_strings();
 // Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
 $clickables = array(
   array(
-    'slug' => 'control',
-    'image' => 'timothy.jpg'
+    'slug' => 'salamaquinas',
+    'image' => 'timothy.jpg',
+    'media' => 'timothy.jpg',
+    // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
   ),
-  array(
-    'slug' => 'deck',
-    'image' => 'fondobarco-sin-flechas.jpg'
-  ),
-  array(
-    'slug' => 'diner',
-    'image' => 'gerson.jpg'
-  ),
+  // array(
+  //   'slug' => 'deck',
+  //   'image' => 'fondobarco-sin-flechas.jpg'
+  // ),
+  // array(
+  //   'slug' => 'diner',
+  //   'image' => 'gerson.jpg'
+  // ),
 
 );
 
@@ -102,12 +104,33 @@ $clickables = array(
     );
      ?>
 
-    <div class="boats_screen rowcol1">
-      <?php foreach ($barcos as $barco) { ?>
 
-        <div class="boats_screen_boat <?= $barco['slug'] ?>" onclick="console.log('<?= $barco['slug'] ?>')">
-          <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['image'] ?>">
-          <button class="boats_screen_title rowcol1"><?= $barco['nombre'] ?></button>
+     <style>
+     [class="shape_screen"] .boats_screen_boat {
+       width:calc(100% / <?= count($barcos) ?>);
+     }
+     </style>
+    <div class="boats_screen">
+      <?php
+      foreach ($barcos as $barco) {
+        $self_awake = ".$barco[slug] .boats_screen_boat.$barco[slug]";
+        ?>
+        <style>
+          <?= $self_awake ?> {
+            width:100vw;
+          }
+          <?= $self_awake ?> .boats_screen_img {
+            opacity:0;
+            pointer-events: none;
+          }
+          <?= $self_awake ?> .boats_screen_title {
+            transition-delay: .4s;
+            transform: translateY(200%);
+          }
+        </style>
+        <div class="boats_screen_boat <?= $barco['slug'] ?>">
+          <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['image'] ?>" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])">
+          <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['nombre'] ?></button>
           <div class="shape_screen_img ponta rowcol1">
             <?= file_get_contents($DIR_IMG.'barco-esp-sin-sombra-letras.svg') ?>
             <!-- <img src="<?=$DIR_IMG?>silueta-barco-con-bolas.svg"> -->
@@ -262,13 +285,19 @@ $clickables = array(
 
 
       <?php foreach ($clickables as $object) { ?>
+        <style media="screen">
+          .<?= $object['slug'] ?> * {
+            /* pointer-events: none; */
+          }
+        </style>
         <script type="text/javascript">
-          // document.querySelector('.<?= $object['slug'] ?>').onclick = ()=>{
-          //   console.log('test');
-          //   let url = '<?=$DIR_IMG?>background/<?= $object['image'] ?>'
-          //   start(url);
-          //   altClassFromSelector('image_active', '.shape_screen')
-          // }
+        // document.querySelector('.<?= $object['slug'] ?>').setAttribute('onclick', 'console.log("test")');
+          document.querySelector('.<?= $object['slug'] ?>').onclick = ()=>{
+            console.log('test');
+            // let url = '<?=$DIR_IMG?>background/<?= $object['image'] ?>'
+            // start(url);
+            // altClassFromSelector('image_active', '.shape_screen')
+          }
         </script>
       <?php } ?>
 
