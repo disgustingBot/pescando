@@ -84,29 +84,49 @@ $clickables = array(
       </div>
     </div>
 
+
+    <?php
+    $barcos = array(
+      array(
+        'image' => 'tangonero.jpg',
+        'nombre' => 'Tangonero',
+        'slug' => 'tangonero',
+        'svg' => 'barco-esp-sin-sombra-letras.svg',
+      ),
+      array(
+        'image' => 'arrastrero.jpg',
+        'nombre' => 'Arrastrero',
+        'slug' => 'arrastrero',
+        'svg' => 'barco-esp-sin-sombra-letras.svg',
+      ),
+    );
+     ?>
+
     <div class="boats_screen rowcol1">
-      <div class="boats_screen_boat">
-        <img class="boats_screen_img rowcol1" src="<?=$DIR_IMG?>tangonero.jpg">
-        <button class="boats_screen_title rowcol1">Tangonero</button>
-      </div>
-      <div class="boats_screen_boat">
-        <img class="boats_screen_img rowcol1" src="<?=$DIR_IMG?>arrastrero.jpg">
-        <button class="boats_screen_title rowcol1">Arrastrero</button>
-      </div>
+      <?php foreach ($barcos as $barco) { ?>
+
+        <div class="boats_screen_boat <?= $barco['slug'] ?>" onclick="console.log('<?= $barco['slug'] ?>')">
+          <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['image'] ?>">
+          <button class="boats_screen_title rowcol1"><?= $barco['nombre'] ?></button>
+          <div class="shape_screen_img ponta rowcol1">
+            <?= file_get_contents($DIR_IMG.'barco-esp-sin-sombra-letras.svg') ?>
+            <!-- <img src="<?=$DIR_IMG?>silueta-barco-con-bolas.svg"> -->
+            <!-- <button class="control">Sala de mandos</button>
+            <button class="deck">Cubierta</button>
+            <button class="diner">Comedor</button>
+            <button class="factory">Factoria</button>
+            <button class="cabins">Camarotes</button>
+            <button class="kitchen">Cocina</button>
+            <button class="machines">Sala de máquinas</button>
+            <button class="general">Vista general del barco</button> -->
+          </div>
+        </div>
+      <?php } ?>
     </div>
 
-    <div class="shape_screen_img ponta rowcol1">
-      <?= file_get_contents($DIR_IMG.'barco-esp-sin-sombra-letras.svg') ?>
-      <!-- <img src="<?=$DIR_IMG?>silueta-barco-con-bolas.svg"> -->
-      <!-- <button class="control">Sala de mandos</button>
-      <button class="deck">Cubierta</button>
-      <button class="diner">Comedor</button>
-      <button class="factory">Factoria</button>
-      <button class="cabins">Camarotes</button>
-      <button class="kitchen">Cocina</button>
-      <button class="machines">Sala de máquinas</button>
-      <button class="general">Vista general del barco</button> -->
-    </div>
+
+
+
 
 
 
@@ -243,12 +263,12 @@ $clickables = array(
 
       <?php foreach ($clickables as $object) { ?>
         <script type="text/javascript">
-          document.querySelector('.<?= $object['slug'] ?>').onclick = ()=>{
-            console.log('test');
-            let url = '<?=$DIR_IMG?>background/<?= $object['image'] ?>'
-            start(url);
-            altClassFromSelector('image_active', '.shape_screen')
-          }
+          // document.querySelector('.<?= $object['slug'] ?>').onclick = ()=>{
+          //   console.log('test');
+          //   let url = '<?=$DIR_IMG?>background/<?= $object['image'] ?>'
+          //   start(url);
+          //   altClassFromSelector('image_active', '.shape_screen')
+          // }
         </script>
       <?php } ?>
 

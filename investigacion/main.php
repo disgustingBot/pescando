@@ -64,7 +64,9 @@ $items = array(
     </video>
 
     <ul class="menem_container">
-      <?php foreach ($items as $item) {
+      <?php
+      $i=0;
+      foreach ($items as $item) {
         $self_awake = ".$item[slug] .menem.$item[slug]";
         ?>
         <style>
@@ -72,28 +74,31 @@ $items = array(
           height:100vh;
         }
         <?= $self_awake ?> .menem_txt {
-          /* height:100vh; */
-
           font-size: 30px;
           line-height: 30px;
-          /* font-family: 'Lato Black'; */
           color: #D6001C;
-          /* text-transform: uppercase; */
           right: 68px;
           bottom: 100px;
           transform: translateX(0);
           letter-spacing: 2px;
         }
+        <?= $self_awake ?> .menem_next {
+          transform: translateX(0);
+          transition-delay: .8s;
+          opacity:1;
+          pointer-events: all;
+        }
         </style>
-        <li class="menem <?= $item['slug'] ?>" onclick="play_video('<?= $item['slug'] ?>')">
+        <li class="menem <?= $item['slug'] ?>">
 
-          <video class="video_player rowcol1" muted poster="<?= $DIR_IMG.$item['are_fondo'] ?>">
+          <video class="video_player rowcol1" muted poster="<?= $DIR_IMG.$item['are_fondo'] ?>" onclick="play_video('<?= $item['slug'] ?>')">
             <source src="<?= $DIR_VIDEOS.$item['are_video'] ?>" type="video/mp4">
             <!-- <source src="<?= $DIR_MEDIA.$item['are_video'] ?>" type="video/mp4"> -->
           </video>
-          <p class="menem_txt"><?= $item['tra_nombre_area'] ?></p>
+          <p class="menem_txt" onclick="play_video('<?= $item['slug'] ?>')"><?= $item['tra_nombre_area'] ?></p>
+          <p class="menem_next" onclick="back_btn();play_video('<?= $items[ ($i+1) % count($items) ]['slug'] ?>')">Ver <?= $items[ ($i+1) % count($items) ]['tra_nombre_area'] ?></p>
         </li>
-      <?php } ?>
+      <?php $i+=1;} ?>
     </ul>
 
     <div class="panel panel_bottom">
@@ -113,17 +118,6 @@ $items = array(
           </p>
         </div>
       </div>
-
-      <!-- <div class="sustain_grid">
-        <h3 class="panel_info">Cultivo</h3>
-        <div class="icon_grid">
-          <div class="player_icon">
-            <span class="triangle_right"></span>
-            <span class="triangle_stick"></span>
-          </div>
-          <p class="panel_text">Ver sostenibilidad</p>
-        </div>
-      </div> -->
     </div>
 
   </section>

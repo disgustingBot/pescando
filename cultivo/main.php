@@ -214,7 +214,7 @@ $ELEMS      = get_strings();
       <?= $self_awake ?> .leia_content {
         <?php if ($is_center_screen){ ?>
           transform: translateY(0);
-          margin-top: -100vh;
+          /* margin-top: -100vh; */
           /* transition-delay: transform .5s, margin-top 1s; */
           transition: transform .5s .5s, margin-top .5s 1s;
         <?php } else { ?>
@@ -228,14 +228,14 @@ $ELEMS      = get_strings();
 
            <div class="leia_hierarchy">
              <?php /* <!-- <img class="leia_hier_icon" src="<?= $DIR_IMG . $specie['esp_icono'] ?>"> --> */ ?>
-             <object class="leia_hier_icon" data="<?= $DIR_IMG . $specie['esp_icono'] ?>" type="image/svg+xml"></object>
+             <object class="leia_hier_icon" data-url="<?= $DIR_IMG . $specie['esp_icono'] ?>" data="" type="image/svg+xml"></object>
              <?php
              ?>
              <p class="leia_hier_txt"><?= $specie['category'] ?></p>
            </div>
            <h3 class="leia_title"><?= $specie['tra_nombre_ani'] ?></h3>
 
-           <img class="leia_image" src="<?= $DIR_IMG ?><?= $specie['ani_foto'] ?>" alt="">
+           <img class="leia_image" data-url="<?= $DIR_IMG . $specie['ani_foto'] ?>" src="" alt="">
 
            <p class="leia_label">Nombre Científico</p>
            <p class="leia_info"><?= $specie['ani_cientifico'] ?></p>
@@ -259,7 +259,7 @@ $ELEMS      = get_strings();
              <p class="leia_location"><?= $specie['tra_pais_ani'] ?></p>
            </div>
 
-           <img class="leia_map" src="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" alt="">
+           <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
          </div>
        </div>
 
