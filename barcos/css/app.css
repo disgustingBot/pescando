@@ -34,6 +34,9 @@
   --breakpoint-xl: 1200px;
   --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --top_padding: calc(var(--square_padding) + 28px + 10px + 18px + 70px);
+  --square_padding: 68px;
 }
 
 *,
@@ -565,6 +568,175 @@ pre code {
   .container-xl, .container-lg, .container-md, .container-sm, .container {
     max-width: 1140px;
   }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.2) =top_panel:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.top_panel {
+  position: absolute;
+  left: var(--square_padding);
+  right: var(--square_padding);
+  top: var(--square_padding);
+  z-index: 12;
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.top_panel * {
+  pointer-events: all;
+}
+
+.top_panel_title {
+  font-family: var(--lato_bold);
+  font-size: 28px;
+  color: #fff;
+}
+
+.top_panel_info {
+  font-family: var(--lato_bold);
+  font-size: 25px;
+  color: #D6001C;
+  line-height: 30px;
+  margin-right: 20px;
+}
+
+.top_panel_language {
+  font-family: var(--lato_regular);
+  font-size: 18px;
+  color: #fff!important;
+  text-transform: uppercase!important;
+  letter-spacing: 3px;
+}
+.top_panel_language a {
+  color: #fff!important;
+  text-transform: uppercase!important;
+}
+
+.top_panel_stick {
+  font-family: var(--lato_light);
+}
+
+.top_panel .selected {
+  font-family: var(--lato_black);
+  color: rgb(214, 0, 28);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.3) =back_grid:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.back_grid {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: start;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.4.1) =back_btn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+[class="shape_screen"] .back_btn{
+  width: 0;
+  margin-right: 0;
+  transition-delay: 0s;
+}
+
+.back_btn {
+  background: none;
+  border: none;
+  margin-right: 32px;
+  position: relative;
+  top:20px;
+  transition:.4s;
+  transition-delay: 0.6s;
+  transform: translateY(-50%);
+  width: 40px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.5) =title_lang_grid:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.title_lang_grid {
+  display: grid;
+  grid-auto-flow: row;
+  row-gap: 10px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.4) =turn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.turn {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: center;
+  grid-gap: 20px;
+}
+.image_active .turn_icon{
+  transform: scale(1);
+}
+.turn_icon {
+  transition:.4s;
+  /* width: 72px; */
+  width: 52px;
+  transform: scale(1.38);
+}
+
+.turn_caption{
+  overflow:hidden;
+  /* opacity: 0; */
+}
+.image_active .turn_txt{
+  /* opacity:1; */
+  /* transform: translateX(0); */
+}
+.turn_txt{
+  font-family: var(--lato_bold);
+  font-size: 25px;
+  transition: .5s;
+  color: #D6001C;
+  line-height: 30px;
+  /* margin-right: 20px; */
+  /* transform: translateX(100%); */
+}
+
+
+/* Red arrow */
+
+.red_arrow_barco{
+  position: absolute;
+  width: 25px;
+}
+.red_arrow_top{
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%) rotate(90deg);
+}
+.red_arrow_right{
+  right: 70px;
+  bottom: 50%;
+  transform: translateY(50%) rotate(180deg);
+}
+.red_arrow_left{
+  left: 70px;
+  bottom: 50%;
+  transform: translateY(50%);
+}
+.red_arrow_bottom{
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%) rotate(270deg);
 }
 .row {
   display: flex;
