@@ -84,3 +84,23 @@ const play_video = slug => {
 
   // console.log(document.querySelector('.screen_menu').classList.length);
 }
+
+
+
+
+
+
+function first_vid_init () {
+  // First video loaded
+  let first_vid = document.querySelector('.first_vid');
+  first_vid.addEventListener('ended', () => {
+    altClassFromSelector('first_video', '.screen_menu');
+  });
+
+  // First video not loaded
+  let first_vid_source = document.querySelector('.first_vid source:last-child');
+  
+  first_vid_source.addEventListener('error', () => {
+    altClassFromSelector('first_video', '.screen_menu');
+  });
+}
