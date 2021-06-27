@@ -175,6 +175,10 @@ ul{
     overflow: hidden;
 }
 
+[class='hydrophone_main']  .info_content_cta {
+  pointer-events: none;
+}
+
 /* ?info_content */
 
 .step2 .info_content_box.step2{opacity:1}
