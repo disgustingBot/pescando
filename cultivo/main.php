@@ -253,13 +253,15 @@ $ELEMS      = get_strings();
            */ ?>
            <p class="leia_info"><?= $specie['tra_curiosidades_ani'] ?></p>
 
+
+           <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
+           <?php if ($specie['tra_pais_ani'] == true) { ?>
            <div class="leia_location_grid">
             <svg class="leia_location_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.61 20.05"><defs><style>.cls-1{fill:#c40000;}</style></defs><title>3Recurso 6</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><path class="cls-1" d="M6.81,11A3.48,3.48,0,0,1,3.41,7.4a3.48,3.48,0,0,1,3.4-3.56A3.48,3.48,0,0,1,10.2,7.4,3.48,3.48,0,0,1,6.81,11m0-11A7,7,0,0,0,0,7.14a7.25,7.25,0,0,0,1.26,4.12l5.55,8.79,5.55-8.79a7.24,7.24,0,0,0,1.25-4.12A7,7,0,0,0,6.81,0"/></g></g></svg>
             <?php /* <!-- <p class="leia_location">Lugar lorem ipsum</p> --> */ ?>
              <p class="leia_location"><?= $specie['tra_pais_ani'] ?></p>
            </div>
-
-           <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
+           <?php } ?>
          </div>
        </div>
 
