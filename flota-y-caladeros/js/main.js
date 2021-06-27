@@ -47,7 +47,7 @@ function in_animate_screen() {
     altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
     altClassFromSelector('boat_position_hidden', '.boat_position');
     altClassFromSelector('boat_type_hidden', '.boat_type');
-  }, parseFloat(1500));
+  }, 1500);
 }
 
 

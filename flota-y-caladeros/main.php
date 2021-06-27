@@ -86,13 +86,23 @@
       <?php $anim_delay = 0 ?>
 
       <?php
+      // bar_tipo
+      // var_dump($barco['bar_tipo']);
       foreach ($ships as $barco) {
       // foreach ($barcos as $barco) {
+        $self_filtered = ".tipo_$barco[bar_tipo] .boat_position.tipo_$barco[bar_tipo]";
         $self_awake = ".boat_$barco[bar_id] .viday.boat_$barco[bar_id]";
         ?>
 
         <style media="screen">
           <?= $self_awake ?> {
+            opacity:1;
+            pointer-events: all;
+            transform: translate(-50%, -50%) scale(1);
+            transition: all 0.5s var(--normal_curve), opacity 0.5s;
+            overflow: visible;
+          }
+          <?= $self_filtered ?> {
             opacity:1;
             pointer-events: all;
             transform: translate(-50%, -50%) scale(1);
@@ -116,7 +126,7 @@
         </div>
 
         <div
-          class="boat_position boat_position_hidden"
+          class="boat_position boat_position_hidden tipo_<?=$barco['bar_tipo']?>"
           onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer'])"
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
@@ -125,10 +135,13 @@
         </div>
       <?php } ?>
       <div class="boat_type_selector rowcol1">
+        <?php
+        // var_dump($ship_types[0]['tba_id']);
+         ?>
         <?php foreach ($ship_types as $type) { ?>
           <div
             class="boat_type boat_type_hidden"
-            onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map'])"
+            onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
             style="transition-delay:<?= $anim_delay += 0.25 ?>s"
             >
             <div class="led_light boat_type_icon"></div>
@@ -144,6 +157,6 @@
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>
-  <script>window.onload = () => { in_animate_screen(); }</script>
+  <script>window.onload=_=>{in_animate_screen()}</script>
 </body>
 </html>
