@@ -596,6 +596,7 @@ pre code {
   font-family: var(--lato_bold);
   font-size: 28px;
   color: #fff;
+  margin-bottom: 0;
 }
 
 .top_panel_info {
@@ -658,7 +659,7 @@ pre code {
   transition:.4s;
   transition-delay: 0.6s;
   transform: translateY(-50%);
-  width: 40px;
+  width: 50px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -669,6 +670,7 @@ pre code {
 .title_lang_grid {
   display: grid;
   grid-auto-flow: row;
+  grid-auto-rows: min-content;
   row-gap: 10px;
 }
 
@@ -688,8 +690,7 @@ pre code {
 }
 .turn_icon {
   transition:.4s;
-  /* width: 72px; */
-  width: 52px;
+  width: 37px;
   transform: scale(1.38);
 }
 
