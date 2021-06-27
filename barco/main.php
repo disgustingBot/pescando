@@ -13,6 +13,43 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 $ELEMS      = get_strings();
 
 
+
+$barcos = array(
+  array(
+    'image' => 'tangonero.jpg',
+    'nombre' => 'Tangonero',
+    'slug' => 'tangonero',
+    'svg' => 'timbue-esp.svg',
+  ),
+  array(
+    'image' => 'arrastrero.jpg',
+    'nombre' => 'Arrastrero',
+    'slug' => 'arrastrero',
+    'svg' => 'timbue-esp.svg',
+  ),
+);
+// TODO: cambiar el svg
+// DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
+// Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
+$clickables = array(
+  array(
+    'slug' => 'salamaquinas',
+    'nombre' => 'Sala de máquinas',
+    'barco' => 'tangonero',
+    'type' => 'image',
+    'media' => 'panorama8K.jpeg',
+  ),
+  array(
+    'slug' => 'salacontrol',
+    'nombre' => 'Sala de mandos',
+    'barco' => 'arrastrero',
+    'type' => 'video',
+    'media' => 'barco_previo360_low.mp4',
+  ),
+);
+
+
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -37,8 +74,10 @@ $ELEMS      = get_strings();
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
-
-  <section class="shape_screen">
+<?php
+  $selected = (isset($_GET['barco'])) ? " ".$_GET['barco'] : "";
+ ?>
+  <section class="shape_screen<?= $selected ?>">
     <div class="top_panel">
       <div class="back_grid">
         <button class="back_btn" onclick="back_btn()">
@@ -67,22 +106,6 @@ $ELEMS      = get_strings();
     </div>
 
 
-    <?php
-    $barcos = array(
-      array(
-        'image' => 'tangonero.jpg',
-        'nombre' => 'Tangonero',
-        'slug' => 'tangonero',
-        'svg' => 'timbue-esp.svg',
-      ),
-      array(
-        'image' => 'arrastrero.jpg',
-        'nombre' => 'Arrastrero',
-        'slug' => 'arrastrero',
-        'svg' => 'timbue-esp.svg',
-      ),
-    );
-     ?>
 
 
      <style>
@@ -113,15 +136,6 @@ $ELEMS      = get_strings();
           <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['nombre'] ?></button>
           <div class="shape_screen_img ponta rowcol1">
             <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
-            <!-- <img src="<?=$DIR_IMG?>silueta-barco-con-bolas.svg"> -->
-            <!-- <button class="control">Sala de mandos</button>
-            <button class="deck">Cubierta</button>
-            <button class="diner">Comedor</button>
-            <button class="factory">Factoria</button>
-            <button class="cabins">Camarotes</button>
-            <button class="kitchen">Cocina</button>
-            <button class="machines">Sala de máquinas</button>
-            <button class="general">Vista general del barco</button> -->
           </div>
         </div>
       <?php } ?>
@@ -148,38 +162,7 @@ $ELEMS      = get_strings();
 
 
   <script type="text/javascript" src="js/main.js"></script>
-  <?php
 
-  // TODO: cambiar el svg
-  // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
-  // Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
-  $clickables = array(
-    array(
-      'slug' => 'salamaquinas',
-      'type' => 'image',
-      // 'image' => 'panorama8K.jpeg',
-      'media' => 'panorama8K.jpeg',
-      // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
-    ),
-    array(
-      'slug' => 'salacontrol',
-      'type' => 'video',
-      // 'image' => 'panorama8K.jpeg',
-      'media' => 'barco_previo360_low.mp4',
-      // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
-    ),
-    // array(
-    //   'slug' => 'deck',
-    //   'image' => 'fondobarco-sin-flechas.jpg'
-    // ),
-    // array(
-    //   'slug' => 'diner',
-    //   'image' => 'gerson.jpg'
-    // ),
-
-  );
-
-   ?>
       <?php foreach ($clickables as $object) { ?>
         <style media="screen">
           .<?= $object['slug'] ?> * {
@@ -187,12 +170,13 @@ $ELEMS      = get_strings();
           }
         </style>
         <script type="text/javascript">
-        // document.querySelector('.<?= $object['slug'] ?>').setAttribute('onclick', 'console.log("test")');
           document.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
             console.log('test');
-            let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?"
+            // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?"
+            let base_url = "http://localhost/pescando/barcos/player.php?"
+
             // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
-            let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>';
+            let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>&barco=<?= $object['barco'] ?>&nombre=<?= $object['slug'] ?>';
             console.log(url);
             location.href = url;
             // start(url);

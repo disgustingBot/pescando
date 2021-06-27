@@ -12,26 +12,49 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 $ELEMS      = get_strings();
 
+$barcos = array(
+  array(
+    'image' => 'tangonero.jpg',
+    'nombre' => 'Tangonero',
+    'slug' => 'tangonero',
+    'svg' => 'timbue-esp.svg',
+  ),
+  array(
+    'image' => 'arrastrero.jpg',
+    'nombre' => 'Arrastrero',
+    'slug' => 'arrastrero',
+    'svg' => 'timbue-esp.svg',
+  ),
+);
 // TODO: cambiar el svg
 // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
 // Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
 $clickables = array(
   array(
     'slug' => 'salamaquinas',
-    'image' => 'timothy.jpg',
-    'media' => 'timothy.jpg',
-    // https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg
+    'nombre' => 'Sala de máquinas',
+    'barco' => 'tangonero',
+    'type' => 'image',
+    'media' => 'panorama8K.jpeg',
   ),
-  // array(
-  //   'slug' => 'deck',
-  //   'image' => 'fondobarco-sin-flechas.jpg'
-  // ),
-  // array(
-  //   'slug' => 'diner',
-  //   'image' => 'gerson.jpg'
-  // ),
-
+  array(
+    'slug' => 'salacontrol',
+    'nombre' => 'Sala de mandos',
+    'barco' => 'arrastrero',
+    'type' => 'video',
+    'media' => 'barco_previo360_low.mp4',
+  ),
 );
+
+
+$b = (isset($_GET['barco'])) ? $_GET['barco'] : "";
+$barco = array_values(array_filter( $barcos, function($ship){ global $b; return ($ship['slug'] == $b); }))[0];
+
+$c = (isset($_GET['nombre'])) ? $_GET['nombre'] : "";
+$object = array_values(array_filter( $clickables, function($obj){ global $c; return ($obj['slug'] == $c); }))[0];
+
+// var_dump(array_values($barco)[0]);
+// var_dump($object);
 
 ?>
 <!DOCTYPE html>
@@ -56,20 +79,20 @@ $clickables = array(
         <img src="<?=$DIR_ICONS?>atras.svg">
       </button>
       <div class="title_lang_grid">
-        <h3 class="top_panel_title">Ponta Timbue</h3>
+        <h3 class="top_panel_title"><?= $barco['nombre'] ?></h3>
         <p class="top_panel_language">
-          <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
+          <a href="<?= $current_url_no_params ?>?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="top_panel_stick">|</span>
-          <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
+          <a href="<?= $current_url_no_params ?>?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
           <span class="top_panel_stick">|</span>
-          <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
+          <a href="<?= $current_url_no_params ?>?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
         </p>
       </div>
     </div>
 
     <div class="turn">
       <div class="turn_caption">
-        <h3 class="turn_txt">Cubierta</h3>
+        <h3 class="turn_txt"><?= $object['nombre'] ?></h3>
       </div>
       <div class="turn_icon">
         <img src="<?=$DIR_ICONS?>360-barco.svg">
