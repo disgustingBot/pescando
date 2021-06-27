@@ -42,16 +42,22 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 }
 
 
-function in_animate_screen() {
+function out_animate_screen() {
   setTimeout(() => {
     altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
     altClassFromSelector('boat_position_hidden', '.boat_position');
     altClassFromSelector('boat_type_hidden', '.boat_type');
-  }, 1500);
+  }, 2000);
 }
 
+function in_animate_screen(e) {
+  e.preventDefault();
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
 
-
+  setTimeout(() => {
+    location.href = e.target.href;
+  }, 500);
+}
 
 
 
