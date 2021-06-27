@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="in_animate_screen in_animate_screen_display">
+  <!-- <div class="in_animate_screen in_animate_screen_display">
     <svg class="in_screen_icon in_screen_icon_animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35.78 21.79">
       <title>Barco</title>
       <g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><path d="M29.3,18.78a4.55,4.55,0,0,1-6.1-.11,1.72,1.72,0,0,0-2.2,0,4.55,4.55,0,0,1-6.22,0,1.72,1.72,0,0,0-2.2,0A4.72,4.72,0,0,1,9.47,19.9a4.72,4.72,0,0,1-3.11-1.23,1.72,1.72,0,0,0-2.2,0,5.15,5.15,0,0,1-.68.5L4.29,12H33ZM8.49,8.4H22.61L24,10.15H8.3ZM8.8,5.63H20.49l.68.88H8.7Zm2.1-3.74h6.59a2.18,2.18,0,0,1,2.25,1.85H10.9Zm23.84,18a4.76,4.76,0,0,1-3.06-1.18l4-7.2a.85.85,0,0,0,0-.92,1.08,1.08,0,0,0-.89-.45H26.52l-4.62-6,0-.06V3.93A4.16,4.16,0,0,0,17.49,0H7.78a1,1,0,0,0-1,1,1,1,0,0,0,1,.94h1V3.74h-1a1,1,0,0,0-1,.85l-.61,5.56H4.28a2,2,0,0,0-2.08,1.7l-.41,3.62H1.05a1,1,0,1,0,0,1.89h.53l-.19,1.69h0a1.76,1.76,0,0,0,.11.82l-.45,0a1,1,0,1,0,0,1.89,6.83,6.83,0,0,0,4.21-1.47,6.76,6.76,0,0,0,8.42,0,6.76,6.76,0,0,0,8.42,0,6.76,6.76,0,0,0,8.42,0,6.85,6.85,0,0,0,4.22,1.47.95.95,0,1,0,0-1.89"/></g></g>
@@ -34,20 +34,12 @@
     <div class="bubble"></div>
     <div class="bubble"></div>
     <div class="bubble"></div>
-  </div>
+  </div> -->
 
-  <div class="panel">
-    <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
-    <p class="panel_language">
-      <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
-      <span class="panel_stick">|</span>
-      <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
-      <span class="panel_stick">|</span>
-      <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-    </p>
-  </div>
+
 
   <div class="interactive_map">
+
 
     <?php
     foreach ($ship_types as $type) {
@@ -83,6 +75,16 @@
     <?php } ?>
 
     <div class="boat_positioning_layer">
+      <div class="panel">
+        <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+        <p class="panel_language">
+          <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
+          <span class="panel_stick">|</span>
+          <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
+          <span class="panel_stick">|</span>
+          <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
+        </p>
+      </div>
       <?php $anim_delay = 0 ?>
 
       <?php
@@ -112,6 +114,7 @@
         </style>
 
         <div class="viday boat_<?= $barco['bar_id']  ?>">
+          <img class="live_video_icon" src="<?=$DIR_ICONS?>live.svg" alt="">
           <video class="viday_media" poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg">
             <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4">
           </video>
@@ -131,7 +134,9 @@
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
           <img class="boat_icon" src="<?=$DIR_ICONS?>barco-flota-blanco.svg" alt="Barco">
-          <div class="led_light diamond_light"></div>
+          <div class="led_light_wrapper">
+            <div class="led_light"></div>
+          </div>
         </div>
       <?php } ?>
       <div class="boat_type_selector rowcol1">
@@ -140,11 +145,12 @@
          ?>
         <?php foreach ($ship_types as $type) { ?>
           <div
-            class="boat_type boat_type_hidden"
+            class="boat_type <?= $type['slug'] ?>"
             onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
-            style="transition-delay:<?= $anim_delay += 0.25 ?>s"
             >
-            <div class="led_light boat_type_icon"></div>
+            <div class="led_light_wrapper">
+              <div class="led_light boat_type_icon"></div>
+            </div>
             <p class="boat_type_name"><?= $type['tra_nombre_tba'] ?></p>
           </div>
         <?php } ?>
@@ -157,6 +163,9 @@
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>
+
+
   <script>window.onload=_=>{out_animate_screen()}</script>
+
 </body>
 </html>
