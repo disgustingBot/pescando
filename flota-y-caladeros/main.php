@@ -157,6 +157,6 @@
   </div>
 
   <script type="text/javascript" src="js/main.js"></script>
-  <script>window.onload=_=>{in_animate_screen()}</script>
+  <script>window.onload=_=>{out_animate_screen()}</script>
 </body>
 </html>
