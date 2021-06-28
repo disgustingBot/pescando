@@ -4,7 +4,6 @@ window.onload=()=>{
   // alert('hi there')
   // obseController.setup();
   // set_obses();
-  in_animate_screen();
 }
 
 
@@ -61,6 +60,14 @@ const playAudioFromSelector = (selector, alt = false) => {
 const back_btn = () => {
   altClassFromSelector('', '.hydrophone_main', ['hydrophone_main'])
   // altClassFromSelector('', '.general', ['general'])
+
+  let selector = document.querySelector('.full_screen_media_option_selector');
+  let is_playing = selector.classList.length > 1;
+
+  if(is_playing) {
+    let option_click = selector.querySelector(`[data-specie=${selector.classList[selector.classList.length-1]}]`);
+    option_click.click();
+  }
 }
 
 
