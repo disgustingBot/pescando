@@ -45,7 +45,7 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 const playAudioFromSelector = (selector, alt = false) => {
   let x = document.querySelector(selector);
 
-  if(x.paused) {
+  if(x.paused && !x.ended) {
     x.play();
   }
 
@@ -79,6 +79,21 @@ const back_btn = () => {
       altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
     }, parseFloat(500));
   }
+
+const end_videos_reset = () => {
+  let videos = document.querySelectorAll('.full_screen_media_video');
+  let selector = document.querySelector('.full_screen_media_option_selector');
+
+  videos.forEach((video) => {
+    video.onended = () => {
+      let specie = selector.classList[selector.classList.length - 1];
+      let option_click = selector.querySelector(`[data-specie=${specie}]`);
+
+      option_click.click();
+    }
+  });
+}
+end_videos_reset();
 
 
 // const test = slug=>{
