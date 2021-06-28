@@ -4,7 +4,6 @@ window.onload=()=>{
   // alert('hi there')
   // obseController.setup();
   // set_obses();
-  in_animate_screen();
 }
 
 
@@ -43,16 +42,34 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
-const playAudioFromSelector = selector=>{
+const playAudioFromSelector = (selector, alt = false) => {
   let x = document.querySelector(selector);
-  x.play();
+
+  if(x.paused) {
+    x.play();
+  }
+
+  else if(alt === true) {
+    x.pause();
+    x.currentTime = 0;
+  }
 }
 
 
 
 const back_btn = () => {
-  altClassFromSelector('', '.hydrophone_main', ['hydrophone_main'])
-  // altClassFromSelector('', '.general', ['general'])
+  let selector = document.querySelector('.full_screen_media_option_selector');
+  let is_playing = selector.classList.length > 1;
+
+  if(is_playing) {
+    let option_click = selector.querySelector(`[data-specie=${selector.classList[selector.classList.length-1]}]`);
+    option_click.click();
+  }
+
+  else {
+    altClassFromSelector('', '.hydrophone_main', ['hydrophone_main']);
+    // altClassFromSelector('', '.general', ['general'])
+  }
 }
 
 
@@ -69,3 +86,15 @@ const back_btn = () => {
 //   altClassFromSelector(slug, '.general', ['general'])
 //   set_obses()
 // }
+
+// function stop_icon_wave_anim() {
+//   let specie_sounds = document.querySelectorAll('.full_screen_media_option + audio');
+
+//   specie_sounds.forEach((sound) => {
+//     sound.addEventListener('ended', () => {
+//       let option_specie = sound.previousElementSibling.dataset.specie;
+//       altClassFromSelector('active', `[data-specie=${option_specie}] .wave_icon`);
+//     });
+//   });
+// }
+// stop_icon_wave_anim();

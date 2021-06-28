@@ -63,9 +63,42 @@
 
         <div class="full_screen_media_option_selector">
           <?php foreach ($sounds as $specie) { ?>
-            <div class="full_screen_media_option" onclick="playAudioFromSelector('#<?= $specie['slug'] ?>_sound'); altClassFromSelector('active', '.wave_icon')"
-            style="background: url('<?= $DIR_IMG.$specie['son_fondo'] ?>') no-repeat center center;">
-              <div class="icon_sequence_container">
+            <!-- <div class="full_screen_media_option" data-specie="<?= $specie['slug'] ?>" onclick="playAudioFromSelector('#<?= $specie['slug'] ?>_sound'); altClassFromSelector('active', '[data-specie=<?= $specie['slug'] ?>] .wave_icon')"
+            style="background: url('<?= $DIR_IMG.$specie['son_fondo'] ?>') no-repeat center center;"> -->
+            <div
+              class="full_screen_media_option"
+              data-specie="<?= $specie['slug'] ?>"
+              onclick="
+                playAudioFromSelector('#<?= $specie['slug'] ?>_sound', true);
+                // altClassFromSelector('active', '[data-specie=<?= $specie['slug'] ?>] .wave_icon');
+                altClassFromSelector('<?= $specie['slug'] ?>', '.full_screen_media_option_selector');
+              "
+            >
+              <style>
+                [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] {
+                  width: 100%;
+                  pointer-events: all;
+                }
+
+                [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .icon_sequence {
+                  opacity: 0;
+                  transform: scale(0);
+                }
+                
+                [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .icon_sequence_container {
+                  grid-gap: 0;
+                  margin: calc(100vh - 68px) auto auto auto;
+                  left: 100%;
+                  transform: translate(calc(-100% - 68px), calc(-34px - 68px));
+                }
+
+              </style>
+
+              <video class="full_screen_media_video rowcol1" id="<?= $specie['slug'] ?>_sound">
+                <source src="videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+              </video>
+
+              <div class="icon_sequence_container rowcol1">
                 <div class="icon_sequence">
                   <img class="icon_sequence_img audio_icon" src="<?=$DIR_ICONS?>altavoz.svg" alt="Icono de altavoz">
                   <img class="icon_sequence_img fish_icon" src="<?= $DIR_IMG.$specie['son_icono'] ?>" alt="Icono de animalito">
@@ -89,5 +122,6 @@
 
 
   <script type="text/javascript" src="js/main.js"></script>
+  <script>window.onload = () => { in_animate_screen(); }</script>
 </body>
 </html>

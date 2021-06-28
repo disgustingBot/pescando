@@ -175,6 +175,10 @@ ul{
     overflow: hidden;
 }
 
+[class='hydrophone_main']  .info_content_cta {
+  pointer-events: none;
+}
+
 /* ?info_content */
 
 .step2 .info_content_box.step2{opacity:1}
@@ -272,25 +276,54 @@ ul{
   opacity:0;
   transition:.5s;
   pointer-events: none;
+  width: 100vw;
 }
-.full_screen_media_option{
-  flex: 1 1 33%;
+.full_screen_media_option {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  overflow: hidden;
+  width: 0;
+  transition: 1.4s ease-in-out;
+  position: relative;
+  pointer-events: none;
 }
 
+[class="full_screen_media_option_selector"] .full_screen_media_option {
+  width: calc(100% / 3);
+}
+
+.selector [class="full_screen_media_option_selector"] .full_screen_media_option {
+  pointer-events: all;
+}
+
+[class="full_screen_media_option_selector"] .full_screen_media_video {
+  overflow: hidden;
+  height: 100%;
+  width: auto;
+}
 /* ?icon_sequence */
 
 
 .icon_sequence_container{
   display: grid;
   grid-gap: 20px;
+  z-index: 1;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: 1.4s ease-in-out;
+  margin: 445px auto auto auto;
+  justify-items: center;
 }
-.icon_sequence{
+.icon_sequence {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-column-gap: 15px;
-  margin: 445px auto auto auto;
   width: min-content;
   position: relative;
+  transition: 1.4s ease-in-out;
+  height: 68px;
 }
 .icon_sequence_img{margin: auto 0;}
 .audio_icon{
@@ -312,7 +345,7 @@ ul{
 .wave_icon.active{
   animation-name: wave_moving;
   animation-duration: 1s;
-  animation-iteration-count:3;
+  animation-iteration-count:infinite;
 }
 @keyframes wave_moving{
   from{
