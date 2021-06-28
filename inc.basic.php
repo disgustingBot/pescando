@@ -33,9 +33,9 @@
 
   $DIR_DOCS = "../uploads/";
   $DIR_ICONS = "../icons/";
-  $DIR_IMG = "../images/";
   $DIR_SONIDOS = "../mp3/";
   // $DIR_VIDEOS = "../media/";
+  $DIR_IMG = "../images/";
   $DIR_VIDEOS = "https://mansilladisseny.com/pescanova/media/";
 
   $ERR = "";

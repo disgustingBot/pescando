@@ -11,42 +11,60 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 
 $ELEMS      = get_strings();
+// var_dump($ELEMS['TIT_INTERACTIVO']);
+// echo "<br>";
+// echo "<br>";
 
 
 
-$barcos = array(
-  array(
-    'image' => 'tangonero.jpg',
-    'nombre' => 'Tangonero',
-    'slug' => 'tangonero',
-    'svg' => 'timbue-esp.svg',
-  ),
-  array(
-    'image' => 'arrastrero.jpg',
-    'nombre' => 'Arrastrero',
-    'slug' => 'arrastrero',
-    'svg' => 'timbue-esp.svg',
-  ),
-);
+
+function get_detalles() {
+  global $conn;
+
+  $barcos = array();
+  $qry = "SELECT *, ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'imagen' ) as svg
+                  , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'bde_nombre' ) as nombre
+                  FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
+
+  // aqui el vid_barco va es donde se elije el barco
+  if ( $result = mysqli_query($conn, $qry) ) {
+    while ( $row = mysqli_fetch_assoc($result) ) {
+      $barcos[] = $row;
+    }
+  }
+  $barcos = array_map(function($barco){
+    $barco['slug']     = LimpiaNombre($barco['bde_nombre']);
+    return $barco;
+  }, $barcos);
+  return $barcos;
+}
+
+
+function get_clickables() {
+  global $conn;
+
+  $clickables = array();
+  // aqui el vid_barco va es donde se elije el barco
+  $qry = "SELECT vid_zona AS slug, bde_nombre AS nombre, vid_tipo AS type, vid_fichero AS media FROM pesca_videos LEFT JOIN pesca_barcos_detalles ON vid_barco = bde_id WHERE vid_barco = 1;";
+  if ( $result = mysqli_query($conn, $qry) ) {
+    while ( $row = mysqli_fetch_assoc($result) ) {
+      $clickables[] = $row;
+    }
+  }
+  // $clickables = array_map(function($barco){
+  //   $barco['slug']     = LimpiaNombre($barco['bde_nombre']);
+  //   return $barco;
+  // }, $clickables);
+  return $clickables;
+}
+$barcos = get_detalles();
+// $barcos = [$barcos[1]];
+// var_dump($barcos);
+$clickables = get_clickables();
+
 // TODO: cambiar el svg
 // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
 // Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
-$clickables = array(
-  array(
-    'slug' => 'salamaquinas',
-    'nombre' => 'Sala de máquinas',
-    'barco' => 'tangonero',
-    'type' => 'image',
-    'media' => 'panorama8K.jpeg',
-  ),
-  array(
-    'slug' => 'salacontrol',
-    'nombre' => 'Sala de mandos',
-    'barco' => 'arrastrero',
-    'type' => 'video',
-    'media' => 'barco_previo360_low.mp4',
-  ),
-);
 
 
 
@@ -80,11 +98,13 @@ $clickables = array(
   <section class="shape_screen<?= $selected ?>">
     <div class="top_panel">
       <div class="back_grid">
-        <button class="back_btn" onclick="back_btn()">
-          <img src="<?=$DIR_ICONS?>atras.svg">
-        </button>
+          <button class="back_btn" onclick="back_btn()">
+            <?php if (count($barcos) > 1) { ?>
+            <img src="<?=$DIR_ICONS?>atras.svg">
+          <?php } ?>
+          </button>
         <div class="title_lang_grid">
-          <h3 class="top_panel_title">Ponta Timbue</h3>
+          <h3 class="top_panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
           <p class="top_panel_language">
             <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
             <span class="top_panel_stick">|</span>
@@ -97,7 +117,7 @@ $clickables = array(
 
       <div class="turn">
         <div class="turn_caption">
-          <h3 class="turn_txt">Cubierta</h3>
+          <!-- <h3 class="turn_txt">Cubierta</h3> -->
         </div>
         <div class="turn_icon">
           <img src="<?=$DIR_ICONS?>360-barco.svg">
@@ -132,8 +152,10 @@ $clickables = array(
           }
         </style>
         <div class="boats_screen_boat <?= $barco['slug'] ?>">
-          <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['image'] ?>" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])">
-          <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['nombre'] ?></button>
+          <?php if (count($barcos) > 1) { ?>
+            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])">
+            <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['bde_nombre'] ?></button>
+          <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
           </div>
@@ -143,21 +165,14 @@ $clickables = array(
 
 
 
-
-
-
-
-
-        <div id="three_container" class="image360 rowcol1"></div>
-
-        <div class="ship_screen_cross rowcol1">
-          <button class="triangle_btn triangle_up"></button>
-          <div class="ship_screen_cross_half">
-            <button class="triangle_btn triangle_left"></button>
-            <button class="triangle_btn triangle_right"></button>
-          </div>
-          <button class="triangle_btn triangle_down"></button>
-        </div>
+    <!-- <div class="ship_screen_cross rowcol1">
+      <button class="triangle_btn triangle_up"></button>
+      <div class="ship_screen_cross_half">
+        <button class="triangle_btn triangle_left"></button>
+        <button class="triangle_btn triangle_right"></button>
+      </div>
+      <button class="triangle_btn triangle_down"></button>
+    </div> -->
   </section>
 
 
@@ -172,8 +187,9 @@ $clickables = array(
         <script type="text/javascript">
           document.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
             console.log('test');
-            // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?"
-            let base_url = "http://localhost/pescando/barcos/player.php?"
+            let base_url = "https://mansilladisseny.com/pescanova/barcos/player.php?"
+            // let base_url = "http://localhost/pescando/barcos/player.php?"
+            // let base_url = "http://localhost/pescando/barcos/player.php?"
 
             // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
             let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>&barco=<?= $object['barco'] ?>&nombre=<?= $object['slug'] ?>';
