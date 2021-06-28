@@ -68,10 +68,6 @@ $object = array_values(array_filter( $clickables, function($obj){ global $c; ret
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-  <svg class="red_arrow_barco red_arrow_top" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
-  <svg class="red_arrow_barco red_arrow_right" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
-  <svg class="red_arrow_barco red_arrow_left" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
-  <svg class="red_arrow_barco red_arrow_bottom" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
 
 
   <div class="top_panel">
