@@ -349,10 +349,17 @@ body {
 .boat_position.tipo_4 .led_light{
   border-radius: 0;
   clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-  --led_potero_size:calc(var(--led_light_size) * 1.3);
+  --led_potero_size:calc(var(--led_light_size) * 1.1);
   width: var(--led_potero_size);
   height: var(--led_potero_size);
 }
+.boat_type.tangonero .led_light,
+.boat_position.tipo_2 .led_light{
+  --tangonero_icon_size: 11px;
+  width: var(--tangonero_icon_size);
+  height: var(--tangonero_icon_size);
+}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               4.7) =led_light:
