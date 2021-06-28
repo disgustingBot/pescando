@@ -290,6 +290,9 @@ ul{
 }
 .full_screen_media_video {
   transition: 1.4s ease-in-out;
+  height: 100vh;
+  object-fit: cover;
+  width: 100%;
 }
 
 [class="full_screen_media_option_selector"] .full_screen_media_option {
@@ -300,12 +303,6 @@ ul{
   pointer-events: all;
 }
 
-[class="full_screen_media_option_selector"] .full_screen_media_video {
-  overflow: hidden;
-  height: 100%;
-  width: auto;
-  transform: translateX(-50%);
-}
 /* ?icon_sequence */
 
 
