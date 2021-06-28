@@ -288,6 +288,9 @@ ul{
   position: relative;
   pointer-events: none;
 }
+.full_screen_media_video {
+  transition: 1.4s ease-in-out;
+}
 
 [class="full_screen_media_option_selector"] .full_screen_media_option {
   width: calc(100% / 3);
@@ -301,6 +304,7 @@ ul{
   overflow: hidden;
   height: 100%;
   width: auto;
+  transform: translateX(-50%);
 }
 /* ?icon_sequence */
 
