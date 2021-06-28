@@ -80,6 +80,10 @@
                   pointer-events: all;
                 }
 
+                [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .full_screen_media_video {
+                  transform: translateX(0);
+                }
+
                 [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .icon_sequence {
                   opacity: 0;
                   transform: scale(0);
