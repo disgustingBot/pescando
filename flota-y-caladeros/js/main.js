@@ -84,3 +84,30 @@ const update_media_clicks = () => {
     without_video.remove();
   });
 }
+
+const playAudioFromSelector = (selector, alt = false) => {
+  let x = document.querySelector(selector);
+
+  if(x.paused && !x.ended) {
+    x.play();
+  }
+
+  else if(alt === true) {
+    x.pause();
+    x.currentTime = 0;
+  }
+}
+
+const end_videos_reset = () => {
+  let videos = document.querySelectorAll('.viday_media');
+
+  videos.forEach((video) => {
+    video.onended = () => {
+      let viday = video.parentElement;
+      let back_button = viday.querySelector('.close_boat_lightbox.back');
+      
+      back_button.click();
+    }
+  });
+}
+end_videos_reset();

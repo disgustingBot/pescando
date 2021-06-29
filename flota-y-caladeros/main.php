@@ -132,11 +132,31 @@
 
           <div class="viday_caption">
             <h2 class="viday_title">Tripulación</h2>
-            <p class="viday_play" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');document.querySelector('.viday.boat_<?= $barco['bar_id']  ?> .viday_media').play();">Video</p>
+            <p
+              class="viday_play"
+              onclick="
+                altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id'] ?>');
+                playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media');
+              "
+            >Video</p>
           </div>
 
-          <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>'])">
-          <img class="close_boat_lightbox back" src="<?=$DIR_ICONS?>atras.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>')">
+          <img
+            class="close_boat_lightbox"
+            src="<?=$DIR_ICONS?>cerrar-flota.svg"
+            alt="Icono de equis para cerrar el Lightbox"
+            onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"
+          >
+
+          <img
+            class="close_boat_lightbox back"
+            src="<?=$DIR_ICONS?>atras.svg"
+            alt="Icono de equis para cerrar el Lightbox"
+            onclick="
+              altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');
+              playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media', true);
+            "
+          >
         </div>
 
         <div
