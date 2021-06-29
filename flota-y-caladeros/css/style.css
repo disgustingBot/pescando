@@ -294,7 +294,7 @@ body {
 --------------------------------------------------------------------------- */
 
 /* 4.7) =led_light: */
-.led_light{
+/* .led_light{
   margin:auto;
   --led_light_size: 12px;
   width: var(--led_light_size);
@@ -306,7 +306,7 @@ body {
   -ms-animation: blinkRed 0.5s infinite;
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite;
-}
+} */
 .boat_type_selector{
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -373,11 +373,6 @@ body {
   height: var(--led_light_size);
   background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, rgba(255, 255, 255, 0.5) 0 2px 12px;
-  -webkit-animation: blinkRed 0.5s infinite;
-  -moz-animation: blinkRed 0.5s infinite;
-  -ms-animation: blinkRed 0.5s infinite;
-  -o-animation: blinkRed 0.5s infinite;
-  animation: blinkRed 0.5s infinite;
 }
 
 
@@ -394,32 +389,32 @@ body {
   -ms-animation: blinkRed 0.5s infinite;
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite;
-}
+} */
 @-webkit-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
+    from { fill: #F00; }
+    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { fill: #F00; }
 }
 @-moz-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
+    from { fill: #F00; }
+    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { fill: #F00; }
 }
 @-ms-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
+    from { fill: #F00; }
+    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { fill: #F00; }
 }
 @-o-keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
+    from { fill: #F00; }
+    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { fill: #F00; }
 }
 @keyframes blinkRed {
-    from { background-color: #F00; }
-    50% { background-color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { background-color: #F00; }
-} */
+    from { fill: #F00; }
+    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { fill: #F00; }
+}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           4.8) =in_animate_screen:
