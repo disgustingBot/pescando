@@ -92,8 +92,8 @@ $items = array(
         <li class="menem <?= $item['slug'] ?>">
 
           <video class="video_player rowcol1" muted poster="<?= $DIR_IMG.$item['are_fondo'] ?>" onclick="play_video('<?= $item['slug'] ?>')">
-            <source src="<?= $DIR_VIDEOS.$item['are_video'] ?>" type="video/mp4">
-            <!-- <source src="<?= $DIR_MEDIA.$item['are_video'] ?>" type="video/mp4"> -->
+            <!-- <source src="<?= $DIR_VIDEOS.$item['are_video'] ?>" type="video/mp4"> -->
+            <source src="<?= $DIR_MEDIA.$item['are_video'] ?>" type="video/mp4">
           </video>
           <p class="menem_txt" onclick="play_video('<?= $item['slug'] ?>')"><?= $item['tra_nombre_area'] ?></p>
           <p class="menem_next" onclick="back_btn();play_video('<?= $items[ ($i+1) % count($items) ]['slug'] ?>')">Ver <?= $items[ ($i+1) % count($items) ]['tra_nombre_area'] ?></p>
