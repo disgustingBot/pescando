@@ -59,8 +59,21 @@ function get_clickables($id) {
 }
 $barcos = get_detalles();
 // $barcos = [$barcos[1]];
-$clickables = get_clickables(1);
-// var_dump($clickables);
+$clickables = [];
+foreach ($barcos as $barco) {
+  $clickables[$barco['bde_id']] = get_clickables($barco['bde_id']);
+}
+
+
+// var_dump(json_encode($clickables));
+// echo "<br>";
+// echo "<br>";
+// var_dump($barcos);
+// echo "<br>";
+// echo "<br>";
+// var_dump($clickables[2]);
+// echo "<br>";
+// echo "<br>";
 
 // TODO: cambiar el svg
 // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
@@ -153,12 +166,12 @@ $clickables = get_clickables(1);
         </style>
         <div class="boats_screen_boat <?= $barco['slug'] ?>">
           <?php if (count($barcos) > 1) { ?>
-            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="activate_barco('<?= $barco['slug'] ?>')">
-            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>')"><?= $barco['bde_nombre'] ?></button>
+            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)">
+            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['bde_nombre'] ?></button>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <template class="template">
-              <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
+              <?= file_get_contents( $DIR_IMG . $barco['svg'] ) ?>
 
             </template>
           </div>
@@ -180,29 +193,36 @@ $clickables = get_clickables(1);
 
 
   <script type="text/javascript" src="js/main.js"></script>
+<?php
 
+
+
+ ?>
         <script type="text/javascript">
 
+        clickables = JSON.parse('<?= json_encode($clickables) ?>');
+        // console.log(clickables);
 
-
-        const activate_barco = slug => {
+        const activate_barco = (slug, id) => {
+          // console.log(id);
+          // console.log(clickables[id]);
           altClassFromSelector(slug, '.shape_screen', ['shape_screen'])
           // let test = document.querySelector('.boats_screen_boat.' + slug + ' defs')
 
           let draw = document.importNode(document.querySelector('.boats_screen_boat.' + slug + ' template').content, true);
+          clickables[id].forEach( object => {
+            // console.log(draw.querySelector('#' + object['slug']));
 
-          <?php foreach ($clickables as $object) { ?>
-            // console.log(draw.querySelector('#<?= $object['slug'] ?>'));
-            if (draw.querySelector('#<?= $object['slug'] ?>')) {
-              draw.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
-                let base_url = "player.php?";
+            if (draw.querySelector('#' + object['slug'])) {
+              draw.querySelector('#' + object['slug']).onclick = ()=>{
+                console.log('url');
+                let base_url = (object['type'] == 'videoplano') ? 'video.php?' : 'player.php?';
                 // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
-                let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>&barco=<?= $object['barco'] ?>&nombre=<?= $object['slug'] ?>&lang=<?= $_SESSION["lang"] ?>';
-                // console.log(url);
+                let url = base_url + 'type=' + object['type'] + '&source=' + object['media'] + '&barco=' + object['barco'] + '&nombre=' + object['slug'] + '&lang=<?= $_SESSION["lang"] ?>';
                 location.href = url;
               }
             }
-            <?php } ?>
+          });
 
 
           let parent = document.querySelector( '.boats_screen_boat.' + slug + ' .shape_screen_img' );
