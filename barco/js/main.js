@@ -43,9 +43,17 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
+
+
+
+
 const back_btn = () => {
-  // altClassFromSelector('', '.anakin', ['anakin'])
   altClassFromSelector('', '.shape_screen', ['shape_screen'])
+  let remover = document.querySelectorAll('.boats_screen_boat')
+  remover.forEach( x => {
+    if (x.querySelector('svg')) { x.querySelector('svg').remove() }
+  });
+
 }
 
 
@@ -61,7 +69,7 @@ let letterController = {
 function out_animate_screen() {
   setTimeout(() => {
     altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
-    anim_texts();
+    // anim_texts();
   }, 2000);
 }
 
@@ -77,17 +85,6 @@ function in_animate_screen(e) {
 function anim_texts() {
   let anim_delay = 0.75;
   let texts = [...document.querySelectorAll('.shape_screen_img text')];
-
-  // Info de los textos en el SVG
-  // let texts_info = texts.map((text) => {
-  //   // Posición de textos en SVG (e es x, f es y)
-  //   const { e, f } = text.transform.baseVal.consolidate().matrix;
-  //   // Tamaño de textos en SVG const
-  //   const { width, height } = text.getBBox();
-
-  //   return { e, f, width, height };
-  // });
-
   texts.forEach((text) => {
     text.style.transitionDelay = `${anim_delay += 0.25}s`;
   });
