@@ -225,6 +225,22 @@ $ELEMS      = get_strings();
       </style>
        <div class="leia <?= $specie['slug'] ?>">
          <div class="leia_content">
+           <div class="magnified_map">
+             <svg class="close_magified_map" onclick="altClassFromSelector('active', '.magnified_map')" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+             	 <style type="text/css">
+             		 .st0{fill:#9BB4CA;}
+             		 .st1{fill:#BE201A;}
+             	 </style>
+             	 <g id="cerrar-azul">
+             		 <path class="st0" d="M30,60C13.5,60,0,46.5,0,30S13.5,0,30,0s30,13.5,30,30S46.5,60,30,60z M30,4.3C15.8,4.3,4.3,15.8,4.3,30
+             			S15.8,55.7,30,55.7S55.7,44.2,55.7,30S44.2,4.3,30,4.3z"/>
+             			<path class="st0" d="M33,30l6.1-6.1c0.8-0.8,0.8-2.2,0-3s-2.2-0.8-3,0L30,27l-6.1-6.1c-0.8-0.8-2.2-0.8-3,0s-0.8,2.2,0,3L27,30
+             			l-6.1,6.1c-0.8,0.8-0.8,2.2,0,3s2.2,0.8,3,0L30,33l6.1,6.1c0.8,0.8,2.2,0.8,3,0s0.8-2.2,0-3L33,30z"/>
+             		</g>
+             </svg>
+             <img class="magnified_map_img" src="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" alt="Mapa de tamaño completo de las regiones de cultivo">
+           </div>
 
            <div class="leia_hierarchy">
              <?php /* <!-- <img class="leia_hier_icon" src="<?= $DIR_IMG . $specie['esp_icono'] ?>"> --> */ ?>
@@ -253,8 +269,30 @@ $ELEMS      = get_strings();
            */ ?>
            <p class="leia_info"><?= $specie['tra_curiosidades_ani'] ?></p>
 
+           <div class="leia_map_container">
+             <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
 
-           <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
+             <svg onclick="altClassFromSelector('active', '.magnified_map')" class="leia_map_magnify" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+               <style type="text/css">
+                 .st0{fill:#9BB4CA;}
+             	  .st1{fill:#BE201A;}
+              </style>
+              <g id="lupa-rojo">
+                <g>
+                  <path class="st1" d="M59.2,55.3L40.6,36.7c3-3.9,4.9-8.7,4.9-14C45.5,10.2,35.3,0,22.7,0c0,0,0,0,0,0C16.7,0,10.9,2.4,6.7,6.7
+             		  C2.4,10.9,0,16.7,0,22.7c0,12.5,10.2,22.7,22.7,22.7c5.3,0,10.2-1.8,14-4.9l18.6,18.6c0.5,0.5,1.2,0.8,1.9,0.8s1.4-0.3,1.9-0.8
+             		  C60.3,58.1,60.3,56.4,59.2,55.3z M22.7,40c-9.5,0-17.3-7.7-17.3-17.3c0-4.6,1.8-9,5.1-12.2c3.3-3.3,7.6-5.1,12.2-5.1
+             		  c9.5,0,17.3,7.7,17.3,17.3S32.3,40,22.7,40z"/>
+                </g>
+                <path class="st1" d="M15,20.4c0,5.7,6.3,12,7.4,12c1.1,0,7.4-6.4,7.4-12c0-4.1-3.3-7.6-7.4-7.6C18.3,12.9,15,16.4,15,20.4z
+             	 M18,20.5c0-2.5,2-4.5,4.5-4.5c2.5,0,4.5,2,4.5,4.5s-2,4.5-4.5,4.5C20,25,18,23,18,20.5z"/>
+             </g>
+           </svg>
+         </div>
+
+
+
            <?php if ($specie['tra_pais_ani'] == true) { ?>
            <div class="leia_location_grid">
             <svg class="leia_location_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.61 20.05"><defs><style>.cls-1{fill:#c40000;}</style></defs><title>3Recurso 6</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><path class="cls-1" d="M6.81,11A3.48,3.48,0,0,1,3.41,7.4a3.48,3.48,0,0,1,3.4-3.56A3.48,3.48,0,0,1,10.2,7.4,3.48,3.48,0,0,1,6.81,11m0-11A7,7,0,0,0,0,7.14a7.25,7.25,0,0,0,1.26,4.12l5.55,8.79,5.55-8.79a7.24,7.24,0,0,0,1.25-4.12A7,7,0,0,0,6.81,0"/></g></g></svg>
