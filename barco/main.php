@@ -40,27 +40,27 @@ function get_detalles() {
 }
 
 
-function get_clickables() {
+function get_clickables($id) {
   global $conn;
 
   $clickables = array();
   // aqui el vid_barco va es donde se elije el barco
-  $qry = "SELECT vid_zona AS slug, bde_nombre AS nombre, vid_tipo AS type, vid_fichero AS media FROM pesca_videos LEFT JOIN pesca_barcos_detalles ON vid_barco = bde_id WHERE vid_barco = 1;";
+  $qry = "SELECT vid_zona AS slug, bde_nombre AS barco, vid_tipo AS type, vid_fichero AS media FROM pesca_videos LEFT JOIN pesca_barcos_detalles ON vid_barco = bde_id WHERE vid_barco = $id;";
   if ( $result = mysqli_query($conn, $qry) ) {
     while ( $row = mysqli_fetch_assoc($result) ) {
       $clickables[] = $row;
     }
   }
-  // $clickables = array_map(function($barco){
-  //   $barco['slug']     = LimpiaNombre($barco['bde_nombre']);
-  //   return $barco;
-  // }, $clickables);
+  $clickables = array_map(function($object){
+    $object['barco']     = LimpiaNombre($object['barco']);
+    return $object;
+  }, $clickables);
   return $clickables;
 }
 $barcos = get_detalles();
 // $barcos = [$barcos[1]];
-// var_dump($barcos);
-$clickables = get_clickables();
+$clickables = get_clickables(1);
+// var_dump($clickables);
 
 // TODO: cambiar el svg
 // DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
@@ -153,11 +153,14 @@ $clickables = get_clickables();
         </style>
         <div class="boats_screen_boat <?= $barco['slug'] ?>">
           <?php if (count($barcos) > 1) { ?>
-            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])">
-            <button class="boats_screen_title rowcol1" onclick="altClassFromSelector('<?= $barco['slug'] ?>', '.shape_screen', ['shape_screen'])"><?= $barco['bde_nombre'] ?></button>
+            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="activate_barco('<?= $barco['slug'] ?>')">
+            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>')"><?= $barco['bde_nombre'] ?></button>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
-            <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
+            <template class="template">
+              <?= file_get_contents($DIR_IMG.$barco['svg']) ?>
+
+            </template>
           </div>
         </div>
       <?php } ?>
@@ -178,28 +181,46 @@ $clickables = get_clickables();
 
   <script type="text/javascript" src="js/main.js"></script>
 
-      <?php foreach ($clickables as $object) { ?>
-        <style media="screen">
-          .<?= $object['slug'] ?> * {
-            /* pointer-events: none; */
-          }
-        </style>
         <script type="text/javascript">
-          document.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
-            console.log('test');
-            let base_url = "https://mansilladisseny.com/pescanova/barcos/player.php?"
-            // let base_url = "http://localhost/pescando/barcos/player.php?"
-            // let base_url = "http://localhost/pescando/barcos/player.php?"
 
-            // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
-            let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>&barco=<?= $object['barco'] ?>&nombre=<?= $object['slug'] ?>';
-            console.log(url);
-            location.href = url;
-            // start(url);
-            // altClassFromSelector('image_active', '.shape_screen')
-          }
+
+
+        const activate_barco = slug => {
+          altClassFromSelector(slug, '.shape_screen', ['shape_screen'])
+          // let test = document.querySelector('.boats_screen_boat.' + slug + ' defs')
+
+          let draw = document.importNode(document.querySelector('.boats_screen_boat.' + slug + ' template').content, true);
+
+          <?php foreach ($clickables as $object) { ?>
+            // console.log(draw.querySelector('#<?= $object['slug'] ?>'));
+            if (draw.querySelector('#<?= $object['slug'] ?>')) {
+              draw.querySelector('#<?= $object['slug'] ?>').onclick = ()=>{
+                let base_url = "player.php?";
+                // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
+                let url = base_url + 'type=<?= $object['type'] ?>&source=<?= $object['media'] ?>&barco=<?= $object['barco'] ?>&nombre=<?= $object['slug'] ?>&lang=<?= $_SESSION["lang"] ?>';
+                // console.log(url);
+                location.href = url;
+              }
+            }
+            <?php } ?>
+
+
+          let parent = document.querySelector( '.boats_screen_boat.' + slug + ' .shape_screen_img' );
+          parent.insertBefore(draw, parent.children[ 0 ]);
+          anim_texts();
+          // console.log(test);
+        }
+
+
+
+
+        // let base_url = "http://localhost/pescando/barcos/player.php?"
+        // let base_url = "http://localhost/pescando/barcos/player.php?"
+
+        // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
+
+
         </script>
-      <?php } ?>
 
   <script>window.onload = () => { out_animate_screen(); }</script>
 </body>
