@@ -66,10 +66,12 @@ $clickables = get_clickables(1);
 
 
 
-var_dump($_SESSION["lang"]);
+// var_dump($_SESSION["lang"]);
 
 $b = (isset($_GET['barco'])) ? $_GET['barco'] : "";
-$barco = array_values(array_filter( $barcos, function($ship){ global $b; return ($ship['slug'] == $b); }))[0];
+$barco = array_values(array_filter( $barcos, function($ship){ global $b; return ($ship['slug'] == $b); }))[0]; // aqui se filtra el barco correcto
+
+$clickables = get_clickables($barco['bde_id']); // importante ejecutar despues de filtrar el barco correcto
 
 $c = (isset($_GET['nombre'])) ? $_GET['nombre'] : "";
 $object = array_values(array_filter( $clickables, function($obj){ global $c; return ($obj['slug'] == $c); }))[0];
@@ -101,7 +103,7 @@ $object = array_values(array_filter( $clickables, function($obj){ global $c; ret
         <img src="<?=$DIR_ICONS?>atras.svg">
       </button>
       <div class="title_lang_grid">
-        <h3 class="top_panel_title"><?= $barco['nombre'] ?></h3>
+        <h3 class="top_panel_title"><?= $barco['bde_nombre'] ?></h3>
         <p class="top_panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="top_panel_stick">|</span>
