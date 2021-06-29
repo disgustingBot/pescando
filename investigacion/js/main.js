@@ -44,7 +44,7 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
-var videos = document.querySelectorAll('video');
+var videos = document.querySelectorAll('video:not(.first_vid)');
 videos.forEach( video => {
   video.addEventListener('ended', function() {
     video.load();
@@ -60,10 +60,11 @@ videos.forEach( video => {
 
 const back_btn = () => {
   altClassFromSelector('', '.screen_menu', ['screen_menu'])
-  var videos = document.querySelectorAll('video');
+  var videos = document.querySelectorAll('video:not(.first_vid)');
   videos.forEach( video => {
     video.load()
   })
+  // first_vid_init()
 }
 
 
@@ -99,7 +100,7 @@ function first_vid_init () {
 
   // First video not loaded
   let first_vid_source = document.querySelector('.first_vid source:last-child');
-  
+
   first_vid_source.addEventListener('error', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });
