@@ -510,7 +510,7 @@ ul{
 .leia_content{
   position:absolute;
   right:0;
-  transition: .5s;
+  /* transition: .5s; */
   transition-delay: 0s;
   display:grid;
   margin-top: 0;

@@ -10,6 +10,7 @@
 
   $ELEMS  = get_strings();
   $sounds = get_sounds();
+  // var_dump($sounds);
 
 ?>
 <!DOCTYPE html>
@@ -84,7 +85,7 @@
                   opacity: 0;
                   transform: scale(0);
                 }
-                
+
                 [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .icon_sequence_container {
                   grid-gap: 0;
                   margin: calc(100vh - 68px) auto auto auto;
@@ -94,8 +95,9 @@
 
               </style>
 
-              <video class="full_screen_media_video rowcol1" id="<?= $specie['slug'] ?>_sound">
-                <source src="videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+              <video class="full_screen_media_video rowcol1" id="<?= $specie['slug'] ?>_sound" poster="<?= $DIR_IMG . $specie['son_fondo'] ?>">
+                <source src="<?= $DIR_MEDIA . $specie['son_video'] ?>" type="video/mp4">
+                <!-- <source src="videos/HIDROFONO_PULPO_01.mp4" type="video/mp4"> -->
               </video>
 
               <div class="icon_sequence_container rowcol1">

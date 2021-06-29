@@ -47,7 +47,6 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
-var obse_timeout;
 
 const back_btn = () => {
   obseController.obses.forEach( obse =>{
@@ -67,8 +66,10 @@ const back_btn = () => {
 
 
 
+var obse_timeout;
+var ficha_timeout;
 
-const alt_ficha = slug =>{
+const alt_ficha = (slug, timer = false) =>{
   obseController.obses.forEach( obse =>{
     obse.observe.forEach( item => { obse.observer.disconnect() });
   })
@@ -82,7 +83,9 @@ const alt_ficha = slug =>{
   image.setAttribute('src', image.dataset.url)
   // console.log(image);
   try { clearTimeout(obse_timeout) } catch {}
+  try { clearTimeout(ficha_timeout) } catch {}
   obse_timeout = setTimeout(()=>{ obseController.setup() },1400)
+  if (timer) { setTimeout(()=>{ alt_ficha(slug) },timer) }
 }
 
 

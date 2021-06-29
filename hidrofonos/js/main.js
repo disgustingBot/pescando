@@ -50,8 +50,9 @@ const playAudioFromSelector = (selector, alt = false) => {
   }
 
   else if(alt === true) {
-    x.pause();
-    x.currentTime = 0;
+    x.load();
+    // x.pause();
+    // x.currentTime = 0;
   }
 }
 
