@@ -43,11 +43,12 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 function out_animate_screen() {
-  setTimeout(() => {
-    altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
-    altClassFromSelector('boat_position_hidden', '.boat_position');
-    altClassFromSelector('boat_type_hidden', '.boat_type');
-  }, 2000);
+  // setTimeout(() => {
+    //   altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+    //   altClassFromSelector('boat_position_hidden', '.boat_position');
+    //   altClassFromSelector('boat_type_hidden', '.boat_type');
+    // }, 2000);
+    update_media_clicks();
 }
 
 function in_animate_screen(e) {
@@ -75,3 +76,11 @@ function in_animate_screen(e) {
 //   viday.querySelector('.viday_media').appendChild(sourcery);
 //   altClassFromSelector('active', '.viday')
 // }
+
+const update_media_clicks = () => {
+  let without_videos = document.querySelectorAll('.NOT_VIDEO');
+  without_videos.forEach(without_video => {
+    without_video.nextElementSibling.removeAttribute("onclick");
+    without_video.remove();
+  });
+}

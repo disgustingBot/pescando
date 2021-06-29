@@ -115,8 +115,17 @@
 
         <div class="viday boat_<?= $barco['bar_id']  ?>">
           <img class="live_video_icon" src="<?=$DIR_ICONS?>live.svg" alt="">
-          <video class="viday_media" poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg">
-            <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4">
+          <video
+            class="viday_media"
+            poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg"
+          >
+            <!-- <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4"> -->
+            <source
+              src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4"
+              type="video/mp4"
+              <?php $video_selector = ".viday.boat_$barco[bar_id]" ?>
+              onerror="(function(){event.currentTarget.parentElement.parentElement.classList.add('NOT_VIDEO')})()"
+            >
           </video>
 
           <div class="viday_caption">
@@ -129,7 +138,7 @@
         </div>
 
         <div
-          class="boat_position boat_position_hidden tipo_<?=$barco['bar_tipo']?>"
+          class="boat_position tipo_<?=$barco['bar_tipo']?>"
           onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer'])"
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
@@ -146,8 +155,17 @@
         <?php foreach ($ship_types as $type) { ?>
           <div
             class="boat_type <?= $type['slug'] ?>"
-            onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
-            >
+            onclick="
+              altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);
+              altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
+          >
+            <?php $css_class_led_video = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id] + .boat_position.tipo_$type[tba_id] .led_light"; ?>
+            <style>
+              <?= $css_class_led_video ?> {
+                background-color: #d6001c;
+              }
+            </style>
+
             <div class="led_light_wrapper">
               <div class="led_light boat_type_icon"></div>
             </div>

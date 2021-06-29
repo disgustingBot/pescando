@@ -251,13 +251,14 @@ body {
 [class="boat_positioning_layer"] .boat_position {
     opacity:1;
     pointer-events: all;
-    transform: translate(-50%, -50%) scale(1);
+    /* transform: translate(-50%, -50%) scale(1); */
     transition: all 0.5s var(--normal_curve), opacity 0.5s;
     overflow: visible;
 }
 .boat_position {
-    opacity:0;
-    pointer-events: none;
+  /* opacity:0; */
+  transform: translate(-50%, -50%);
+  pointer-events: none;
   display: grid;
   grid-row-gap: 10px;
   position: absolute;
@@ -275,9 +276,9 @@ body {
 .boat_position:nth-child(3n) .led_light{animation-delay: .3s;}
 .boat_position:nth-child(5n) .led_light{animation-delay: .4s;} */
 
-.boat_position_hidden {
+/* .boat_position_hidden {
   transform: translateY(100%);
-}
+} */
 .boat_icon, .boat_type_icon{
   width: 38px;
   height: auto;
