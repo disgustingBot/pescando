@@ -137,6 +137,7 @@
               onclick="
                 altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id'] ?>');
                 playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media');
+                document.querySelector('.viday.boat_<?= $barco['bar_id'] ?>').classList.add('PLAYED_VIDEO');
               "
             >Video</p>
           </div>
@@ -197,6 +198,12 @@
                 -ms-animation: blinkRed 0.5s infinite;
                 -o-animation: blinkRed 0.5s infinite;
                 animation: blinkRed 0.5s infinite;
+              }
+
+              <?php $css_class_boat_played = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id].PLAYED_VIDEO + .boat_position.tipo_$type[tba_id] .boat_icon"; ?>
+              <?= $css_class_boat_played ?> path {
+                fill: #A00;
+                animation: none;
               }
             </style>
 
