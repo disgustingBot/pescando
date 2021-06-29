@@ -104,12 +104,13 @@
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
             overflow: visible;
           }
-          <?= $self_filtered ?> {
-            opacity:1;
+
+          [class='interactive_map'] .boat_positioning_layer:not(<?='.boat_' . $barco['bar_id']?>)<?= $self_filtered ?> {
             pointer-events: all;
+            /* opacity:1;
             transform: translate(-50%, -50%) scale(1);
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
-            overflow: visible;
+            overflow: visible; */
           }
         </style>
 
@@ -134,13 +135,13 @@
             <p class="viday_play" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');document.querySelector('.viday.boat_<?= $barco['bar_id']  ?> .viday_media').play();">Video</p>
           </div>
 
-          <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
+          <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>'])">
           <img class="close_boat_lightbox back" src="<?=$DIR_ICONS?>atras.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>')">
         </div>
 
         <div
           class="boat_position tipo_<?=$barco['bar_tipo']?>"
-          onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer'])"
+          onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>'])"
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
           <div class="boat_icon">

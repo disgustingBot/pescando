@@ -248,13 +248,13 @@ body {
   box-shadow: 0px 0px 220px 220px rgb(0 0 0 / 30%) inset;
   z-index: 4;
 }
-[class="boat_positioning_layer"] .boat_position {
+/* [class="boat_positioning_layer"] .boat_position {
     opacity:1;
     pointer-events: all;
-    /* transform: translate(-50%, -50%) scale(1); */
+    /* transform: translate(-50%, -50%) scale(1);
     transition: all 0.5s var(--normal_curve), opacity 0.5s;
     overflow: visible;
-}
+} */
 .boat_position {
   /* opacity:0; */
   transform: translate(-50%, -50%);
