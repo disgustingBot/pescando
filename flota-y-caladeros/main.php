@@ -114,9 +114,9 @@
           }
         </style>
 
-        <?php $css_class_led_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .led_light"; ?>
+        <?php $css_class_led_video  = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .led_light"; ?>
         <?php $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .boat_icon"; ?>
-        
+
         <style>
           <?= $css_class_led_video ?> {
             background-color: #A00;
@@ -138,15 +138,17 @@
         </style>
 
         <div class="viday boat_<?= $barco['bar_id']  ?>">
+          <?php // var_dump($barco); ?>
           <img class="live_video_icon" src="<?=$DIR_ICONS?>live.svg" alt="">
           <video
             class="viday_media"
-            poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg"
+            poster="<?= $DIR_MEDIA . $barco['bar_video'] ?>.jpg"
           >
             <!-- <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4"> -->
             <!-- src solo para probar -->
+            <!-- src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>" -->
             <source
-              src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>"
+              src="<?= $DIR_MEDIA . $barco['bar_video'] ?>.mp4"
               type="video/mp4"
               <?php $video_selector = ".viday.boat_$barco[bar_id]" ?>
               onerror="(function(){event.currentTarget.parentElement.parentElement.classList.add('NOT_VIDEO')})()"

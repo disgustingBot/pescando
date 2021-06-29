@@ -57,6 +57,8 @@ $species    = get_species();
 // var_dump($species);
 $ELEMS      = get_strings();
 
+$is_center_screen = True;
+
 
 ?>
 <!DOCTYPE html>
@@ -182,7 +184,7 @@ $ELEMS      = get_strings();
             font-family: 'Lato Black';
           }
           </style>
-          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>');">
+          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", 2000" : '' ?>);">
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
             <p><?= $specie['tra_nombre_ani'] ?></p>
           </li>
@@ -192,13 +194,11 @@ $ELEMS      = get_strings();
       </ul>
     </div>
 
-    <?php
-    $is_center_screen = True;
-    ?>
 
     <style media="screen">
       .leia_content {
         transform: translate<?= ($is_center_screen) ? 'Y' : 'X' ?>(100%);
+        transition: <?= ($is_center_screen) ? '0' : '.5' ?>s;
       }
     </style>
 
@@ -214,9 +214,9 @@ $ELEMS      = get_strings();
       <?= $self_awake ?> .leia_content {
         <?php if ($is_center_screen){ ?>
           transform: translateY(0);
-          /* margin-top: -100vh; */
+          margin-top: -100vh;
           /* transition-delay: transform .5s, margin-top 1s; */
-          transition: transform .5s .5s, margin-top .5s 1s;
+          transition: transform .5s .5s, margin-top .5s 1.5s;
         <?php } else { ?>
           transform: translateX(0);
           transition-delay: .5s;
@@ -243,14 +243,6 @@ $ELEMS      = get_strings();
            <p class="leia_label">Tipo de agricultura</p>
            <p class="leia_info"><?=( $specie["ani_tipoacuicultura"] == "M" ? $ELEMS["TIPO_ACUMARINA"] : $ELEMS["TIPO_ACUCONTINENTAL"])?></p>
            <div class="leia_separator"></div>
-           <?php /*
-           <!-- <p class="leia_label">Periodo de cultivo</p> -->
-           <!-- <p class="leia_info"></p> -->
-           <!-- <p class="leia_info"><?= $specie['periodo_cultivo'] ?></p> -->
-           <!-- <div class="leia_separator"></div> -->
-
-           <!-- <p class="leia_info">Lorem Ipsum</p> -->
-           */ ?>
            <p class="leia_info"><?= $specie['tra_curiosidades_ani'] ?></p>
 
 
