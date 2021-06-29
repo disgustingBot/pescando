@@ -114,6 +114,29 @@
           }
         </style>
 
+        <?php $css_class_led_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .led_light"; ?>
+        <?php $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .boat_icon"; ?>
+        
+        <style>
+          <?= $css_class_led_video ?> {
+            background-color: #A00;
+          }
+
+          <?= $css_class_boat_video ?> path {
+            -webkit-animation: blinkRed 0.5s infinite;
+            -moz-animation: blinkRed 0.5s infinite;
+            -ms-animation: blinkRed 0.5s infinite;
+            -o-animation: blinkRed 0.5s infinite;
+            animation: blinkRed 0.5s infinite;
+          }
+
+          <?php $css_class_boat_played = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id].PLAYED_VIDEO + .boat_position.tipo_$barco[bar_tipo] .boat_icon"; ?>
+          <?= $css_class_boat_played ?> path {
+            fill: #A00;
+            animation: none;
+          }
+        </style>
+
         <div class="viday boat_<?= $barco['bar_id']  ?>">
           <img class="live_video_icon" src="<?=$DIR_ICONS?>live.svg" alt="">
           <video
@@ -184,29 +207,6 @@
               altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);
               altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
           >
-            <?php $css_class_led_video = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id] + .boat_position.tipo_$type[tba_id] .led_light"; ?>
-            <?php $css_class_boat_video = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id] + .boat_position.tipo_$type[tba_id] .boat_icon"; ?>
-            
-            <style>
-              <?= $css_class_led_video ?> {
-                background-color: #A00;
-              }
-
-              <?= $css_class_boat_video ?> path {
-                -webkit-animation: blinkRed 0.5s infinite;
-                -moz-animation: blinkRed 0.5s infinite;
-                -ms-animation: blinkRed 0.5s infinite;
-                -o-animation: blinkRed 0.5s infinite;
-                animation: blinkRed 0.5s infinite;
-              }
-
-              <?php $css_class_boat_played = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id].PLAYED_VIDEO + .boat_position.tipo_$type[tba_id] .boat_icon"; ?>
-              <?= $css_class_boat_played ?> path {
-                fill: #A00;
-                animation: none;
-              }
-            </style>
-
             <div class="led_light_wrapper">
               <div class="led_light boat_type_icon"></div>
             </div>
