@@ -104,36 +104,69 @@
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
             overflow: visible;
           }
-          <?= $self_filtered ?> {
-            opacity:1;
+
+          [class='interactive_map'] .boat_positioning_layer:not(<?='.boat_' . $barco['bar_id']?>)<?= $self_filtered ?> {
             pointer-events: all;
+            /* opacity:1;
             transform: translate(-50%, -50%) scale(1);
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
-            overflow: visible;
+            overflow: visible; */
           }
         </style>
 
         <div class="viday boat_<?= $barco['bar_id']  ?>">
           <img class="live_video_icon" src="<?=$DIR_ICONS?>live.svg" alt="">
-          <video class="viday_media" poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg">
-            <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4">
+          <video
+            class="viday_media"
+            poster="<?= $DIR_MEDIA.$barco['bar_video'] ?>.jpg"
+          >
+            <!-- <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4"> -->
+            <!-- src solo para probar -->
+            <source
+              src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>"
+              type="video/mp4"
+              <?php $video_selector = ".viday.boat_$barco[bar_id]" ?>
+              onerror="(function(){event.currentTarget.parentElement.parentElement.classList.add('NOT_VIDEO')})()"
+            >
           </video>
 
           <div class="viday_caption">
             <h2 class="viday_title">Tripulación</h2>
-            <p class="viday_play" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');document.querySelector('.viday.boat_<?= $barco['bar_id']  ?> .viday_media').play();">Video</p>
+            <p
+              class="viday_play"
+              onclick="
+                altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id'] ?>');
+                playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media');
+              "
+            >Video</p>
           </div>
 
-          <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
-          <img class="close_boat_lightbox back" src="<?=$DIR_ICONS?>atras.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>')">
+          <img
+            class="close_boat_lightbox"
+            src="<?=$DIR_ICONS?>cerrar-flota.svg"
+            alt="Icono de equis para cerrar el Lightbox"
+            onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"
+          >
+
+          <img
+            class="close_boat_lightbox back"
+            src="<?=$DIR_ICONS?>atras.svg"
+            alt="Icono de equis para cerrar el Lightbox"
+            onclick="
+              altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');
+              playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media', true);
+            "
+          >
         </div>
 
         <div
-          class="boat_position boat_position_hidden tipo_<?=$barco['bar_tipo']?>"
-          onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer'])"
+          class="boat_position tipo_<?=$barco['bar_tipo']?>"
+          onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>'])"
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
-          <img class="boat_icon" src="<?=$DIR_ICONS?>barco-flota-blanco.svg" alt="Barco">
+          <div class="boat_icon">
+            <?= file_get_contents($DIR_ICONS . 'barco-flota-blanco.svg') ?>
+          </div>
           <div class="led_light_wrapper">
             <div class="led_light"></div>
           </div>
@@ -146,8 +179,27 @@
         <?php foreach ($ship_types as $type) { ?>
           <div
             class="boat_type <?= $type['slug'] ?>"
-            onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
-            >
+            onclick="
+              altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);
+              altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
+          >
+            <?php $css_class_led_video = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id] + .boat_position.tipo_$type[tba_id] .led_light"; ?>
+            <?php $css_class_boat_video = ".boat_positioning_layer.tipo_$type[tba_id] .viday.boat_$type[tba_id] + .boat_position.tipo_$type[tba_id] .boat_icon"; ?>
+            
+            <style>
+              <?= $css_class_led_video ?> {
+                background-color: #A00;
+              }
+
+              <?= $css_class_boat_video ?> path {
+                -webkit-animation: blinkRed 0.5s infinite;
+                -moz-animation: blinkRed 0.5s infinite;
+                -ms-animation: blinkRed 0.5s infinite;
+                -o-animation: blinkRed 0.5s infinite;
+                animation: blinkRed 0.5s infinite;
+              }
+            </style>
+
             <div class="led_light_wrapper">
               <div class="led_light boat_type_icon"></div>
             </div>
