@@ -649,11 +649,12 @@ body {
   top: 120px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
 }
 .viday.play {
   width: 100vh;
   height: 100vh;
-  background: green;
+  /* background: green; */
 }
 .viday.play .viday_caption{
   z-index: -1;
