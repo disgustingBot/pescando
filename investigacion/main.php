@@ -125,14 +125,7 @@ $items = array(
   <script type="text/javascript" src="js/main.js"></script>
   <script>
     first_vid_init();
-
     window.onload = () => { in_animate(); }
-
-    function in_animate() {
-      setTimeout(() => {
-        altClassFromSelector('in_animate_display', '.in_animate');
-      }, parseFloat(200));
-    }
   </script>
 </body>
 </html>
