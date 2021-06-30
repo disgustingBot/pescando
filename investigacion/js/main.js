@@ -59,11 +59,22 @@ videos.forEach( video => {
 
 
 const back_btn = () => {
-  altClassFromSelector('', '.screen_menu', ['screen_menu'])
-  var videos = document.querySelectorAll('video:not(.first_vid)');
-  videos.forEach( video => {
-    video.load()
-  })
+  let screen_menu = document.querySelector('.screen_menu');
+  let fist_video = document.querySelector('.first_vid');
+
+  if(screen_menu.className == 'screen_menu') {
+    altClassFromSelector('first_video', '.screen_menu');
+    fist_video.load();
+  }
+
+  else {
+
+    altClassFromSelector('', '.screen_menu', ['screen_menu']);
+    var videos = document.querySelectorAll('video:not(.first_vid)');
+    videos.forEach( video => {
+      video.load()
+    });
+  }
   // first_vid_init()
 }
 
@@ -92,7 +103,7 @@ const play_video = slug => {
 
 
 function first_vid_init () {
-  // First video loaded
+  // First video ended
   let first_vid = document.querySelector('.first_vid');
   first_vid.addEventListener('ended', () => {
     altClassFromSelector('first_video', '.screen_menu');
@@ -104,4 +115,11 @@ function first_vid_init () {
   first_vid_source.addEventListener('error', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });
+}
+
+
+function in_animate() {
+  setTimeout(() => {
+    altClassFromSelector('in_animate_display', '.in_animate');
+  }, 200);
 }
