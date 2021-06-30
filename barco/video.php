@@ -47,9 +47,9 @@
 <body class="barcos_hud">
   <div class="top_panel">
     <div class="back_grid">
-      <button class="back_btn" onclick="window.history.back()">
+      <a class="back_btn" href="main.php?lang=<?= $_SESSION["lang"] ?>&barco=<?= $_GET['barco'] ?>">
         <img src="<?=$DIR_ICONS?>atras.svg">
-      </button>
+      </a>
       <div class="title_lang_grid">
         <h3 class="top_panel_title" style="text-shadow: 1px 1px #666;"><?= $barco['nombre'] ?></h3>
         <p class="top_panel_language" style="text-shadow: 1px 1px #666;">
