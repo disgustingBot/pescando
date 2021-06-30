@@ -104,6 +104,7 @@
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
             overflow: visible;
           }
+          <?= $self_filtered ?> { z-index: 5 }
 
           [class='interactive_map'] .boat_positioning_layer:not(<?='.boat_' . $barco['bar_id']?>)<?= $self_filtered ?> {
             pointer-events: all;
@@ -123,6 +124,7 @@
           }
 
           <?= $css_class_boat_video ?> path {
+            fill: currentColor;
             -webkit-animation: blinkRed 0.5s infinite;
             -moz-animation: blinkRed 0.5s infinite;
             -ms-animation: blinkRed 0.5s infinite;
@@ -149,9 +151,6 @@
             class="viday_media"
             poster="<?= $DIR_MEDIA . $barco['bar_video'] ?>.jpg"
           >
-            <!-- <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4"> -->
-            <!-- src solo para probar -->
-            <!-- src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>" -->
             <source
               src="<?= $DIR_MEDIA . $barco['bar_video'] ?>.mp4"
               type="video/mp4"
@@ -208,16 +207,26 @@
         // var_dump($ship_types[0]['tba_id']);
          ?>
         <?php foreach ($ship_types as $type) { ?>
+          <?php $active = ".boat_positioning_layer.tipo_$type[tba_id] .boat_type.tipo_$type[tba_id] .led_light"; ?>
           <style>
+
+            <?= $active ?> {
+              background: currentColor;
+              -webkit-animation: blinkRed 0.5s infinite;
+              -moz-animation: blinkRed 0.5s infinite;
+              -ms-animation: blinkRed 0.5s infinite;
+              -o-animation: blinkRed 0.5s infinite;
+              animation: blinkRed 0.5s infinite;
+            }
             .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
               pointer-events: none;
             }
           </style>
           <div
-            class="boat_type <?= $type['slug'] ?>"
+            class="boat_type <?= $type['slug'] ?> tipo_<?= $type['tba_id'] ?>"
             onclick="
-              altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map']);
-              altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer']);"
+              altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map', '<?= $type['slug'] ?>']);
+              altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $type['tba_id'] ?>']);"
           >
             <div class="led_light_wrapper">
               <div class="led_light boat_type_icon"></div>

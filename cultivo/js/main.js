@@ -75,12 +75,17 @@ const alt_ficha = (slug, timer = false) =>{
   })
   obseController.obses=[];
   altClassFromSelector(slug, '.general', ['general'])
-  let map   = document.querySelector('.leia.' + slug + ' .leia_map')
-  let icon  = document.querySelector('.leia.' + slug + ' .leia_hier_icon')
-  let image = document.querySelector('.leia.' + slug + ' .leia_image')
+  let map     = document.querySelector('.leia.' + slug + ' .leia_map')
+  let icon    = document.querySelector('.leia.' + slug + ' .leia_hier_icon')
+  let image   = document.querySelector('.leia.' + slug + ' .leia_image')
+  let map_big = document.querySelector('.leia.' + slug + ' .magnified_map_img')
   map.setAttribute('src', map.dataset.url)
   icon.setAttribute('data', icon.dataset.url)
   image.setAttribute('src', image.dataset.url)
+  map_big.setAttribute('src', map_big.dataset.url)
+  if (document.querySelector('.leia.' + slug + ' .magnified_map').classList.contains('active')) {
+    document.querySelector('.leia.' + slug + ' .magnified_map').classList.remove('active')
+  }
   // console.log(image);
   try { clearTimeout(obse_timeout) } catch {}
   try { clearTimeout(ficha_timeout) } catch {}

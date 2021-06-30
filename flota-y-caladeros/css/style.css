@@ -391,29 +391,29 @@ body {
   animation: blinkRed 0.5s infinite;
 } */
 @-webkit-keyframes blinkRed {
-    from { fill: #F00; }
-    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { fill: #F00; }
+    from { color: #F00; }
+    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { color: #F00; }
 }
 @-moz-keyframes blinkRed {
-    from { fill: #F00; }
-    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { fill: #F00; }
+    from { color: #F00; }
+    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { color: #F00; }
 }
 @-ms-keyframes blinkRed {
-    from { fill: #F00; }
-    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { fill: #F00; }
+    from { color: #F00; }
+    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { color: #F00; }
 }
 @-o-keyframes blinkRed {
-    from { fill: #F00; }
-    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { fill: #F00; }
+    from { color: #F00; }
+    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { color: #F00; }
 }
 @keyframes blinkRed {
-    from { fill: #F00; }
-    50% { fill: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { fill: #F00; }
+    from { color: #F00; }
+    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
+    to { color: #F00; }
 }
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
