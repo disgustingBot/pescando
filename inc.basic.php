@@ -37,6 +37,7 @@
   // $DIR_VIDEOS = "../media/";
   $DIR_IMG = "../images/";
   $DIR_VIDEOS = "https://mansilladisseny.com/pescanova/media/";
+  $DIR_MEDIA = "https://mansilladisseny.com/pescanova/media/";
 
   $ERR = "";
   $MSG = "";

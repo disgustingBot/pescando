@@ -201,7 +201,7 @@ $timer_ficha_in_seconds = 2;
              			l-6.1,6.1c-0.8,0.8-0.8,2.2,0,3s2.2,0.8,3,0L30,33l6.1,6.1c0.8,0.8,2.2,0.8,3,0s0.8-2.2,0-3L33,30z"/>
              		</g>
              </svg>
-             <img class="magnified_map_img" src="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" alt="Mapa de tamaño completo de las regiones de cultivo">
+             <img class="magnified_map_img" data-url="<?= $DIR_IMG . $specie['ani_mapa'] ?>" src="" alt="Mapa de tamaño completo de las regiones de cultivo">
            </div>
 
            <div class="leia_hierarchy">
@@ -224,9 +224,9 @@ $timer_ficha_in_seconds = 2;
            <p class="leia_info"><?= $specie['tra_curiosidades_ani'] ?></p>
 
            <div class="leia_map_container">
-             <img class="leia_map" data-url="<?= $DIR_IMG ?><?= $specie['ani_mapa'] ?>" src="" alt="">
+             <img class="leia_map" data-url="<?= $DIR_IMG . $specie['ani_mapa'] ?>" src="" alt="">
 
-             <svg onclick="altClassFromSelector('active', '.magnified_map')" class="leia_map_magnify" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             <svg onclick="altClassFromSelector('active', '.leia.<?= $specie['slug'] ?> .magnified_map')" class="leia_map_magnify" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
              	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
                <style type="text/css">
                  .st0{fill:#9BB4CA;}
