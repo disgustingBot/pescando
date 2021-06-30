@@ -135,6 +135,11 @@
             fill: #A00;
             animation: none;
           }
+
+          <?php $css_class_no_types_on_video = "boat_positioning_layer tipo_$barco[bar_tipo] boat_$barco[bar_tipo]" ?>
+          [class="<?= $css_class_no_types_on_video ?>"] .boat_type_selector {
+            pointer-events: none;
+          }
         </style>
 
         <div class="viday boat_<?= $barco['bar_id']  ?>">
@@ -203,6 +208,11 @@
         // var_dump($ship_types[0]['tba_id']);
          ?>
         <?php foreach ($ship_types as $type) { ?>
+          <style>
+            .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
+              pointer-events: none;
+            }
+          </style>
           <div
             class="boat_type <?= $type['slug'] ?>"
             onclick="
