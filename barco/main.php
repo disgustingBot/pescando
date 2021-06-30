@@ -61,10 +61,8 @@ foreach ($barcos as $barco) {
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
-<?php
-  $selected = (isset($_GET['barco'])) ? " ".$_GET['barco'] : "";
- ?>
-  <section class="shape_screen<?= $selected ?>">
+
+  <section class="shape_screen">
     <div class="top_panel">
       <div class="back_grid">
           <button class="back_btn" onclick="back_btn()">
@@ -199,5 +197,10 @@ foreach ($barcos as $barco) {
         </script>
 
   <script>window.onload = () => { out_animate_screen(); }</script>
+  <?php if(isset($_GET['barco'])){ ?>
+    <script>
+      document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
+    </script>
+  <?php } ?>
 </body>
 </html>
