@@ -6,44 +6,6 @@
   require_once("../inc.alive.php");
 
 
-function get_species(){
-  $conn = Connectar();
-  $species = array();
-  $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_ani
-                  , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'curiosidades') as tra_curiosidades_ani
-                  , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'paises') as tra_pais_ani
-                  FROM pesca_animales LEFT JOIN pesca_especies ON esp_id = ani_especie WHERE ani_status = 'A' AND esp_status = 'A'";
-  // $qry2 = "SELECT * FROM pesca_animales a, pesca_especies b WHERE a.ani_especie = b.esp_id";
-  if ( $result = mysqli_query($conn, $qry) ) {
-    while ( $row = mysqli_fetch_assoc($result) ) {
-      $species[] = $row;
-    }
-  }
-  $species = array_map(function($specie){
-    $specie['slug']     = LimpiaNombre($specie['tra_nombre_ani']);
-    $specie['category'] = LimpiaNombre($specie['esp_nombre']);
-    return $specie;
-  }, $species);
-  return $species;
-}
-function get_categories(){
-  $conn = Connectar();
-  $categories = array();
-  $qry2 = "SELECT * FROM pesca_especies";
-  $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'especies' AND referred_id = esp_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_esp FROM pesca_especies WHERE esp_status = 'A'";
-  if ( $result = mysqli_query($conn, $qry) ) {
-    while ( $row = mysqli_fetch_assoc($result) ) {
-      $categories[] = $row;
-    }
-  }
-  $categories = array_map(function($category){
-    $category['slug'] = LimpiaNombre($category['esp_nombre']);
-    return $category;
-  }, $categories);
-  return $categories;
-}
-
-
 $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 // $lang = isset($_GET['lang']) ? $_GET['lang'] : false;
@@ -57,8 +19,8 @@ $species    = get_species();
 // var_dump($species);
 $ELEMS      = get_strings();
 
-$is_center_screen = True;
-
+$is_center_screen = False;
+$timer_ficha_in_seconds = 2;
 
 ?>
 <!DOCTYPE html>
@@ -184,7 +146,7 @@ $is_center_screen = True;
             font-family: 'Lato Black';
           }
           </style>
-          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", 2000" : '' ?>);">
+          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);">
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
             <p><?= $specie['tra_nombre_ani'] ?></p>
           </li>
@@ -216,7 +178,7 @@ $is_center_screen = True;
           transform: translateY(0);
           margin-top: -100vh;
           /* transition-delay: transform .5s, margin-top 1s; */
-          transition: transform .5s .5s, margin-top .5s 1.5s;
+          transition: transform .5s .5s, margin-top .5s <?= $timer_ficha_in_seconds ?>s;
         <?php } else { ?>
           transform: translateX(0);
           transition-delay: .5s;

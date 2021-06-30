@@ -123,7 +123,7 @@ foreach ($barcos as $barco) {
         <div class="boats_screen_boat <?= $barco['slug'] ?>">
           <?php if (count($barcos) > 1) { ?>
             <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)">
-            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['bde_nombre'] ?></button>
+            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <template class="template">
