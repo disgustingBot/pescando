@@ -11,52 +11,8 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 
 $ELEMS      = get_strings();
-// var_dump($ELEMS['TIT_INTERACTIVO']);
-// echo "<br>";
-// echo "<br>";
 
 
-
-
-function get_detalles() {
-  global $conn;
-
-  $barcos = array();
-  $qry = "SELECT *, ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'imagen' ) as svg
-                  , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'bde_nombre' ) as nombre
-                  FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
-
-  // aqui el vid_barco va es donde se elije el barco
-  if ( $result = mysqli_query($conn, $qry) ) {
-    while ( $row = mysqli_fetch_assoc($result) ) {
-      $barcos[] = $row;
-    }
-  }
-  $barcos = array_map(function($barco){
-    $barco['slug']     = LimpiaNombre($barco['bde_nombre']);
-    return $barco;
-  }, $barcos);
-  return $barcos;
-}
-
-
-function get_clickables($id) {
-  global $conn;
-
-  $clickables = array();
-  // aqui el vid_barco va es donde se elije el barco
-  $qry = "SELECT vid_zona AS slug, bde_nombre AS barco, vid_tipo AS type, vid_fichero AS media FROM pesca_videos LEFT JOIN pesca_barcos_detalles ON vid_barco = bde_id WHERE vid_barco = $id;";
-  if ( $result = mysqli_query($conn, $qry) ) {
-    while ( $row = mysqli_fetch_assoc($result) ) {
-      $clickables[] = $row;
-    }
-  }
-  $clickables = array_map(function($object){
-    $object['barco']     = LimpiaNombre($object['barco']);
-    return $object;
-  }, $clickables);
-  return $clickables;
-}
 $barcos = get_detalles();
 // $barcos = [$barcos[1]];
 $clickables = [];
