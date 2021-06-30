@@ -38,7 +38,6 @@
     <ul class="lang_list">
       <li>
         <a
-          onclick="in_animate(event);"
           href="main.php?lang=esp"
           class="btn btn_lang <?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Español
         </a>
@@ -46,7 +45,6 @@
 
       <li>
         <a
-          onclick="in_animate(event);"
           href="main.php?lang=eng"
           class="btn btn_lang <?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">English
         </a>
@@ -54,7 +52,6 @@
 
       <li>
         <a
-          onclick="in_animate(event);"
           href="main.php?lang=glg"
           class="btn btn_lang <?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Galego
         </a>
