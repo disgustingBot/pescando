@@ -151,9 +151,9 @@
           >
             <!-- <source src="<?= $DIR_MEDIA.$barco['bar_video'] ?>.mp4" type="video/mp4"> -->
             <!-- src solo para probar -->
-            <!-- src="<?= $DIR_MEDIA . $barco['bar_video'] ?>.mp4" -->
+            <!-- src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>" -->
             <source
-              src="<?= ($barco['bar_id'] == 1 || $barco['bar_id'] == 3) ? '../hidrofonos/videos/HIDROFONO_PULPO_01.mp4' : '' ?>"
+              src="<?= $DIR_MEDIA . $barco['bar_video'] ?>.mp4"
               type="video/mp4"
               <?php $video_selector = ".viday.boat_$barco[bar_id]" ?>
               onerror="(function(){event.currentTarget.parentElement.parentElement.classList.add('NOT_VIDEO')})()"
