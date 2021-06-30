@@ -454,7 +454,7 @@
 
     $barcos = array();
     $qry = "SELECT *, ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'imagen' ) as svg
-                    , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'bde_nombre' ) as nombre
+                    , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'tipobarco' ) as nombre
                     FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
 
     // aqui el vid_barco va es donde se elije el barco
@@ -469,7 +469,6 @@
     }, $barcos);
     return $barcos;
   }
-
 
   function get_clickables($id) {
     global $conn;
@@ -488,5 +487,44 @@
     }, $clickables);
     return $clickables;
   }
+
+  function get_species(){
+    global $conn;
+    $species = array();
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_ani
+                    , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'curiosidades') as tra_curiosidades_ani
+                    , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'paises') as tra_pais_ani
+                    FROM pesca_animales LEFT JOIN pesca_especies ON esp_id = ani_especie WHERE ani_status = 'A' AND esp_status = 'A'";
+    // $qry2 = "SELECT * FROM pesca_animales a, pesca_especies b WHERE a.ani_especie = b.esp_id";
+    if ( $result = mysqli_query($conn, $qry) ) {
+      while ( $row = mysqli_fetch_assoc($result) ) {
+        $species[] = $row;
+      }
+    }
+    $species = array_map(function($specie){
+      $specie['slug']     = LimpiaNombre($specie['tra_nombre_ani']);
+      $specie['category'] = LimpiaNombre($specie['esp_nombre']);
+      return $specie;
+    }, $species);
+    return $species;
+  }
+
+  function get_categories(){
+    global $conn;
+    $categories = array();
+    $qry2 = "SELECT * FROM pesca_especies";
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'especies' AND referred_id = esp_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_esp FROM pesca_especies WHERE esp_status = 'A'";
+    if ( $result = mysqli_query($conn, $qry) ) {
+      while ( $row = mysqli_fetch_assoc($result) ) {
+        $categories[] = $row;
+      }
+    }
+    $categories = array_map(function($category){
+      $category['slug'] = LimpiaNombre($category['esp_nombre']);
+      return $category;
+    }, $categories);
+    return $categories;
+  }
+
 
 ?>

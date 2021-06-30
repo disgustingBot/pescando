@@ -51,8 +51,8 @@
         <img src="<?=$DIR_ICONS?>atras.svg">
       </button>
       <div class="title_lang_grid">
-        <h3 class="top_panel_title" style="text-shadow: 1px 1px #333;"><?= $barco['bde_nombre'] ?></h3>
-        <p class="top_panel_language" style="text-shadow: 1px 1px #333;">
+        <h3 class="top_panel_title" style="text-shadow: 1px 1px #666;"><?= $barco['nombre'] ?></h3>
+        <p class="top_panel_language" style="text-shadow: 1px 1px #666;">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="top_panel_stick">|</span>
           <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
@@ -64,14 +64,14 @@
 
     <div class="turn">
       <div class="turn_caption">
-        <h3 class="turn_txt" style="text-shadow: 1px 1px #333;"><?= $object['slug'] ?></h3>
+        <h3 class="turn_txt" style="text-shadow: 1px 1px #666;"><?= $ELEMS[$object['slug']] ?></h3>
       </div>
       <div class="turn_icon">
       </div>
     </div>
   </div>
 
-  <video class="video_player" muted autoplay style="width:100vw;height:100vh;">
+  <video class="video_player" muted autoplay style="width:100vw;height:100vh; object-fit: cover">
     <source src="<?= $DIR_MEDIA . $object['media'] ?>" type="video/mp4">
   </video>
 
