@@ -62,8 +62,9 @@ ul{
 .top_panel .title {
   font-family: 'Lato Bold';
   font-size: 28px;
+  line-height: 28px;
   color: #fff;
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 
 .top_panel .language {
@@ -71,7 +72,7 @@ ul{
   font-size: 18px;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 5px;
+  letter-spacing: 3px;
 }
 
 .top_panel .selected {
@@ -177,6 +178,12 @@ ul{
 
 [class='hydrophone_main']  .info_content_cta {
   pointer-events: none;
+}
+
+[class='hydrophone_main'] .back_btn {
+  width: 0px;
+  margin-right: 0px;
+  transition-delay: 0s;
 }
 
 /* ?info_content */
