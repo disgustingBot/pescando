@@ -218,9 +218,10 @@
               -o-animation: blinkRed 0.5s infinite;
               animation: blinkRed 0.5s infinite;
             }
-            .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
+            /* No click en categoría activa */
+            /* .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
               pointer-events: none;
-            }
+            } */
           </style>
           <div
             class="boat_type <?= $type['slug'] ?> tipo_<?= $type['tba_id'] ?>"
