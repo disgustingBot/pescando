@@ -60,7 +60,7 @@ $items = array(
   <section class="screen_menu first_video">
 
     <video class="first_vid video_player rowcol1" playsinline autoplay muted poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
-      <source src="<?=$DIR_MEDIA?>rocket.mp4" type="video/mp4">
+      <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
     </video>
 
     <ul class="menem_container">

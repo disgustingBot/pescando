@@ -592,7 +592,7 @@ body {
   top:50%;
   left:50%;
   width: var(--size);
-  z-index: 5;
+  z-index: 6;
 
   overflow: hidden;
 
