@@ -37,12 +37,15 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 function out_animate_screen() {
-  // setTimeout(() => {
-    //   altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
-    //   altClassFromSelector('boat_position_hidden', '.boat_position');
-    //   altClassFromSelector('boat_type_hidden', '.boat_type');
-    // }, 2000);
-    update_media_clicks();
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+  update_media_clicks();
+
+  setTimeout(() => {
+    document.querySelector('.in_animate_screen').remove();
+  }, 1000);
+
+  // altClassFromSelector('boat_position_hidden', '.boat_position');
+  // altClassFromSelector('boat_type_hidden', '.boat_type');
 }
 
 function in_animate_screen(e) {
