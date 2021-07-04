@@ -153,7 +153,7 @@ function animate_bubbles() {
       bubble.className = "bubble";
 
       bubble.style.top = (octopus_position.top + 100) + 'px';
-      bubble.style.left = octopus_position.left + 'px';
+      bubble.style.left = (octopus_position.left + 100) + 'px';
       
       animation_screen.appendChild(bubble);
       bubbles.push(bubble);
