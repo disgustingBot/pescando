@@ -153,3 +153,121 @@ ul{
   font-family: 'Lato Black';
 }
 
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5) =COMPONENTES:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.1) =panel:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel {
+  padding: 68px 0 0 0;
+  position: absolute;
+}
+
+.panel_top {
+  padding: 68px 68px 0 68px;
+  width: max-content;
+}
+
+.panel_right {
+  right: 0;
+  width: 16.3%;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: #0875bd36;
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+  row-gap: 35px;
+}
+
+.panel_title {
+  font-family: 'Lato Bold';
+  font-size: 28px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.panel_language {
+  font-family: 'Lato Regular';
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.panel_text {
+  color: #fff;
+  font-family: 'Lato Regular';
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.panel_stick {
+  font-family: 'Lato Light';
+}
+
+.panel .selected {
+  font-family: 'Lato Black';
+  color: rgb(214, 0, 28);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.83) =viday:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.viday {
+  display: grid;
+  justify-items: center;
+  row-gap: 22px;
+}
+
+.viday_media {
+  --size: 15vh;
+  height: var(--size);
+  width: var(--size);
+  position: relative;
+  border-radius: 50%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.viday_media::after{
+  --margin:8px;
+  content:'';
+  pointer-events: none;
+  position: absolute;
+  top:0;
+  left:0;
+  border-radius: 50%;
+  border: solid 2px #d3e6f3;
+  box-sizing: border-box;
+  height: calc(100% - var(--margin) * 2);
+  margin: var(--margin);
+  width:  calc(100% - var(--margin) * 2);
+}
+
+.viday_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.viday_caption {
+  font-family: 'Lato Black';
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 3px;
+  line-height: 1.5;
+  text-align: center;
+}
