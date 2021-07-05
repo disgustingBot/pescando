@@ -65,10 +65,24 @@
       </div>
     </section>
 
-    <div class="screen_pool rowcol1">
-      <img class="rowcol1 screen_pool_interactive" src="../images/background/flota-fondo.jpg">
-      <div class="rowcol1 screen_pool_interactive">
+    <div class="screen_pools rowcol1">
+      <img class="rowcol1 screen_pools_interactive" src="../images/background/flota-fondo.jpg">
+      <div class="rowcol1 screen_pools_interactive">
         <?= file_get_contents('piscinas-botones-click.svg'); ?>
+      </div>
+    </div>
+
+    <div class="screen_widgets rowcol1">
+      <div class="set_widgets set_widgets_md">
+        <div class="widget"></div>
+        <div class="widget"></div>
+      </div>
+
+      <div class="set_widgets set_widgets_sm">
+        <div class="widget"></div>
+        <div class="widget"></div>
+        <div class="widget"></div>
+        <div class="widget"></div>
       </div>
     </div>
   </main>
