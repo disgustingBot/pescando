@@ -1,0 +1,273 @@
+/*
+Author: Tres Pi S.C.P
+
+MAPA DE CONTENIDOS:
+
+1) =ROOT:
+  1.1) =Variables de personalizacion de pagina:
+
+2) =TIPOGRAFIAS:
+
+3) =ETIQUETAS GLOBALES:
+
+4) =ESTRUCTURA:
+  4.1) =screen:
+  4.2) =screen_lang:
+
+5) =COMPONENTES:
+  5.1) =panel:
+
+*/
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              1) =ROOT:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+            1.1) =Variables de personalizacion de pagina:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+:root {
+
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              2) =TIPOGRAFIAS:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Lato Black";
+  src: url("../../fonts/Lato-Black.ttf");
+}
+
+@font-face {
+  font-family: "Lato Bold";
+  src: url("../../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato Regular";
+  src: url("../../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato Light";
+  src: url("../../fonts/Lato-Light.ttf");
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              3) =ETIQUETAS GLOBALES:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img{object-fit:cover;width:100%;display:block}
+video{width:100%;height:100%;display: block;object-fit: cover;}
+a{text-decoration:none; color:inherit;}
+ul{
+  list-style: none;
+}
+.rowcol1{grid-row:1;grid-column:1}
+
+:root {
+  font-size: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4) =ESTRUCTURA:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.1) =screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.screen {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.2) =screen_lang:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.screen_lang {
+  justify-items: center;
+  grid-auto-rows: max-content;
+}
+
+.screen_lang_icon {
+  width: 8.2rem;
+  filter: drop-shadow(0px 0px 1.5px #fff);
+  margin-top: 175px;
+  transform: translateX(-25px);
+}
+
+.screen_lang_title {
+  font-family: 'Lato Regular';
+  color: #fff;
+  font-size: 88px;
+  margin-top: 60px;
+  text-align: center;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255,255,255,.3), 0 0 15px rgba(255,255,255,.3);
+  line-height: 1.25;
+}
+
+.screen_lang_list {
+  list-style: none;
+  display: grid;
+  row-gap: 20px;
+  justify-items: center;
+  text-shadow: 0 0 10px rgba(0,0,0,.3), 0 0 5px rgba(0,0,0,.3);
+  margin-top: 70px;
+}
+
+.screen_lang_btn {
+  background: none;
+  border: none;
+  font-family: 'Lato Regular';
+  font-size: 38px;
+  font-weight: 600;
+  color: rgb(154, 183, 204);
+  text-transform: uppercase;
+  filter: drop-shadow( 0px 0px 1.5px #000);
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+.screen_lang .selected {
+  color: rgb(214, 0, 28);
+  font-family: 'Lato Black';
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5) =COMPONENTES:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.1) =panel:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel {
+  padding: 68px 0 0 0;
+  position: absolute;
+}
+
+.panel_top {
+  padding: 68px 68px 0 68px;
+  width: max-content;
+}
+
+.panel_right {
+  right: 0;
+  width: 16.3%;
+  height: 100vh;
+  overflow-y: scroll;
+  background-color: #0875bd36;
+  display: grid;
+  justify-content: center;
+  grid-auto-flow: row;
+  grid-auto-rows: max-content;
+  row-gap: 35px;
+}
+
+.panel_title {
+  font-family: 'Lato Bold';
+  font-size: 28px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 15px;
+}
+
+.panel_language {
+  font-family: 'Lato Regular';
+  font-size: 16px;
+  line-height: 16px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.panel_text {
+  color: #fff;
+  font-family: 'Lato Regular';
+  text-transform: capitalize;
+  font-size: 18px;
+}
+
+.panel_stick {
+  font-family: 'Lato Light';
+}
+
+.panel .selected {
+  font-family: 'Lato Black';
+  color: rgb(214, 0, 28);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.83) =viday:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.viday {
+  display: grid;
+  justify-items: center;
+  row-gap: 22px;
+}
+
+.viday_media {
+  --size: 15vh;
+  height: var(--size);
+  width: var(--size);
+  position: relative;
+  border-radius: 50%;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.viday_media::after{
+  --margin:8px;
+  content:'';
+  pointer-events: none;
+  position: absolute;
+  top:0;
+  left:0;
+  border-radius: 50%;
+  border: solid 2px #d3e6f3;
+  box-sizing: border-box;
+  height: calc(100% - var(--margin) * 2);
+  margin: var(--margin);
+  width:  calc(100% - var(--margin) * 2);
+}
+
+.viday_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+}
+
+.viday_caption {
+  font-family: 'Lato Black';
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 15px;
+  letter-spacing: 3px;
+  line-height: 1.5;
+  text-align: center;
+}
