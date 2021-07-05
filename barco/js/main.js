@@ -67,10 +67,14 @@ let letterController = {
 
 
 function out_animate_screen() {
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+  // anim_texts();
+
   setTimeout(() => {
-    altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
-    // anim_texts();
-  }, 2000);
+    // Delete icon animated
+    let in_animate_screen = document.querySelector('.in_animate_screen');
+    in_animate_screen.remove();
+  }, 1000);
 }
 
 function in_animate_screen(e) {

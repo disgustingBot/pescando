@@ -1,8 +1,8 @@
+let is_loaded = false;
 
 
 window.onload=()=>{
   // alert('hi there')
-
 }
 
 
@@ -115,11 +115,94 @@ function first_vid_init () {
   first_vid_source.addEventListener('error', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });
+
+  // First video start load
+  first_vid.addEventListener('play', () => {
+    is_loaded = true;
+  });
 }
 
 
-function in_animate() {
+// function in_animate() {
+//   setTimeout(() => {
+//     altClassFromSelector('in_animate_display', '.in_animate');
+//   }, 200);
+// }
+
+
+
+
+
+
+
+
+
+
+function animate_bubbles() {
+  let fish = document.querySelector('.in_screen_icon');
+  let fish_styles = getComputedStyle(fish);
+  let animation_screen = document.querySelector('.in_animate_screen');
+  let bubbles = new Array();
+
+  // https://stackoverflow.com/questions/29971898/how-to-create-an-accurate-timer-in-javascript
+  let interval = 500; // ms
+  let expected = Date.now() + interval;
+
+  setTimeout(step, interval);
+
+  function step() {
+    let dt = Date.now() - expected; // the drift (positive for overshooting)
+    if (dt > interval) {
+      // something really bad happened. Maybe the browser (tab) was inactive?
+      // possibly special handling to avoid futile "catch up" run
+    }
+
+    // do what is to be done
+    else if(create_bubbles()) {
+      expected += interval;
+      setTimeout(step, Math.max(0, interval - dt)); // take into account drift
+    }
+  }
+
+  function create_bubbles() {
+    if(!is_loaded) {
+      let fish_position = fish.getBoundingClientRect();
+
+      let bubble = document.createElement('div');
+      bubble.className = "bubble";
+
+      bubble.style.top = (fish_position.top + 100) + 'px';
+
+      if(parseFloat(fish_styles.offsetDistance) < 55) {
+        bubble.style.left = (fish_position.left + 200) + 'px';
+      }
+
+      else {
+        bubble.style.left = (fish_position.left) + 'px';
+      }
+      
+      animation_screen.appendChild(bubble);
+      bubbles.push(bubble);
+
+      setTimeout(() => {
+        // Optimize!
+        bubbles.shift().remove();
+      }, 2000);
+
+      return true;
+    }
+
+    else {
+      out_animate(animation_screen);
+      return false;
+    }
+  }
+}
+
+function out_animate(animation_screen) {
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+  
   setTimeout(() => {
-    altClassFromSelector('in_animate_display', '.in_animate');
-  }, 200);
+    animation_screen.remove();
+  }, 1000);
 }

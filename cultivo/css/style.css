@@ -727,21 +727,16 @@ ul{
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          6.69) =in_animate_screen:
+                          5.69) =in_animate_screen:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .in_animate_screen {
   position: fixed;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100vh;
   background-color: transparent;
-  z-index: -1;
   transition: 0.5s;
+  z-index: -1;
 }
 
 .in_animate_screen_display {
@@ -749,12 +744,87 @@ ul{
   background-color: #00587C;
 }
 
-.in_animate_screen_icon {
+.in_screen_icon {
   width: 250px;
   fill: transparent;
+  position: absolute;
+  transition: 0.5s;
+  top: 50%;
+  left: 50%;
+}
+
+.in_animate_screen_display .in_screen_icon {
+  fill: #fff;
+}
+
+.in_screen_icon_animate {
+  animation: crab 3s ease-in-out infinite alternate;
+}
+
+@keyframes crab {
+  0% { transform: translate(-100%, -50%) rotate(-5deg) scale(0.9); }
+  10% { transform: translate(-90%, -50%) rotate(0deg) scale(1); }
+  20% { transform: translate(-80%, -50%) rotate(5deg) scale(0.9); }
+  30% { transform: translate(-70%, -50%) rotate(0deg) scale(1); }
+  40% { transform: translate(-60%, -50%) rotate(-5deg) scale(0.9); }
+  50% { transform: translate(-50%, -50%) rotate(0deg) scale(1); }
+  60% { transform: translate(-40%, -50%) rotate(5deg) scale(0.9); }
+  70% { transform: translate(-30%, -50%) rotate(0deg) scale(1); }
+  80% { transform: translate(-20%, -50%) rotate(-5deg) scale(0.9); }
+  90% { transform: translate(-10%, -50%) rotate(0deg) scale(1); }
+  100% { transform: translate(0%, -50%) rotate(5deg) scale(0.9); }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.8) =bubble:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* https://css-tricks.com/almanac/properties/o/offset-path/ */
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 10px #fff;
+  position: absolute;
+  transform: scale(0);
+  opacity: 0;
   transition: 0.5s;
 }
 
-.in_animate_screen_display .in_animate_screen_icon {
-  fill: #fff;
+.in_animate_screen_display .bubble {
+  animation: bubble 2s ease-in-out infinite;
+}
+
+.bubble:nth-child(2) {
+  animation-delay: 0s;
+  offset-path: path('m 809.54415,694.1334 c 0,0 -156.64636,-34.53567 -175.03711,-98.77997 -17.67185,-61.73298 69.17366,-254.01185 69.17366,-254.01185');
+}
+
+.bubble:nth-child(3) {
+  animation-delay: 0.5s;
+  offset-path: path('m 933.39778,694.1334 c 0,0 -156.64636,-34.53567 -175.03711,-98.77997 -17.67185,-61.73298 69.17366,-254.01185 69.17366,-254.01185');
+}
+
+.bubble:nth-child(4) {
+  animation-delay: 1s;
+  offset-path: path('m 1019.0392,686.14529 c 0,0 148.7997,-61.12714 152.3891,-127.19542 3.8256,-70.41691 -117.3139,-209.58095 -117.3139,-209.58095');
+}
+
+.bubble:nth-child(5) {
+  animation-delay: 1.5s;
+  offset-path: path('m 1178.8062,686.14529 c 0,0 148.7997,-61.12714 152.3891,-127.19542 3.8256,-70.41691 -117.3139,-209.58095 -117.3139,-209.58095');
+}
+
+@keyframes bubble {
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    offset-distance: 100%;
+    transform: scale(0);
+    opacity: 0;
+  }
 }

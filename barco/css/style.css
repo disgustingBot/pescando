@@ -925,9 +925,6 @@ ul{
 --------------------------------------------------------------------------- */
 .in_animate_screen {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: 100%;
   height: 100vh;
   background-color: transparent;
@@ -946,8 +943,8 @@ ul{
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1);
   transition: 0.5s;
+  transform: translate(-50%, -50%);
 }
 
 .in_animate_screen_display .in_screen_icon {
@@ -955,11 +952,23 @@ ul{
 }
 
 .in_screen_icon_animate {
-  animation: alga 1s ease-in-out 2;
+  animation: alga 1s ease-in-out infinite;
 }
 
 @keyframes alga {
-  25% {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  55% {
+    transform: translate(-50%, -50%) scale(1.1, 0.9);
+  }
+
+  70% {
+    transform: translate(-50%, -50%) scale(0.9, 1.1);
+  }
+
+  85% {
     transform: translate(-50%, -50%) scale(1.1, 0.9);
   }
 
@@ -986,7 +995,7 @@ ul{
 }
 
 .in_animate_screen_display .bubble {
-  animation: bubble 1s ease-in-out;
+  animation: bubble 1s ease-in-out infinite;
 }
 
 .bubble:nth-child(2) {
@@ -1001,7 +1010,7 @@ ul{
 
 .bubble:nth-child(4) {
   offset-path: path('m 981.3791,641.17419 c 0,0 71.1037,-79.49904 67.1906,-165.70649 -1.456,-32.07629 -49.1122,-64.77984 -74.46525,-114.8571 -31.49366,-62.20618 -40.14502,-107.33817 -30.53954,-136.54528 20.46917,-62.24006 99.85059,-117.97364 99.85059,-117.97364');
-  animation-delay: 0.75;
+  animation-delay: 0.75s;
 }
 .bubble:nth-child(5) {
   offset-path: path('m 1062.9392,641.39009 c 0,0 75.7211,-80.03217 87.0229,-131.31147 17.7699,-126.69034 -21.5664,-236.07487 -136.8066,-297.12367');

@@ -379,20 +379,15 @@ ul{
   font-family: 'Lato Bold';
 }
 
-/* ---------------------------------------------------------------------------
+  /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          6.69) =in_animate_screen:
+                          4.8) =in_animate_screen:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .in_animate_screen {
   position: fixed;
-  display: grid;
-  align-items: center;
-  justify-items: center;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  width: 100%;
+  height: 100vh;
   background-color: transparent;
   z-index: -1;
   transition: 0.5s;
@@ -403,12 +398,97 @@ ul{
   background-color: #00587C;
 }
 
-.in_animate_screen_icon {
+.in_screen_icon {
   width: 250px;
   fill: transparent;
+  position: absolute;
+  transition: 0.5s;
+  offset-path: path('m 971.37629,582.30242 c 53.02041,-4.21783 85.39191,-56.45153 79.44671,-109.30715 -5.4653,-48.58887 -61.91697,-85.76602 -110.77863,-83.96544 -50.55685,1.86303 -108.82271,76.97131 -108.6099,127.56203 0.23708,56.36021 83.75859,70.17991 139.94182,65.71056 z');
+  offset-rotate: 0deg;
+}
+
+.in_animate_screen_display .in_screen_icon {
+  fill: #fff;
+}
+
+.in_screen_icon_animate {
+  animation: octopus 2s ease-in-out infinite;
+}
+
+@keyframes octopus {
+  0% {
+    transform: scale(1.1, 0.9);
+  }
+
+  12.5% {
+    transform: scale(1);
+  }
+
+  25% {
+    offset-distance: 25%;
+    transform: scale(1.1, 0.9);
+  }
+
+  37.5% {
+    transform: scale(1);
+  }
+
+  50% {
+    offset-distance: 50%;
+    transform: scale(1.1, 0.9);
+
+  }
+
+  62.5% {
+    transform: scale(1);
+  }
+
+  75% {
+    offset-distance: 75%;
+    transform: scale(1.1, 0.9);
+  }
+
+  87.5% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1, 0.9);
+    offset-distance: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.8) =bubble:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* https://css-tricks.com/almanac/properties/o/offset-path/ */
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 10px #fff;
+  position: absolute;
+  transform: scale(0);
+  opacity: 0;
   transition: 0.5s;
 }
 
-.in_animate_screen_display .in_animate_screen_icon {
-  fill: #fff;
+.in_animate_screen_display .bubble {
+  animation: bubble 1s ease-in-out;
 }
+
+@keyframes bubble {
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+    top: 0;
+  }
+}
+
