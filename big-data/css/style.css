@@ -96,6 +96,7 @@ ul{
   display: grid;
   position: relative;
   overflow: hidden;
+  background-color: #005f9e;
 }
 
 /* ---------------------------------------------------------------------------
@@ -151,6 +152,28 @@ ul{
 .screen_lang .selected {
   color: rgb(214, 0, 28);
   font-family: 'Lato Black';
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.3) =screen_pool:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.screen_pool {
+  display: grid;
+}
+
+.screen_pool_interactive path {
+  stroke: white;
+  stroke-width: 4px;
+  fill: #ffffff48;
+  transition: 0.5s;
+}
+
+.screen_pool_interactive path.selected {
+  stroke: #d6001c;
+  stroke-width: 4px;
+  fill: transparent;
 }
 
 /* ---------------------------------------------------------------------------

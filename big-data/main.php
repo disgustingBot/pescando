@@ -66,8 +66,13 @@
     </section>
 
     <div class="screen_pool rowcol1">
-      <img class="rowcol1" src="../images/background/flota-fondo.jpg">
+      <img class="rowcol1 screen_pool_interactive" src="../images/background/flota-fondo.jpg">
+      <div class="rowcol1 screen_pool_interactive">
+        <?= file_get_contents('piscinas-botones-click.svg'); ?>
+      </div>
     </div>
   </main>
+
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
