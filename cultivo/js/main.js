@@ -181,3 +181,23 @@ class Obse {
 		// })
 	}
 }
+
+
+function in_animate_screen(e) {
+  e.preventDefault();
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+
+  setTimeout(() => {
+    location.href = e.target.href;
+  }, 500);
+}
+
+function out_animate_screen() {
+  altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
+
+  setTimeout(() => {
+    let in_animate_screen = document.querySelector('.in_animate_screen');
+    in_animate_screen.remove();
+  }, 1000);
+}
+
