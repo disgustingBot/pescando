@@ -13,9 +13,15 @@ MAPA DE CONTENIDOS:
 4) =ESTRUCTURA:
   4.1) =screen:
   4.2) =screen_lang:
+  4.3) =screen_poolss:
+  4.4) =screen_widgets:
+  4.5) =set_widgets:
+  4.6) =back_grid:
 
 5) =COMPONENTES:
   5.1) =panel:
+  5.2) =viday:
+  5.3) =widget:
 
 */
 
@@ -155,6 +161,119 @@ ul{
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
+                              4.3) =screen_pools:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.screen_pools {
+  display: grid;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  transition-delay: 1s;
+}
+
+.screen.Pools .screen_pools {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.screen_pools_interactive path {
+  stroke: white;
+  stroke-width: 4px;
+  fill: #ffffff48;
+  transition: 0.25s;
+}
+
+.screen_pools_interactive path.selected {
+  stroke: #d6001c;
+  stroke-width: 4px;
+  fill: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.4) =screen_widgets:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.screen_widgets {
+  padding: 160px 68px 68px 68px;
+  background-color: #084670;
+  display: grid;
+  row-gap: 50px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  transition-delay: 1s;
+}
+
+.screen.Widgets .screen_widgets {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.5) =set_widgets:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.set_widgets {
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 50px;
+}
+
+.set_widgets_md {
+  grid-template-columns: 1fr 1fr;
+}
+
+/* Solo para prueba */
+.set_widgets_md .widget {
+  height: 400px;
+}
+
+.set_widgets_sm {
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+/* Solo para prueba */
+.set_widgets_sm .widget {
+  height: 430px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.6) =back_grid:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.back_grid {
+  display: grid;
+  grid-template-columns: min-content auto;
+  align-items: start;
+}
+
+.back_btn {
+  background: none;
+  border: none;
+  position: relative;
+  top:20px;
+  transition:.4s;
+  transform: translateY(-50%);
+  opacity: 0;
+  pointer-events: none;
+  width: 0;
+  transition-delay: 0s;
+}
+
+.screen.Widgets .back_btn {
+  opacity: 1;
+  pointer-events: all;
+  margin-right: 32px;
+  width: 40px;
+  transition-delay: 1.25s;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
                               5) =COMPONENTES:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
@@ -166,6 +285,7 @@ ul{
 .panel {
   padding: 68px 0 0 0;
   position: absolute;
+  z-index: 5;
 }
 
 .panel_top {
@@ -174,6 +294,7 @@ ul{
 }
 
 .panel_right {
+  transform: translateX(100%);
   right: 0;
   width: 16.3%;
   height: 100vh;
@@ -184,6 +305,17 @@ ul{
   grid-auto-flow: row;
   grid-auto-rows: max-content;
   row-gap: 35px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.5s;
+  transition-delay: 0s;
+}
+
+.screen.Pools .panel_right {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
+  transition-delay: 1.25s;
 }
 
 .panel_title {
@@ -191,16 +323,15 @@ ul{
   font-size: 28px;
   line-height: 28px;
   color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 13px;
 }
 
 .panel_language {
   font-family: 'Lato Regular';
-  font-size: 16px;
-  line-height: 16px;
+  font-size: 18px;
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: 4px;
+  letter-spacing: 3px;
 }
 
 .panel_text {
@@ -221,14 +352,23 @@ ul{
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          5.83) =viday:
+                          5.2) =viday:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .viday {
   display: grid;
   justify-items: center;
   row-gap: 22px;
+  transition: 0.25s;
+  transform: translateX(100%);
 }
+
+.viday:nth-child(1) { transition-delay: 1.75s; }
+.viday:nth-child(2) { transition-delay: 2s; }
+.viday:nth-child(3) { transition-delay: 2.25s; }
+.viday:nth-child(4) { transition-delay: 2.50s; }
+
+.screen.Pools .viday { transform: translateX(0); }
 
 .viday_media {
   --size: 15vh;
@@ -270,4 +410,14 @@ ul{
   letter-spacing: 3px;
   line-height: 1.5;
   text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.3) =widget:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.widget {
+  background-color: #003c64;
+  border-radius: 20px;
 }

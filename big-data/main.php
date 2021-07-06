@@ -10,17 +10,26 @@
 </head>
 
 <body>
-  <main class="screen">
+  <main class="screen Pools">
     <section class="panel panel_top">
-      <!-- <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3> -->
-      <h3 class="panel_title">Big Data</h3>
-      <p class="panel_language">
-        <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
-        <span class="panel_stick">|</span>
-        <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
-        <span class="panel_stick">|</span>
-        <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-      </p>
+      <div class="back_grid">
+        <button class="back_btn" onclick="altClassFromSelector('Widgets', 'main.screen'); altClassFromSelector('Pools', 'main.screen');">
+          <img src="../icons/atras.svg">
+        </button>
+
+        <div>
+          <!-- <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3> -->
+          <h3 class="panel_title">Big Data</h3>
+
+          <p class="panel_language">
+            <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
+            <span class="panel_stick">|</span>
+            <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
+            <span class="panel_stick">|</span>
+            <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
+          </p>
+        </div>
+      </div>
     </section>
 
     <section class="panel panel_right">
@@ -65,9 +74,28 @@
       </div>
     </section>
 
-    <div class="screen_pool rowcol1">
-      <img class="rowcol1" src="../images/background/flota-fondo.jpg">
+    <div class="screen_pools rowcol1">
+      <img class="rowcol1 screen_pools_interactive" src="../images/background/flota-fondo.jpg">
+      <div class="rowcol1 screen_pools_interactive">
+        <?= file_get_contents('piscinas-botones-click.svg'); ?>
+      </div>
+    </div>
+
+    <div class="screen_widgets rowcol1">
+      <div class="set_widgets set_widgets_md">
+        <div class="widget"></div>
+        <div class="widget"></div>
+      </div>
+
+      <div class="set_widgets set_widgets_sm">
+        <div class="widget"></div>
+        <div class="widget"></div>
+        <div class="widget"></div>
+        <div class="widget"></div>
+      </div>
     </div>
   </main>
+
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
