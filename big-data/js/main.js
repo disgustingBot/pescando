@@ -58,6 +58,57 @@ const back_btn = () => {
 
 
 
+
+
+
+// https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
+function create_donut_graph(radius, max, data, selector) {
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute('viewBox', '0 0 100 100');
+
+  const perimeter = 2 * 3.14 * radius;
+  const perimeter_factor = perimeter / 2 / max;
+  const angle_factor = 360 / 2 / max;
+  const start_angle = -180;
+
+  let filled = 0;
+
+  data.forEach((item) => {
+    let angle = (filled * angle_factor) + start_angle;
+
+    const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    circle.setAttribute("cx", 50);
+    circle.setAttribute("cy", 50);
+    circle.setAttribute("r", radius);
+    circle.setAttribute("stroke", item.color);
+    circle.setAttribute('stroke-dasharray', perimeter);
+    circle.setAttribute('stroke-dashoffset', perimeter - (Math.abs(item.value) * perimeter_factor));
+    circle.setAttribute('stroke-width', 10);
+    circle.setAttribute('fill', 'transparent');
+    circle.setAttribute('transform', `rotate(${angle})`);
+    circle.setAttribute('transform-origin', 'center');
+
+
+    console.log(angle);
+
+    svg.appendChild(circle);
+    filled += Math.abs(item.value);
+  });
+
+  const donut_div = document.querySelector(selector);
+  donut_div.appendChild(svg);
+}
+
+
+
+
+
+
+
+
+
+
+
 function out_animate_screen() {
   altClassFromSelector('in_animate_screen_display', '.in_animate_screen');
   // anim_texts();

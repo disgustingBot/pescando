@@ -88,7 +88,9 @@
       </div>
 
       <div class="set_widgets set_widgets_sm">
-        <div class="widget"></div>
+        <div class="widget">
+          <div class="donut_graph Donut_Status"></div>
+        </div>
         <div class="widget"></div>
         <div class="widget"></div>
         <div class="widget"></div>
@@ -97,5 +99,24 @@
   </main>
 
   <script type="text/javascript" src="js/main.js"></script>
+  <script>
+    const donut_data = [{
+      value  : 31,
+      color : "#80e080",
+    },{
+      value  : 7,
+      color : "#4fc3f7",
+    },{
+      value  : 4,
+      color : "#9575cd",
+    },{
+      value  : 2,
+      color : "#f06292",
+    }];
+    
+    const donut_radius = 45;
+    const donut_max_value = 44;
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status');
+  </script>
 </body>
 </html>
