@@ -22,6 +22,7 @@ MAPA DE CONTENIDOS:
   5.1) =panel:
   5.2) =viday:
   5.3) =widget:
+  5.4) =donut_graph:
 
 */
 
@@ -226,18 +227,8 @@ ul{
   grid-template-columns: 1fr 1fr;
 }
 
-/* Solo para prueba */
-.set_widgets_md .widget {
-  height: 400px;
-}
-
 .set_widgets_sm {
   grid-template-columns: 1fr 1fr 1fr 1fr;
-}
-
-/* Solo para prueba */
-.set_widgets_sm .widget {
-  height: 430px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -420,4 +411,149 @@ ul{
 .widget {
   background-color: #003c64;
   border-radius: 20px;
+  padding: 35px;
+}
+
+.widget_title {
+  color: #d6001c;
+  font-family: 'Lato Light';
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.widget_footer_int {
+  color: #fff;
+  font-family: 'Lato Regular';
+  letter-spacing: 3px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.3.1) =widget_main:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.widget_main .widget_header {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-rows: min-content;
+}
+
+.widget_main .widget_title {
+  font-size: 70px;
+  margin-bottom: 60px;
+  text-align: left;
+}
+
+.widget_main .widget_footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: min-content;
+  align-items: end;
+}
+
+.widget_main .widget_footer_left {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  gap: 30px;
+}
+
+.widget_main .widget_footer_int {
+  font-size: 60px;
+  margin-bottom: 25px;
+}
+
+.widget_main .widget_footer_low {
+  color: #91b6d8;
+  font-size: 35px;
+  font-family: 'Lato Light';
+  letter-spacing: 3px;
+}
+
+.widget_main .widget_footer_right {
+  display: grid;
+  gap: 25px;
+  grid-auto-rows: min-content;
+}
+
+.widget_main .widget_footer_nor {
+  color: #91b6d8;
+  font-size: 45px;
+  font-family: 'Lato Regular';
+  letter-spacing: 3px;
+}
+
+.widget_main .widget_footer_icon {
+  height: 100%;
+  width: 50px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.3.2) =widget_status:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.widget_status {
+  display: grid;
+  justify-items: center;
+  grid-auto-rows: min-content;
+  row-gap: 45px;
+}
+
+.widget_status .widget_title {
+  font-size: 25px;
+  text-transform: uppercase;
+  font-family: 'Lato Regular';
+  letter-spacing: 5px;
+}
+
+.widget_status .widget_footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.widget_status .widget_footer_text {
+  font-family: 'Lato Regular';
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.3.3) =widget_status_sm:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.widget_status_sm {
+  padding: 50px;
+}
+
+.widget_status_sm:nth-child(1) .widget_title {
+  text-transform: none;
+}
+
+.widget_status_sm .widget_title {
+  margin-bottom: 15px;
+}
+
+.widget_status_sm .widget_footer_int {
+  font-family: 'Lato Bold';
+  color: #fff;
+  font-size: 22px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.4) =donut_graph:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.donut_graph {
+  --donut_size: 300px;
+
+  position: relative;
+  width: var(--donut_size);
+  height: calc(var(--donut_size) / 2);
+  overflow: hidden;
 }
