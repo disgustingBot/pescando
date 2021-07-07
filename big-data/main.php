@@ -83,14 +83,52 @@
 
     <div class="screen_widgets rowcol1">
       <div class="set_widgets set_widgets_md">
-        <div class="widget"></div>
-        <div class="widget"></div>
-      </div>
+        <section class="widget widget_main">
+          <header class="widget_header">
+            <h1 class="widget_title">Piscina 2</h1>
+            <img class="widget_header_icon" src="">
+          </header>
 
-      <div class="set_widgets set_widgets_sm">
+          <footer class="widget_footer">
+            <div class="widget_footer_left">
+              <img class="widget_footer_icon" src="">
+
+              <div>
+                <p class="widget_footer_int">22,8°</p>
+
+                <div>
+                  <img src="">
+                  <p class="widget_footer_low">29,6°</p>
+                </div>
+
+                <div>
+                  <img src="">
+                  <p class="widget_footer_low">22,2°</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="widget_footer_right">
+              <div>
+                <img src="">
+                <p class="widget_footer_nor">25%</p>
+              </div>
+
+              <div>
+                <img src="">
+                <p class="widget_footer_nor">16,7 km/h</p>
+              </div>
+            </div>
+          </footer>
+        </section>
+
         <div class="widget">
           <div class="donut_graph Donut_Status"></div>
         </div>
+      </div>
+
+      <div class="set_widgets set_widgets_sm">
+        <div class="widget"></div>
         <div class="widget"></div>
         <div class="widget"></div>
         <div class="widget"></div>
