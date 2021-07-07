@@ -160,7 +160,7 @@
             <p class="widget_footer_int">11</p>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_PH"></div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
@@ -179,7 +179,7 @@
             <p class="widget_footer_int">4,46 mg/l</p>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_Oxygen"></div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
@@ -198,7 +198,7 @@
             <p class="widget_footer_int">38 g/l</p>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_Salinity"></div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
@@ -217,7 +217,7 @@
             <p class="widget_footer_int">20° C</p>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_Temperature"></div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
@@ -235,7 +235,10 @@
 
   <script type="text/javascript" src="js/main.js"></script>
   <script>
-    const donut_data = [{
+    let donut_radius = 45;
+
+    // ---------------------------
+    let donut_data = [{
       value  : 31,
       color : "#80e080",
     },{
@@ -249,9 +252,44 @@
       color : "#f06292",
     }];
     
-    const donut_radius = 45;
-    const donut_max_value = 44;
+    let donut_max_value = 44;
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status');
+
+    // ---------------------------
+    donut_data = [{
+      value  : 11,
+      color : "#4fc3f7",
+    }];
+    
+    donut_max_value = 14;
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_PH');
+
+    // ---------------------------
+    donut_data = [{
+      value  : 4.46,
+      color : "#9575cd",
+    }];
+    
+    donut_max_value = 10;
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Oxygen');
+
+    // ---------------------------
+    donut_data = [{
+      value  : 38,
+      color : "#80e080",
+    }];
+    
+    donut_max_value = 40;
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Salinity');
+
+    // ---------------------------
+    donut_data = [{
+      value  : 20,
+      color : "#f06292",
+    }];
+    
+    donut_max_value = 40;
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Temperature');
   </script>
 </body>
 </html>
