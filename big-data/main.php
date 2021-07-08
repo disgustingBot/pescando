@@ -84,36 +84,36 @@
         <section class="widget widget_main">
           <header class="widget_header">
             <h1 class="widget_title">Piscina 2</h1>
-            <img class="widget_header_icon" src="">
+            <img class="widget_header_icon" src="icons/test2.png">
           </header>
 
           <footer class="widget_footer">
             <div class="widget_footer_left">
-              <img class="widget_footer_icon" src="">
+              <img class="widget_footer_icon" src="icons/test1.png">
 
-              <div>
+              <div class="widget_footer_lina">
                 <p class="widget_footer_int">22,8°</p>
 
-                <div>
-                  <img src="">
+                <div class="widget_footer_lino">
+                  <i class="widget_triangle_icon_up"></i>
                   <p class="widget_footer_low">29,6°</p>
                 </div>
 
-                <div>
-                  <img src="">
+                <div class="widget_footer_lino">
+                  <i class="widget_triangle_icon_down"></i>
                   <p class="widget_footer_low">22,2°</p>
                 </div>
               </div>
             </div>
             
             <div class="widget_footer_right">
-              <div>
-                <img src="">
+              <div class="widget_footer_lino">
+                <img class="widget_footer_nor_icon" src="icons/test3.png">
                 <p class="widget_footer_nor">25%</p>
               </div>
 
-              <div>
-                <img src="">
+              <div class="widget_footer_lino">
+                <img class="widget_footer_nor_icon" src="icons/test4.png">
                 <p class="widget_footer_nor">16,7 km/h</p>
               </div>
             </div>
@@ -125,26 +125,29 @@
             <h1 class="widget_title">Estado de la granja</h1>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_Status">
+            <div class="donut_graph_count">44</div>
+            <div class="donut_graph_deco"></div>
+          </div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #b4e1a8"></i>
               <p>Piscinas sin alertas</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #e6984f"></i>
               <p>Piscinas que requieren atención</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #b93b3e"></i>
               <p>Piscinas con avisos</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #d9d9da"></i>
               <p>Inactivo</p>
             </li>
           </ul>
@@ -159,7 +162,7 @@
           </header>
 
           <div class="donut_graph Donut_PH">
-            <div class="donut_indicator" data-value="11"></div>
+            <div class="donut_graph_indicator" data-value="11"></div>
           </div>
 
           <ul class="widget_footer">
@@ -180,7 +183,7 @@
           </header>
 
           <div class="donut_graph Donut_Oxygen">
-            <div class="donut_indicator" data-value="4.46"></div>
+            <div class="donut_graph_indicator" data-value="4.46"></div>
           </div>
 
           <ul class="widget_footer">
@@ -201,7 +204,7 @@
           </header>
 
           <div class="donut_graph Donut_Salinity">
-            <div class="donut_indicator" data-value="38"></div>
+            <div class="donut_graph_indicator" data-value="38"></div>
           </div>
 
           <ul class="widget_footer">
@@ -222,7 +225,7 @@
           </header>
 
           <div class="donut_graph Donut_Temperature">
-            <div class="donut_indicator" data-value="20"></div>
+            <div class="donut_graph_indicator" data-value="20"></div>
           </div>
 
           <ul class="widget_footer">
@@ -261,7 +264,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 14;
 
     donut_data = [{
@@ -277,7 +280,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_PH');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 10;
 
     donut_data = [{
@@ -290,7 +293,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Oxygen');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 40;
 
     donut_data = [{
@@ -303,7 +306,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Salinity');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 40;
 
     donut_data = [{
