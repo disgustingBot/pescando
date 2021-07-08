@@ -477,6 +477,26 @@ ul{
   color: #fff;
   font-size: 15px;
   letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+}
+
+.widget_status .widget_footer_text_icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 15px;
+}
+
+.widget_status .donut_graph_count {
+  font-size: 100px;
+  color: #fff;
+  font-family: 'Lato Light';
+  letter-spacing: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -15%);
 }
 
 /* ---------------------------------------------------------------------------
@@ -546,8 +566,19 @@ ul{
   position: absolute;
   bottom: 15px;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(-90deg);
   transform-origin: center;
+
+  /* https://css-tricks.com/reversing-an-easing-curve/ */
+  /* normal animation */
+  --x1: 0.4;
+  --y1: 1.06;
+  --x2: 0.54;
+  --y2: 1.2;
+
+  --normal_curve: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
+
+  transition: transform 1s var(--normal_curve);
 }
 
 .donut_indicator::after {

@@ -125,26 +125,28 @@
             <h1 class="widget_title">Estado de la granja</h1>
           </header>
 
-          <div class="donut_graph Donut_Status"></div>
+          <div class="donut_graph Donut_Status">
+            <div class="donut_graph_count">44</div>
+          </div>
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #b4e1a8"></i>
               <p>Piscinas sin alertas</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #e6984f"></i>
               <p>Piscinas que requieren atención</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #b93b3e"></i>
               <p>Piscinas con avisos</p>
             </li>
 
             <li class="widget_footer_text">
-              <img src="">
+              <i class="widget_footer_text_icon" style="background-color: #d9d9da"></i>
               <p>Inactivo</p>
             </li>
           </ul>
