@@ -159,7 +159,7 @@
           </header>
 
           <div class="donut_graph Donut_PH">
-            <div class="donut_indicator"></div>
+            <div class="donut_indicator" data-value="11"></div>
           </div>
 
           <ul class="widget_footer">
@@ -180,7 +180,7 @@
           </header>
 
           <div class="donut_graph Donut_Oxygen">
-            <div class="donut_indicator"></div>
+            <div class="donut_indicator" data-value="4.46"></div>
           </div>
 
           <ul class="widget_footer">
@@ -201,7 +201,7 @@
           </header>
 
           <div class="donut_graph Donut_Salinity">
-            <div class="donut_indicator"></div>
+            <div class="donut_indicator" data-value="38"></div>
           </div>
 
           <ul class="widget_footer">
@@ -222,7 +222,7 @@
           </header>
 
           <div class="donut_graph Donut_Temperature">
-            <div class="donut_indicator"></div>
+            <div class="donut_indicator" data-value="20"></div>
           </div>
 
           <ul class="widget_footer">

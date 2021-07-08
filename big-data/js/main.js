@@ -96,8 +96,18 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
 
   const donut_div = document.querySelector(selector);
   donut_div.appendChild(svg);
-}
 
+  const donut_indicator = donut_div.querySelector('.donut_indicator');
+
+  if(!donut_indicator) {
+    return;
+  }
+
+  const donut_indicator_value = parseFloat(donut_indicator.dataset.value);
+  const donut_indicator_angle_factor = -start_angle / max;
+
+  donut_indicator.style.transform = `translateX(-50%) rotate(${donut_indicator_value * donut_indicator_angle_factor + start_angle / 2}deg)`;
+}
 
 
 
