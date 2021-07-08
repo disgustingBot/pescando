@@ -236,59 +236,78 @@
   <script type="text/javascript" src="js/main.js"></script>
   <script>
     let donut_radius = 45;
+    let donut_max_value = 44;
 
     // ---------------------------
     let donut_data = [{
       value  : 31,
-      color : "#80e080",
+      color : "#b4e1a8",
     },{
       value  : 7,
-      color : "#4fc3f7",
+      color : "#e6984f",
     },{
       value  : 4,
-      color : "#9575cd",
+      color : "#b93b3e",
     },{
       value  : 2,
-      color : "#f06292",
+      color : "#d9d9da",
     }];
     
-    let donut_max_value = 44;
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status');
+    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 10);
 
     // ---------------------------
+    donut_max_value = 14;
+
     donut_data = [{
-      value  : 11,
-      color : "#4fc3f7",
+      value  : donut_max_value * 0.5,
+      color : "#b93b3e",
+    }, {
+      value  : donut_max_value * 0.20,
+      color : "#b4e1a8",
+    }, {
+      value  : donut_max_value * 0.30,
+      color : "#b93b3e",
     }];
     
-    donut_max_value = 14;
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_PH');
 
     // ---------------------------
+    donut_max_value = 10;
+
     donut_data = [{
-      value  : 4.46,
-      color : "#9575cd",
+      value  : donut_max_value * 0.4,
+      color : "#b93b3e",
+    }, {
+      value  : donut_max_value * 0.60,
+      color : "#b4e1a8",
     }];
     
-    donut_max_value = 10;
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Oxygen');
 
     // ---------------------------
+    donut_max_value = 40;
+
     donut_data = [{
-      value  : 38,
-      color : "#80e080",
+      value  : donut_max_value * 0.10,
+      color : "#e6984f",
+    }, {
+      value  : donut_max_value * 0.90,
+      color : "#b4e1a8",
     }];
     
-    donut_max_value = 40;
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Salinity');
 
     // ---------------------------
+    donut_max_value = 40;
+
     donut_data = [{
-      value  : 20,
-      color : "#f06292",
+      value  : donut_max_value * 0.55,
+      color : "#e6984f",
+    }, {
+      value  : donut_max_value * 0.45,
+      color : "#b4e1a8",
     }];
     
-    donut_max_value = 40;
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Temperature');
   </script>
 </body>

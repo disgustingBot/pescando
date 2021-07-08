@@ -62,7 +62,7 @@ const back_btn = () => {
 
 
 // https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
-function create_donut_graph(radius, max, data, selector) {
+function create_donut_graph(radius, max, data, selector, stroke = 5) {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute('viewBox', '0 0 100 100');
 
@@ -83,13 +83,12 @@ function create_donut_graph(radius, max, data, selector) {
     circle.setAttribute("stroke", item.color);
     circle.setAttribute('stroke-dasharray', perimeter);
     circle.setAttribute('stroke-dashoffset', perimeter - (Math.abs(item.value) * perimeter_factor));
-    circle.setAttribute('stroke-width', 10);
+    circle.setAttribute('stroke-width', stroke);
     circle.setAttribute('fill', 'transparent');
     circle.setAttribute('transform', `rotate(${angle})`);
     circle.setAttribute('transform-origin', 'center');
 
-
-    console.log(angle);
+    // console.log(angle);
 
     svg.appendChild(circle);
     filled += Math.abs(item.value);
