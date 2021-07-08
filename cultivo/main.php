@@ -31,6 +31,10 @@ $timer_ficha_in_seconds = 2;
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    var species  = <?= json_encode($species); ?>;
+    var alphabet = <?= json_encode($alphabet); ?>;
+  </script>
 </head>
 <body class="general">
   <div class="in_animate_screen in_animate_screen_display">
@@ -96,7 +100,7 @@ $timer_ficha_in_seconds = 2;
           transform: translateY(-280px);
         }
       </style>
-      <div class="anakin_item <?= $category['slug'] ?>" onclick="altClassFromSelector('<?= $category['slug'] ?>', '.anakin', ['anakin'])" tabindex="1">
+      <div class="anakin_item <?= $category['slug'] ?>" onclick="open_category('<?= $category['slug'] ?>')" tabindex="1">
         <img class="anakin_img rowcol1" src="<?= $DIR_IMG ?><?= $category['esp_fondo'] ?>" alt="">
 
         <div class="anakin_caption rowcol1">

@@ -8,6 +8,7 @@ window.onload=()=>{
 }
 
 
+
 /*
 =altClassFromSelector
 
@@ -98,6 +99,26 @@ const alt_ficha = (slug, timer = false) =>{
 
 
 
+
+
+const open_category = slug =>{
+  // get's the corresponding species to that category
+  let filtered_species = species.filter( specie => (specie.category == slug) ? slug : false )
+  // sort by letter
+  filtered_species = filtered_species.sort((a, b) => a.slug.localeCompare(b.slug))
+  // get index of first letter, according to HTML logic (2 elements per letter and starting from 1 not 0)
+  let index = (alphabet.indexOf(filtered_species[0].slug[0]) + 1) * 2
+  // selects indexed letter in HTML
+  let letter = document.querySelector('.luke_scroll > :nth-child('+index+')')
+  // scrolls to the letter
+  document.querySelector('.luke_viw').scrollLeft = letter.offsetLeft;
+  // activates the category selection
+  altClassFromSelector(slug, '.anakin', ['anakin'])
+}
+
+
+
+
 /*
 
 OBSE:
@@ -108,7 +129,6 @@ funcion para activar y desactivar elementos usando scroll como disparador
   obseController = {
     obses:[],
     setup:()=>{
-      // console.log(this.obses);
       this.obses = [];
       if (document.querySelectorAll('.Obse')) {
         var obses = document.querySelectorAll('.Obse');
@@ -116,6 +136,7 @@ funcion para activar y desactivar elementos usando scroll como disparador
           obseController.obses.unshift(new Obse(obse))
         });
       }
+      console.log(this.obses);
     },
     unobserve:()=>{
       console.log(this.obses);
@@ -201,3 +222,10 @@ function out_animate_screen() {
   }, 1000);
 }
 
+
+
+
+
+
+
+obseController.setup();
