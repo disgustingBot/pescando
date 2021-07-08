@@ -63,6 +63,10 @@ const back_btn = () => {
 
 // https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
 function create_donut_graph(radius, max, data, selector, stroke = 5) {
+  const donut_div = document.querySelector(selector);
+  const donut_indicator = donut_div.querySelector('.donut_graph_indicator');
+  const donut_deco = donut_div.querySelector('.donut_graph_deco');
+
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute('viewBox', '0 0 100 100');
 
@@ -73,6 +77,7 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
 
   let filled = 0;
 
+  // Crea los espacios que se mostrarán en la grafica
   data.forEach((item) => {
     let angle = (filled * angle_factor) + start_angle;
 
@@ -87,21 +92,31 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
     circle.setAttribute('fill', 'transparent');
     circle.setAttribute('transform', `rotate(${angle})`);
     circle.setAttribute('transform-origin', 'center');
-
-    // console.log(angle);
-
     svg.appendChild(circle);
+
+    // Rotar texto si lo hay en el html
+    if(donut_deco) {
+      const text_degrees = document.createElement('div');
+      text_degrees.className = 'donut_graph_text';
+      text_degrees.style.transform = `translateX(-50%) rotate(${angle - (start_angle) / 2}deg)`;
+      
+      const text_value = document.createElement('p');
+      text_value.innerText = item.value;
+      text_value.style.color = item.color;
+      text_value.style.transform = `rotate(${-(angle - (start_angle) / 2)}deg)`;
+
+      text_degrees.append(text_value);
+      donut_deco.appendChild(text_degrees);
+    }
+
     filled += Math.abs(item.value);
   });
-
-  const donut_div = document.querySelector(selector);
+  
+  // Se muestra la donut grafica
   donut_div.appendChild(svg);
 
-  const donut_indicator = donut_div.querySelector('.donut_indicator');
-
-  if(!donut_indicator) {
-    return;
-  }
+  // Rotar indicador si lo hay en el html
+  if(!donut_indicator) { return; }
 
   const donut_indicator_value = parseFloat(donut_indicator.dataset.value);
   const donut_indicator_angle_factor = -start_angle / max;
@@ -111,7 +126,9 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
 
 
 
-
+function to_radians(degrees) {
+  return degrees * (Math.PI / 180);
+}
 
 
 

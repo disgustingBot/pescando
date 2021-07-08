@@ -127,6 +127,7 @@
 
           <div class="donut_graph Donut_Status">
             <div class="donut_graph_count">44</div>
+            <div class="donut_graph_deco"></div>
           </div>
 
           <ul class="widget_footer">
@@ -161,7 +162,7 @@
           </header>
 
           <div class="donut_graph Donut_PH">
-            <div class="donut_indicator" data-value="11"></div>
+            <div class="donut_graph_indicator" data-value="11"></div>
           </div>
 
           <ul class="widget_footer">
@@ -182,7 +183,7 @@
           </header>
 
           <div class="donut_graph Donut_Oxygen">
-            <div class="donut_indicator" data-value="4.46"></div>
+            <div class="donut_graph_indicator" data-value="4.46"></div>
           </div>
 
           <ul class="widget_footer">
@@ -203,7 +204,7 @@
           </header>
 
           <div class="donut_graph Donut_Salinity">
-            <div class="donut_indicator" data-value="38"></div>
+            <div class="donut_graph_indicator" data-value="38"></div>
           </div>
 
           <ul class="widget_footer">
@@ -224,7 +225,7 @@
           </header>
 
           <div class="donut_graph Donut_Temperature">
-            <div class="donut_indicator" data-value="20"></div>
+            <div class="donut_graph_indicator" data-value="20"></div>
           </div>
 
           <ul class="widget_footer">
@@ -263,7 +264,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 14;
 
     donut_data = [{
@@ -279,7 +280,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_PH');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 10;
 
     donut_data = [{
@@ -292,7 +293,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Oxygen');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 40;
 
     donut_data = [{
@@ -305,7 +306,7 @@
     
     create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Salinity');
 
-    // ---------------------------
+    // --------------------------- Estimado de los valores en buen y mal estado
     donut_max_value = 40;
 
     donut_data = [{

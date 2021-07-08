@@ -22,7 +22,9 @@ MAPA DE CONTENIDOS:
   5.2) =viday:
   5.3) =widget:
   5.4) =donut_graph:
-  5.5) =donut_indicator:
+  5.5) =donut_graph_indicator:
+  5.6) =donut_graph_deco:
+  5.7) =donut_graph_text:
 
 */
 
@@ -529,6 +531,15 @@ ul{
   text-align: center;
 }
 
+.widget_status_sm .donut_graph {
+  --donut_size: 225px;
+  --donut_graph_indicator_radius: 15px;
+
+  height: calc(var(--donut_size) / 2 + var(--donut_graph_indicator_radius) * 2);
+  margin-top: 70px;
+  margin-bottom: 20px;
+}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           5.4) =donut_graph:
@@ -544,23 +555,14 @@ ul{
   margin-bottom: 47px;
 }
 
-.widget_status_sm .donut_graph {
-  --donut_size: 225px;
-  --donut_indicator_radius: 30px;
-
-  height: calc(var(--donut_size) / 2 + var(--donut_indicator_radius));
-  margin-top: 70px;
-  margin-bottom: 20px;
-}
-
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                          5.5) =donut_indicator:
+                          5.5) =donut_graph_indicator:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.donut_indicator {
-  width: var(--donut_indicator_radius);
-  height: var(--donut_indicator_radius);
+.donut_graph_indicator {
+  width: calc(var(--donut_graph_indicator_radius) * 2);
+  height: calc(var(--donut_graph_indicator_radius) * 2);
   border-radius: 50%;
   background-color: #9ab7cc;
   position: absolute;
@@ -581,14 +583,49 @@ ul{
   transition: transform 1s var(--normal_curve);
 }
 
-.donut_indicator::after {
+.donut_graph_indicator::after {
+  --donut_graph_indicator_radius: 15px;
+
   content: '';
   position: absolute;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
-  width: calc(var(--donut_indicator_radius) / 4);
+  transform: translate(-50%, calc(var(--donut_graph_indicator_radius) * -1));
+  width: calc(var(--donut_graph_indicator_radius) / 2);
   height: 140px;
   background-color: inherit;
   border-radius: 20px 20px 0 0;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.6) =donut_graph_deco:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.donut_graph_deco {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: calc(100% + 30px);
+  height: calc(100% + 30px);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.7) =donut_graph_text:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.donut_graph_text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 100%;
+  transform-origin: bottom;
+}
+
+.donut_graph_text  p {
+  font-family: 'Lato Regular';
+  font-size: 20px;
 }
