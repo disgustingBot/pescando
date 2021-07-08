@@ -84,36 +84,36 @@
         <section class="widget widget_main">
           <header class="widget_header">
             <h1 class="widget_title">Piscina 2</h1>
-            <img class="widget_header_icon" src="">
+            <img class="widget_header_icon" src="icons/test2.png">
           </header>
 
           <footer class="widget_footer">
             <div class="widget_footer_left">
-              <img class="widget_footer_icon" src="">
+              <img class="widget_footer_icon" src="icons/test1.png">
 
-              <div>
+              <div class="widget_footer_lina">
                 <p class="widget_footer_int">22,8°</p>
 
-                <div>
-                  <img src="">
+                <div class="widget_footer_lino">
+                  <i class="widget_triangle_icon_up"></i>
                   <p class="widget_footer_low">29,6°</p>
                 </div>
 
-                <div>
-                  <img src="">
+                <div class="widget_footer_lino">
+                  <i class="widget_triangle_icon_down"></i>
                   <p class="widget_footer_low">22,2°</p>
                 </div>
               </div>
             </div>
             
             <div class="widget_footer_right">
-              <div>
-                <img src="">
+              <div class="widget_footer_lino">
+                <img class="widget_footer_nor_icon" src="icons/test3.png">
                 <p class="widget_footer_nor">25%</p>
               </div>
 
-              <div>
-                <img src="">
+              <div class="widget_footer_lino">
+                <img class="widget_footer_nor_icon" src="icons/test4.png">
                 <p class="widget_footer_nor">16,7 km/h</p>
               </div>
             </div>

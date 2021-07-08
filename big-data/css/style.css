@@ -398,11 +398,12 @@ ul{
   display: grid;
   grid-auto-flow: column;
   grid-auto-rows: min-content;
+  justify-content: space-between;
 }
 
 .widget_main .widget_title {
   font-size: 94px;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
   text-align: left;
   font-family: 'Lato Light';
 }
@@ -421,14 +422,14 @@ ul{
 }
 
 .widget_main .widget_footer_int {
-  font-size: 60px;
-  margin-bottom: 25px;
+  font-size: 55px;
+  margin-bottom: 40px;
 }
 
 .widget_main .widget_footer_low {
   color: #91b6d8;
-  font-size: 35px;
-  font-family: 'Lato Light';
+  font-size: 32px;
+  font-family: 'Lato Regular';
   letter-spacing: 3px;
 }
 
@@ -447,7 +448,30 @@ ul{
 
 .widget_main .widget_footer_icon {
   height: 100%;
+  width: auto;
+}
+
+.widget_main .widget_header_icon {
+  height: auto;
+  width: 120px;
+}
+
+.widget_main .widget_footer_nor_icon {
   width: 50px;
+  height: auto;
+}
+
+.widget_main .widget_footer_lino {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  column-gap: 15px;
+  grid-auto-flow: column;
+  align-items: center;
+}
+
+.widget_main .widget_footer_lina {
+  display: grid;
+  row-gap: 8px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -488,6 +512,7 @@ ul{
   height: 12px;
   border-radius: 50%;
   margin-right: 15px;
+  display: block;
 }
 
 .widget_status .donut_graph_count {
@@ -592,7 +617,7 @@ ul{
   left: 50%;
   transform: translate(-50%, calc(var(--donut_graph_indicator_radius) * -1));
   width: calc(var(--donut_graph_indicator_radius) / 2);
-  height: 140px;
+  height: 120px;
   background-color: inherit;
   border-radius: 20px 20px 0 0;
 }
@@ -628,4 +653,23 @@ ul{
 .donut_graph_text  p {
   font-family: 'Lato Regular';
   font-size: 20px;
+}
+
+/* ------------------------------------------------------------------------------ */
+.widget_triangle_icon_up {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  
+  border-bottom: 10px solid #9ab7cc;
+}
+
+.widget_triangle_icon_down {
+  width: 0; 
+  height: 0; 
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  border-top: 10px solid #9ab7cc;
 }
