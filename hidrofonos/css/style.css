@@ -339,8 +339,9 @@ ul{
   width: auto;
 }
 .fish_icon{
-  height: 50px;
-  width: auto;
+  height: auto;
+  width: 50px;
+  max-height: 50px;
 }
 .wave_icon{
   height: 40px;
@@ -377,6 +378,7 @@ ul{
   color: white;
   text-align: center;
   font-family: 'Lato Bold';
+  margin-left: 20px; /* mod by pepus */
 }
 
   /* ---------------------------------------------------------------------------

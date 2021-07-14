@@ -44,6 +44,11 @@
 
   function LimpiaNombre($variable) {
     $var = str_replace("´","", Quote2Accent($variable));
+    $var = str_replace("(","", $var);
+    $var = str_replace(")","", $var);
+    $var = str_replace("/","", $var);
+    $var = str_replace("[","", $var);
+    $var = str_replace("]","", $var);
     $var = Minus($var);
     $var = remove_accents($var);
     $var = Blank2Dash($var);
@@ -494,7 +499,7 @@
     $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_ani
                     , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'curiosidades') as tra_curiosidades_ani
                     , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'paises') as tra_pais_ani
-                    FROM pesca_animales LEFT JOIN pesca_especies ON esp_id = ani_especie WHERE ani_status = 'A' AND esp_status = 'A'";
+                    FROM pesca_animales LEFT JOIN pesca_especies ON esp_id = ani_especie WHERE ani_status = 'A' AND esp_status = 'A' ORDER BY tra_nombre_ani";
     // $qry2 = "SELECT * FROM pesca_animales a, pesca_especies b WHERE a.ani_especie = b.esp_id";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
@@ -513,7 +518,7 @@
     global $conn;
     $categories = array();
     $qry2 = "SELECT * FROM pesca_especies";
-    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'especies' AND referred_id = esp_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_esp FROM pesca_especies WHERE esp_status = 'A'";
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'especies' AND referred_id = esp_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_esp FROM pesca_especies WHERE esp_status = 'A' ORDER BY esp_orden";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
         $categories[] = $row;

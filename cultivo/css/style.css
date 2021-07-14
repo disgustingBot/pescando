@@ -577,9 +577,9 @@ ul{
   margin-bottom: auto;
 }
 .leia_info{
-  font-size: 18px;
+  font-size: 17px;
   /* line-height:1.3; */
-  line-height:24px;
+  line-height:22px;
 }
 .leia_separator{
   height:1px;
@@ -591,10 +591,10 @@ ul{
 .leia_location{
   color:#00587C;
   font-family: 'Lato Black';
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   letter-spacing: 1px;
-  line-height:20px;
+  line-height:18px;
   margin-bottom: auto;
 }
 .leia_location_grid {
