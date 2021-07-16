@@ -673,11 +673,20 @@ body {
   opacity: 0;
 }
 
-.viday_media{
+.viday_media {
   border-radius: 50%;
   z-index: 1;
   grid-column: 1;
   grid-row: 1;
+  height: var(--size);
+  width: var(--size);
+  transition: all 0.5s var(--normal_curve), opacity 0.5s;
+}
+
+.viday.play .viday_media {
+  width: 100vh;
+  height: 100vh;
+  transition: all 0.5s var(--normal_curve), opacity 0.5s;
 }
 
 .viday_caption {
