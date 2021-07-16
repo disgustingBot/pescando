@@ -182,3 +182,48 @@ function out_animate_screen(animation_screen) {
   }, 1000);
 }
 
+
+
+
+// Inactivity redirect
+// Redirecciona en el tiempo dado (en segundos)
+function start_inactivity_redirect(redirect_time) {
+  return setTimeout(() => {
+    window.location.href = 'index.php';
+  }, redirect_time * 1000);
+}
+
+// Reinicia el setTimeout y lo vuelve a iniciar con el nuevo tiempo dado
+function reset_inactivity_redirect(inactivity_timer, redirect_time) {
+  stop_inactivity_redirect(inactivity_timer);
+
+  // Solo detiene la redirección en caso de que esté un video en playing
+  let current_screen = document.querySelector('.full_screen_media_option_selector');
+  let current_option = current_screen.classList[current_screen.classList.length - 1];
+  let current_video = current_screen.querySelector(`video#${current_option}_sound`);
+
+  if(!current_video) return start_inactivity_redirect(redirect_time);
+
+  // y lo vuelve a iniciar cuando termine el video
+  else current_video.addEventListener('ended', () => {
+    return start_inactivity_redirect(redirect_time);
+  });
+}
+
+// Detiene la redirección por inactividad
+function stop_inactivity_redirect(inactivity_timer) {
+  window.clearTimeout(inactivity_timer);
+}
+
+// Cuando se da como activo la app
+function activity_definition(inactivity_timer) {
+  // Reiniciar el timer cada click en la app
+  window.addEventListener('click', () => {
+    inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
+  });
+
+  // y en cada touchstart en caso de deslizar el touch
+  window.addEventListener('touchstart', () => {
+    inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
+  });
+}
