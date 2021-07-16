@@ -100,7 +100,7 @@ function anim_texts() {
 
 // Inactivity redirect
 // Redirecciona en el tiempo dado (en segundos)
-function inactivity_redirect(redirect_time) {
+function start_inactivity_redirect(redirect_time) {
   return setTimeout(() => {
     window.location.href = 'index.php';
   }, redirect_time * 1000);
@@ -109,5 +109,5 @@ function inactivity_redirect(redirect_time) {
 // Limpia el tiempo del setTimeout y lo vuelve a iniciar con el nuevo tiempo dado
 function reset_inactivity_redirect(inactivity_timer, redirect_time) {
   window.clearTimeout(inactivity_timer);
-  return inactivity_redirect(redirect_time);
+  return start_inactivity_redirect(redirect_time);
 }
