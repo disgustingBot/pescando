@@ -108,3 +108,29 @@ const end_videos_reset = () => {
   });
 }
 end_videos_reset();
+
+
+// Inactivity redirect
+// Redirecciona en el tiempo dado (en segundos)
+function start_inactivity_redirect(redirect_time) {
+  return setTimeout(() => {
+    window.location.href = 'index.php';
+  }, redirect_time * 1000);
+}
+
+// Limpia el tiempo del setTimeout y lo vuelve a iniciar con el nuevo tiempo dado
+function reset_inactivity_redirect(inactivity_timer, redirect_time) {
+  stop_inactivity_redirect(inactivity_timer);
+
+  // Solo detiene la redirección en caso de que esté un video en playing
+  let current_video = document.querySelector('.play');
+  if(!current_video) return start_inactivity_redirect(redirect_time);
+  else current_video.addEventListener('ended', () => {
+    return start_inactivity_redirect(redirect_time);
+  });
+}
+
+// Detiene la redirección por inactividad
+function stop_inactivity_redirect(inactivity_timer) {
+  window.clearTimeout(inactivity_timer);
+}
