@@ -248,7 +248,7 @@
     let inactivity_timer = start_inactivity_redirect(redirect_time);
     
     // Reset timer each click in the app
-    window.addEventListener('click', () => {
+    window.addEventListener('touchstart', () => {
       inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
     });
   </script>
