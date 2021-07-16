@@ -202,5 +202,19 @@ foreach ($barcos as $barco) {
       document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
     </script>
   <?php } ?>
+
+  <!-- Redirect timer -->
+  <?php $redirect_time = 10; ?>
+  <script>
+    (() => {
+      let redirect_time = <?= $redirect_time ?>;
+      let inactivity_timer = inactivity_redirect(redirect_time);
+      
+      // Reset timer each click in the app
+      window.addEventListener('click', () => {
+        inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
+      });
+    })();
+  </script>
 </body>
 </html>
