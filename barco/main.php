@@ -202,5 +202,12 @@ foreach ($barcos as $barco) {
       document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
     </script>
   <?php } ?>
+
+  <!-- Redirect timer -->
+  <?php $redirect_time = 5; ?>
+  <script>
+    let redirect_time = <?= $redirect_time ?>;
+    start_inactivity_redirect(redirect_time);
+  </script>
 </body>
 </html>

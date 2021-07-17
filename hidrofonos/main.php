@@ -126,5 +126,12 @@
 
   <script type="text/javascript" src="js/main.js"></script>
   <script>animate_bubbles();</script>
+
+  <!-- Redirect timer -->
+  <?php $redirect_time = 5; ?>
+  <script>
+    let redirect_time = <?= $redirect_time ?>;
+    start_inactivity_redirect(redirect_time);
+  </script>
 </body>
 </html>

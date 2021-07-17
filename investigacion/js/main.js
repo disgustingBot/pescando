@@ -44,7 +44,7 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
-var videos = document.querySelectorAll('video:not(.first_vid)');
+var videos = document.querySelectorAll('video:not(.first_video)');
 videos.forEach( video => {
   video.addEventListener('ended', function() {
     video.load();
@@ -60,7 +60,7 @@ videos.forEach( video => {
 
 const back_btn = () => {
   let screen_menu = document.querySelector('.screen_menu');
-  let fist_video = document.querySelector('.first_vid');
+  let fist_video = document.querySelector('video.first_video');
 
   if(screen_menu.className == 'screen_menu') {
     altClassFromSelector('first_video', '.screen_menu');
@@ -70,7 +70,7 @@ const back_btn = () => {
   else {
 
     altClassFromSelector('', '.screen_menu', ['screen_menu']);
-    var videos = document.querySelectorAll('video:not(.first_vid)');
+    var videos = document.querySelectorAll('video:not(.first_video)');
     videos.forEach( video => {
       video.load()
     });
@@ -104,13 +104,13 @@ const play_video = slug => {
 
 function first_vid_init () {
   // First video ended
-  let first_vid = document.querySelector('.first_vid');
+  let first_vid = document.querySelector('video.first_video');
   first_vid.addEventListener('ended', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });
 
   // First video not loaded
-  let first_vid_source = document.querySelector('.first_vid source:last-child');
+  let first_vid_source = document.querySelector('video.first_video source:last-child');
 
   first_vid_source.addEventListener('error', () => {
     altClassFromSelector('first_video', '.screen_menu');
@@ -205,4 +205,59 @@ function out_animate(animation_screen) {
   setTimeout(() => {
     animation_screen.remove();
   }, 1000);
+}
+
+
+
+
+
+
+// Start interactivity timer
+const start_inactivity_redirect = redirect_time => {
+  let current_time = 0;
+  let is_free_inactivity = false;
+
+  setInterval(() => {
+    if(is_free_inactivity) reset_current_time();
+    else current_time++;
+
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
+
+  // Inactivity definition
+  (() => {
+    let videos = document.querySelectorAll('video');
+
+    videos.forEach(video => {
+      // No Inactivity when video start
+      video.addEventListener('play', () => {
+        is_free_inactivity = true;
+      });
+
+      // Inactivity when video end
+      video.addEventListener('ended', () => {
+        is_free_inactivity = false;
+      });
+
+      // Inactivity when exit from video
+      video.addEventListener('emptied', () => {
+        is_free_inactivity = false;
+      });
+    });
+  })();
+
+  // Activity definition
+  (activity_events => {
+    activity_events.forEach(event => {
+      window.addEventListener(event, () => {
+        reset_current_time();
+      });
+    });
+  })(['click', 'touchstart']);
+
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
 }

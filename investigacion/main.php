@@ -60,7 +60,7 @@ $items = array(
 
   <section class="screen_menu first_video">
 
-    <video class="first_vid video_player rowcol1" playsinline autoplay muted poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
+    <video class="first_video video_player rowcol1" playsinline autoplay muted poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
       <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
     </video>
 
@@ -127,6 +127,13 @@ $items = array(
   <script>
     first_vid_init();
     animate_bubbles();
+  </script>
+
+  <!-- Redirect timer -->
+  <?php $redirect_time = 5; ?>
+  <script>
+    let redirect_time = <?= $redirect_time ?>;
+    start_inactivity_redirect(redirect_time);
   </script>
 </body>
 </html>

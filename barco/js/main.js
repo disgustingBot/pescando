@@ -95,3 +95,33 @@ function anim_texts() {
 
   altClassFromSelector('text_show', '.shape_screen_img text');
 }
+
+
+
+// Start interactivity timer
+const start_inactivity_redirect = redirect_time => {
+  let current_time = 0;
+  let is_free_inactivity = false;
+
+  setInterval(() => {
+    if(is_free_inactivity) reset_current_time();
+    else current_time++;
+
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
+
+  // Activity definition
+  (activity_events => {
+    activity_events.forEach(event => {
+      window.addEventListener(event, () => {
+        reset_current_time();
+      });
+    });
+  })(['click', 'touchstart']);
+
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
+}
