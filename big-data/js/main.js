@@ -63,6 +63,7 @@ const back_btn = () => {
 
 // https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
 function create_donut_graph(radius, max, data, selector, stroke = 5) {
+  console.log(selector);
   const donut_div = document.querySelector(selector);
   const donut_indicator = donut_div.querySelector('.donut_graph_indicator');
   const donut_deco = donut_div.querySelector('.donut_graph_deco');
@@ -99,7 +100,7 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
       const text_degrees = document.createElement('div');
       text_degrees.className = 'donut_graph_text';
       text_degrees.style.transform = `translateX(-50%) rotate(${angle - (start_angle) / 2}deg)`;
-      
+
       const text_value = document.createElement('p');
       text_value.innerText = item.value;
       text_value.style.color = item.color;
@@ -111,7 +112,7 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
 
     filled += Math.abs(item.value);
   });
-  
+
   // Se muestra la donut grafica
   donut_div.appendChild(svg);
 
