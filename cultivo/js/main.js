@@ -231,16 +231,30 @@ function out_animate_screen() {
 obseController.setup();
 
 
-// Inactivity redirect
-// Redirecciona en el tiempo dado (en segundos)
-function start_inactivity_redirect(redirect_time) {
-  return setTimeout(() => {
-    window.location.href = 'index.php';
-  }, redirect_time * 1000);
-}
+// Start interactivity timer
+const start_inactivity_redirect = redirect_time => {
+  let current_time = 0;
+  let is_free_inactivity = false;
 
-// Limpia el tiempo del setTimeout y lo vuelve a iniciar con el nuevo tiempo dado
-function reset_inactivity_redirect(inactivity_timer, redirect_time) {
-  window.clearTimeout(inactivity_timer);
-  return start_inactivity_redirect(redirect_time);
+  setInterval(() => {
+    if(is_free_inactivity) reset_current_time();
+    else current_time++;
+
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
+
+  // Activity definition
+  (activity_events => {
+    activity_events.forEach(event => {
+      window.addEventListener(event, () => {
+        reset_current_time();
+      });
+    });
+  })(['click', 'touchstart']);
+
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
 }

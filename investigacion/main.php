@@ -133,10 +133,7 @@ $items = array(
   <?php $redirect_time = 5; ?>
   <script>
     let redirect_time = <?= $redirect_time ?>;
-    let inactivity_timer = start_inactivity_redirect();
-    
-    inactivity_in_videos();
-    activity_definition(['click', 'touchstart']);
+    start_inactivity_redirect(redirect_time);
   </script>
 </body>
 </html>

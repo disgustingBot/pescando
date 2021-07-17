@@ -212,58 +212,52 @@ function out_animate(animation_screen) {
 
 
 
-// Inactivity redirect
-// inactivity_timer and redirect_time are variables in global space
-
 // Start interactivity timer
-function start_inactivity_redirect() {
-  return setTimeout(() => {
-    window.location.href = 'index.php';
-  }, redirect_time * 1000);
-}
+const start_inactivity_redirect = redirect_time => {
+  let current_time = 0;
+  let is_free_inactivity = false;
 
-// Reset interactivity timer
-function reset_inactivity_redirect() {
-  stop_inactivity_redirect();
+  setInterval(() => {
+    if(is_free_inactivity) reset_current_time();
+    else current_time++;
 
-  // Solo detiene la redirección en caso de que esté un video en playing
-  let current_screen = document.querySelector('.screen_menu');
-  let current_option = current_screen.classList[current_screen.classList.length - 1];
-  let current_video;
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
 
-  if(current_option == 'first_video') current_video = current_screen.querySelector('.first_video.video_player');
-  else current_video = current_screen.querySelector(`.menem.${current_option} .video_player`);
+  // Inactivity definition
+  (() => {
+    let videos = document.querySelectorAll('video');
 
-  if(!current_video) inactivity_timer = start_inactivity_redirect();
-}
+    videos.forEach(video => {
+      // No Inactivity when video start
+      video.addEventListener('play', () => {
+        is_free_inactivity = true;
+      });
 
-// Stop interactivity timer
-const stop_inactivity_redirect = () => {
-  window.clearTimeout(inactivity_timer);
-}
+      // Inactivity when video end
+      video.addEventListener('ended', () => {
+        is_free_inactivity = false;
+      });
 
-// Inactivity definition
-const inactivity_in_videos = () => {
-  let videos = document.querySelectorAll('video');
-
-  videos.forEach(video => {
-    // No Inactivity when video start
-    video.addEventListener('play', () => {
-      stop_inactivity_redirect();
+      // Inactivity when exit from video
+      video.addEventListener('emptied', () => {
+        is_free_inactivity = false;
+      });
     });
+  })();
 
-    // Inactivity when video end
-    video.addEventListener('ended', () => {
-      inactivity_timer = start_inactivity_redirect();
+  // Activity definition
+  (activity_events => {
+    activity_events.forEach(event => {
+      window.addEventListener(event, () => {
+        reset_current_time();
+      });
     });
-  });
-}
+  })(['click', 'touchstart']);
 
-// Activity definition
-const activity_definition = (activity_events) => {
-  activity_events.forEach(event => {
-    window.addEventListener(event, () => {
-      reset_inactivity_redirect();
-    });
-  });
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
 }

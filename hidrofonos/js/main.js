@@ -185,45 +185,53 @@ function out_animate_screen(animation_screen) {
 
 
 
-// Inactivity redirect
-// Redirecciona en el tiempo dado (en segundos)
-function start_inactivity_redirect(redirect_time) {
-  return setTimeout(() => {
-    window.location.href = 'index.php';
-  }, redirect_time * 1000);
-}
 
-// Reinicia el setTimeout y lo vuelve a iniciar con el nuevo tiempo dado
-function reset_inactivity_redirect(inactivity_timer, redirect_time) {
-  stop_inactivity_redirect(inactivity_timer);
+// Start interactivity timer
+const start_inactivity_redirect = redirect_time => {
+  let current_time = 0;
+  let is_free_inactivity = false;
 
-  // Solo detiene la redirección en caso de que esté un video en playing
-  let current_screen = document.querySelector('.full_screen_media_option_selector');
-  let current_option = current_screen.classList[current_screen.classList.length - 1];
-  let current_video = current_screen.querySelector(`video#${current_option}_sound`);
+  setInterval(() => {
+    if(is_free_inactivity) reset_current_time();
+    else current_time++;
 
-  if(!current_video) return start_inactivity_redirect(redirect_time);
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
 
-  // y lo vuelve a iniciar cuando termine el video
-  else current_video.addEventListener('ended', () => {
-    return start_inactivity_redirect(redirect_time);
-  });
-}
+  // Inactivity definition
+  (() => {
+    let videos = document.querySelectorAll('video');
 
-// Detiene la redirección por inactividad
-function stop_inactivity_redirect(inactivity_timer) {
-  window.clearTimeout(inactivity_timer);
-}
+    videos.forEach(video => {
+      // No Inactivity when video start
+      video.addEventListener('play', () => {
+        is_free_inactivity = true;
+      });
 
-// Cuando se da como activo la app
-function activity_definition(inactivity_timer) {
-  // Reiniciar el timer cada click en la app
-  window.addEventListener('click', () => {
-    inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
-  });
+      // Inactivity when video end
+      video.addEventListener('ended', () => {
+        is_free_inactivity = false;
+      });
 
-  // y en cada touchstart en caso de deslizar el touch
-  window.addEventListener('touchstart', () => {
-    inactivity_timer = reset_inactivity_redirect(inactivity_timer, redirect_time);
-  });
+      // Inactivity when exit from video
+      video.addEventListener('emptied', () => {
+        is_free_inactivity = false;
+      });
+    });
+  })();
+
+  // Activity definition
+  (activity_events => {
+    activity_events.forEach(event => {
+      window.addEventListener(event, () => {
+        reset_current_time();
+      });
+    });
+  })(['click', 'touchstart']);
+
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
 }
