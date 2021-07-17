@@ -44,7 +44,7 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
 
 
 
-var videos = document.querySelectorAll('video:not(.first_vid)');
+var videos = document.querySelectorAll('video:not(.first_video)');
 videos.forEach( video => {
   video.addEventListener('ended', function() {
     video.load();
@@ -60,7 +60,7 @@ videos.forEach( video => {
 
 const back_btn = () => {
   let screen_menu = document.querySelector('.screen_menu');
-  let fist_video = document.querySelector('.first_vid');
+  let fist_video = document.querySelector('video.first_video');
 
   if(screen_menu.className == 'screen_menu') {
     altClassFromSelector('first_video', '.screen_menu');
@@ -70,7 +70,7 @@ const back_btn = () => {
   else {
 
     altClassFromSelector('', '.screen_menu', ['screen_menu']);
-    var videos = document.querySelectorAll('video:not(.first_vid)');
+    var videos = document.querySelectorAll('video:not(.first_video)');
     videos.forEach( video => {
       video.load()
     });
@@ -104,13 +104,13 @@ const play_video = slug => {
 
 function first_vid_init () {
   // First video ended
-  let first_vid = document.querySelector('.first_vid');
+  let first_vid = document.querySelector('video.first_video');
   first_vid.addEventListener('ended', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });
 
   // First video not loaded
-  let first_vid_source = document.querySelector('.first_vid source:last-child');
+  let first_vid_source = document.querySelector('video.first_video source:last-child');
 
   first_vid_source.addEventListener('error', () => {
     altClassFromSelector('first_video', '.screen_menu');
@@ -205,4 +205,65 @@ function out_animate(animation_screen) {
   setTimeout(() => {
     animation_screen.remove();
   }, 1000);
+}
+
+
+
+
+
+
+// Inactivity redirect
+// inactivity_timer and redirect_time are variables in global space
+
+// Start interactivity timer
+function start_inactivity_redirect() {
+  return setTimeout(() => {
+    window.location.href = 'index.php';
+  }, redirect_time * 1000);
+}
+
+// Reset interactivity timer
+function reset_inactivity_redirect() {
+  stop_inactivity_redirect();
+
+  // Solo detiene la redirección en caso de que esté un video en playing
+  let current_screen = document.querySelector('.screen_menu');
+  let current_option = current_screen.classList[current_screen.classList.length - 1];
+  let current_video;
+
+  if(current_option == 'first_video') current_video = current_screen.querySelector('.first_video.video_player');
+  else current_video = current_screen.querySelector(`.menem.${current_option} .video_player`);
+
+  if(!current_video) inactivity_timer = start_inactivity_redirect();
+}
+
+// Stop interactivity timer
+const stop_inactivity_redirect = () => {
+  window.clearTimeout(inactivity_timer);
+}
+
+// Inactivity definition
+const inactivity_in_videos = () => {
+  let videos = document.querySelectorAll('video');
+
+  videos.forEach(video => {
+    // No Inactivity when video start
+    video.addEventListener('play', () => {
+      stop_inactivity_redirect();
+    });
+
+    // Inactivity when video end
+    video.addEventListener('ended', () => {
+      inactivity_timer = start_inactivity_redirect();
+    });
+  });
+}
+
+// Activity definition
+const activity_definition = (activity_events) => {
+  activity_events.forEach(event => {
+    window.addEventListener(event, () => {
+      reset_inactivity_redirect();
+    });
+  });
 }
