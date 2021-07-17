@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,9 +9,14 @@
   <!-- <title><?=$ELEMS["TIT_INTERACTIVO"]?></title> -->
   <title>Big Data</title>
   <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
+
+
+
+
   <main class="screen">
     <!-- Top panel -->
     <section class="panel panel_top">
@@ -77,6 +84,117 @@
     </div>
   </main>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <?php
+
+  $farm = array(
+    'total' => '44',
+    'donut_data' => array(
+      0 => ['value' => 31, 'color' => "#b4e1a8"],
+      1 => ['value' => 7, 'color' => "#e6984f"],
+      2 => ['value' => 4, 'color' => "#b93b3e"],
+      3 => ['value' => 2, 'color' => "#d9d9da"],
+    ),
+  );
+
+
+  $piscina = array(
+    'slug' => 'piscina-2',
+    'title' => 'Piscina 2',
+    'clima' => array(
+      'icon' => 'viento',
+      'temperature_min' => '22,8°',
+      'temperature_min' => '29,6°',
+      'temperature_min' => '22,2°',
+      'humidity' => '25%',
+      'wind_speed' => '16,7 km/h'
+    ),
+    'sensors' => array(
+      0 => array(
+        'slug' => 'ph',
+        'title' => 'pH',
+        'min' => '0',
+        'max' => '14',
+        'value' => '11',
+        'unit' => '',
+        'donut_data' => array(
+          0 => ['value' => 14 * 0.5, 'color' => "#b93b3e"],
+          1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8"],
+          2 => ['value' => 14 * 0.3, 'color' => "#b93b3e"],
+        ),
+      ),
+      1 => array(
+        'slug' => 'oxigen',
+        'title' => 'Oxígeno',
+        'min' => '0',
+        'max' => '10',
+        'value' => '4,46',
+        'unit' => 'mg/l',
+        'donut_data' => array(
+          0 => ['value' => 10 * 0.4, 'color' => "#b93b3e"],
+          1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8"],
+        ),
+      ),
+      2 => array(
+        'slug' => 'salinity',
+        'title' => 'Salinidad',
+        'min' => '0',
+        'max' => '40',
+        'value' => '38',
+        'unit' => 'g/l',
+        'donut_data' => array(
+          0 => ['value' => 40 * 0.1, 'color' => "#e6984f"],
+          1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8"],
+        ),
+      ),
+      3 => array(
+        'slug' => 'temperature',
+        'title' => 'Temperatura',
+        'min' => '0',
+        'max' => '40',
+        'value' => '20',
+        'unit' => '°C',
+        'donut_data' => array(
+          0 => ['value' => 40 * 0.55, 'color' => "#e6984f"],
+          1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8"],
+        ),
+      ),
+    ),
+  );
+
+
+
+
+  ?>
+
+
   <!-- Widget screens -->
   <main class="screen">
     <section class="screen_widgets rowcol1">
@@ -105,7 +223,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="widget_footer_right">
               <div class="widget_footer_lino">
                 <img class="widget_footer_nor_icon" src="icons/test3.png">
@@ -120,15 +238,26 @@
           </footer>
         </section>
 
+
+
+        <!-- FARM PART -->
         <section class="widget widget_status">
           <header class="widget_header">
             <h1 class="widget_title">Estado de la granja</h1>
           </header>
 
           <div class="donut_graph Donut_Status">
-            <div class="donut_graph_count">44</div>
+            <?php
+            $count_pools = 0;
+            foreach ($farm as $value) {
+              $count_pools += $value['value'];
+            }
+             ?>
+            <div class="donut_graph_count"><?= $count_pools ?></div>
             <div class="donut_graph_deco"></div>
           </div>
+
+
 
           <ul class="widget_footer">
             <li class="widget_footer_text">
@@ -152,172 +281,58 @@
             </li>
           </ul>
         </section>
+        <script>
+          let donut_radius = 45;
+          let donut_max_value = parseFloat(<?= $farm['total'] ?>);
+          let donut_data = <?= json_encode($farm['donut_data']); ?>;
+
+          create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
+
+        </script>
+
+
+
       </div>
 
       <div class="set_widgets set_widgets_sm">
-        <section class="widget widget_status widget_status_sm">
-          <header class="widget_header">
-            <h1 class="widget_title">pH</h1>
-            <p class="widget_footer_int">11</p>
-          </header>
 
-          <div class="donut_graph Donut_PH">
-            <div class="donut_graph_indicator" data-value="11"></div>
-          </div>
+        <?php
+        foreach ($piscina['sensors'] as $value) { ?>
+          <section class="widget widget_status widget_status_sm">
+            <header class="widget_header">
+              <h1 class="widget_title"><?= $value['title'] ?></h1>
+              <p class="widget_footer_int"><?= $value['value'] ?></p>
+            </header>
 
-          <ul class="widget_footer">
-            <li class="widget_footer_text">
-              <p>Min: 0</p>
-            </li>
+            <div class="donut_graph <?= $value['slug'] ?>">
+              <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div>
+            </div>
 
-            <li class="widget_footer_text">
-              <p>Max: 14</p>
-            </li>
-          </ul>
-        </section>
+            <ul class="widget_footer">
+              <li class="widget_footer_text">
+                <p>Min: <?= $value['min'].$value['unit'] ?></p>
+              </li>
 
-        <section class="widget widget_status widget_status_sm">
-          <header class="widget_header">
-            <h1 class="widget_title">Oxígeno</h1>
-            <p class="widget_footer_int">4,46 mg/l</p>
-          </header>
+              <li class="widget_footer_text">
+                <p>Max: <?= $value['max'].$value['unit'] ?></p>
+              </li>
+            </ul>
+          </section>
+          <script>
+          // --------------------------- Estimado de los valores en buen y mal estado
+          donut_max_value = parseFloat(<?= $value['max'] ?>);
+          console.log(donut_max_value);
 
-          <div class="donut_graph Donut_Oxygen">
-            <div class="donut_graph_indicator" data-value="4.46"></div>
-          </div>
+          donut_data = <?= json_encode($value['donut_data']); ?>;
+          create_donut_graph(45, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
 
-          <ul class="widget_footer">
-            <li class="widget_footer_text">
-              <p>Min: 0 mg/l</p>
-            </li>
+          </script>
+        <?php } ?>
 
-            <li class="widget_footer_text">
-              <p>Max: 10 mg/l</p>
-            </li>
-          </ul>
-        </section>
 
-        <section class="widget widget_status widget_status_sm">
-          <header class="widget_header">
-            <h1 class="widget_title">Salinidad</h1>
-            <p class="widget_footer_int">38 g/l</p>
-          </header>
-
-          <div class="donut_graph Donut_Salinity">
-            <div class="donut_graph_indicator" data-value="38"></div>
-          </div>
-
-          <ul class="widget_footer">
-            <li class="widget_footer_text">
-              <p>Min: 0 g/l</p>
-            </li>
-
-            <li class="widget_footer_text">
-              <p>Max: 40 g/l</p>
-            </li>
-          </ul>
-        </section>
-
-        <section class="widget widget_status widget_status_sm">
-          <header class="widget_header">
-            <h1 class="widget_title">Temperatura</h1>
-            <p class="widget_footer_int">20° C</p>
-          </header>
-
-          <div class="donut_graph Donut_Temperature">
-            <div class="donut_graph_indicator" data-value="20"></div>
-          </div>
-
-          <ul class="widget_footer">
-            <li class="widget_footer_text">
-              <p>Min: 0° C</p>
-            </li>
-
-            <li class="widget_footer_text">
-              <p>Max: 40° C</p>
-            </li>
-          </ul>
-        </section>
       </div>
     </section>
   </main>
 
-  <script type="text/javascript" src="js/main.js"></script>
-  <script>
-    let donut_radius = 45;
-    let donut_max_value = 44;
-
-    // ---------------------------
-    let donut_data = [{
-      value  : 31,
-      color : "#b4e1a8",
-    },{
-      value  : 7,
-      color : "#e6984f",
-    },{
-      value  : 4,
-      color : "#b93b3e",
-    },{
-      value  : 2,
-      color : "#d9d9da",
-    }];
-    
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
-
-    // --------------------------- Estimado de los valores en buen y mal estado
-    donut_max_value = 14;
-
-    donut_data = [{
-      value  : donut_max_value * 0.5,
-      color : "#b93b3e",
-    }, {
-      value  : donut_max_value * 0.20,
-      color : "#b4e1a8",
-    }, {
-      value  : donut_max_value * 0.30,
-      color : "#b93b3e",
-    }];
-    
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_PH');
-
-    // --------------------------- Estimado de los valores en buen y mal estado
-    donut_max_value = 10;
-
-    donut_data = [{
-      value  : donut_max_value * 0.4,
-      color : "#b93b3e",
-    }, {
-      value  : donut_max_value * 0.60,
-      color : "#b4e1a8",
-    }];
-    
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Oxygen');
-
-    // --------------------------- Estimado de los valores en buen y mal estado
-    donut_max_value = 40;
-
-    donut_data = [{
-      value  : donut_max_value * 0.10,
-      color : "#e6984f",
-    }, {
-      value  : donut_max_value * 0.90,
-      color : "#b4e1a8",
-    }];
-    
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Salinity');
-
-    // --------------------------- Estimado de los valores en buen y mal estado
-    donut_max_value = 40;
-
-    donut_data = [{
-      value  : donut_max_value * 0.55,
-      color : "#e6984f",
-    }, {
-      value  : donut_max_value * 0.45,
-      color : "#b4e1a8",
-    }];
-    
-    create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Temperature');
-  </script>
 </body>
 </html>
