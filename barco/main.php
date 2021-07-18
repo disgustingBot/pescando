@@ -20,23 +20,6 @@ foreach ($barcos as $barco) {
   $clickables[$barco['bde_id']] = get_clickables($barco['bde_id']);
 }
 
-
-// var_dump(json_encode($clickables));
-// echo "<br>";
-// echo "<br>";
-// var_dump($barcos);
-// echo "<br>";
-// echo "<br>";
-// var_dump($clickables[2]);
-// echo "<br>";
-// echo "<br>";
-
-// TODO: cambiar el svg
-// DE PEPUS PARA SOFIA acuérdate que los nombres de los clickables cambian a general / cocina / factoria / camarotes / cubierta / comedor / salamaquinas / salacontrol
-// Lo ideal sería crear una funcion get_clickables, de momento créala aquí y yo ya la trasladaré al inc.funcs.php del webadmin
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="es">

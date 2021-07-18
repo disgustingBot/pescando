@@ -1,5 +1,25 @@
+<?php
+  require_once("inc.config.php");
+  require_once("../inc.basic.php");
+  require_once("../inc.registra_visita.php");
+  require_once("../inc.salvapantallas.php");
+  require_once("../inc.alive.php");
 
 
+$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
+
+
+
+
+$piscinas = get_piscinas();
+$videos = get_videos_big_data();
+
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,45 +54,18 @@
 
     <!-- Right panel -->
     <section class="panel panel_right">
-      <div class="viday">
-        <div class="viday_media">
-          <video class="viday_video" poster="">
-            <source src="" type="video/mp4">
-          </video>
+      <?php foreach ($videos as $video) { ?>
+
+        <div class="viday">
+          <div class="viday_media">
+            <video class="viday_video" poster="">
+              <!-- <source src="" type="video/mp4"> -->
+            </video>
+          </div>
+
+          <p class="viday_caption"><?= $video['title'] ?></p>
         </div>
-
-        <p class="viday_caption">¿Qué es el big data?</p>
-      </div>
-
-      <div class="viday">
-        <div class="viday_media">
-          <video class="viday_video" poster="">
-            <source src="" type="video/mp4">
-          </video>
-        </div>
-
-        <p class="viday_caption">Big data en Nueva Pescanova</p>
-      </div>
-
-      <div class="viday">
-        <div class="viday_media">
-          <video class="viday_video" poster="">
-            <source src="" type="video/mp4">
-          </video>
-        </div>
-
-        <p class="viday_caption">¿Qué datos analizamos?</p>
-      </div>
-
-      <div class="viday">
-        <div class="viday_media">
-          <video class="viday_video" poster="">
-            <source src="" type="video/mp4">
-          </video>
-        </div>
-
-        <p class="viday_caption">El futuro</p>
-      </div>
+      <?php } ?>
     </section>
 
     <!-- Pool screens -->
@@ -80,257 +73,24 @@
       <img class="rowcol1 screen_pools_interactive" src="icons/fondo-menu.jpg">
       <div class="rowcol1 screen_pools_interactive">
         <?= file_get_contents('icons/otrosbig/esp-piscina-noselec.svg'); ?>
+          <script>
+          let piscinas = <?= json_encode($piscinas) ?>;
+          piscinas.forEach( piscina => {
+            document.querySelector('#'+piscina.slug).onclick = _ => {
+              altClassFromSelector('selected', '#'+piscina.slug)
+              setCookie('slug', piscina.slug, 1)
+            }
+          });
+          </script>
       </div>
     </div>
   </main>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <?php
-
-  $farm = array(
-    'donut_data' => array(
-      0 => ['value' => 31, 'color' => "#b4e1a8", 'order' => 5 ],
-      1 => ['value' => 7,  'color' => "#e6984f", 'order' => 10],
-      2 => ['value' => 4,  'color' => "#b93b3e", 'order' => 15],
-      3 => ['value' => 2,  'color' => "#d9d9da", 'order' => 20],
-    ),
-  );
-
-
-  $piscina = array(
-    'slug' => 'piscina-2',
-    'title' => 'Piscina 2',
-    'clima' => array(
-      'icon' => 'poco-nuboso',
-      'temperature'     => '22,8°',
-      'temperature_max' => '29,6°',
-      'temperature_min' => '22,2°',
-      'humidity' => '25%',
-      'wind_speed' => '16,7 km/h'
-    ),
-    'sensors' => array(
-      0 => array(
-        'slug' => 'ph',
-        'title' => 'pH',
-        'min' => '0',
-        'max' => '14',
-        'value' => '11',
-        'unit' => '',
-        'donut_data' => array(
-          0 => ['value' => 14 * 0.5, 'color' => "#b93b3e", 'order' => 5 ],
-          1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8", 'order' => 10],
-          2 => ['value' => 14 * 0.3, 'color' => "#b93b3e", 'order' => 15],
-        ),
-      ),
-      1 => array(
-        'slug' => 'oxigen',
-        'title' => 'Oxígeno',
-        'min' => '0',
-        'max' => '10',
-        'value' => '4,46',
-        'unit' => 'mg/l',
-        'donut_data' => array(
-          0 => ['value' => 10 * 0.4, 'color' => "#b93b3e", 'order' => 5 ],
-          1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8", 'order' => 10],
-        ),
-      ),
-      2 => array(
-        'slug' => 'salinity',
-        'title' => 'Salinidad',
-        'min' => '0',
-        'max' => '40',
-        'value' => '38',
-        'unit' => 'g/l',
-        'donut_data' => array(
-          0 => ['value' => 40 * 0.1, 'color' => "#e6984f", 'order' => 5 ],
-          1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8", 'order' => 10],
-        ),
-      ),
-      3 => array(
-        'slug' => 'temperature',
-        'title' => 'Temperatura',
-        'min' => '0',
-        'max' => '40',
-        'value' => '20',
-        'unit' => '°C',
-        'donut_data' => array(
-          0 => ['value' => 40 * 0.55, 'color' => "#e6984f", 'order' => 5 ],
-          1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8", 'order' => 10],
-        ),
-      ),
-    ),
-  );
-
-
-
-
-  ?>
-
-
-  <!-- Widget screens -->
-  <main class="screen">
-    <section class="screen_widgets rowcol1">
-      <div class="set_widgets set_widgets_md">
-        <section class="widget widget_main">
-          <header class="widget_header">
-            <h1 class="widget_title"><?= $piscina['title'] ?></h1>
-            <img class="widget_header_icon" src="icons/meteo/<?= $piscina['clima']['icon'] ?>.svg">
-          </header>
-
-          <footer class="widget_footer">
-            <div class="widget_footer_left">
-              <img class="widget_footer_icon" src="icons/test1.png">
-
-              <div class="widget_footer_lina">
-                <p class="widget_footer_int"><?= $piscina['clima']['temperature'] ?></p>
-
-                <div class="widget_footer_lino">
-                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-arriba.svg">
-                  <p class="widget_footer_low"><?= $piscina['clima']['temperature_max'] ?></p>
-                </div>
-
-                <div class="widget_footer_lino">
-                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-abajo.svg">
-                  <p class="widget_footer_low"><?= $piscina['clima']['temperature_min'] ?></p>
-                </div>
-              </div>
-            </div>
-
-            <div class="widget_footer_right">
-              <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/otrosbig/lluvia-dato.svg">
-                <p class="widget_footer_nor"><?= $piscina['clima']['humidity'] ?></p>
-              </div>
-
-              <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/meteo/viento.svg">
-                <p class="widget_footer_nor"><?= $piscina['clima']['wind_speed'] ?></p>
-              </div>
-            </div>
-          </footer>
-        </section>
-
-
-
-
-        <!-- FARM PART -->
-        <section class="widget widget_status">
-          <header class="widget_header">
-            <h1 class="widget_title">Estado de la granja</h1>
-          </header>
-
-          <div class="donut_graph Donut_Status">
-            <?php
-            $count_pools = 0;
-            foreach ($farm['donut_data'] as $value) {
-              $count_pools += $value['value'];
-            }
-             ?>
-            <div class="donut_graph_count"><?= $count_pools ?></div>
-            <div class="donut_graph_deco"></div>
-          </div>
-
-
-
-          <ul class="widget_footer">
-            <li class="widget_footer_text">
-              <i class="widget_footer_text_icon" style="background-color: #b4e1a8"></i>
-              <p>Piscinas sin alertas</p>
-            </li>
-
-            <li class="widget_footer_text">
-              <i class="widget_footer_text_icon" style="background-color: #e6984f"></i>
-              <p>Piscinas que requieren atención</p>
-            </li>
-
-            <li class="widget_footer_text">
-              <i class="widget_footer_text_icon" style="background-color: #b93b3e"></i>
-              <p>Piscinas con avisos</p>
-            </li>
-
-            <li class="widget_footer_text">
-              <i class="widget_footer_text_icon" style="background-color: #d9d9da"></i>
-              <p>Inactivo</p>
-            </li>
-          </ul>
-        </section>
-        <script>
-          let donut_radius = 45;
-          let donut_max_value = parseFloat(<?= $count_pools ?>);
-          let donut_data = <?= json_encode($farm['donut_data']); ?>;
-          console.log(donut_data);
-          console.log('test');
-
-          create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
-
-        </script>
-
-
-
-      </div>
-
-      <div class="set_widgets set_widgets_sm">
-
-        <?php
-        foreach ($piscina['sensors'] as $value) { ?>
-          <section class="widget widget_status widget_status_sm">
-            <header class="widget_header">
-              <h1 class="widget_title"><?= $value['title'] ?></h1>
-              <p class="widget_footer_int"><?= $value['value'] ?></p>
-            </header>
-
-            <div class="donut_graph <?= $value['slug'] ?>">
-              <!-- <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div> -->
-              <img src="icons/otrosbig/puntero.svg" class="donut_graph_indicator" data-value="<?= $value['value'] ?>">
-            </div>
-
-            <ul class="widget_footer">
-              <li class="widget_footer_text">
-                <p>Min: <?= $value['min'].$value['unit'] ?></p>
-              </li>
-
-              <li class="widget_footer_text">
-                <p>Max: <?= $value['max'].$value['unit'] ?></p>
-              </li>
-            </ul>
-          </section>
-          <script>
-            donut_max_value = parseFloat(<?= $value['max'] ?>);
-
-            donut_data = <?= json_encode($value['donut_data']); ?>;
-
-            create_donut_graph(donut_radius, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
-          </script>
-        <?php } ?>
-      </div>
-    </section>
-  </main>
-
+  <script type="text/javascript">
+    // setCookie('show', 'piscina', 1)
+    // setCookie('slug', 'piscina2', 1)
+    // console.log(setCookie('test', 'Hello world', 1));
+  </script>
 </body>
 </html>

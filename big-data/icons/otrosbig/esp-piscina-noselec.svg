@@ -82,7 +82,7 @@
   <title>esp-piscina-noselecAsset 4</title>
   <g class="cls-1">
     <g id="Layer_2" data-name="Layer 2">
-      <g id="piscina4" onclick="altClassFromSelector('selected', '#piscina4', ['selected']);">
+      <g id="piscina4">
         <path class="cls-2" d="M853.77,263.59,365.91,702.51H1918.5V419.3Z" />
         <path class="cls-3" d="M853.77,263.59,365.91,702.51H1918.5V419.3Z" />
         <path class="cls-4" d="M984,503a12.5,12.5,0,1,0-12.5-12.5A12.52,12.52,0,0,0,984,503" /><text class="cls-5"
@@ -95,7 +95,7 @@
           <tspan x="144" y="0">4</tspan>
         </text>
       </g>
-      <g id="piscina3" onclick="altClassFromSelector('selected', '#piscina3', ['selected']);">
+      <g id="piscina3">
         <path class="cls-2" d="M814.15,206.93,125.52,702.51H1.5V123.17l100.58-25.6Z" />
         <path class="cls-3" d="M814.15,206.93,125.52,702.51H1.5V123.17l100.58-25.6Z" />
         <path class="cls-4" d="M344,310.51A12.5,12.5,0,1,0,331.5,298a12.52,12.52,0,0,0,12.5,12.5" /><text class="cls-5"
@@ -106,7 +106,7 @@
           <tspan x="144.05" y="0">3</tspan>
         </text>
       </g>
-      <g id="piscina2" onclick="altClassFromSelector('selected', '#piscina2', ['selected']);">
+      <g id="piscina2">
         <polygon class="cls-2" points="868 244.01 1082 72.01 1920 132.01 1920 402.01 868 244.01" />
         <path class="cls-3" d="M871.61,243,1082.48,73.55l836,59.85V400.27Z" /><text class="cls-11"
           transform="translate(1096.71 226.13)">PIS<tspan class="cls-12" x="52.5" y="0">C</tspan>
@@ -117,7 +117,7 @@
         </text>
         <path class="cls-4" d="M1176,182.51a12.5,12.5,0,1,0-12.5-12.5,12.52,12.52,0,0,0,12.5,12.5" />
       </g>
-      <g id="piscina1" onclick="altClassFromSelector('selected', '#piscina1', ['selected']);">
+      <g id="piscina1">
         <path class="cls-2" d="M839.6,190.43,1073.92,15.18,904.59,1.5l-560.36,28L127.55,85.6Z" />
         <path class="cls-3" d="M839.6,190.43,1073.92,15.18,904.59,1.5l-560.36,28L127.55,85.6Z" />
         <path class="cls-4" d="M727.29,85.24a12.5,12.5,0,1,0-12.5-12.5,12.52,12.52,0,0,0,12.5,12.5" /><text
