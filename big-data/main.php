@@ -37,7 +37,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -47,7 +47,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -57,7 +57,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -67,7 +67,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -77,9 +77,9 @@
 
     <!-- Pool screens -->
     <div class="screen_pools rowcol1">
-      <img class="rowcol1 screen_pools_interactive" src="../images/background/flota-fondo.jpg">
+      <img class="rowcol1 screen_pools_interactive" src="icons/fondo-menu.jpg">
       <div class="rowcol1 screen_pools_interactive">
-        <?= file_get_contents('piscinas-botones-click.svg'); ?>
+        <?= file_get_contents('icons/otrosbig/esp-piscina-noselec.svg'); ?>
       </div>
     </div>
   </main>
@@ -197,7 +197,7 @@
         <section class="widget widget_main">
           <header class="widget_header">
             <h1 class="widget_title">Piscina 2</h1>
-            <img class="widget_header_icon" src="icons/test2.png">
+            <img class="widget_header_icon" src="icons/meteo/poco-nuboso.svg">
           </header>
 
           <footer class="widget_footer">
@@ -208,12 +208,12 @@
                 <p class="widget_footer_int">22,8°</p>
 
                 <div class="widget_footer_lino">
-                  <i class="widget_triangle_icon_up"></i>
+                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-arriba.svg">
                   <p class="widget_footer_low">29,6°</p>
                 </div>
 
                 <div class="widget_footer_lino">
-                  <i class="widget_triangle_icon_down"></i>
+                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-abajo.svg">
                   <p class="widget_footer_low">22,2°</p>
                 </div>
               </div>
@@ -221,12 +221,12 @@
 
             <div class="widget_footer_right">
               <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/test3.png">
+                <img class="widget_footer_nor_icon" src="icons/otrosbig/lluvia-dato.svg">
                 <p class="widget_footer_nor">25%</p>
               </div>
 
               <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/test4.png">
+                <img class="widget_footer_nor_icon" src="icons/meteo/viento.svg">
                 <p class="widget_footer_nor">16,7 km/h</p>
               </div>
             </div>
@@ -300,7 +300,8 @@
             </header>
 
             <div class="donut_graph <?= $value['slug'] ?>">
-              <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div>
+              <!-- <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div> -->
+              <img src="icons/otrosbig/puntero.svg" class="donut_graph_indicator" data-value="<?= $value['value'] ?>">
             </div>
 
             <ul class="widget_footer">
