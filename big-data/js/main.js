@@ -127,10 +127,6 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
 
 
 
-function to_radians(degrees) {
-  return degrees * (Math.PI / 180);
-}
-
 
 
 

@@ -37,7 +37,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -47,7 +47,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -57,7 +57,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -67,7 +67,7 @@
       <div class="viday">
         <div class="viday_media">
           <video class="viday_video" poster="">
-            <source src="../hidrofonos/videos/HIDROFONO_PULPO_01.mp4" type="video/mp4">
+            <source src="" type="video/mp4">
           </video>
         </div>
 
@@ -77,9 +77,9 @@
 
     <!-- Pool screens -->
     <div class="screen_pools rowcol1">
-      <img class="rowcol1 screen_pools_interactive" src="../images/background/flota-fondo.jpg">
+      <img class="rowcol1 screen_pools_interactive" src="icons/fondo-menu.jpg">
       <div class="rowcol1 screen_pools_interactive">
-        <?= file_get_contents('piscinas-botones-click.svg'); ?>
+        <?= file_get_contents('icons/otrosbig/esp-piscina-noselec.svg'); ?>
       </div>
     </div>
   </main>
@@ -142,49 +142,44 @@
         'title' => 'pH',
         'min' => '0',
         'max' => '14',
+        'min_optimal' => '7',
+        'max_optimal' => '9.8',
         'value' => '11',
         'unit' => '',
-        'donut_data' => array(
-          0 => ['value' => 14 * 0.5, 'color' => "#b93b3e"],
-          1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8"],
-          2 => ['value' => 14 * 0.3, 'color' => "#b93b3e"],
-        ),
+        'color' => "#b93b3e",
       ),
       1 => array(
         'slug' => 'oxigen',
         'title' => 'Oxígeno',
         'min' => '0',
         'max' => '10',
+        'min_optimal' => '3',
+        'max_optimal' => '10',
         'value' => '4,46',
         'unit' => 'mg/l',
-        'donut_data' => array(
-          0 => ['value' => 10 * 0.4, 'color' => "#b93b3e"],
-          1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8"],
-        ),
+        'color' => "#b93b3e",
       ),
       2 => array(
         'slug' => 'salinity',
         'title' => 'Salinidad',
         'min' => '0',
         'max' => '40',
+        'min_optimal' => '4',
+        'max_optimal' => '40',
         'value' => '38',
         'unit' => 'g/l',
-        'donut_data' => array(
-          0 => ['value' => 40 * 0.1, 'color' => "#e6984f"],
-          1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8"],
-        ),
+        'color' => "#e6984f",
       ),
       3 => array(
         'slug' => 'temperature',
         'title' => 'Temperatura',
         'min' => '0',
         'max' => '40',
+        'min_optimal' => '25',
+        'max_optimal' => '40',
         'value' => '20',
         'unit' => '°C',
-        'donut_data' => array(
-          0 => ['value' => 40 * 0.55, 'color' => "#e6984f"],
-          1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8"],
-        ),
+        'color' => "#e6984f",
       ),
     ),
   );
@@ -202,7 +197,7 @@
         <section class="widget widget_main">
           <header class="widget_header">
             <h1 class="widget_title">Piscina 2</h1>
-            <img class="widget_header_icon" src="icons/test2.png">
+            <img class="widget_header_icon" src="icons/meteo/poco-nuboso.svg">
           </header>
 
           <footer class="widget_footer">
@@ -213,12 +208,12 @@
                 <p class="widget_footer_int">22,8°</p>
 
                 <div class="widget_footer_lino">
-                  <i class="widget_triangle_icon_up"></i>
+                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-arriba.svg">
                   <p class="widget_footer_low">29,6°</p>
                 </div>
 
                 <div class="widget_footer_lino">
-                  <i class="widget_triangle_icon_down"></i>
+                  <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-abajo.svg">
                   <p class="widget_footer_low">22,2°</p>
                 </div>
               </div>
@@ -226,12 +221,12 @@
 
             <div class="widget_footer_right">
               <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/test3.png">
+                <img class="widget_footer_nor_icon" src="icons/otrosbig/lluvia-dato.svg">
                 <p class="widget_footer_nor">25%</p>
               </div>
 
               <div class="widget_footer_lino">
-                <img class="widget_footer_nor_icon" src="icons/test4.png">
+                <img class="widget_footer_nor_icon" src="icons/meteo/viento.svg">
                 <p class="widget_footer_nor">16,7 km/h</p>
               </div>
             </div>
@@ -247,13 +242,13 @@
           </header>
 
           <div class="donut_graph Donut_Status">
-            <?php
+            <!-- <?php
             $count_pools = 0;
             foreach ($farm as $value) {
               $count_pools += $value['value'];
             }
-             ?>
-            <div class="donut_graph_count"><?= $count_pools ?></div>
+             ?> -->
+            <div class="donut_graph_count"><?= $farm['total'] ?></div>
             <div class="donut_graph_deco"></div>
           </div>
 
@@ -305,7 +300,8 @@
             </header>
 
             <div class="donut_graph <?= $value['slug'] ?>">
-              <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div>
+              <!-- <div class="donut_graph_indicator" data-value="<?= $value['value'] ?>"></div> -->
+              <img src="icons/otrosbig/puntero.svg" class="donut_graph_indicator" data-value="<?= $value['value'] ?>">
             </div>
 
             <ul class="widget_footer">
@@ -319,17 +315,27 @@
             </ul>
           </section>
           <script>
-          // --------------------------- Estimado de los valores en buen y mal estado
-          donut_max_value = parseFloat(<?= $value['max'] ?>);
-          console.log(donut_max_value);
+            donut_max_value = parseFloat(<?= $value['max'] ?>);
+            console.log(donut_max_value);
 
-          donut_data = <?= json_encode($value['donut_data']); ?>;
-          create_donut_graph(45, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
+            // donut_data = <?= json_encode($value['donut_data']); ?>;
+            donut_data = [{
+              // No optimo
+              'value' : parseFloat(<?= $value['min_optimal'] ?>),
+              'color' : '<?= $value['color'] ?>',
+            }, {
+              // Optimo
+              'value' : parseFloat(<?= abs($value['max_optimal']) - abs($value['min_optimal']) ?>),
+              'color' : '#b4e1a8',
+            }, {
+              // No optimo
+              'value' : parseFloat(<?= abs($value['max']) - abs($value['max_optimal']) ?>),
+              'color' : '<?= $value['color'] ?>',
+            }];
 
+            create_donut_graph(donut_radius, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
           </script>
         <?php } ?>
-
-
       </div>
     </section>
   </main>

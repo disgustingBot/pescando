@@ -25,6 +25,7 @@ MAPA DE CONTENIDOS:
   5.5) =donut_graph_indicator:
   5.6) =donut_graph_deco:
   5.7) =donut_graph_text:
+  5.8) =widget_arrow_icon:
 
 */
 
@@ -178,17 +179,23 @@ ul{
   pointer-events: all;
 } */
 
-.screen_pools_interactive path {
+.screen_pools_interactive {
+  display: flex;
+  align-items: flex-end;
+}
+
+.screen_pools_interactive g path {
   stroke: white;
-  stroke-width: 4px;
-  fill: #ffffff48;
   transition: 0.25s;
 }
 
-.screen_pools_interactive path.selected {
+.screen_pools_interactive g.selected path {
   stroke: #d6001c;
-  stroke-width: 4px;
-  fill: transparent;
+  fill: #0875bd36;
+}
+
+.screen_pools_interactive g text {
+  font-family: 'Lato Bold';
 }
 
 /* ---------------------------------------------------------------------------
@@ -586,15 +593,12 @@ ul{
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .donut_graph_indicator {
-  width: calc(var(--donut_graph_indicator_radius) * 2);
-  height: calc(var(--donut_graph_indicator_radius) * 2);
-  border-radius: 50%;
-  background-color: #9ab7cc;
+  width: 35px;
   position: absolute;
-  bottom: 15px;
+  bottom: var(--donut_graph_indicator_radius);
   left: 50%;
   transform: translateX(-50%) rotate(-90deg);
-  transform-origin: center;
+  transform-origin: center calc(100% - var(--donut_graph_indicator_radius));
 
   /* https://css-tricks.com/reversing-an-easing-curve/ */
   /* normal animation */
@@ -606,20 +610,6 @@ ul{
   --normal_curve: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
 
   transition: transform 1s var(--normal_curve);
-}
-
-.donut_graph_indicator::after {
-  --donut_graph_indicator_radius: 15px;
-
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, calc(var(--donut_graph_indicator_radius) * -1));
-  width: calc(var(--donut_graph_indicator_radius) / 2);
-  height: 120px;
-  background-color: inherit;
-  border-radius: 20px 20px 0 0;
 }
 
 /* ---------------------------------------------------------------------------
@@ -655,21 +645,11 @@ ul{
   font-size: 20px;
 }
 
-/* ------------------------------------------------------------------------------ */
-.widget_triangle_icon_up {
-  width: 0; 
-  height: 0; 
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  
-  border-bottom: 10px solid #9ab7cc;
-}
-
-.widget_triangle_icon_down {
-  width: 0; 
-  height: 0; 
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-
-  border-top: 10px solid #9ab7cc;
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.8) =widget_arrow_icon:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.widget_arrow_icon {
+  width: 22px;
 }

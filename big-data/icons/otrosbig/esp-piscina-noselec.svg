@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 704.01">
+  <defs>
+    <style>
+      .cls-1 {
+        isolation: isolate;
+      }
+
+      .cls-2 {
+        fill: #00587c;
+        opacity: 0;
+        mix-blend-mode: multiply;
+      }
+
+      .cls-3 {
+        fill: none;
+        stroke: #fff;
+      }
+
+      .cls-3,
+      .cls-4 {
+        stroke-width: 3px;
+      }
+
+      .cls-11,
+      .cls-4,
+      .cls-5 {
+        fill: #fff;
+      }
+
+      .cls-4 {
+        stroke: #99b6cb;
+      }
+
+      .cls-11,
+      .cls-5 {
+        font-size: 25px;
+        font-family: Lato-Black, Lato;
+      }
+
+      .cls-11,
+      .cls-6 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-8 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-12 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-13 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-14 {
+        letter-spacing: 0em;
+      }
+
+      .cls-15 {
+        letter-spacing: 0.2em;
+      }
+
+      .cls-16 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <title>esp-piscina-noselecAsset 4</title>
+  <g class="cls-1">
+    <g id="Layer_2" data-name="Layer 2">
+      <g id="piscina4" onclick="altClassFromSelector('selected', '#piscina4', ['selected']);">
+        <path class="cls-2" d="M853.77,263.59,365.91,702.51H1918.5V419.3Z" />
+        <path class="cls-3" d="M853.77,263.59,365.91,702.51H1918.5V419.3Z" />
+        <path class="cls-4" d="M984,503a12.5,12.5,0,1,0-12.5-12.5A12.52,12.52,0,0,0,984,503" /><text class="cls-5"
+          transform="translate(904.71 546.63)">
+          <tspan class="cls-6">PIS</tspan>
+          <tspan class="cls-7" x="52.5" y="0">C</tspan>
+          <tspan class="cls-6" x="73.9" y="0">I</tspan>
+          <tspan class="cls-8" x="86.9" y="0">NA</tspan>
+          <tspan class="cls-9" x="134.17" y="0"> </tspan>
+          <tspan x="144" y="0">4</tspan>
+        </text>
+      </g>
+      <g id="piscina3" onclick="altClassFromSelector('selected', '#piscina3', ['selected']);">
+        <path class="cls-2" d="M814.15,206.93,125.52,702.51H1.5V123.17l100.58-25.6Z" />
+        <path class="cls-3" d="M814.15,206.93,125.52,702.51H1.5V123.17l100.58-25.6Z" />
+        <path class="cls-4" d="M344,310.51A12.5,12.5,0,1,0,331.5,298a12.52,12.52,0,0,0,12.5,12.5" /><text class="cls-5"
+          transform="translate(264.71 354.13)">
+          <tspan class="cls-6">PISCI</tspan>
+          <tspan class="cls-7" x="86.92" y="0">N</tspan>
+          <tspan class="cls-10" x="110.8" y="0">A </tspan>
+          <tspan x="144.05" y="0">3</tspan>
+        </text>
+      </g>
+      <g id="piscina2" onclick="altClassFromSelector('selected', '#piscina2', ['selected']);">
+        <polygon class="cls-2" points="868 244.01 1082 72.01 1920 132.01 1920 402.01 868 244.01" />
+        <path class="cls-3" d="M871.61,243,1082.48,73.55l836,59.85V400.27Z" /><text class="cls-11"
+          transform="translate(1096.71 226.13)">PIS<tspan class="cls-12" x="52.5" y="0">C</tspan>
+          <tspan x="73.9" y="0">I</tspan>
+          <tspan class="cls-13" x="86.9" y="0">NA</tspan>
+          <tspan x="134.17" y="0"> </tspan>
+          <tspan class="cls-14" x="144" y="0">2</tspan>
+        </text>
+        <path class="cls-4" d="M1176,182.51a12.5,12.5,0,1,0-12.5-12.5,12.52,12.52,0,0,0,12.5,12.5" />
+      </g>
+      <g id="piscina1" onclick="altClassFromSelector('selected', '#piscina1', ['selected']);">
+        <path class="cls-2" d="M839.6,190.43,1073.92,15.18,904.59,1.5l-560.36,28L127.55,85.6Z" />
+        <path class="cls-3" d="M839.6,190.43,1073.92,15.18,904.59,1.5l-560.36,28L127.55,85.6Z" />
+        <path class="cls-4" d="M727.29,85.24a12.5,12.5,0,1,0-12.5-12.5,12.52,12.52,0,0,0,12.5,12.5" /><text
+          class="cls-11" transform="translate(648 128.86)">PIS<tspan class="cls-12" x="52.5" y="0">C</tspan>
+          <tspan class="cls-15" x="73.9" y="0">I</tspan>
+          <tspan class="cls-7" x="86.9" y="0">NA</tspan>
+          <tspan x="134.17" y="0"> </tspan>
+          <tspan class="cls-16" x="144" y="0">1</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
