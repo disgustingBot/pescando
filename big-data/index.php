@@ -10,7 +10,7 @@
 </head>
 
 <body>
-  <section class="screen screen_lang" style="background: url('../images/background/flota-fondo.jpg') no-repeat center center;">
+  <section class="screen screen_lang" style="background: url('icons/fondo.jpg') no-repeat center center;">
     <div class="screen_lang_icon">
       <!-- <img src="<?=$DIR_ICONS?>dedo-click.svg"> -->
       <img src="../icons/dedo-click.svg">
