@@ -111,16 +111,14 @@
 
 
 
-
   <?php
 
   $farm = array(
-    'total' => '44',
     'donut_data' => array(
-      0 => ['value' => 31, 'color' => "#b4e1a8"],
-      1 => ['value' => 7, 'color' => "#e6984f"],
-      2 => ['value' => 4, 'color' => "#b93b3e"],
-      3 => ['value' => 2, 'color' => "#d9d9da"],
+      0 => ['value' => 31, 'color' => "#b4e1a8", 'order' => 5 ],
+      1 => ['value' => 7,  'color' => "#e6984f", 'order' => 10],
+      2 => ['value' => 4,  'color' => "#b93b3e", 'order' => 15],
+      3 => ['value' => 2,  'color' => "#d9d9da", 'order' => 20],
     ),
   );
 
@@ -129,9 +127,9 @@
     'slug' => 'piscina-2',
     'title' => 'Piscina 2',
     'clima' => array(
-      'icon' => 'viento',
-      'temperature_min' => '22,8°',
-      'temperature_min' => '29,6°',
+      'icon' => 'poco-nuboso',
+      'temperature'     => '22,8°',
+      'temperature_max' => '29,6°',
       'temperature_min' => '22,2°',
       'humidity' => '25%',
       'wind_speed' => '16,7 km/h'
@@ -142,44 +140,49 @@
         'title' => 'pH',
         'min' => '0',
         'max' => '14',
-        'min_optimal' => '7',
-        'max_optimal' => '9.8',
         'value' => '11',
         'unit' => '',
-        'color' => "#b93b3e",
+        'donut_data' => array(
+          0 => ['value' => 14 * 0.5, 'color' => "#b93b3e", 'order' => 5 ],
+          1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8", 'order' => 10],
+          2 => ['value' => 14 * 0.3, 'color' => "#b93b3e", 'order' => 15],
+        ),
       ),
       1 => array(
         'slug' => 'oxigen',
         'title' => 'Oxígeno',
         'min' => '0',
         'max' => '10',
-        'min_optimal' => '3',
-        'max_optimal' => '10',
         'value' => '4,46',
         'unit' => 'mg/l',
-        'color' => "#b93b3e",
+        'donut_data' => array(
+          0 => ['value' => 10 * 0.4, 'color' => "#b93b3e", 'order' => 5 ],
+          1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8", 'order' => 10],
+        ),
       ),
       2 => array(
         'slug' => 'salinity',
         'title' => 'Salinidad',
         'min' => '0',
         'max' => '40',
-        'min_optimal' => '4',
-        'max_optimal' => '40',
         'value' => '38',
         'unit' => 'g/l',
-        'color' => "#e6984f",
+        'donut_data' => array(
+          0 => ['value' => 40 * 0.1, 'color' => "#e6984f", 'order' => 5 ],
+          1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8", 'order' => 10],
+        ),
       ),
       3 => array(
         'slug' => 'temperature',
         'title' => 'Temperatura',
         'min' => '0',
         'max' => '40',
-        'min_optimal' => '25',
-        'max_optimal' => '40',
         'value' => '20',
         'unit' => '°C',
-        'color' => "#e6984f",
+        'donut_data' => array(
+          0 => ['value' => 40 * 0.55, 'color' => "#e6984f", 'order' => 5 ],
+          1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8", 'order' => 10],
+        ),
       ),
     ),
   );
@@ -196,8 +199,8 @@
       <div class="set_widgets set_widgets_md">
         <section class="widget widget_main">
           <header class="widget_header">
-            <h1 class="widget_title">Piscina 2</h1>
-            <img class="widget_header_icon" src="icons/meteo/poco-nuboso.svg">
+            <h1 class="widget_title"><?= $piscina['title'] ?></h1>
+            <img class="widget_header_icon" src="icons/meteo/<?= $piscina['clima']['icon'] ?>.svg">
           </header>
 
           <footer class="widget_footer">
@@ -205,16 +208,16 @@
               <img class="widget_footer_icon" src="icons/test1.png">
 
               <div class="widget_footer_lina">
-                <p class="widget_footer_int">22,8°</p>
+                <p class="widget_footer_int"><?= $piscina['clima']['temperature'] ?></p>
 
                 <div class="widget_footer_lino">
                   <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-arriba.svg">
-                  <p class="widget_footer_low">29,6°</p>
+                  <p class="widget_footer_low"><?= $piscina['clima']['temperature_max'] ?></p>
                 </div>
 
                 <div class="widget_footer_lino">
                   <img class="widget_arrow_icon" src="icons/otrosbig/flecha-azul-abajo.svg">
-                  <p class="widget_footer_low">22,2°</p>
+                  <p class="widget_footer_low"><?= $piscina['clima']['temperature_min'] ?></p>
                 </div>
               </div>
             </div>
@@ -222,16 +225,17 @@
             <div class="widget_footer_right">
               <div class="widget_footer_lino">
                 <img class="widget_footer_nor_icon" src="icons/otrosbig/lluvia-dato.svg">
-                <p class="widget_footer_nor">25%</p>
+                <p class="widget_footer_nor"><?= $piscina['clima']['humidity'] ?></p>
               </div>
 
               <div class="widget_footer_lino">
                 <img class="widget_footer_nor_icon" src="icons/meteo/viento.svg">
-                <p class="widget_footer_nor">16,7 km/h</p>
+                <p class="widget_footer_nor"><?= $piscina['clima']['wind_speed'] ?></p>
               </div>
             </div>
           </footer>
         </section>
+
 
 
 
@@ -242,13 +246,13 @@
           </header>
 
           <div class="donut_graph Donut_Status">
-            <!-- <?php
+            <?php
             $count_pools = 0;
-            foreach ($farm as $value) {
+            foreach ($farm['donut_data'] as $value) {
               $count_pools += $value['value'];
             }
-             ?> -->
-            <div class="donut_graph_count"><?= $farm['total'] ?></div>
+             ?>
+            <div class="donut_graph_count"><?= $count_pools ?></div>
             <div class="donut_graph_deco"></div>
           </div>
 
@@ -278,8 +282,10 @@
         </section>
         <script>
           let donut_radius = 45;
-          let donut_max_value = parseFloat(<?= $farm['total'] ?>);
+          let donut_max_value = parseFloat(<?= $count_pools ?>);
           let donut_data = <?= json_encode($farm['donut_data']); ?>;
+          console.log(donut_data);
+          console.log('test');
 
           create_donut_graph(donut_radius, donut_max_value, donut_data, '.Donut_Status', 7);
 
@@ -316,22 +322,8 @@
           </section>
           <script>
             donut_max_value = parseFloat(<?= $value['max'] ?>);
-            console.log(donut_max_value);
 
-            // donut_data = <?= json_encode($value['donut_data']); ?>;
-            donut_data = [{
-              // No optimo
-              'value' : parseFloat(<?= $value['min_optimal'] ?>),
-              'color' : '<?= $value['color'] ?>',
-            }, {
-              // Optimo
-              'value' : parseFloat(<?= abs($value['max_optimal']) - abs($value['min_optimal']) ?>),
-              'color' : '#b4e1a8',
-            }, {
-              // No optimo
-              'value' : parseFloat(<?= abs($value['max']) - abs($value['max_optimal']) ?>),
-              'color' : '<?= $value['color'] ?>',
-            }];
+            donut_data = <?= json_encode($value['donut_data']); ?>;
 
             create_donut_graph(donut_radius, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
           </script>
