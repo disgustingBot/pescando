@@ -160,11 +160,11 @@
     $ara->SMTPAuth = true;
 
     $ara->CharSet = 'UTF-8';
-    
+
     $ara->Host = "authsmtp.pescanova.com";
     $ara->Username = "noreply@pescanova.com";
     $ara->Password = "yM73nRoe22P!";
-    
+
     if ( $from == "" ) $ara->From = "noreply@pescanova.com";
     else $ara->From = $from;
     if ( $from_name == "" ) $ara->FromName = "Pescanova";
@@ -250,9 +250,9 @@
 
   function Percent($total, $num ) {
     if ( $total == 0 ) return 0;
-    
+
     $calc = ($num * 100 ) / $total;
-    
+
     return $calc;
   }
 
@@ -379,7 +379,7 @@
 
   function get_sounds(){
     global $conn;
-    
+
     $sounds = array();
     $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'sonidos' AND referred_id = son_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_son
                     FROM pesca_sonidos WHERE son_status = 'A' ORDER BY son_orden";
@@ -397,7 +397,7 @@
 
   function get_ship_types() {
     global $conn;
-    
+
     $ship_types = array();
     $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'descr') as tra_descr_tba
@@ -419,7 +419,7 @@
 
   function get_ships() {
     global $conn;
-    
+
     $ships = array();
     $qry = "SELECT * FROM pesca_barcos LEFT JOIN pesca_caladeros ON cal_id = bar_caladero WHERE cal_status = 'A' AND bar_status = 'A'";
     if ( $result = mysqli_query($conn, $qry) ) {
@@ -438,7 +438,7 @@
 
   function get_lineas(){
     global $conn;
-    
+
     $lineas = array();
     $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area
                     FROM pesca_areas WHERE are_status = 'A' ORDER BY are_orden";
@@ -532,4 +532,157 @@
   }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  function get_farm(){
+    $farm = array(
+      'donut_data' => array(
+        0 => ['value' => 31, 'color' => "#b4e1a8", 'order' => 5 ],
+        1 => ['value' => 7,  'color' => "#e6984f", 'order' => 10],
+        2 => ['value' => 4,  'color' => "#b93b3e", 'order' => 15],
+        3 => ['value' => 2,  'color' => "#d9d9da", 'order' => 20],
+      ),
+    );
+    return $farm;
+  }
+
+  function get_piscina($slug){
+    $piscina = array(
+      'slug' => 'piscina2',
+      'title' => $slug,
+      'clima' => array(
+        'icon' => 'poco-nuboso',
+        'temperature'     => '22,8°',
+        'temperature_max' => '29,6°',
+        'temperature_min' => '22,2°',
+        'humidity' => '25%',
+        'wind_speed' => '16,7 km/h'
+      ),
+      'sensors' => array(
+        0 => array(
+          'slug' => 'ph',
+          'title' => 'pH',
+          'min' => '0',
+          'max' => '14',
+          'value' => '11',
+          'unit' => '',
+          'donut_data' => array(
+            0 => ['value' => 14 * 0.5, 'color' => "#b93b3e", 'order' => 5 ],
+            1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8", 'order' => 10],
+            2 => ['value' => 14 * 0.3, 'color' => "#b93b3e", 'order' => 15],
+          ),
+        ),
+        1 => array(
+          'slug' => 'oxigen',
+          'title' => 'Oxígeno',
+          'min' => '0',
+          'max' => '10',
+          'value' => '4,46',
+          'unit' => 'mg/l',
+          'donut_data' => array(
+            0 => ['value' => 10 * 0.4, 'color' => "#b93b3e", 'order' => 5 ],
+            1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8", 'order' => 10],
+          ),
+        ),
+        2 => array(
+          'slug' => 'salinity',
+          'title' => 'Salinidad',
+          'min' => '0',
+          'max' => '40',
+          'value' => '38',
+          'unit' => 'g/l',
+          'donut_data' => array(
+            0 => ['value' => 40 * 0.1, 'color' => "#e6984f", 'order' => 5 ],
+            1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8", 'order' => 10],
+          ),
+        ),
+        3 => array(
+          'slug' => 'temperature',
+          'title' => 'Temperatura',
+          'min' => '0',
+          'max' => '40',
+          'value' => '20',
+          'unit' => '°C',
+          'donut_data' => array(
+            0 => ['value' => 40 * 0.55, 'color' => "#e6984f", 'order' => 5 ],
+            1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8", 'order' => 10],
+          ),
+        ),
+      ),
+    );
+    return $piscina;
+  }
+
+  function get_videos_big_data(){
+    $videos = array(
+      0 => array(
+        'slug' => 'video-1',
+        'title' => '¿Qué es el big data?',
+        'video' => 'video_name.mp4',
+        'image' => 'image_name.jpg',
+        'order' => 5,
+      ),
+      1 => array(
+        'slug' => 'video-2',
+        'title' => 'Big data en nueva pescanova',
+        'video' => 'video_name.mp4',
+        'image' => 'image_name.jpg',
+        'order' => 10,
+      ),
+      2 => array(
+        'slug' => 'video-3',
+        'title' => '¿Qué datos analizamos?',
+        'video' => 'video_name.mp4',
+        'image' => 'image_name.jpg',
+        'order' => 15,
+      ),
+      3 => array(
+        'slug' => 'video-4',
+        'title' => 'El futuro',
+        'video' => 'video_name.mp4',
+        'image' => 'image_name.jpg',
+        'order' => 20,
+      ),
+    );
+    return $videos;
+  }
+
+
+  function get_piscinas(){
+    $piscinas = array(
+      0 => array(
+        'slug' => 'piscina1',
+        'title' => 'Piscina 1',
+      ),
+      1 => array(
+        'slug' => 'piscina2',
+        'title' => 'Piscina 2',
+      ),
+      2 => array(
+        'slug' => 'piscina3',
+        'title' => 'Piscina 3',
+      ),
+      3 => array(
+        'slug' => 'piscina4',
+        'title' => 'Piscina 4',
+      ),
+    );
+    return $piscinas;
+  }
 ?>
