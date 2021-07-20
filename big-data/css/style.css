@@ -189,9 +189,18 @@ ul{
   transition: 0.25s;
 }
 
-.screen_pools_interactive g.selected path {
+.screen_pools_interactive g.selected path:not(:last-of-type) {
   stroke: #d6001c;
-  fill: #0875bd36;
+  fill: #00587c99;
+}
+
+.screen_pools_interactive path:last-of-type {
+  stroke: rgb(153, 182, 203);
+}
+
+.screen_pools_interactive g.selected path:last-of-type {
+  fill: #d6001c;
+  stroke: white;
 }
 
 .screen_pools_interactive g text {
@@ -262,7 +271,7 @@ ul{
   width: 16.3%;
   height: 100vh;
   overflow-y: scroll;
-  background-color: #0875bd36;
+  background-color: #00587C99;
   display: grid;
   justify-content: center;
   grid-auto-flow: row;
