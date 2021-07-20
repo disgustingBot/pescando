@@ -58,7 +58,11 @@ $videos = get_videos_big_data();
 
         <div class="viday">
           <div class="viday_media">
-            <video class="viday_video" poster="">
+            <div class="viday_btn_play">
+              <img src="icons/otrosbig/triangulo-play.svg">
+            </div>
+
+            <video class="viday_video" poster="icons/foto-video.png">
               <!-- <source src="" type="video/mp4"> -->
             </video>
           </div>
