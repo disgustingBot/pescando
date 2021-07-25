@@ -10,18 +10,20 @@ $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 
+$slug = (isset($_GET['slug'])) ? $_GET['slug'] : 'piscina1';
 
+$video = False;
+$piscina = False;
+if (isset($_GET['show']) && $_GET['show'] == 'video') {
+  $video = get_video_big_data($_GET['slug']);
+}
+
+if (isset($_GET['show']) && $_GET['show'] == 'piscina') {
+  $piscina = get_piscina($_GET['slug']);
+}
 
 
 $farm = get_farm();
-
-
-$slug = (isset($_GET['slug'])) ? $_GET['slug'] : 'piscina1';
-$piscina = get_piscina($_GET['slug']);
-
-
-
-
 
 ?>
 <!DOCTYPE html>
@@ -38,10 +40,15 @@ $piscina = get_piscina($_GET['slug']);
 
 <body>
 
-  <main class="video">
+  <?php if ($video) { ?>
+    <main class="video">
+      <video muted autoplay controls>
+        <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
+      </video>
+    </main>
+  <?php } ?>
 
-  </main>
-
+  <?php if ($piscina) { ?>
   <!-- Widget screens -->
   <main class="screen">
     <section class="screen_widgets rowcol1">
@@ -176,6 +183,7 @@ $piscina = get_piscina($_GET['slug']);
       </div>
     </section>
   </main>
+  <?php } ?>
 
   <script type="text/javascript">
     var last_show = getCookie('show');

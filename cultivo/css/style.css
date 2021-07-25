@@ -369,6 +369,21 @@ ul{
   width:60px;
   height:70px;
 }
+/* .luke_item.full{
+  background: red;
+} */
+.luke_item.full::after{
+  content:'';
+  position:absolute;
+  left: -15px;
+  border-radius:50%;
+  top: 50%;
+  background: red;
+  --size:10px;
+  width:var(--size);
+  height:var(--size);
+  transform: translateY(-50%);
+}
 
 .luke_item .letter {
   /* opacity: 0.2; */
