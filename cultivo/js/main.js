@@ -262,25 +262,26 @@ obseController.setup();
 
 
 // Start interactivity timer
-let current_time = 0;
-let is_video_playing = false;
-
-setInterval(() => {
-  if(is_video_playing) reset_current_time();
-  else current_time++;
-
-  if(current_time >= redirect_time) {
-    reset_current_time();
-    window.location.href = 'index.php';
-  }
-}, 1000);
-
-reset_timer_events = ['click', 'touchstart']
-reset_timer_events.forEach(event => {
-  window.addEventListener(event, () => {
-    reset_current_time();
+if(typeof(redirect_time) !== 'undefined') {
+  let current_time = 0;
+  
+  setInterval(() => {
+    current_time++;
+  
+    if(current_time >= redirect_time) {
+      reset_current_time();
+      window.location.href = 'index.php';
+    }
+  }, 1000);
+  
+  reset_timer_events = ['click', 'touchstart']
+  reset_timer_events.forEach(event => {
+    window.addEventListener(event, () => {
+      reset_current_time();
+    });
   });
-});
+  
+  // Reset current time
+  const reset_current_time = () => { current_time = 0; }
+}
 
-// Reset current time
-const reset_current_time = () => { current_time = 0; }
