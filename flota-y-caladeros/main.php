@@ -11,6 +11,7 @@
   $ELEMS  = get_strings();
   $ships = get_ships();
   $ship_types = get_ship_types();
+  $redirect_time = 60;
 
 ?>
 <!DOCTYPE html>
@@ -242,7 +243,6 @@
   <script>window.onload=_=>{out_animate_screen()}</script>
 
   <!-- Redirect timer -->
-  <?php $redirect_time = 5; ?>
   <script>
     let redirect_time = <?= $redirect_time ?>;
     start_inactivity_redirect(redirect_time);

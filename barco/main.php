@@ -12,6 +12,7 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 $ELEMS      = get_strings();
 
+$redirect_time = 60;
 
 $barcos = get_detalles();
 // $barcos = [$barcos[1]];
@@ -187,7 +188,6 @@ foreach ($barcos as $barco) {
   <?php } ?>
 
   <!-- Redirect timer -->
-  <?php $redirect_time = 5; ?>
   <script>
     let redirect_time = <?= $redirect_time ?>;
     start_inactivity_redirect(redirect_time);

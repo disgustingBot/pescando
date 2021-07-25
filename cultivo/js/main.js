@@ -98,18 +98,28 @@ const alt_ficha = (slug, timer = false) =>{
 
 
 
+var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 
 
 const open_category = slug =>{
-  // get's the corresponding species to that category
-  let filtered_species = species.filter( specie => (specie.category == slug) ? slug : false )
-  // sort by letter
-  filtered_species = filtered_species.sort((a, b) => a.slug.localeCompare(b.slug))
-  // get index of first letter, according to HTML logic (2 elements per letter and starting from 1 not 0)
-  let index = (alphabet.indexOf(filtered_species[0].slug[0]) + 1) * 2
+  filtered_species = get_species_by_category(slug)
+
+  // get just one occurrence of the first letters
+  let full_letters = [...new Set(filtered_species.map(specie => specie.slug[0]))]
+  // get the empty letters
+  let empty_letters = alphabet.filter(letter => !full_letters.includes(letter))
+
+  // clear the empty classes
+  altClassFromSelector('empty', '.luke_item.empty')
+  altClassFromSelector('full', '.luke_item.full')
+
+  add_full_class_to_letters( full_letters )
+  add_empty_class_to_letters( empty_letters )
+
   // selects indexed letter in HTML
-  let letter = document.querySelector('.luke_scroll > :nth-child('+index+')')
+  let letter = document.querySelector('.luke_item.'+full_letters[0])
+  // let letter = document.querySelector('.luke_scroll > :nth-child('+index+')')
   // scrolls to the letter
   document.querySelector('.luke_viw').scrollLeft = letter.offsetLeft;
   // activates the category selection
@@ -117,6 +127,24 @@ const open_category = slug =>{
 }
 
 
+const get_species_by_category = slug => {
+  // get's the corresponding species to that category
+  let filtered_species = species.filter( specie => (specie.category == slug) ? slug : false )
+  // return sorted by letter
+  return filtered_species.sort((a, b) => a.slug.localeCompare(b.slug))
+}
+
+const add_empty_class_to_letters = letters => {
+  letters.forEach( letter => {
+    altClassFromSelector('empty', '.luke_item.'+letter)
+  });
+}
+
+const add_full_class_to_letters = letters => {
+  letters.forEach( letter => {
+    altClassFromSelector('full', '.luke_item.'+letter)
+  });
+}
 
 
 /*
@@ -136,7 +164,7 @@ funcion para activar y desactivar elementos usando scroll como disparador
           obseController.obses.unshift(new Obse(obse))
         });
       }
-      console.log(this.obses);
+      // console.log(this.obses);
     },
     unobserve:()=>{
       console.log(this.obses);
@@ -229,29 +257,3 @@ function out_animate_screen() {
 
 
 obseController.setup();
-
-
-
-// Start interactivity timer
-let current_time = 0;
-let is_video_playing = false;
-
-setInterval(() => {
-  if(is_video_playing) reset_current_time();
-  else current_time++;
-
-  if(current_time >= redirect_time) {
-    reset_current_time();
-    window.location.href = 'index.php';
-  }
-}, 1000);
-
-reset_timer_events = ['click', 'touchstart']
-reset_timer_events.forEach(event => {
-  window.addEventListener(event, () => {
-    reset_current_time();
-  });
-});
-
-// Reset current time
-const reset_current_time = () => { current_time = 0; }

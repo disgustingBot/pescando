@@ -176,9 +176,9 @@ ul{
     overflow: hidden;
 }
 
-[class='hydrophone_main']  .info_content_cta {
+/* [class='hydrophone_main']  .info_content_cta {
   pointer-events: none;
-}
+} */
 
 [class='hydrophone_main'] .back_btn {
   width: 0px;
@@ -493,4 +493,3 @@ ul{
     top: 0;
   }
 }
-

@@ -634,34 +634,45 @@
       0 => array(
         'slug' => 'video-1',
         'title' => '¿Qué es el big data?',
-        'video' => 'video_name.mp4',
+        'video' => 'C0340.mp4',
         'image' => 'image_name.jpg',
         'order' => 5,
       ),
       1 => array(
         'slug' => 'video-2',
         'title' => 'Big data en nueva pescanova',
-        'video' => 'video_name.mp4',
+        'video' => 'C0340.mp4',
         'image' => 'image_name.jpg',
         'order' => 10,
       ),
       2 => array(
         'slug' => 'video-3',
         'title' => '¿Qué datos analizamos?',
-        'video' => 'video_name.mp4',
+        'video' => 'C0340.mp4',
         'image' => 'image_name.jpg',
         'order' => 15,
       ),
       3 => array(
         'slug' => 'video-4',
         'title' => 'El futuro',
-        'video' => 'video_name.mp4',
+        'video' => 'C0340.mp4',
         'image' => 'image_name.jpg',
         'order' => 20,
       ),
     );
     return $videos;
   }
+
+    function get_video_big_data($slug){
+      $video = array(
+          'slug' => 'video-1',
+          'title' => '¿Qué es el big data?',
+          'video' => 'C0340.mp4',
+          'image' => 'image_name.jpg',
+          'order' => 5,
+      );
+      return $video;
+    }
 
 
   function get_piscinas(){

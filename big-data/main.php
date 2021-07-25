@@ -63,6 +63,7 @@ $videos = get_videos_big_data();
             </div>
 
             <video class="viday_video" poster="icons/foto-video.png">
+            <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1)">
               <!-- <source src="" type="video/mp4"> -->
             </video>
           </div>
@@ -82,6 +83,7 @@ $videos = get_videos_big_data();
           piscinas.forEach( piscina => {
             document.querySelector('#'+piscina.slug).onclick = _ => {
               altClassFromSelector('selected', '#'+piscina.slug)
+              setCookie('show', 'piscina', 1)
               setCookie('slug', piscina.slug, 1)
             }
           });
@@ -90,11 +92,5 @@ $videos = get_videos_big_data();
     </div>
   </main>
 
-
-  <script type="text/javascript">
-    // setCookie('show', 'piscina', 1)
-    // setCookie('slug', 'piscina2', 1)
-    // console.log(setCookie('test', 'Hello world', 1));
-  </script>
 </body>
 </html>

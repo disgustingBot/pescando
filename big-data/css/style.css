@@ -671,3 +671,26 @@ ul{
 .widget_arrow_icon {
   width: 22px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MAKE ROOM FOR THE VIDEOS TOO */
+main.video{
+  /* width:1920px; */
+  /* height:1080px; */
+  width:100%;
+  height:100%;
+}

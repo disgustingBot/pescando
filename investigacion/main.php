@@ -11,6 +11,7 @@
   $ELEMS = get_strings();
   $items = get_lineas();
 
+  $redirect_time = 60;
 /*
 var_dump($items);
 die;
@@ -130,7 +131,6 @@ $items = array(
   </script>
 
   <!-- Redirect timer -->
-  <?php $redirect_time = 5; ?>
   <script>
     let redirect_time = <?= $redirect_time ?>;
     start_inactivity_redirect(redirect_time);

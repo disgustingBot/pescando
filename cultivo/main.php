@@ -21,7 +21,7 @@ $ELEMS      = get_strings();
 
 
 
-$redirect_time = 5;
+$redirect_time = 60;
 $is_center_screen = False;
 $timer_ficha_in_seconds = 2;
 
@@ -125,7 +125,7 @@ $timer_ficha_in_seconds = 2;
         <ul class="luke_scroll">
           <?php foreach ($alphabet as $letter) { ?>
             <style>
-            <?= ".$letter .$letter .luke_letter" ?>{
+            <?= ".$letter .$letter.full .luke_letter" ?>{
               color: rgb(214, 0, 28);
               transform: scale(1.65);
             }

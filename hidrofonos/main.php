@@ -11,6 +11,7 @@
   $ELEMS  = get_strings();
   $sounds = get_sounds();
   // var_dump($sounds);
+  $redirect_time = 60;
 
 ?>
 <!DOCTYPE html>
@@ -54,12 +55,12 @@
     <div class="info_content_box step1">
       <h1 class="info_content_box_title full_col_text"><?= $ELEMS['TIT_INTERACTIVO'] ?></h1>
       <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_BLOQUE1'] ?></p>
-    </div>
-
-    <div class="info_content_box step2">
       <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_BLOQUE2'] ?></p>
       <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('selector', '.hydrophone_main')"><?= $ELEMS['TXT_SELECCIONA'] ?></h3>
     </div>
+
+    <!-- <div class="info_content_box step2">
+    </div> -->
 
 
 
@@ -118,9 +119,9 @@
         </div>
 
 
-    <div class="arrow_next" onclick="altClassFromSelector('step2', '.hydrophone_main')">
+    <!-- <div class="arrow_next" onclick="altClassFromSelector('step2', '.hydrophone_main')">
       <img class="arrow_next_img" src="<?=$DIR_ICONS?>flecha-azul.svg" alt="flecha para ir al siguiente interactivo">
-    </div>
+    </div> -->
   </section>
 
 
@@ -128,7 +129,6 @@
   <script>animate_bubbles();</script>
 
   <!-- Redirect timer -->
-  <?php $redirect_time = 5; ?>
   <script>
     let redirect_time = <?= $redirect_time ?>;
     start_inactivity_redirect(redirect_time);
