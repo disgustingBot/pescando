@@ -215,9 +215,10 @@ function out_animate(animation_screen) {
 // Start interactivity timer
 if(typeof(redirect_time) !== 'undefined') {
   let current_time = 0;
+  let is_playing_media = false;
   
   setInterval(() => {
-    current_time++;
+    if(!is_playing_media) current_time++;
   
     if(current_time >= redirect_time) {
       reset_current_time();
@@ -234,4 +235,23 @@ if(typeof(redirect_time) !== 'undefined') {
   
   // Reset current time
   const reset_current_time = () => { current_time = 0; }
+
+  // Playing media events
+  const set_playing_timer_status = (medias, events, is_playing) => {
+    // Por cada video
+    medias.forEach(media => {
+      // Cada evento
+      events.forEach(event => {
+        media.addEventListener(event, () => {
+         is_playing_media = is_playing;
+  
+         if(is_playing_media) reset_current_time();
+       });
+      });
+    });
+  }
+
+  let videos = document.querySelectorAll('video');
+  set_playing_timer_status(videos, ['play'], true);
+  set_playing_timer_status(videos, ['pause', 'emptied', 'ended'], false);
 }
