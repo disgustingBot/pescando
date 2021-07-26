@@ -10,6 +10,7 @@ $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 
+$redirect_time = 60;
 
 
 $piscinas = get_piscinas();
@@ -29,7 +30,6 @@ $videos = get_videos_big_data();
   <!-- <title><?=$ELEMS["TIT_INTERACTIVO"]?></title> -->
   <title>Big Data</title>
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -91,6 +91,9 @@ $videos = get_videos_big_data();
       </div>
     </div>
   </main>
+
+  <script> redirect_time = <?= $redirect_time ?>; </script>
+  <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>
