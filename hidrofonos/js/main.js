@@ -187,51 +187,45 @@ function out_animate_screen(animation_screen) {
 
 
 // Start interactivity timer
-const start_inactivity_redirect = redirect_time => {
+if(typeof(redirect_time) !== 'undefined') {
   let current_time = 0;
-  let is_free_inactivity = false;
-
+  let is_playing_media = false;
+  
   setInterval(() => {
-    if(is_free_inactivity) reset_current_time();
-    else current_time++;
-
+    if(!is_playing_media) current_time++;
+  
     if(current_time >= redirect_time) {
       reset_current_time();
       window.location.href = 'index.php';
     }
   }, 1000);
-
-  // Inactivity definition
-  (() => {
-    let videos = document.querySelectorAll('video');
-
-    videos.forEach(video => {
-      // No Inactivity when video start
-      video.addEventListener('play', () => {
-        is_free_inactivity = true;
-      });
-
-      // Inactivity when video end
-      video.addEventListener('ended', () => {
-        is_free_inactivity = false;
-      });
-
-      // Inactivity when exit from video
-      video.addEventListener('emptied', () => {
-        is_free_inactivity = false;
-      });
+  
+  reset_timer_events = ['click', 'touchstart']
+  reset_timer_events.forEach(event => {
+    window.addEventListener(event, () => {
+      reset_current_time();
     });
-  })();
-
-  // Activity definition
-  (activity_events => {
-    activity_events.forEach(event => {
-      window.addEventListener(event, () => {
-        reset_current_time();
-      });
-    });
-  })(['click', 'touchstart']);
-
+  });
+  
   // Reset current time
   const reset_current_time = () => { current_time = 0; }
+
+  // Playing media events
+  const set_playing_timer_status = (medias, events, is_playing) => {
+    // Por cada video
+    medias.forEach(media => {
+      // Cada evento
+      events.forEach(event => {
+        media.addEventListener(event, () => {
+         is_playing_media = is_playing;
+  
+         if(is_playing_media) reset_current_time();
+       });
+      });
+    });
+  }
+
+  let videos = document.querySelectorAll('video');
+  set_playing_timer_status(videos, ['play'], true);
+  set_playing_timer_status(videos, ['pause', 'emptied', 'ended'], false);
 }

@@ -130,7 +130,6 @@ foreach ($barcos as $barco) {
   </section>
 
 
-  <script type="text/javascript" src="js/main.js"></script>
 <?php
 
 
@@ -180,7 +179,6 @@ foreach ($barcos as $barco) {
 
         </script>
 
-  <script>window.onload = () => { out_animate_screen(); }</script>
   <?php if(isset($_GET['barco'])){ ?>
     <script>
       document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
@@ -188,9 +186,9 @@ foreach ($barcos as $barco) {
   <?php } ?>
 
   <!-- Redirect timer -->
-  <script>
-    let redirect_time = <?= $redirect_time ?>;
-    start_inactivity_redirect(redirect_time);
-  </script>
+  <script> redirect_time = <?= $redirect_time ?>; </script>
+  <script type="text/javascript" src="js/main.js"></script>
+  <script>window.onload = () => { out_animate_screen(); }</script>
+
 </body>
 </html>

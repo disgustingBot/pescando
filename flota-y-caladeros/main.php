@@ -239,13 +239,10 @@
 
   </div>
 
+  
+  <!-- Redirect timer -->
+  <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
   <script>window.onload=_=>{out_animate_screen()}</script>
-
-  <!-- Redirect timer -->
-  <script>
-    let redirect_time = <?= $redirect_time ?>;
-    start_inactivity_redirect(redirect_time);
-  </script>
 </body>
 </html>

@@ -275,11 +275,11 @@ $timer_ficha_in_seconds = 2;
   </section>
 
 
+  <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
   <script>window.onload = () => { out_animate_screen(); }</script>
 
-  <!-- Redirect timer -->
 
 </body>
 </html>
