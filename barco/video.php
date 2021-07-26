@@ -8,6 +8,8 @@
   $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
   $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
+  $redirect_time = 60;
+
   $ELEMS      = get_strings();
 
   $barcos = get_detalles();
@@ -76,6 +78,8 @@
   </video>
 
 
-
+  <!-- Redirect timer -->
+  <script> redirect_time = <?= $redirect_time ?>; </script>
+  <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
