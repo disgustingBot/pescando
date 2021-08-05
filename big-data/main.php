@@ -62,10 +62,17 @@ $videos = get_videos_big_data();
               <img src="icons/otrosbig/triangulo-play.svg">
             </div>
 
-            <video class="viday_video" poster="icons/foto-video.png">
-            <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1)">
-              <!-- <source src="" type="video/mp4"> -->
-            </video>
+            <!-- <video class="viday_video" poster="icons/foto-video.png"> -->
+            <div
+              class="viday_video"
+              poster=""
+              onclick="
+                setCookie('show', 'video', 1);
+                setCookie('slug', '<?= $video['slug'] ?>', 1);
+                altClassFromSelector('selected', '[id*=piscina].selected');
+            ">
+              <img class="viday_poster" src="icons/foto-video.png">
+            </div>
           </div>
 
           <p class="viday_caption"><?= $video['title'] ?></p>
@@ -82,6 +89,7 @@ $videos = get_videos_big_data();
           let piscinas = <?= json_encode($piscinas) ?>;
           piscinas.forEach( piscina => {
             document.querySelector('#'+piscina.slug).onclick = _ => {
+              altClassFromSelector('selected', '[id*=piscina].selected');
               altClassFromSelector('selected', '#'+piscina.slug)
               setCookie('show', 'piscina', 1)
               setCookie('slug', piscina.slug, 1)
