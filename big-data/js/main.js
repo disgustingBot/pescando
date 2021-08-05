@@ -86,6 +86,7 @@ const back_btn = () => {
 
 
 // https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
+let donut_indicators = [];
 function create_donut_graph(radius, max, data, selector, stroke = 5) {
   // console.log(selector);
   const donut_div = document.querySelector(selector);
@@ -146,9 +147,16 @@ function create_donut_graph(radius, max, data, selector, stroke = 5) {
   const donut_indicator_value = parseFloat(donut_indicator.dataset.value);
   const donut_indicator_angle_factor = -start_angle / max;
 
-  donut_indicator.style.transform = `translateX(-50%) rotate(${donut_indicator_value * donut_indicator_angle_factor + start_angle / 2}deg)`;
+  donut_indicators.push({
+    indicator: donut_indicator,
+    angle: donut_indicator_value * donut_indicator_angle_factor + start_angle / 2,
+  });
 }
-
+window.addEventListener('load', () => {
+  donut_indicators.forEach(donut => {
+    donut.indicator.style.transform = `translateX(-50%) rotate(${donut.angle}deg)`;
+  });
+});
 
 
 
