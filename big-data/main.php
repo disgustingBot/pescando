@@ -62,8 +62,15 @@ $videos = get_videos_big_data();
               <img src="icons/otrosbig/triangulo-play.svg">
             </div>
 
-            <video class="viday_video" poster="icons/foto-video.png">
-            <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1)">
+            <!-- <video class="viday_video" poster="icons/foto-video.png"> -->
+            <video
+              class="viday_video"
+              poster=""
+              onclick="
+                setCookie('show', 'video', 1);
+                setCookie('slug', '<?= $video['slug'] ?>', 1);
+                altClassFromSelector('selected', '[id*=piscina].selected');
+              ">
               <!-- <source src="" type="video/mp4"> -->
             </video>
           </div>
