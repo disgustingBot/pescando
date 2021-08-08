@@ -1,16 +1,3 @@
-<?php
-  require_once("inc.config.php");
-  require_once("../inc.basic.php");
-  require_once("../inc.registra_visita.php");
-  require_once("../inc.salvapantallas.php");
-  require_once("../inc.alive.php");
-
-  $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-  $current_url_no_params = $SERVER_URL.$uri_parts[0];
-
-  $ELEMS      = get_strings();
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
