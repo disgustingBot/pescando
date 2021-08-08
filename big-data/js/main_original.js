@@ -87,7 +87,6 @@ const back_btn = () => {
 
 // https://stackoverflow.com/questions/30712621/pure-css3-or-svg-animated-doughnut-chart/30713212
 function create_donut_graph(radius, max, data, selector, stroke = 5) {
-  console.log(data);
   // console.log(selector);
   const donut_div = document.querySelector(selector);
   const donut_indicator = donut_div.querySelector('.donut_graph_indicator');

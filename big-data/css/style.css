@@ -26,8 +26,6 @@ MAPA DE CONTENIDOS:
   5.6) =donut_graph_deco:
   5.7) =donut_graph_text:
   5.8) =widget_arrow_icon:
-  5.9) =in_animate_screen:
-  5.70) =bubble:
 
 */
 
@@ -191,19 +189,9 @@ ul{
   transition: 0.25s;
 }
 
-.screen_pools_interactive g.selected path:not(:last-of-type) {
+.screen_pools_interactive g.selected path {
   stroke: #d6001c;
-  fill: #00587c99;
-}
-
-.screen_pools_interactive path:last-of-type {
-  stroke: rgb(153, 182, 203);
-  filter: drop-shadow(0px 0px 8px white);
-}
-
-.screen_pools_interactive g.selected path:last-of-type {
-  fill: #d6001c;
-  stroke: white;
+  fill: #0875bd36;
 }
 
 .screen_pools_interactive g text {
@@ -274,7 +262,7 @@ ul{
   width: 16.3%;
   height: 100vh;
   overflow-y: scroll;
-  background-color: #00587C99;
+  background-color: #0875bd36;
   display: grid;
   justify-content: center;
   grid-auto-flow: row;
@@ -356,7 +344,7 @@ ul{
   top:0;
   left:0;
   border-radius: 50%;
-  border: solid 2px white;
+  border: solid 2px #d3e6f3;
   box-sizing: border-box;
   height: calc(100% - var(--margin) * 2);
   margin: var(--margin);
@@ -379,18 +367,6 @@ ul{
   letter-spacing: 3px;
   line-height: 1.5;
   text-align: center;
-}
-
-.viday_btn_play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-40%, -50%);
-  width: 35px;
-}
-
-.viday_poster {
-  height: 100%;
 }
 
 /* ---------------------------------------------------------------------------
@@ -678,103 +654,8 @@ ul{
   width: 22px;
 }
 
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-                          5.9) =in_animate_screen:
-------------------------------------------------------------------------------
---------------------------------------------------------------------------- */
-.in_animate_screen {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background-color: transparent;
-  transition: 0.5s;
-  z-index: -1;
-}
 
-.in_animate_screen_display {
-  z-index: 100;
-  background-color: #00587C;
-}
 
-.in_screen_icon {
-  width: 250px;
-  fill: transparent;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transition: 0.5s;
-  transform: translate(-50%, -50%);
-}
-
-.in_animate_screen_display .in_screen_icon {
-  fill: #fff;
-}
-
-.in_screen_icon_animate {
-  animation: alga 1s ease-in-out infinite;
-}
-
-@keyframes alga {
-  0% { transform: translate(-50%, -50%) scale(1); }
-  55% { transform: translate(-50%, -50%) scale(1.1, 0.9); }
-  70% { transform: translate(-50%, -50%) scale(0.9, 1.1); }
-  85% { transform: translate(-50%, -50%) scale(1.1, 0.9); }
-  100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-/* ---------------------------------------------------------------------------
-------------------------------------------------------------------------------
-                              5.70) =bubble:
-------------------------------------------------------------------------------
---------------------------------------------------------------------------- */
-/* https://css-tricks.com/almanac/properties/o/offset-path/ */
-.bubble {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: solid 10px #fff;
-  position: absolute;
-  transform: scale(0);
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.in_animate_screen_display .bubble {
-  animation: bubble 4s ease-in-out infinite;
-}
-
-.bubble:nth-child(2) {
-  offset-path: path('m 834.49246,640.95135 c 0,0 -87.14069,-68.89739 -100.81224,-127.3105 C 717.4765,444.40899 807.24425,382.4277 806.9106,310.42627 806.67623,259.85059 754.15097,168.16592 754.15097,168.16592');
-  animation-delay: 1s;
-}
-
-.bubble:nth-child(3) {
-  offset-path: path('m 898.64418,641.63896 c 0,0 45.49753,-98.09958 41.18613,-149.66132 -5.17001,-61.83017 -74.211,-106.87496 -78.50664,-168.77202 -3.3233,-47.88638 42.11791,-137.70776 42.11791,-137.70776');
-  animation-delay: 2s;
-}
-
-.bubble:nth-child(4) {
-  offset-path: path('m 981.3791,641.17419 c 0,0 71.1037,-79.49904 67.1906,-165.70649 -1.456,-32.07629 -49.1122,-64.77984 -74.46525,-114.8571 -31.49366,-62.20618 -40.14502,-107.33817 -30.53954,-136.54528 20.46917,-62.24006 99.85059,-117.97364 99.85059,-117.97364');
-  animation-delay: 3s;
-}
-.bubble:nth-child(5) {
-  offset-path: path('m 1062.9392,641.39009 c 0,0 75.7211,-80.03217 87.0229,-131.31147 17.7699,-126.69034 -21.5664,-236.07487 -136.8066,-297.12367');
-  animation-delay: 4s;
-}
-
-@keyframes bubble {
-  50% {
-    transform: scale(1);
-    opacity: 1;
-  }
-
-  100% {
-    offset-distance: 100%;
-    transform: scale(0);
-    opacity: 0;
-  }
-}
 
 
 

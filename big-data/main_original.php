@@ -5,13 +5,19 @@
   require_once("../inc.salvapantallas.php");
   require_once("../inc.alive.php");
 
-  $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-  $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
-  $ELEMS = get_strings();
+$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
-  $piscinas = get_piscinas();
-  $videos = get_videos_big_data();
+
+
+
+$piscinas = get_piscinas();
+$videos = get_videos_big_data();
+
+
+
+
 
 ?>
 <!DOCTYPE html>
@@ -20,17 +26,22 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
+  <!-- <title><?=$ELEMS["TIT_INTERACTIVO"]?></title> -->
+  <title>Big Data</title>
   <link rel="stylesheet" href="css/style.css">
   <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
 
+
+
+
   <main class="screen">
     <!-- Top panel -->
     <section class="panel panel_top">
-      <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+      <!-- <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3> -->
+      <h3 class="panel_title">Big Data</h3>
 
       <p class="panel_language">
         <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
@@ -47,7 +58,7 @@
 
         <div class="viday">
           <div class="viday_media">
-            <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1)">
+            <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1)">
               <!-- <source src="" type="video/mp4"> -->
             </video>
           </div>
@@ -67,21 +78,14 @@
           piscinas.forEach( piscina => {
             document.querySelector('#'+piscina.slug).onclick = _ => {
               altClassFromSelector('selected', '#'+piscina.slug)
-              setCookie('show', 'piscina', 1);
-              setCookie('slug', piscina.slug, 1);
-              setCookie('lang', '<?=$_SESSION["lang"]?>', 1);
+              setCookie('show', 'piscina', 1)
+              setCookie('slug', piscina.slug, 1)
             }
           });
           </script>
       </div>
     </div>
   </main>
-
-  <!-- Redirect timer -->
-  <script>
-    let redirect_time = <?= $redirect_time ?>;
-    start_inactivity_redirect(redirect_time);
-  </script>
 
 </body>
 </html>

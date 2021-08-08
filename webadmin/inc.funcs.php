@@ -333,12 +333,12 @@
     chr(197).chr(142) => 'O', chr(197).chr(143) => 'o',
     chr(197).chr(144) => 'O', chr(197).chr(145) => 'o',
     chr(197).chr(146) => 'OE',chr(197).chr(147) => 'oe',
-    chr(197).chr(148) => 'R',chr(197).chr(149) => 'r',
-    chr(197).chr(150) => 'R',chr(197).chr(151) => 'r',
-    chr(197).chr(152) => 'R',chr(197).chr(153) => 'r',
-    chr(197).chr(154) => 'S',chr(197).chr(155) => 's',
-    chr(197).chr(156) => 'S',chr(197).chr(157) => 's',
-    chr(197).chr(158) => 'S',chr(197).chr(159) => 's',
+    chr(197).chr(148) => 'R', chr(197).chr(149) => 'r',
+    chr(197).chr(150) => 'R', chr(197).chr(151) => 'r',
+    chr(197).chr(152) => 'R', chr(197).chr(153) => 'r',
+    chr(197).chr(154) => 'S', chr(197).chr(155) => 's',
+    chr(197).chr(156) => 'S', chr(197).chr(157) => 's',
+    chr(197).chr(158) => 'S', chr(197).chr(159) => 's',
     chr(197).chr(160) => 'S', chr(197).chr(161) => 's',
     chr(197).chr(162) => 'T', chr(197).chr(163) => 't',
     chr(197).chr(164) => 'T', chr(197).chr(165) => 't',
@@ -377,6 +377,9 @@
     return $strings;
   }
 
+  /*
+   * Hidrófonos
+   */
   function get_sounds(){
     global $conn;
 
@@ -395,6 +398,9 @@
     return $sounds;
   }
 
+  /*
+   * Flota y caladeros
+   */
   function get_ship_types() {
     global $conn;
 
@@ -404,7 +410,6 @@
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'pesca') as tra_pesca_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'barcos') as tra_barcos_tba
                     FROM pesca_tipos_barcos WHERE tba_status = 'A'";
-    // $qry2 = "SELECT * FROM pesca_animales a, pesca_especies b WHERE a.ani_especie = b.esp_id";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
         $ship_types[] = $row;
@@ -421,7 +426,8 @@
     global $conn;
 
     $ships = array();
-    $qry = "SELECT * FROM pesca_barcos LEFT JOIN pesca_caladeros ON cal_id = bar_caladero WHERE cal_status = 'A' AND bar_status = 'A'";
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'barcos' AND referred_id = bar_id AND lang='".$_SESSION["lang"]."' and field = 'video') as bar_video
+            FROM pesca_barcos LEFT JOIN pesca_caladeros ON cal_id = bar_caladero WHERE cal_status = 'A' AND bar_status = 'A'";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
         $ships[] = $row;
@@ -435,12 +441,15 @@
     return $ships;
   }
 
-
+  /*
+   * Líneas Investigación
+   */
   function get_lineas(){
     global $conn;
 
     $lineas = array();
-    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area
+                    , ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'video') as are_video
                     FROM pesca_areas WHERE are_status = 'A' ORDER BY are_orden";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
@@ -454,6 +463,9 @@
     return $lineas;
   }
 
+  /*
+   * El Barco
+   */
   function get_detalles() {
     global $conn;
 
@@ -493,6 +505,9 @@
     return $clickables;
   }
 
+  /*
+   * Acuicultura 
+   */
   function get_species(){
     global $conn;
     $species = array();
@@ -531,152 +546,51 @@
     return $categories;
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  /*
+   * Big Data
+   */
+  function get_clima() {
+    global $conn;
+    
+    $q1 = "SELECT bigdata_meteo as icon, bigdata_temperatura as temperature, bigdata_temp_min as temperature_min, bigdata_temp_max as temperature_max, bigdata_humedad as humidity, bigdata_viento as wind_speed FROM pesca_master LIMIT 0,1";
+    $r1 = @mysqli_query($conn, $q1);
+    if ( $r1 && mysqli_num_rows($r1) == 1 ) $rw1 = @mysqli_fetch_assoc($r1);
+    else $rw1 = array( "icon" => "soleado", "temperature" => 24, "temperature_min" => 18.5, "temperature_max" => 28.9, "humidity" => 23, "wind_speed" => 16.5 );
+    
+    $rw1["temperature"] = number_format($rw1["temperature"],1,",",".")."°";
+    $rw1["temperature_min"] = number_format($rw1["temperature_min"],1,",",".")."°";
+    $rw1["temperature_max"] = number_format($rw1["temperature_max"],1,",",".")."°";
+    $rw1["humidity"] = $rw1["humidity"]."%";
+    $rw1["wind_speed"] = number_format($rw1["wind_speed"],1,",",".")." km/h";
+    
+    return $rw1;
+  }
 
   function get_farm(){
     $farm = array(
       'donut_data' => array(
-        0 => ['value' => 31, 'color' => "#b4e1a8", 'order' => 5 ],
-        1 => ['value' => 7,  'color' => "#e6984f", 'order' => 10],
-        2 => ['value' => 4,  'color' => "#b93b3e", 'order' => 15],
-        3 => ['value' => 2,  'color' => "#d9d9da", 'order' => 20],
+        0 => ['value' => 4, 'color' => "#b4e1a8" ],
+        1 => ['value' => 0, 'color' => "#e6984f" ],
       ),
     );
     return $farm;
   }
 
-  function get_piscina($slug){
-    $piscina = array(
-      'slug' => 'piscina2',
-      'title' => $slug,
-      'clima' => array(
-        'icon' => 'poco-nuboso',
-        'temperature'     => '22,8°',
-        'temperature_max' => '29,6°',
-        'temperature_min' => '22,2°',
-        'humidity' => '25%',
-        'wind_speed' => '16,7 km/h'
-      ),
-      'sensors' => array(
-        0 => array(
-          'slug' => 'ph',
-          'title' => 'pH',
-          'min' => '0',
-          'max' => '14',
-          'value' => '11',
-          'unit' => '',
-          'donut_data' => array(
-            0 => ['value' => 14 * 0.5, 'color' => "#b93b3e", 'order' => 5 ],
-            1 => ['value' => 14 * 0.2, 'color' => "#b4e1a8", 'order' => 10],
-            2 => ['value' => 14 * 0.3, 'color' => "#b93b3e", 'order' => 15],
-          ),
-        ),
-        1 => array(
-          'slug' => 'oxigen',
-          'title' => 'Oxígeno',
-          'min' => '0',
-          'max' => '10',
-          'value' => '4,46',
-          'unit' => 'mg/l',
-          'donut_data' => array(
-            0 => ['value' => 10 * 0.4, 'color' => "#b93b3e", 'order' => 5 ],
-            1 => ['value' => 10 * 0.6, 'color' => "#b4e1a8", 'order' => 10],
-          ),
-        ),
-        2 => array(
-          'slug' => 'salinity',
-          'title' => 'Salinidad',
-          'min' => '0',
-          'max' => '40',
-          'value' => '38',
-          'unit' => 'g/l',
-          'donut_data' => array(
-            0 => ['value' => 40 * 0.1, 'color' => "#e6984f", 'order' => 5 ],
-            1 => ['value' => 40 * 0.9, 'color' => "#b4e1a8", 'order' => 10],
-          ),
-        ),
-        3 => array(
-          'slug' => 'temperature',
-          'title' => 'Temperatura',
-          'min' => '0',
-          'max' => '40',
-          'value' => '20',
-          'unit' => '°C',
-          'donut_data' => array(
-            0 => ['value' => 40 * 0.55, 'color' => "#e6984f", 'order' => 5 ],
-            1 => ['value' => 40 * 0.45, 'color' => "#b4e1a8", 'order' => 10],
-          ),
-        ),
-      ),
-    );
-    return $piscina;
-  }
-
-  function get_videos_big_data(){
-    $videos = array(
-      0 => array(
-        'slug' => 'video-1',
-        'title' => '¿Qué es el big data?',
-        'video' => 'C0340.mp4',
-        'image' => 'image_name.jpg',
-        'order' => 5,
-      ),
-      1 => array(
-        'slug' => 'video-2',
-        'title' => 'Big data en nueva pescanova',
-        'video' => 'C0340.mp4',
-        'image' => 'image_name.jpg',
-        'order' => 10,
-      ),
-      2 => array(
-        'slug' => 'video-3',
-        'title' => '¿Qué datos analizamos?',
-        'video' => 'C0340.mp4',
-        'image' => 'image_name.jpg',
-        'order' => 15,
-      ),
-      3 => array(
-        'slug' => 'video-4',
-        'title' => 'El futuro',
-        'video' => 'C0340.mp4',
-        'image' => 'image_name.jpg',
-        'order' => 20,
-      ),
-    );
-    return $videos;
-  }
-
-    function get_video_big_data($slug){
-      $video = array(
-          'slug' => 'video-1',
-          'title' => '¿Qué es el big data?',
-          'video' => 'C0340.mp4',
-          'image' => 'image_name.jpg',
-          'order' => 5,
-      );
-      return $video;
-    }
-
 
   function get_piscinas(){
-    $piscinas = array(
+    global $conn;
+    
+    $q1 = "SELECT bip_slug as slug, ( select value FROM pesca_textos WHERE referred = 'piscinas' AND referred_id = bip_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title
+                    FROM pesca_bigdata_piscinas WHERE bip_status = 'A' LIMIT 0,4";
+    $r1 = @mysqli_query($conn, $q1);
+    
+    $piscinas = array();
+    while ( $r1 && $rw1 = mysqli_fetch_assoc($r1) ) {
+      $piscinas[] = $rw1;
+    }
+    
+    /*
+    $piscinas = array(    
       0 => array(
         'slug' => 'piscina1',
         'title' => 'Piscina 1',
@@ -694,6 +608,123 @@
         'title' => 'Piscina 4',
       ),
     );
+    */
+    
     return $piscinas;
+  }
+
+  function get_piscina($slug){
+    global $conn;
+    
+    $q1 = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'piscinas' AND referred_id = bip_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre
+                    FROM pesca_bigdata_piscinas WHERE bip_slug = '".mysqli_real_escape_string($conn, $slug)."' AND bip_status = 'A' LIMIT 0,1";
+    $r1 = @mysqli_query($conn, $q1);
+    
+    $data_ph[0] = array( "value" => 7, "color" => "#b93b3e" );
+    $data_ph[1] = array( "value" => 1.5, "color" => "#b4e1a8" );
+    $data_ph[2] = array( "value" => 5.5, "color" => "#b93b3e" );
+    
+    $data_oxigen[0] = array( "value" => 4, "color" => "#b93b3e" );
+    $data_oxigen[1] = array( "value" => 6, "color" => "#b4e1a8" );
+
+    $data_sal[0] = array( "value" => 5, "color" => "#b93b3e" );
+    $data_sal[1] = array( "value" => 35, "color" => "#b4e1a8" );
+
+    $data_temp[0] = array( "value" => 25, "color" => "#b93b3e" );
+    $data_temp[1] = array( "value" => 10, "color" => "#b4e1a8" );
+    $data_temp[2] = array( "value" => 5, "color" => "#b93b3e" );
+    
+    $piscina = array();
+    while ( $r1 && $rw1 = mysqli_fetch_assoc($r1) ) {
+      $piscina["slug"] = $rw1["bip_slug"];
+      $piscina["title"] = $rw1["tra_nombre"];
+      $sensors = array();
+      $sensors[] = array( "slug" => "ph", "min" => 0, "max" => 14, "value" => $rw1["bip_ph"], "unit" => "", "donut_data" => $data_ph );
+      $sensors[] = array( "slug" => "oxigen", "min" => 0, "max" => 10, "value" => $rw1["bip_oxigeno"], "unit" => "mg/l", "donut_data" => $data_oxigen );
+      $sensors[] = array( "slug" => "salinity", "min" => 0, "max" => 40, "value" => $rw1["bip_salinidad"], "unit" => "g/l", "donut_data" => $data_sal );
+      $sensors[] = array( "slug" => "temperature", "min" => 0, "max" => 40, "value" => $rw1["bip_temperatura"], "unit" => "ºC", "donut_data" => $data_temp );
+      $piscina["sensors"] = $sensors;
+    }
+/*    
+    $piscina = array(
+      'slug' => 'piscina2',
+      'title' => $slug,
+      'sensors' => array(
+        0 => array(
+          'slug' => 'ph',
+          'min' => '0',
+          'max' => '14',
+          'value' => '7.4',
+          'unit' => '',
+          'donut_data' => array(
+            0 => ['value' => 7, 'color' => "#b93b3e" ],
+            1 => ['value' => 1.5, 'color' => "#b4e1a8" ],
+            2 => ['value' => 5.5, 'color' => "#b93b3e" ],
+          ),
+        ),
+        1 => array(
+          'slug' => 'oxigen',
+          'min' => '0',
+          'max' => '10',
+          'value' => '5.46',
+          'unit' => 'mg/l',
+          'donut_data' => array(
+            0 => ['value' => 4, 'color' => "#b93b3e" ],
+            1 => ['value' => 6, 'color' => "#b4e1a8" ],
+          ),
+        ),
+        2 => array(
+          'slug' => 'salinity',
+          'min' => '0',
+          'max' => '40',
+          'value' => '32',
+          'unit' => 'g/l',
+          'donut_data' => array(
+            0 => ['value' => 5, 'color' => "#e6984f" ],
+            1 => ['value' => 35, 'color' => "#b4e1a8" ],
+          ),
+        ),
+        3 => array(
+          'slug' => 'temperature',
+          'min' => '0',
+          'max' => '40',
+          'value' => '27',
+          'unit' => '°C',
+          'donut_data' => array(
+            0 => ['value' => 25, 'color' => "#e6984f" ],
+            1 => ['value' => 10, 'color' => "#b4e1a8" ],
+            2 => ['value' => 5, 'color' => "#e6984f" ],
+          ),
+        ),
+      ),
+    );
+*/
+    return $piscina;
+  }
+
+  function get_videos_big_data(){
+    global $conn;
+    
+    $q1 = "SELECT biv_slug as slug, biv_fondo as image, biv_video as video, biv_orden as orden, ( select value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title FROM pesca_bigdata_videos WHERE biv_status = 'A' ORDER BY biv_orden LIMIT 0,4";
+    $r1 = @mysqli_query($conn, $q1);
+
+    $videos = array();
+    while ( $r1 && $rw = mysqli_fetch_assoc($r1) ) {
+      $videos[] = $rw;
+    }
+
+    return $videos;
+  }
+
+  function get_video_big_data($slug){
+    global $conn;
+
+    $q1 = "SELECT biv_slug as slug, biv_fondo as image, biv_video as video, biv_orden as orden, ( select value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title FROM pesca_bigdata_videos WHERE biv_slug = '".mysqli_real_escape_string($conn, $slug)."' AND biv_status = 'A' LIMIT 0,1";
+    $r1 = @mysqli_query($conn, $q1);
+    $video = array();
+
+    if ( $r1 ) $video = mysqli_fetch_assoc($r1);
+
+    return $video;
   }
 ?>
