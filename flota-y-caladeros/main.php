@@ -71,6 +71,7 @@
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
         <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">
+        <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">¡Descubre nuestros <?= $type['tra_nombre_tba'] ?>s!</button>
       </div>
 
     <?php } ?>
@@ -78,6 +79,7 @@
     <div class="boat_positioning_layer">
       <div class="panel">
         <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+        <p class="panel_text">60 barcos faenando en el hemisferio sur</p>
         <p class="panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="panel_stick">|</span>

@@ -144,8 +144,8 @@ body {
 .panel_text {
   color: #fff;
   font-family: 'Lato Regular';
-  text-transform: capitalize;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .panel_stick {
@@ -750,6 +750,15 @@ body {
   transition: 1s;
   opacity:1;
   pointer-events: all;
+}
+
+.close_boat_lightbox_text {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-family: 'Lato Black';
+  color: #D6001C;
+  text-align: center;
 }
 
 /* ---------------------------------------------------------------------------
