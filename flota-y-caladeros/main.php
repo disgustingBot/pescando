@@ -71,6 +71,7 @@
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
         <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">
+        <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">¡Descubre nuestros <?= $type['tra_nombre_tba'] ?>s!</button>
       </div>
 
     <?php } ?>

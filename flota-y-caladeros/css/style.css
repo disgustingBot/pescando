@@ -752,6 +752,15 @@ body {
   pointer-events: all;
 }
 
+.close_boat_lightbox_text {
+  background: none;
+  border: none;
+  font-size: 24px;
+  font-family: 'Lato Black';
+  color: #D6001C;
+  text-align: center;
+}
+
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               4.7) =boat_lightbox:
