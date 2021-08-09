@@ -144,8 +144,8 @@ body {
 .panel_text {
   color: #fff;
   font-family: 'Lato Regular';
-  text-transform: capitalize;
   font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .panel_stick {

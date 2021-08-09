@@ -78,6 +78,7 @@
     <div class="boat_positioning_layer">
       <div class="panel">
         <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+        <p class="panel_text">60 barcos faenando en el hemisferio sur</p>
         <p class="panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="panel_stick">|</span>
