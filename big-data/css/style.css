@@ -194,6 +194,17 @@ ul{
   fill: #0875bd36;
 } */
 
+.screen_pools_interactive path:last-of-type {
+  stroke: rgb(153, 182, 203);
+  filter: drop-shadow(0px 0px 8px white);
+}
+
+
+.screen_pools_interactive g.selected path:last-of-type {
+  fill: #d6001c;
+  stroke: white;
+}
+
 .screen_pools_interactive g text {
   font-family: 'Lato Bold';
 }
@@ -367,6 +378,18 @@ ul{
   letter-spacing: 3px;
   line-height: 1.5;
   text-align: center;
+}
+
+.viday_btn_play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, -50%);
+  width: 35px;
+}
+
+.viday_poster {
+  height: 100%;
 }
 
 /* ---------------------------------------------------------------------------

@@ -48,10 +48,20 @@
 
         <div class="viday">
           <div class="viday_media">
+            
             <video class="viday_video" poster="" onclick="video_click('<?= $video['slug'] ?>', '<?= $_SESSION['lang'] ?>')">
             <!-- <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('', 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])"> -->
               <!-- <source src="" type="video/mp4"> -->
             </video>
+          
+            <div class="viday_btn_play">
+              <img src="icons/otrosbig/triangulo-play.svg">
+            </div>
+
+            <div class="viday_video" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('selected', '[id*=piscina].selected');">
+              <img class="viday_poster" src="icons/foto-video.png">
+            </div>
+          
           </div>
 
           <p class="viday_caption"><?= $video['title'] ?></p>
@@ -69,7 +79,6 @@
           piscinas.forEach( piscina => {
             document.querySelector('#'+piscina.slug).onclick = _ => {
               altClassFromSelector(piscina.slug, 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])
-              // altClassFromSelector('selected', '#'+piscina.slug)
               setCookie('show', 'piscina', 1);
               setCookie('slug', piscina.slug, 1);
               setCookie('lang', '<?=$_SESSION["lang"]?>', 1);
