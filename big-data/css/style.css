@@ -189,10 +189,10 @@ ul{
   transition: 0.25s;
 }
 
-.screen_pools_interactive g.selected path:not(:last-of-type) {
+/* .screen_pools_interactive g.selected path {
   stroke: #d6001c;
   fill: #0875bd36;
-}
+} */
 
 .screen_pools_interactive path:last-of-type {
   stroke: rgb(153, 182, 203);
@@ -633,6 +633,7 @@ ul{
   --normal_curve: cubic-bezier(var(--x1), var(--y1), var(--x2), var(--y2));
 
   transition: transform 1s var(--normal_curve);
+  /* transition: 5s; */
 }
 
 /* ---------------------------------------------------------------------------

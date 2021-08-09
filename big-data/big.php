@@ -42,11 +42,22 @@
 <body>
 
   <?php if ($video) { ?>
-    <main class="video">
-      <video muted autoplay controls>
-        <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
-      </video>
-    </main>
+  <div class="controls" style="display:none;">
+      <button id="play" class="btn btn-outline-primary">
+          Play
+      </button>
+      <button id="stop" class="btn btn-outline-danger">
+          Pause
+      </button>
+      <button id="back" class="btn btn-outline-warning">
+          Volver atrás
+      </button>
+  </div>
+  <main class="video">
+    <video id="video1" controls>
+      <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
+    </video>
+  </main>
   <?php } ?>
 
   <?php if ($piscina) { ?>
@@ -148,12 +159,11 @@
 
       <div class="set_widgets set_widgets_sm">
 
-        <?php
-        foreach ($piscina['sensors'] as $value) { ?>
+        <?php foreach ($piscina['sensors'] as $value) { ?>
           <section class="widget widget_status widget_status_sm">
             <header class="widget_header">
               <h1 class="widget_title"><?php
-          
+
                 $val = 0;
                 switch($value['slug']) {
                   case "ph": echo $ELEMS["TXT_PH"]; $val = number_format($value['value'],1,",","."); break;
@@ -181,20 +191,41 @@
               </li>
             </ul>
           </section>
-          <script>
-            donut_max_value = parseFloat(<?= $value['max'] ?>);
-            donut_data = <?= json_encode($value['donut_data']); ?>;
-            create_donut_graph(donut_radius, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
-          </script>
         <?php } ?>
+        <script>
+          window.onload=()=>{
+            <?php foreach ($piscina['sensors'] as $value) { ?>
+              donut_max_value = parseFloat(<?= $value['max'] ?>);
+              donut_data = <?= json_encode($value['donut_data']); ?>;
+              create_donut_graph(donut_radius, donut_max_value, donut_data, '.<?= $value['slug'] ?>');
+            <?php } ?>
+          }
+        </script>
       </div>
     </section>
   </main>
   <?php } ?>
+  <script type="text/javascript" src="../plugins/jquery/jquery.min.js"></script>
 
   <script type="text/javascript">
-console.log('<?=$_SESSION["lang"]?>');
-    
+
+$(document).ready(function() {
+<?php if ( $_GET['show'] == 'video' ) { ?>
+
+  $('#play').on("click", function () {
+    $('#video1').get(0).load();
+    $('#video1').get(0).play();
+  });
+
+  $('#video1').on("ended", function() {
+    location.href = './big.php';
+  });
+
+  $('#play').click();
+
+<?php } ?>
+});
+
     var last_show = getCookie('show');
     var last_slug = getCookie('slug');
     var last_lang = getCookie('lang');
