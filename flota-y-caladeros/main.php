@@ -254,6 +254,6 @@
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
-  <script>window.onload=_=>{out_animate_screen()}</script>tra_descubre_tba
+  <script>window.onload=_=>{out_animate_screen()}</script>
 </body>
 </html>
