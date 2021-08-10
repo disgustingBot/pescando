@@ -215,10 +215,10 @@ ul{
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .screen_widgets {
-  padding: 68px;
+  padding: 30px 68px;
   background-color: #00587c;
   display: grid;
-  row-gap: 50px;
+  row-gap: 40px;
   transition: 0.5s;
   transition-delay: 1s;
 }
@@ -245,6 +245,20 @@ ul{
 
 .set_widgets_sm {
   grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.set_widgets_title {
+  grid-template-columns: max-content auto;
+  column-gap: 180px;
+  align-items: center;
+}
+
+.set_widgets_title .panel_title {
+  margin-bottom: 0;
+}
+
+.set_widgets_title .widget_status {
+  padding: 25px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -592,7 +606,7 @@ ul{
   --donut_graph_indicator_radius: 15px;
 
   height: calc(var(--donut_size) / 2 + var(--donut_graph_indicator_radius) * 2);
-  margin-top: 70px;
+  /* margin-top: 70px; */
   margin-bottom: 20px;
 }
 

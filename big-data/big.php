@@ -64,6 +64,15 @@
   <!-- Widget screens -->
   <main class="screen">
     <section class="screen_widgets rowcol1">
+      <div class="set_widgets set_widgets_title">
+        <h3 class="panel_title">Big Data en la acuicultura:</h3>
+        <div class="widget widget_status">
+          <header class="widget_header">
+            <h1 class="widget_title">Granja de langostinos - Ecuador<h1>
+          </header>
+        </div>
+      </div>
+
       <div class="set_widgets set_widgets_md">
         <section class="widget widget_main">
           <header class="widget_header">
