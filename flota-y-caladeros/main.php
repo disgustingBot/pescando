@@ -11,8 +11,9 @@
   $ELEMS  = get_strings();
   $ships = get_ships();
   $ship_types = get_ship_types();
-  $redirect_time = 60;
+  // $redirect_time = 60;
 
+  // var_dump($ship_types[0]);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +37,8 @@
     <div class="bubble"></div>
     <div class="bubble"></div>
   </div>
+
+
 
 
 
@@ -78,6 +81,12 @@
 
     <div class="boat_positioning_layer">
       <div class="panel">
+          <!-- TODO: mover este boton a donde corresponda -->
+          <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
+            <img src="<?=$DIR_ICONS?>atras.svg">
+          </button>
+
+
         <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
         <p class="panel_text">60 barcos faenando en el hemisferio sur</p>
         <p class="panel_language">
@@ -241,10 +250,10 @@
 
   </div>
 
-  
+
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
-  <script>window.onload=_=>{out_animate_screen()}</script>
+  <script>window.onload=_=>{out_animate_screen()}</script>tra_descubre_tba
 </body>
 </html>

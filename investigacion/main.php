@@ -11,31 +11,7 @@
   $ELEMS = get_strings();
   $items = get_lineas();
 
-  $redirect_time = 60;
-/*
-var_dump($items);
-die;
-$items = array(
-  array(
-    'slug' => 'cultivo',
-    'title' => 'Cultivo',
-    'video' => 'videos/rocket.mp4',
-    'fondo' => '<?=$DIR_IMG?>background/menuinves2b-1.png'
-  ),
-  array(
-    'slug' => 'especies-futuro',
-    'title' => 'Especies de futuro',
-    'video' => 'videos/rocket.mp4',
-    'fondo' => '<?=$DIR_IMG?>background/menuinves2b-2.png'
-  ),
-  array(
-    'slug' => 'sostenibilidad',
-    'title' => 'Sostenibilidad',
-    'video' => 'videos/rocket.mp4',
-    'fondo' => '<?=$DIR_IMG?>background/menuinves2b-3.png'
-  ),
-);
-*/
+  // $redirect_time = 60;
 ?>
 <!DOCTYPE html>
 <html lang="es">

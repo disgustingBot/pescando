@@ -12,10 +12,10 @@ $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
 
 $ELEMS      = get_strings();
 
-$redirect_time = 60;
+// $redirect_time = 60;
 
 $barcos = get_detalles();
-// $barcos = [$barcos[1]];
+
 $clickables = [];
 foreach ($barcos as $barco) {
   $clickables[$barco['bde_id']] = get_clickables($barco['bde_id']);
@@ -32,7 +32,7 @@ foreach ($barcos as $barco) {
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="step1">
   <div class="in_animate_screen in_animate_screen_display">
     <svg class="in_screen_icon in_screen_icon_animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.34 68">
       <defs><style>.cls-2{fill:none;}</style></defs>
@@ -77,12 +77,19 @@ foreach ($barcos as $barco) {
     </div>
 
 
+    <div class="info_content_box step1">
+      <h1 class="info_content_box_title full_col_text"></h1>
+
+      <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_ENTRADA'] ?></p>
+      <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('step1', 'body')"><?= $ELEMS['TXT_SIGUIENTE'] ?></h3>
+    </div>
+
 
 
      <style>
-     [class="shape_screen"] .boats_screen_boat {
-       width:calc(100% / <?= count($barcos) ?>);
-     }
+       [class="shape_screen"] .boats_screen_boat {
+         width:calc(100% / <?= count($barcos) ?>);
+       }
      </style>
     <div class="boats_screen">
       <?php

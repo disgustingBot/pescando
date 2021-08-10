@@ -26,7 +26,8 @@ MAPA DE CONTENIDOS:
     5.4.2) =triangle_btn:
   5.8) =triangles:
   5.9) =ponta:
-  5.10) =boats_screen;
+  5.10) =boats_screen:
+  5.12) =info_content_box:
   5.42) =image360:
   5.69) =in_animate_screen:
   5.70) =bubble:
@@ -898,6 +899,64 @@ ul{
   transition: .4s;
   transition-delay: 0s;
   transform: translateY(0);
+}
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          5.12) =info_content_box:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+
+.step1 .info_content_box{opacity:1; pointer-events: all;}
+.info_content_box{
+  grid-column: 1;
+  grid-row: 1;
+  background: url('../../images/background/hidrofonos-fondo.jpg') no-repeat center center;
+  display: grid;
+  transition: .4s;
+  opacity:1;
+  grid-template-columns: 1fr 1fr;
+  /* margin: auto; */
+  /* width: 75%; */
+  align-content: center;
+  /* justify-content: center; */
+  opacity:0;
+  pointer-events: none;
+  padding:0 12.5%;
+  text-align: center;
+  grid-row-gap: 63px;
+  grid-column-gap: 165px;
+  position:relative;
+  z-index: 12;
+}
+.full_col_text{
+  grid-column: 1/-1;
+}
+.info_content_box_title{
+  text-transform: capitalize;
+  font-family: 'Lato Black';
+  font-size: 40px;
+  letter-spacing: 4px;
+  color: rgb(154,183,204);
+  text-transform: uppercase;
+}
+.info_content_box_txt{
+  font-family: 'Lato Regular';
+  font-size: 40px;
+  color: white;
+  margin-bottom: 21px;
+}
+.info_content_box_txt .strong{
+  font-family: 'Lato Bold';
+}
+.info_content_cta{
+  font-family: 'Lato Black';
+  font-size: 40px;
+  color: rgb(214, 0, 28);
+  text-align: center;
+  text-shadow: 0 0 15px rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.1);
 }
 
 /* ---------------------------------------------------------------------------
