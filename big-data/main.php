@@ -13,6 +13,8 @@
   $piscinas = get_piscinas();
   $videos = get_videos_big_data();
 
+  // var_dump($videos);
+
   $redirect_time = 60;
 ?>
 <!DOCTYPE html>
@@ -48,20 +50,21 @@
 
         <div class="viday">
           <div class="viday_media">
-            
+
             <div class="viday_video" poster="" onclick="video_click('<?= $video['slug'] ?>', '<?= $_SESSION['lang'] ?>')">
             <!-- <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('', 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])"> -->
               <!-- <source src="" type="video/mp4"> -->
-              <img class="viday_poster" src="icons/foto-video.png">
+              <img class="viday_poster" src="<?= $DIR_MEDIA.$video['image'] ?>">
+              <!-- <img class="viday_poster" src="icons/foto-video.png"> -->
             </div>
-          
+
             <div class="viday_btn_play">
               <img src="icons/otrosbig/triangulo-play.svg">
             </div>
 
             <!--<div class="viday_video" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('selected', '[id*=piscina].selected');">
             </div>-->
-          
+
           </div>
 
           <p class="viday_caption"><?= $video['title'] ?></p>

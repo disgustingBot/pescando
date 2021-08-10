@@ -511,7 +511,8 @@
   function get_species(){
     global $conn;
     $species = array();
-    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_ani
+    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'especies' AND referred_id = esp_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_esp
+                    , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_ani
                     , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'curiosidades') as tra_curiosidades_ani
                     , ( select value FROM pesca_textos WHERE referred = 'animales' AND referred_id = ani_id AND lang='".$_SESSION["lang"]."' and field = 'paises') as tra_pais_ani
                     FROM pesca_animales LEFT JOIN pesca_especies ON esp_id = ani_especie WHERE ani_status = 'A' AND esp_status = 'A' ORDER BY tra_nombre_ani";
@@ -705,7 +706,12 @@
   function get_videos_big_data(){
     global $conn;
     
-    $q1 = "SELECT biv_slug as slug, biv_fondo as image, biv_video as video, biv_orden as orden, ( select value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title FROM pesca_bigdata_videos WHERE biv_status = 'A' ORDER BY biv_orden LIMIT 0,4";
+//    $q1 = "SELECT biv_slug as slug, biv_fondo as image, biv_orden as orden
+    $q1 = "SELECT biv_slug as slug, biv_orden as orden
+           , ( SELECT value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title 
+           , ( SELECT CONCAT(value, '.mp4') FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'video') as video 
+           , ( SELECT CONCAT(value, '.jpg') FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'video') as image 
+           FROM pesca_bigdata_videos WHERE biv_status = 'A' ORDER BY biv_orden LIMIT 0,4";
     $r1 = @mysqli_query($conn, $q1);
 
     $videos = array();
@@ -719,7 +725,11 @@
   function get_video_big_data($slug){
     global $conn;
 
-    $q1 = "SELECT biv_slug as slug, biv_fondo as image, biv_video as video, biv_orden as orden, ( select value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title FROM pesca_bigdata_videos WHERE biv_slug = '".mysqli_real_escape_string($conn, $slug)."' AND biv_status = 'A' LIMIT 0,1";
+    $q1 = "SELECT biv_slug as slug, biv_orden as orden
+           , ( SELECT value FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as title
+           , ( SELECT CONCAT(value, '.mp4') FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'video') as video
+           , ( SELECT CONCAT(value, '.jpg') FROM pesca_textos WHERE referred = 'bigdata-videos' AND referred_id = biv_id AND lang='".$_SESSION["lang"]."' and field = 'video') as image
+           FROM pesca_bigdata_videos WHERE biv_slug = '".mysqli_real_escape_string($conn, $slug)."' AND biv_status = 'A' LIMIT 0,1";
     $r1 = @mysqli_query($conn, $q1);
     $video = array();
 
