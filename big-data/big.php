@@ -42,19 +42,8 @@
 <body>
 
   <?php if ($video) { ?>
-  <div class="controls" style="display:none;">
-      <button id="play" class="btn btn-outline-primary">
-          Play
-      </button>
-      <button id="stop" class="btn btn-outline-danger">
-          Pause
-      </button>
-      <button id="back" class="btn btn-outline-warning">
-          Volver atrás
-      </button>
-  </div>
   <main class="video">
-    <video id="video1" controls>
+    <video id="video1">
       <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
     </video>
   </main>
@@ -65,10 +54,10 @@
   <main class="screen">
     <section class="screen_widgets rowcol1">
       <div class="set_widgets set_widgets_title">
-        <h3 class="panel_title">Big Data en la acuicultura:</h3>
+        <h3 class="panel_title"><?=$ELEMS["TIT_BIG_DATA"]?></h3>
         <div class="widget widget_status">
           <header class="widget_header">
-            <h1 class="widget_title">Granja de langostinos - Ecuador<h1>
+            <h1 class="widget_title"><?=$ELEMS["TIT_ECUADOR"]?><h1>
           </header>
         </div>
       </div>
@@ -219,7 +208,7 @@
   <script type="text/javascript">
 
 $(document).ready(function() {
-<?php if ( $_GET['show'] == 'video' ) { ?>
+<?php if ( isset($_GET['show']) && $_GET['show'] == 'video' ) { ?>
 
   $('#play').on("click", function () {
     $('#video1').get(0).load();

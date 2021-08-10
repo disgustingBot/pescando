@@ -11,6 +11,7 @@
   $ELEMS  = get_strings();
   $sounds = get_sounds();
   // var_dump($sounds);
+  // var_dump($ELEMS);
   // $redirect_time = 60;
 
 ?>
