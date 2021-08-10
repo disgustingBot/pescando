@@ -82,12 +82,12 @@
     <div class="boat_positioning_layer">
       <div class="panel">
           <!-- TODO: mover este boton a donde corresponda -->
-          <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
-            <img src="<?=$DIR_ICONS?>atras.svg">
-          </button>
-
-
-        <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+          <div class="back_box">
+            <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
+              <img src="<?=$DIR_ICONS?>atras.svg">
+            </button>
+            <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+          </div>
         <p class="panel_text">60 barcos faenando en el hemisferio sur</p>
         <p class="panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>

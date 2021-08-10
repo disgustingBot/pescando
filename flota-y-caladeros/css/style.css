@@ -316,6 +316,9 @@ body {
   z-index: 2;
   width: max-content;
   margin: auto auto 4% auto;
+  border: 2px dotted white;
+  padding: 12px;
+  border-radius: 15px;
 }
 .boat_type{
   display: flex;
@@ -913,7 +916,15 @@ body {
   /* margin-right: 0; */
   /* transition-delay: 0s; */
 }
-
+.back_box{
+  display: flex;
+  position: relative;
+}
+.back_box .back_btn{
+  position: absolute;
+  top: 13px;
+  left: -55px;
+}
 .back_btn {
   background: none;
   border: none;
