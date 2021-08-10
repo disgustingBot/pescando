@@ -21,7 +21,7 @@ $ELEMS      = get_strings();
 
 
 
-$redirect_time = 60;
+// $redirect_time = 60;
 $is_center_screen = False;
 $timer_ficha_in_seconds = 2;
 

@@ -11,7 +11,7 @@
   $ELEMS  = get_strings();
   $sounds = get_sounds();
   // var_dump($sounds);
-  $redirect_time = 60;
+  // $redirect_time = 60;
 
 ?>
 <!DOCTYPE html>
@@ -125,7 +125,7 @@
   </section>
 
 
-  
+
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
