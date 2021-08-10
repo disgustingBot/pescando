@@ -14,6 +14,7 @@
   $videos = get_videos_big_data();
 
   // var_dump($videos);
+  // var_dump($ELEMS);
 
   // $redirect_time = 60;
 ?>

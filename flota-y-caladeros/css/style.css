@@ -309,6 +309,9 @@ body {
   animation: blinkRed 0.5s infinite;
 } */
 .boat_type_selector{
+  padding: 12px;
+  border-radius: 15px;
+  border: 2px dotted white;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-column-gap: 35px;
@@ -332,22 +335,26 @@ body {
   color: white;
 }
 .boat_type.arrastrero .led_light,
+.boat_type.tipo_1 .led_light,
 .boat_position.tipo_1 .led_light{
   border-radius: 50%;
 }
 .boat_type.potero .led_light,
+.boat_type.tipo_3 .led_light,
 .boat_position.tipo_3 .led_light{
   transform: rotate(45deg);
   --led_potero_size: calc(var(--led_light_size) * 0.8);
   width: var(--led_potero_size);
   height: var(--led_potero_size);
 }
-.palangrero .led_light_wrapper,
+.boat_type.palangrero .led_light_wrapper,
+.boat_type.tipo_4 .led_light_wrapper,
 .boat_position.tipo_4 .led_light_wrapper{
   filter: drop-shadow(-1px 0px 1px rgba(255, 255, 255, 0.2))
   drop-shadow(0 2px 12px rgba(255, 255, 255, 0.5));
 }
 .boat_type.palangrero .led_light,
+.boat_type.tipo_4 .led_light,
 .boat_position.tipo_4 .led_light{
   border-radius: 0;
   clip-path: polygon(50% 0, 0% 100%, 100% 100%);
@@ -356,6 +363,7 @@ body {
   height: var(--led_potero_size);
 }
 .boat_type.tangonero .led_light,
+.boat_type.tipo_2 .led_light,
 .boat_position.tipo_2 .led_light{
   --tangonero_icon_size: 11px;
   width: var(--tangonero_icon_size);

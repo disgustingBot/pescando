@@ -101,13 +101,13 @@
 
       <?php
       // bar_tipo
-      // var_dump($barco['bar_tipo']);
       foreach ($ships as $barco) {
+        // var_dump($barco['bar_tipo']);
       // foreach ($barcos as $barco) {
         $self_filtered = ".tipo_$barco[bar_tipo] .boat_position.tipo_$barco[bar_tipo]";
         $self_awake = ".boat_$barco[bar_id] .viday.boat_$barco[bar_id]";
-        $css_class_led_video  = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .led_light";
-        $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .boat_icon";
+        $css_class_led_video  = ".boat_positioning_layer.tipo_$barco[bar_tipo] .boat_position.pos_$barco[bar_id] .led_light";
+        $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .boat_position.pos_$barco[bar_id] .boat_icon";
         ?>
         <style media="screen">
           <?= $self_awake ?> {
@@ -197,7 +197,7 @@
         </div>
 
         <div
-          class="boat_position tipo_<?=$barco['bar_tipo']?>"
+          class="boat_position pos_<?=$barco['bar_id']?> tipo_<?=$barco['bar_tipo']?>"
           onclick="altClassFromSelector('boat_<?= $barco['bar_id']  ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>'])"
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
@@ -214,6 +214,7 @@
         // var_dump($ship_types[0]['tba_id']);
          ?>
         <?php foreach ($ship_types as $type) { ?>
+          <?php // var_dump($type) ?>
           <?php $active = ".boat_positioning_layer.tipo_$type[tba_id] .boat_type.tipo_$type[tba_id] .led_light"; ?>
           <style>
 

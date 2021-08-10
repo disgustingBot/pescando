@@ -396,6 +396,7 @@ ul{
 
 .viday_btn_play {
   position: absolute;
+  pointer-events: none;
   top: 50%;
   left: 50%;
   transform: translate(-40%, -50%);
