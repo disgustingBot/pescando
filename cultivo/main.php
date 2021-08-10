@@ -5,25 +5,24 @@
   require_once("../inc.salvapantallas.php");
   require_once("../inc.alive.php");
 
+  $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+  $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
+  // $lang = isset($_GET['lang']) ? $_GET['lang'] : false;
 
-$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
-$current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
-// $lang = isset($_GET['lang']) ? $_GET['lang'] : false;
-
-$alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-
+  $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
 
-$categories = get_categories();
-$species    = get_species();
-// var_dump($species);
-$ELEMS      = get_strings();
+  $categories = get_categories();
+  $species    = get_species();
+  // var_dump($species);
+  $ELEMS      = get_strings();
+  $central = trim($_GET["central"]);
 
 
 
-// $redirect_time = 60;
-$is_center_screen = False;
-$timer_ficha_in_seconds = 2;
+  // $redirect_time = 60;
+  $is_center_screen = ( intval($central) == 1 ? True : False );
+  $timer_ficha_in_seconds = 5;
 
 ?>
 <!DOCTYPE html>
@@ -34,6 +33,9 @@ $timer_ficha_in_seconds = 2;
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
+<?php if ( $is_center_screen ) { ?>
+  <script type="text/javascript" src="../js/socket.js"></script>
+<?php } ?>
   <script>
     var species  = <?= json_encode($species); ?>;
     var alphabet = <?= json_encode($alphabet); ?>;
@@ -62,11 +64,11 @@ $timer_ficha_in_seconds = 2;
         <div>
           <h3 class="panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
           <p class="panel_language">
-            <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
+            <a href="main.php?lang=esp<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
             <span class="panel_stick">|</span>
-            <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
+            <a href="main.php?lang=eng<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
             <span class="panel_stick">|</span>
-            <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
+            <a href="main.php?lang=glg<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
           </p>
         </div>
       </div>

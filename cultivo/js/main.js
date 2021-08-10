@@ -270,7 +270,7 @@ if(typeof(redirect_time) !== 'undefined') {
   
     if(current_time >= redirect_time) {
       reset_current_time();
-      window.location.href = 'index.php';
+      window.location.href = 'inc.session.end.php';
     }
   }, 1000);
   
