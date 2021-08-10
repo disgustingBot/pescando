@@ -200,10 +200,10 @@ ul{
 }
 
 
-.screen_pools_interactive g.selected path:last-of-type {
+/*.screen_pools_interactive g.selected path:last-of-type {
   fill: #d6001c;
   stroke: white;
-}
+}*/
 
 .screen_pools_interactive g text {
   font-family: 'Lato Bold';

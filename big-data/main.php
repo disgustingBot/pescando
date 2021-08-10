@@ -49,18 +49,18 @@
         <div class="viday">
           <div class="viday_media">
             
-            <video class="viday_video" poster="" onclick="video_click('<?= $video['slug'] ?>', '<?= $_SESSION['lang'] ?>')">
+            <div class="viday_video" poster="" onclick="video_click('<?= $video['slug'] ?>', '<?= $_SESSION['lang'] ?>')">
             <!-- <video class="viday_video" poster="" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('', 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])"> -->
               <!-- <source src="" type="video/mp4"> -->
-            </video>
+              <img class="viday_poster" src="icons/foto-video.png">
+            </div>
           
             <div class="viday_btn_play">
               <img src="icons/otrosbig/triangulo-play.svg">
             </div>
 
-            <div class="viday_video" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('selected', '[id*=piscina].selected');">
-              <img class="viday_poster" src="icons/foto-video.png">
-            </div>
+            <!--<div class="viday_video" onclick="setCookie('show', 'video', 1);setCookie('slug', '<?= $video['slug'] ?>', 1);setCookie('lang', '<?= $_SESSION['lang'] ?>', 1);altClassFromSelector('selected', '[id*=piscina].selected');">
+            </div>-->
           
           </div>
 
@@ -87,9 +87,14 @@
           </script>
           <?php foreach ($piscinas as $piscina) { ?>
             <style>
-            <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path" ?>{
-                stroke: #d6001c;
-                fill: #0875bd36;
+            <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path" ?> {
+              stroke: #d6001c;
+              fill: #0875bd36;
+            }
+
+            <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path:last-of-type" ?> {
+              fill: #d6001c;
+              stroke: white;
             }
             </style>
           <?php } ?>
