@@ -47,6 +47,7 @@
       is_playing_media = true;
     <?php } ?>
   </script>
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
 
@@ -61,7 +62,6 @@
       </div>
 
       <h1 class="screen_lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
-      <!-- <h1 class="screen_lang_title">¡Conoce cómo utilizamos<br>el Big Data en la acuicultura!</h1> -->
     </section>
 
 

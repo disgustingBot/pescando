@@ -11,7 +11,6 @@
   $ELEMS  = get_strings();
   $sounds = get_sounds();
   // var_dump($sounds);
-  // var_dump($ELEMS);
   // $redirect_time = 60;
 
 ?>
@@ -113,9 +112,11 @@
               </div>
             </div>
 
+          <?php /*
             <audio id="<?= $specie['slug'] ?>_sound">
               <source src="<?= $DIR_SONIDOS.$specie['son_fichero'] ?>" type="audio/mpeg">
             </audio>
+            */ ?>
           <?php } ?>
         </div>
 

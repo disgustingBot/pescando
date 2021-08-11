@@ -122,7 +122,7 @@ body {
   font-size: 25px;
   line-height: 25px;
   color: #fff;
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 
 .panel_language {
@@ -319,10 +319,6 @@ body {
   z-index: 2;
   width: max-content;
   margin: auto auto 4% auto;
-  border: 2px dotted white;
-  padding: 12px;
-  border-radius: 15px;
-  
 }
 .boat_type{
   display: flex;
@@ -669,9 +665,9 @@ body {
 }
 .viday.play .live_video_icon{
   display: block;
-  width: 70px;
+  width: 50px;
   position: absolute;
-  top: 120px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -768,7 +764,7 @@ body {
 .close_boat_lightbox_text {
   background: none;
   border: none;
-  font-size: 24px;
+  font-size: 22px;
   font-family: 'Lato Black';
   color: #D6001C;
   text-align: center;
@@ -925,19 +921,12 @@ body {
   /* margin-right: 0; */
   /* transition-delay: 0s; */
 }
-.back_box{
-  display: flex;
-  position: relative;
-}
-.back_box .back_btn{
-  position: absolute;
-  top: 13px;
-  left: -55px;
-}
+
 .back_btn {
   background: none;
   border: none;
-  margin-right: 32px;
+  margin-right: 0px;
+  margin-bottom: 12px;
   position: relative;
   top:20px;
   transition:.4s;

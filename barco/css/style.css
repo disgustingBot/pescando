@@ -59,22 +59,22 @@ MAPA DE CONTENIDOS:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 @font-face {
-  font-family: 'Lato Black';
+  font-family: 'Lato-Black';
   src: url("../../fonts/Lato-Black.ttf");
 }
 
 @font-face {
-  font-family: 'Lato Bold';
+  font-family: 'Lato-Bold';
   src: url("../../fonts/Lato-Bold.ttf");
 }
 
 @font-face {
-  font-family: 'Lato Regular';
+  font-family: 'Lato-Regular';
   src: url("../../fonts/Lato-Regular.ttf");
 }
 
 @font-face {
-  font-family: 'Lato Light';
+  font-family: 'Lato-Light';
   src: url("../../fonts/Lato-Light.ttf");
 }
 
@@ -936,23 +936,23 @@ ul{
 }
 .info_content_box_title{
   text-transform: capitalize;
-  font-family: 'Lato Black';
+  font-family: 'Lato-Black';
   font-size: 40px;
   letter-spacing: 4px;
   color: rgb(154,183,204);
   text-transform: uppercase;
 }
 .info_content_box_txt{
-  font-family: 'Lato Regular';
+  font-family: 'Lato-Regular';
   font-size: 40px;
   color: white;
   margin-bottom: 21px;
 }
 .info_content_box_txt .strong{
-  font-family: 'Lato Bold';
+  font-family: 'Lato-Bold';
 }
 .info_content_cta{
-  font-family: 'Lato Black';
+  font-family: 'Lato-Black';
   font-size: 40px;
   color: rgb(214, 0, 28);
   text-align: center;

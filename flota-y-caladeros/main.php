@@ -82,12 +82,12 @@
     <div class="boat_positioning_layer">
       <div class="panel">
           <!-- TODO: mover este boton a donde corresponda -->
-          <div class="back_box">
-            <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
-              <img src="<?=$DIR_ICONS?>atras.svg">
-            </button>
-            <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
-          </div>
+          <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
+            <img src="<?=$DIR_ICONS?>atras.svg">
+          </button>
+
+
+        <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
         <p class="panel_text"><?= $ELEMS['TXT_BARCOS_FAENANDO'] ?></p>
         <p class="panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
@@ -175,7 +175,7 @@
                 playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media');
                 document.querySelector('.viday.boat_<?= $barco['bar_id'] ?>').classList.add('PLAYED_VIDEO');
               "
-            >Video</p>
+            ><?= $ELEMS['TXT_VIDEO'] ?></p>
           </div>
 
           <img
