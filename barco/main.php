@@ -32,7 +32,7 @@ foreach ($barcos as $barco) {
   <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body class="step1">
+<body class="body<?= (!isset($_GET['barco'])) ? ' step1' : '' ?>">
   <div class="in_animate_screen in_animate_screen_display">
     <svg class="in_screen_icon in_screen_icon_animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 68.34 68">
       <defs><style>.cls-2{fill:none;}</style></defs>
@@ -49,11 +49,13 @@ foreach ($barcos as $barco) {
   <section class="shape_screen">
     <div class="top_panel">
       <div class="back_grid">
-          <button class="back_btn" onclick="back_btn()">
-            <?php if (count($barcos) > 1) { ?>
-            <img src="<?=$DIR_ICONS?>atras.svg">
+        <div class="div" style="display:grid">
+        <!-- <div class="back_btn"> -->
+          <img class="back_btn rowcol1 second_arrow" onclick="altClassFromSelector('step1', '.body')" src="<?=$DIR_ICONS?>atras.svg">
+          <?php if (count($barcos) > 1) { ?>
+            <img class="back_btn rowcol1 first_arrow" onclick="back_btn()" src="<?=$DIR_ICONS?>atras.svg">
           <?php } ?>
-          </button>
+        </div>
         <div class="title_lang_grid">
           <h3 class="top_panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
           <p class="top_panel_language">
@@ -136,12 +138,10 @@ foreach ($barcos as $barco) {
     </div> -->
   </section>
 
+    <!-- Redirect timer -->
+    <script> redirect_time = <?= $redirect_time ?>; </script>
+    <script type="text/javascript" src="js/main.js"></script>
 
-<?php
-
-
-
- ?>
         <script type="text/javascript">
 
         clickables = JSON.parse('<?= json_encode($clickables) ?>');
@@ -191,7 +191,7 @@ foreach ($barcos as $barco) {
       document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
     </script>
   <?php } ?>
-  
+
   <!-- Forced Style until we resolve correctly -->
   <style>
     .arrastrero #salamaquinas { display: none !important; }
@@ -199,9 +199,6 @@ foreach ($barcos as $barco) {
     .arrastreiro #salamaquinas { display: none !important; }
   </style>
 
-  <!-- Redirect timer -->
-  <script> redirect_time = <?= $redirect_time ?>; </script>
-  <script type="text/javascript" src="js/main.js"></script>
   <script>window.onload = () => { out_animate_screen(); }</script>
 
 </body>

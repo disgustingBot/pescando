@@ -13,17 +13,18 @@
 
   $categories = get_categories();
   $species    = get_species();
-  // var_dump($species);
   $ELEMS      = get_strings();
-//  $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
-  if ( isset($_GET['central']) ) {
-    $central = intval(trim($_GET["central"]));
-    $_SESSION["central"] = $central;
-  }
-  
-  // $redirect_time = 60;
-  $is_center_screen = ( $_SESSION["central"] == 1 ? True : False );
+
+ // $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
+  // if ( isset($_GET['central']) ) {
+  //   $central = intval(trim($_GET["central"]));
+  //   $_SESSION["central"] = $central;
+  // }
+
+  // $redirect_time = 10;
+  $is_center_screen = ( (isset($_SESSION['central']) && $_SESSION["central"] == 1) ? True : False );
   $timer_ficha_in_seconds = 5;
+  // var_dump($is_center_screen);
 
 ?>
 <!DOCTYPE html>
@@ -161,7 +162,8 @@
             font-family: 'Lato Black';
           }
           </style>
-          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);">
+          <?php // var_dump($specie) ?>
+          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" data-code="<?= 'PBC_animal'.$specie['ani_id'].'_'.$_SESSION['lang'] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);">
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
             <p><?= $specie['tra_nombre_ani'] ?></p>
           </li>

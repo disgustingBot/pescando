@@ -11,7 +11,7 @@
   $ELEMS = get_strings();
   $items = get_lineas();
 
-  // $redirect_time = 60;
+  // $redirect_time = 10;
 ?>
 <!DOCTYPE html>
 <html lang="es">
