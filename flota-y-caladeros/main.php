@@ -167,7 +167,7 @@
           </video>
 
           <div class="viday_caption">
-            <h2 class="viday_title">Tripulación</h2>
+            <h2 class="viday_title"><?= $ELEMS['TXT_TRIPULACION'] ?></h2>
             <p
               class="viday_play"
               onclick="

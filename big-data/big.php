@@ -26,6 +26,7 @@
   }
 
 
+  // $redirect_time = 15;
 
 ?>
 <!DOCTYPE html>
@@ -36,14 +37,38 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
+
+
+  <script>
+    redirect_time = <?=$redirect_time?>;
+    page = 'big.php';
+    is_playing_media = false;
+    <?php if ($video) { ?>
+      is_playing_media = true;
+    <?php } ?>
+  </script>
   <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
 
+
+
+    <section class="screen screen_lang rowcol1" style="background: url('icons/fondo.jpg') no-repeat center center;">
+      <div class="screen_lang_icon">
+        <!-- <img src="<?=$DIR_ICONS?>dedo-click.svg"> -->
+        <img src="../icons/dedo-click.svg">
+      </div>
+
+      <h1 class="screen_lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
+      <!-- <h1 class="screen_lang_title">¡Conoce cómo utilizamos<br>el Big Data en la acuicultura!</h1> -->
+    </section>
+
+
+
   <?php if ($video) { ?>
-  <main class="video">
-    <video id="video1">
+  <main class="video rowcol1">
+    <video id="video1" autoplay>
       <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
     </video>
   </main>
@@ -51,7 +76,7 @@
 
   <?php if ($piscina) { ?>
   <!-- Widget screens -->
-  <main class="screen">
+  <main class="screen rowcol1">
     <section class="screen_widgets rowcol1">
       <div class="set_widgets set_widgets_title">
         <h3 class="panel_title"><?=$ELEMS["TIT_BIG_DATA"]?></h3>
@@ -205,6 +230,7 @@
   <?php } ?>
   <script type="text/javascript" src="../plugins/jquery/jquery.min.js"></script>
 
+
   <script type="text/javascript">
 
 $(document).ready(function() {
@@ -224,14 +250,25 @@ $(document).ready(function() {
 <?php } ?>
 });
 
-    var last_show = getCookie('show');
-    var last_slug = getCookie('slug');
-    var last_lang = getCookie('lang');
+    last_show = getCookie('show');
+    last_slug = getCookie('slug');
+    last_lang = getCookie('lang');
+
+    console.log(last_slug);
+    <?php if ($video || $piscina) { ?>
+      if (last_slug != 0) {
+        console.log('no mostrar pantalla pausa');
+        document.querySelector('.screen_lang').style.opacity = 0;
+        document.querySelector('.screen_lang').style.pointerEvents = 'none';
+
+      }
+    <?php } ?>
     timer = ()=>{setTimeout(()=>{
-      var new_slug = getCookie('slug');
-      var new_show = getCookie('show');
-      var new_lang = getCookie('lang');
-      if(last_slug!=new_slug){
+      new_slug = getCookie('slug');
+      new_show = getCookie('show');
+      new_lang = getCookie('lang');
+      if((last_slug!=new_slug) && (new_slug!=0)){
+        // console.log('new slug: ', new_slug);
         let url_no_params = location.protocol + '//' + location.host + location.pathname;
         window.location.href = url_no_params + '?show=' + new_show + '&slug=' + new_slug + '&lang=' + new_lang
       }

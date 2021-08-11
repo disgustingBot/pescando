@@ -16,11 +16,12 @@
   $species    = get_species();
   // var_dump($species);
   $ELEMS      = get_strings();
-  $central = trim($_GET["central"]);
+  $central = (isset($_GET['central'])) ? trim($_GET["central"]) : 0;
 
 
 
   // $redirect_time = 60;
+  $redirect_time = 3;
   $is_center_screen = ( intval($central) == 1 ? True : False );
   $timer_ficha_in_seconds = 5;
 
@@ -34,7 +35,7 @@
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
 <?php if ( $is_center_screen ) { ?>
-  <script type="text/javascript" src="../js/socket.js"></script>
+  <!-- <script type="text/javascript" src="../js/socket.js"></script> -->
 <?php } ?>
   <script>
     var species  = <?= json_encode($species); ?>;

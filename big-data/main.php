@@ -16,7 +16,7 @@
   // var_dump($videos);
   // var_dump($ELEMS);
 
-  // $redirect_time = 60;
+  // $redirect_time = 15;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
-  <script type="text/javascript" src="js/main.js"></script>
 </head>
 
 <body>
@@ -71,7 +70,7 @@
     <div class="screen_pools rowcol1">
       <img class="rowcol1 screen_pools_interactive" src="icons/fondo-menu.jpg">
       <div class="rowcol1 screen_pools_interactive">
-        <?= file_get_contents('icons/otrosbig/esp-piscina-noselec.svg'); ?>
+        <?= file_get_contents($DIR_IMG.'/'.$_SESSION['lang'].'-piscina-noselec.svg'); ?>
           <script>
           let piscinas = <?= json_encode($piscinas) ?>;
           piscinas.forEach( piscina => {
@@ -102,9 +101,12 @@
 
   <!-- Redirect timer -->
   <script>
-    let redirect_time = <?= $redirect_time ?>;
-    start_inactivity_redirect(redirect_time);
+    var redirect_time = <?= $redirect_time ?>;
+    // start_inactivity_redirect(redirect_time);
+    is_playing_media = false;
+    page = 'inc.session.end.php';
   </script>
+  <script type="text/javascript" src="js/main.js"></script>
 
 </body>
 </html>

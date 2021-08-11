@@ -8,7 +8,7 @@
   $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
   $current_url_no_params = $SERVER_URL.$uri_parts[0];
 
-  $ELEMS      = get_strings();
+  $ELEMS = get_strings();
 
 ?>
 <!DOCTYPE html>
@@ -29,8 +29,8 @@
       <img src="../icons/dedo-click.svg">
     </div>
 
-    <!-- <h1 class="screen_lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1> -->
-    <h1 class="screen_lang_title">¡Conoce cómo utilizamos<br>el Big Data en la acuicultura!</h1>
+    <h1 class="screen_lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
+    <!-- <h1 class="screen_lang_title">¡Conoce cómo utilizamos<br>el Big Data en la acuicultura!</h1> -->
 
     <ul class="screen_lang_list">
       <li>

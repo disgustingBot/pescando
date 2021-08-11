@@ -255,7 +255,6 @@ function out_animate_screen() {
 
 
 
-
 obseController.setup();
 
 
@@ -264,24 +263,28 @@ obseController.setup();
 // Start interactivity timer
 if(typeof(redirect_time) !== 'undefined') {
   let current_time = 0;
-  
+
   setInterval(() => {
     current_time++;
-  
+
     if(current_time >= redirect_time) {
+      const urlSearchParams = new URLSearchParams(window.location.search);
+      const params = Object.fromEntries(urlSearchParams.entries());
+      // console.log(params.central);
+
       reset_current_time();
-      window.location.href = 'inc.session.end.php';
+      central = (params.central == 1) ? '?central=1' : '';
+      window.location.href = 'inc.session.end.php' + central;
     }
   }, 1000);
-  
+
   reset_timer_events = ['click', 'touchstart']
   reset_timer_events.forEach(event => {
     window.addEventListener(event, () => {
       reset_current_time();
     });
   });
-  
+
   // Reset current time
   const reset_current_time = () => { current_time = 0; }
 }
-
