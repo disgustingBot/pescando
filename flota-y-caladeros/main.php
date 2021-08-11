@@ -74,7 +74,7 @@
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
         <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">
-        <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">¡Descubre nuestros <?= $type['tra_nombre_tba'] ?>s!</button>
+        <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"><?= $type['tra_descubre_tba'] ?></button>
       </div>
 
     <?php } ?>
@@ -88,7 +88,7 @@
             </button>
             <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
           </div>
-        <p class="panel_text">60 barcos faenando en el hemisferio sur</p>
+        <p class="panel_text"><?= $ELEMS['TXT_BARCOS_FAENANDO'] ?></p>
         <p class="panel_language">
           <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
           <span class="panel_stick">|</span>
@@ -106,8 +106,8 @@
       // foreach ($barcos as $barco) {
         $self_filtered = ".tipo_$barco[bar_tipo] .boat_position.tipo_$barco[bar_tipo]";
         $self_awake = ".boat_$barco[bar_id] .viday.boat_$barco[bar_id]";
-        $css_class_led_video  = ".boat_positioning_layer.tipo_$barco[bar_tipo] .boat_position.pos_$barco[bar_id] .led_light";
-        $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .boat_position.pos_$barco[bar_id] .boat_icon";
+        $css_class_led_video  = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .led_light";
+        $css_class_boat_video = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id] + .boat_position.tipo_$barco[bar_tipo] .boat_icon";
         ?>
         <style media="screen">
           <?= $self_awake ?> {
@@ -167,7 +167,7 @@
           </video>
 
           <div class="viday_caption">
-            <h2 class="viday_title">Tripulación</h2>
+            <h2 class="viday_title"><?= $ELEMS['TXT_TRIPULACION'] ?></h2>
             <p
               class="viday_play"
               onclick="
