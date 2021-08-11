@@ -660,6 +660,7 @@ pre code {
   transition-delay: 0.6s;
   transform: translateY(-50%);
   width: 50px;
+  color: white;
 }
 
 /* ---------------------------------------------------------------------------
@@ -708,6 +709,7 @@ pre code {
   transition: .5s;
   color: #D6001C;
   line-height: 30px;
+  width: max-content;
   /* margin-right: 20px; */
   /* transform: translateX(100%); */
 }

@@ -191,6 +191,13 @@ foreach ($barcos as $barco) {
       document.querySelector('.boats_screen_boat.<?= $_GET['barco'] ?> img').click()
     </script>
   <?php } ?>
+  
+  <!-- Forced Style until we resolve correctly -->
+  <style>
+    .arrastrero #salamaquinas { display: none !important; }
+    .trawler #salamaquinas { display: none !important; }
+    .arrastreiro #salamaquinas { display: none !important; }
+  </style>
 
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>

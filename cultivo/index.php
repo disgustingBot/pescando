@@ -9,11 +9,17 @@
   $current_url_no_params = $SERVER_URL.$uri_parts[0];
 
   $ELEMS  = get_strings();
+  if ( isset($_GET['central']) ) {
+    $central = intval(trim($_GET["central"]));
+    $_SESSION["central"] = $central;
+  }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Refresco salvapantallas cada 30 minutos //-->
+  <meta http-equiv="refresh" content="1800" />
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -52,6 +58,7 @@
     </ul>
   </section>
 
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>

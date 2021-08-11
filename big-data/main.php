@@ -70,7 +70,7 @@
     <div class="screen_pools rowcol1">
       <img class="rowcol1 screen_pools_interactive" src="icons/fondo-menu.jpg">
       <div class="rowcol1 screen_pools_interactive">
-        <?= file_get_contents($DIR_IMG.'/'.$_SESSION['lang'].'-piscina-noselec.svg'); ?>
+        <?= file_get_contents($DIR_IMG.$_SESSION['lang'].'-piscina-noselec.svg'); ?>
           <script>
           let piscinas = <?= json_encode($piscinas) ?>;
           piscinas.forEach( piscina => {
@@ -106,6 +106,7 @@
     is_playing_media = false;
     page = 'inc.session.end.php';
   </script>
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 
 </body>

@@ -11,18 +11,18 @@
 
   $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
-
   $categories = get_categories();
   $species    = get_species();
   // var_dump($species);
   $ELEMS      = get_strings();
-  $central = (isset($_GET['central'])) ? trim($_GET["central"]) : 0;
-
-
-
+//  $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
+  if ( isset($_GET['central']) ) {
+    $central = intval(trim($_GET["central"]));
+    $_SESSION["central"] = $central;
+  }
+  
   // $redirect_time = 60;
-  $redirect_time = 3;
-  $is_center_screen = ( intval($central) == 1 ? True : False );
+  $is_center_screen = ( $_SESSION["central"] == 1 ? True : False );
   $timer_ficha_in_seconds = 5;
 
 ?>
@@ -35,7 +35,7 @@
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
 <?php if ( $is_center_screen ) { ?>
-  <!-- <script type="text/javascript" src="../js/socket.js"></script> -->
+  <script type="text/javascript" src="../js/socket.js"></script>
 <?php } ?>
   <script>
     var species  = <?= json_encode($species); ?>;
