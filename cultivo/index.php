@@ -9,11 +9,12 @@
   $current_url_no_params = $SERVER_URL.$uri_parts[0];
 
   $ELEMS  = get_strings();
+
   if ( isset($_GET['central']) ) {
-    $central = intval(trim($_GET["central"]));
-    $_SESSION["central"] = $central;
+    $_SESSION["central"] = intval(trim($_GET["central"]));
   }
 
+  // var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">

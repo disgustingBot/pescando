@@ -767,11 +767,7 @@ ul{
                               5.4.1) =back_btn:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-[class="shape_screen"] .back_btn{
-  width: 0;
-  margin-right: 0;
-  transition-delay: 0s;
-}
+
 
 .back_btn {
   background: none;
@@ -783,6 +779,15 @@ ul{
   transition-delay: 0.6s;
   transform: translateY(-50%);
   width: 40px;
+}
+[class="shape_screen"] .first_arrow{
+  /* display: none; */
+  z-index:-1;
+}
+[class="shape_screen"] .second_arrow{
+  width: 40px;
+  margin-right: 32px;
+  transition-delay: 0s;
 }
 
 /* ---------------------------------------------------------------------------

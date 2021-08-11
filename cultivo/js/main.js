@@ -71,6 +71,10 @@ var obse_timeout;
 var ficha_timeout;
 
 const alt_ficha = (slug, timer = false) =>{
+  let luke = document.querySelector('.luke_specie.'+slug)
+  // console.log(luke.dataset.code);
+  sendMessage(luke.dataset.code)
+
   obseController.obses.forEach( obse =>{
     obse.observe.forEach( item => { obse.observer.disconnect() });
   })

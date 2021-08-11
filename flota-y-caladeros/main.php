@@ -11,7 +11,7 @@
   $ELEMS  = get_strings();
   $ships = get_ships();
   $ship_types = get_ship_types();
-  // $redirect_time = 60;
+  // $redirect_time = 10;
 
   // var_dump($ship_types[0]);
 ?>
