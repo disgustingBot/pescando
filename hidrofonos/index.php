@@ -10,6 +10,8 @@
 
   $ELEMS      = get_strings();
 
+  @include_once("../inc.changemeteo.php");
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

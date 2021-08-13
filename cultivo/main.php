@@ -41,6 +41,7 @@
   <script>
     var species  = <?= json_encode($species); ?>;
     var alphabet = <?= json_encode($alphabet); ?>;
+    var is_center_screen = <?= json_encode($is_center_screen) ?>;
   </script>
 </head>
 <body class="general">
@@ -163,7 +164,11 @@
           }
           </style>
           <?php // var_dump($specie) ?>
-          <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" data-code="<?= 'PBC_animal'.$specie['ani_id'].'_'.$_SESSION['lang'] ?>" onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);">
+          <li
+            class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>"
+            data-code="<?= 'PBC_animal'.$specie['ani_id'].'_'.$_SESSION['lang'] ?>"
+            onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);"
+          >
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
             <p><?= $specie['tra_nombre_ani'] ?></p>
           </li>
