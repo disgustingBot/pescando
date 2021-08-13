@@ -617,6 +617,7 @@ pre code {
 .top_panel_language a {
   color: #fff;
   text-transform: uppercase!important;
+  text-decoration: none;
 }
 
 .top_panel_stick {
@@ -626,6 +627,7 @@ pre code {
 .top_panel .selected {
   font-family: var(--lato_black);
   color: rgb(214, 0, 28);
+  font-weight: bold;
 }
 
 /* ---------------------------------------------------------------------------
@@ -659,8 +661,7 @@ pre code {
   transition:.4s;
   transition-delay: 0.6s;
   transform: translateY(-50%);
-  width: 50px;
-  color: white;
+  width: 40px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -10300,7 +10301,7 @@ html, body {
   height: 100%;
   padding: 0;
   margin: 0;
-  font-weight: bold;
+  /*font-weight: bold;*/
   background: #cccccc;
 }
 

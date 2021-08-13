@@ -68,18 +68,29 @@ const back_btn = () => {
 
 
 var obse_timeout;
-var ficha_timeout;
+var middle_screen_timeout;
 
 const alt_ficha = (slug, timer = false) =>{
-  let luke = document.querySelector('.luke_specie.'+slug)
-  // console.log(luke.dataset.code);
-  sendMessage(luke.dataset.code)
+  let is_ficha_open = (document.querySelector('.general').classList.contains(slug)) ? true : false;
 
-  obseController.obses.forEach( obse =>{
-    obse.observe.forEach( item => { obse.observer.disconnect() });
-  })
-  obseController.obses=[];
   altClassFromSelector(slug, '.general', ['general'])
+  load_images(slug)
+  reset_obses()
+
+  if (timer) {
+    try { clearTimeout(middle_screen_timeout) } catch {}
+    if (is_ficha_open) { return }
+
+    try { sendMessage(document.querySelector('.luke_specie.' + slug).dataset.code) } catch (e) {  }
+    middle_screen_timeout = setTimeout(()=>{
+      middle_screen_timeout = undefined;
+      alt_ficha(slug);
+    },timer)
+  }
+}
+
+
+const load_images = slug => {
   let map     = document.querySelector('.leia.' + slug + ' .leia_map')
   let icon    = document.querySelector('.leia.' + slug + ' .leia_hier_icon')
   let image   = document.querySelector('.leia.' + slug + ' .leia_image')
@@ -88,16 +99,23 @@ const alt_ficha = (slug, timer = false) =>{
   icon.setAttribute('data', icon.dataset.url)
   image.setAttribute('src', image.dataset.url)
   map_big.setAttribute('src', map_big.dataset.url)
+
   if (document.querySelector('.leia.' + slug + ' .magnified_map').classList.contains('active')) {
     document.querySelector('.leia.' + slug + ' .magnified_map').classList.remove('active')
   }
-  // console.log(image);
-  try { clearTimeout(obse_timeout) } catch {}
-  try { clearTimeout(ficha_timeout) } catch {}
-  obse_timeout = setTimeout(()=>{ obseController.setup() },1400)
-  if (timer) { setTimeout(()=>{ alt_ficha(slug) },timer) }
 }
 
+
+
+const reset_obses = _ => {
+    // reset obses
+    try { clearTimeout(obse_timeout) } catch {}
+    obseController.obses.forEach( obse =>{
+      obse.observe.forEach( item => { obse.observer.disconnect() });
+    })
+    obseController.obses=[];
+    obse_timeout = setTimeout(()=>{ obseController.setup() },1400)
+}
 
 
 
@@ -270,7 +288,7 @@ if(typeof(redirect_time) !== 'undefined') {
 
   setInterval(() => {
     current_time++;
-console.log(current_time+' >= '+redirect_time);
+    // console.log(current_time+' >= '+redirect_time);
     if(current_time >= redirect_time) {
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());
