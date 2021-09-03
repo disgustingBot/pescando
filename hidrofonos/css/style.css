@@ -73,6 +73,7 @@ ul{
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 3px;
+  display: none;
 }
 
 .top_panel .selected {
