@@ -905,7 +905,25 @@ body {
   }
 }
 
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.9) =close_boat_lightbox_around:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.close_boat_lightbox_around {
+  position: fixed;
+  width: 0;
+  height: 0;
+}
 
+.viday:not([class~="play"]) .close_boat_lightbox_around,
+.interactive_map:not([class="interactive_map"]) .close_boat_lightbox_around {
+  width: 100vw;
+  height: 100vh;
+  background: none;
+  top: calc((100vh - 58vh) / -2);
+  left: calc((100vw - 58vh) / -2);
+}
 
 
 

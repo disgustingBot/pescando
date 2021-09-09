@@ -73,7 +73,8 @@
           <img class="boax_perk_icon" src="<?=$DIR_ICONS?>localizacion-flota.svg" alt="Icono de un punto de ubicación">
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
-        <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">
+        <!-- <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"> -->
+        <div class="close_boat_lightbox_around" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"></div>
         <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"><?= $type['tra_descubre_tba'] ?></button>
       </div>
 
@@ -178,12 +179,13 @@
             ><?= $ELEMS['TXT_VIDEO'] ?></p>
           </div>
 
-          <img
+          <!-- <img
             class="close_boat_lightbox"
             src="<?=$DIR_ICONS?>cerrar-flota.svg"
             alt="Icono de equis para cerrar el Lightbox"
             onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"
-          >
+          > -->
+          <div class="close_boat_lightbox_around" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"></div>
 
           <img
             class="close_boat_lightbox back"
