@@ -118,11 +118,13 @@ body {
 }
 
 .panel_title {
-  font-family: 'Lato Bold';
-  font-size: 25px;
-  line-height: 25px;
-  color: #fff;
-  margin-bottom: 7px;
+  font-family: 'Lato Black';
+  font-size: 40px;
+  line-height: 40px;
+  color: #9AB7CC;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .panel_language {
@@ -147,6 +149,10 @@ body {
   font-family: 'Lato Regular';
   font-size: 18px;
   margin-bottom: 10px;
+}
+
+.panel_text_md {
+  font-size: 25px;
 }
 
 .panel_stick {

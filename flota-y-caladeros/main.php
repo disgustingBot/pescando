@@ -90,13 +90,7 @@
 
         <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
         <p class="panel_text"><?= $ELEMS['TXT_BARCOS_FAENANDO'] ?></p>
-        <p class="panel_language">
-          <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
-          <span class="panel_stick">|</span>
-          <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
-          <span class="panel_stick">|</span>
-          <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-        </p>
+        <p class="panel_text panel_text_md"><?= $ELEMS["TXT_SELECCIONA_UNO"] ?></p>
       </div>
       <?php $anim_delay = 0 ?>
 
