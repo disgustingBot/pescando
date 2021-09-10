@@ -334,7 +334,7 @@ body {
   font-size: 16px;
   color: white;
 }
-.boat_type.arrastrero .led_light,
+/* .boat_type.arrastrero .led_light,
 .boat_type.tipo_1 .led_light,
 .boat_position.tipo_1 .led_light{
   border-radius: 50%;
@@ -368,7 +368,7 @@ body {
   --tangonero_icon_size: 11px;
   width: var(--tangonero_icon_size);
   height: var(--tangonero_icon_size);
-}
+} */
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -382,6 +382,8 @@ body {
   height: var(--led_light_size);
   background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, rgba(255, 255, 255, 0.5) 0 2px 12px;
+
+  border-radius: 50%;
 }
 
 
