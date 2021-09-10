@@ -114,6 +114,18 @@
     <?php } ?>
 
     <div class="boat_positioning_layer">
+      <?php foreach ($ship_types as $type) { ?>
+        <div class="boat_type_name_single tipo_<?= $type['tba_id'] ?>">
+          <p class="boat_type_name boat_type_name_sm"><?= $type['slug'] ?></p>
+        </div>
+
+        <style>
+          [class="interactive_map"] .boat_positioning_layer.tipo_<?= $type['tba_id'] ?> .boat_type_name_single.tipo_<?= $type['tba_id'] ?> {
+            opacity: 1;
+          }
+        </style>
+      <?php } ?>
+      
       <?php $anim_delay = 0 ?>
 
       <?php

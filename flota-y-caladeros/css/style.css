@@ -378,6 +378,12 @@ body {
   color: #D6001C;
   text-transform: uppercase;
   margin-top: 25px;
+  letter-spacing: 3px;
+}
+
+.boat_type_name_sm {
+  font-size: 25px;
+  margin-top: 0;
 }
 /* .boat_type.arrastrero .led_light,
 .boat_type.tipo_1 .led_light,
@@ -1032,4 +1038,18 @@ body {
   display: grid;
   grid-auto-flow: column;
   margin-bottom: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.6) =boat_type_name_single:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boat_type_name_single {
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }
