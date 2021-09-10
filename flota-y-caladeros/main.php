@@ -242,13 +242,18 @@
 
     <div class="panel">
       <!-- TODO: mover este boton a donde corresponda -->
-      <button class="back_btn" onclick="
-        altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer']);
-        altClassFromSelector('all_types', '.interactive_map', ['interactive_map']);"
-      >
-        <img src="<?=$DIR_ICONS?>atras.svg">
-      </button>
+      
+      <div class="panel_buttons">
+        <a href="index.php" class="home_btn"><img src="<?=$DIR_ICONS?>atras.svg"></a>
 
+        <button class="back_btn" onclick="
+          altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer']);
+          altClassFromSelector('all_types', '.interactive_map', ['interactive_map']);"
+        >
+          <img src="<?=$DIR_ICONS?>atras.svg">
+        </button>
+      </div>
+    
 
       <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
 

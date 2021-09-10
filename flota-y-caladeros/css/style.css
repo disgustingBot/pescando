@@ -376,6 +376,7 @@ body {
   font-family: "Lato Bold";
   font-size: 35px;
   color: #D6001C;
+  text-transform: uppercase;
   margin-top: 25px;
 }
 /* .boat_type.arrastrero .led_light,
@@ -979,7 +980,7 @@ body {
                               5.4.1) =back_btn:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-[class="boat_positioning_layer"] .back_btn{
+[class="boat_positioning_layer"] .back_btn {
   /* width: 0; */
   opacity:0;
   pointer-events: none;
@@ -987,11 +988,16 @@ body {
   /* transition-delay: 0s; */
 }
 
+.all_types .back_btn {
+  width: 0;
+  opacity:0;
+  pointer-events: none;
+  margin-left: 0;
+}
+
 .back_btn {
   background: none;
   border: none;
-  margin-right: 0px;
-  margin-bottom: 12px;
   position: relative;
   top:20px;
   transition:.4s;
@@ -1000,4 +1006,30 @@ body {
   width: 40px;
   opacity:1;
   pointer-events: all;
+  margin-left: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.4.2) =home_btn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.home_btn {
+  width: 40px;
+  display: block;
+}
+
+.home_btn img {
+  background-color: orange;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.5) =panel_buttons:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel_buttons {
+  display: grid;
+  grid-auto-flow: column;
+  margin-bottom: 12px;
 }
