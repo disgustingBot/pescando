@@ -131,6 +131,7 @@ body {
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 5px;
+  display: none;
 }
 
 .panel_info {

@@ -31,26 +31,14 @@
     
     <h1 class="lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
     <ul class="lang_list">
+    <?php foreach ( $LANG_MENU as $key => $value ) { ?>
       <li>
         <a
-          href="main.php?lang=esp"
-          class="btn btn_lang <?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Español
+          href="main.php?lang=<?=$key?>"
+          class="btn_lang <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>"><?=$value?>
         </a>
       </li>
-
-      <li>
-        <a
-          href="main.php?lang=eng"
-          class="btn btn_lang <?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">English
-        </a>
-      </li>
-
-      <li>
-        <a
-          href="main.php?lang=glg"
-          class="btn btn_lang <?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Galego
-        </a>
-      </li>
+    <?php } ?>
     </ul>
   </section>
 

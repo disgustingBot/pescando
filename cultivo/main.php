@@ -112,7 +112,7 @@
         <img class="anakin_img rowcol1" src="<?= $DIR_IMG ?><?= $category['esp_fondo'] ?>" alt="">
 
         <div class="anakin_caption rowcol1">
-          <p class="anakin_description">Especies de Cultivo</p>
+          <p class="anakin_description"><?=$ELEMS["TXT_ESPECIES_CULTIVO"]?></p>
           <div class="anakin_icon">
             <img src="<?= $DIR_IMG.$category['esp_icono'] ?>">
             <?php // include_once("<?= $DIR_IMG$category[esp_icono]") ?>
@@ -127,14 +127,17 @@
 
     <div class="luke Obse" data-observe=".luke_item" data-root-width="100">
       <div class="luke_viw">
+
+            <style>
+            <?php foreach ($alphabet as $letter) { ?>
+              <?= ".$letter .$letter.full .luke_letter" ?>{
+                color: rgb(214, 0, 28);
+                transform: scale(1.65);
+              }
+            <?php } ?>
+            </style>
         <ul class="luke_scroll">
           <?php foreach ($alphabet as $letter) { ?>
-            <style>
-            <?= ".$letter .$letter.full .luke_letter" ?>{
-              color: rgb(214, 0, 28);
-              transform: scale(1.65);
-            }
-            </style>
             <li class="luke_item <?= $letter ?>" data-clase="<?= $letter ?>">
               <p class="luke_letter"><?= $letter ?></p>
             </li>
@@ -166,7 +169,7 @@
           <?php // var_dump($specie) ?>
           <li
             class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>"
-            data-code="<?= 'PBC_animal'.$specie['ani_id'].'_'.$_SESSION['lang'] ?>"
+            data-code="<?= 'PBCanimal'.$specie['ani_id'].strtoupper($_SESSION['lang']) ?>"
             onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);"
           >
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
@@ -230,17 +233,18 @@
              <?php /* <!-- <img class="leia_hier_icon" src="<?= $DIR_IMG . $specie['esp_icono'] ?>"> --> */ ?>
              <object class="leia_hier_icon" data-url="<?= $DIR_IMG . $specie['esp_icono'] ?>" data="" type="image/svg+xml"></object>
              <?php
+             /* <p class="leia_hier_txt"><?= $specie['category'] ?></p> */
              ?>
-             <p class="leia_hier_txt"><?= $specie['category'] ?></p>
+             <p class="leia_hier_txt"><?= $specie['tra_nombre_esp'] ?></p>
            </div>
            <h3 class="leia_title"><?= $specie['tra_nombre_ani'] ?></h3>
 
            <img class="leia_image" data-url="<?= $DIR_IMG . $specie['ani_foto'] ?>" src="" alt="">
 
-           <p class="leia_label">Nombre Científico</p>
+           <p class="leia_label"><?=$ELEMS["TXT_NOMBRE_CIENTIFICO"]?></p>
            <p class="leia_info"><?= $specie['ani_cientifico'] ?></p>
            <div class="leia_separator"></div>
-           <p class="leia_label">Tipo de agricultura</p>
+           <p class="leia_label"><?=$ELEMS["TXT_TIPO_ACUICULTURA"]?></p>
            <p class="leia_info"><?=( $specie["ani_tipoacuicultura"] == "M" ? $ELEMS["TIPO_ACUMARINA"] : $ELEMS["TIPO_ACUCONTINENTAL"])?></p>
            <div class="leia_separator"></div>
            <p class="leia_info"><?= $specie['tra_curiosidades_ani'] ?></p>

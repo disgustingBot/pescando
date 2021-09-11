@@ -133,11 +133,20 @@ const open_category = slug =>{
   let empty_letters = alphabet.filter(letter => !full_letters.includes(letter))
 
   // clear the empty classes
+  if (document.querySelector('.luke_item.last')) {
+    altClassFromSelector('last', '.luke_item.last')
+  }
   altClassFromSelector('empty', '.luke_item.empty')
   altClassFromSelector('full', '.luke_item.full')
 
   add_full_class_to_letters( full_letters )
   add_empty_class_to_letters( empty_letters )
+
+  let full_items = document.querySelectorAll('.luke_item.full')
+  // console.log(full_items);
+  let last_full = full_items[full_items.length - 1];
+  // console.log(last_full);
+  last_full.classList.add('last')
 
   // selects indexed letter in HTML
   let letter = document.querySelector('.luke_item.'+full_letters[0])
