@@ -15,6 +15,8 @@
   $species    = get_species();
   $ELEMS      = get_strings();
 
+  $buttons_color = 'white';
+
  // $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
   // if ( isset($_GET['central']) ) {
   //   $central = intval(trim($_GET["central"]));
@@ -61,18 +63,21 @@
 
     <div class="panel panel_top">
       <div class="back_grid">
-        <button class="back_btn" onclick="back_btn()">
-          <img src="<?=$DIR_ICONS?>atras.svg">
+        <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+          <?php include $DIR_ICONS.'home.svg' ?>
+        </a>
+        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
+          <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
-        <div>
+        <div class="panel_title_container">
           <h3 class="panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
-          <p class="panel_language">
-            <a href="main.php?lang=esp<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
+          <!-- <p class="panel_language">
+            <a href="main.php?lang=esp<?= ( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
             <span class="panel_stick">|</span>
-            <a href="main.php?lang=eng<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
+            <a href="main.php?lang=eng<?= ( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
             <span class="panel_stick">|</span>
-            <a href="main.php?lang=glg<?=( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-          </p>
+            <a href="main.php?lang=glg<?= ( $central != "" ? "&central=".intval($central) : "")?>" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
+          </p> -->
         </div>
       </div>
     </div>
