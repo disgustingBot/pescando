@@ -44,6 +44,12 @@
 
   <div class="interactive_map all_types">
     <div class="boat_type_selector rowcol1">
+      <div class="boat_type_background">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138.51 138.51"><defs><style>.cls-1{fill:none;stroke:#a0b5c9;stroke-linecap:round;stroke-linejoin:round;}</style></defs><title>rosa-vientosAsset 16</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M69.26,69.26H.5l59.7-8.92Zm0,0H.5l59.7,8.91Zm0,0H138L78.32,78.17Zm68.75,0L78.17,60.2m-8.91,9.06V138L60.34,78.32Zm0,0V138l8.91-59.69Zm0,0V.5l8.91,59.7Zm0,0V.5L61.71,51,60.34,60.2ZM20.64,117.87,51,76.8m9.3,1.37-39.7,39.7L61.71,87.48Zm17.83-18,39.7-39.56-30.33,41Zm0,0,39.7-39.56L76.8,51Zm0,18,39.68,39.68L76.8,87.48Zm39.68,39.68L87.47,76.8M60.34,60.2,20.64,20.64,61.71,51Zm0,0L20.64,20.64,51,61.71Z"/><path class="cls-1" d="M40.6,35.46a44.14,44.14,0,0,1,25-10.36m7.35,0A44.15,44.15,0,0,1,97.88,35.44m5.19,5.19a44.17,44.17,0,0,1,10.34,24.9m0,7.4a44.15,44.15,0,0,1-10.34,24.95m-5.19,5.2a44.14,44.14,0,0,1-24.95,10.33m-7.35,0a44.14,44.14,0,0,1-24.95-10.33m-5.19-5.2A44.15,44.15,0,0,1,25.1,72.93m0-7.35A44.15,44.15,0,0,1,35.44,40.63"/></g></g></svg>
+      </div>
+      <div class="boat_type_line boat_type_line_vertical"></div>
+      <div class="boat_type_line boat_type_line_horizontal"></div>
+
       <?php
       // var_dump($ship_types[0]['tba_id']);
         ?>
@@ -71,9 +77,10 @@
             altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map', '<?= $type['slug'] ?>']);
             altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $type['tba_id'] ?>']);"
         >
-          <div class="led_light_wrapper">
+          <!-- <div class="led_light_wrapper">
             <div class="led_light boat_type_icon"></div>
-          </div>
+          </div> -->
+          <img src="<?= $DIR_ICONS ?>icono-<?= $type['slug'] ?>.svg" class="boat_type_figure">
           <p class="boat_type_name"><?= $type['tra_nombre_tba'] ?></p>
         </div>
       <?php } ?>
@@ -289,6 +296,7 @@
 
 
     <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="Mapa de las ubicaciones de la flota en el mundo">
+    <img class="cross_positions rowcol1" src="<?=$DIR_ICONS?>cruces-posicion.svg" alt="Posición de cruces">
 
   </div>
 
