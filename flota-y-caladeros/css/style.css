@@ -114,15 +114,17 @@ body {
   position: absolute;
   right: 0;
   top: 0;
-  z-index: 5;
+  z-index: 4;
 }
 
 .panel_title {
-  font-family: 'Lato Bold';
-  font-size: 25px;
-  line-height: 25px;
-  color: #fff;
-  margin-bottom: 7px;
+  font-family: 'Lato Black';
+  font-size: 40px;
+  line-height: 40px;
+  color: #9AB7CC;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+  letter-spacing: 5px;
 }
 
 .panel_language {
@@ -148,6 +150,13 @@ body {
   font-family: 'Lato Regular';
   font-size: 18px;
   margin-bottom: 10px;
+  text-align: center;
+}
+
+.panel_text_md {
+  font-size: 25px;
+  margin-bottom: 0;
+  font-weight: bold;
 }
 
 .panel_stick {
@@ -157,6 +166,18 @@ body {
 .panel .selected {
   font-family: 'Lato Black';
   color: rgb(214, 0, 28);
+}
+
+.panel_text_1, .panel_text_2 {
+  display: none;
+}
+
+.all_types .panel_text_1 {
+  display: block;
+}
+
+[class="interactive_map"] .boat_positioning_layer[class*="tipo"] + .panel .panel_text_2 {
+  display: block;
 }
 
 /* ---------------------------------------------------------------------------
@@ -239,7 +260,7 @@ body {
                               4.5) =boat_positioning_layer:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-.boat_positioning_layer{
+.boat_positioning_layer {
   grid-column: 1;
   grid-row: 1;
   height: 100vh;
@@ -250,6 +271,12 @@ body {
   box-shadow: 0px 0px 220px 220px rgb(0 0 0 / 30%) inset;
   z-index: 4;
 }
+
+.all_types .boat_positioning_layer {
+  pointer-events: none;
+  opacity: 0;
+}
+
 /* [class="boat_positioning_layer"] .boat_position {
     opacity:1;
     pointer-events: all;
@@ -286,8 +313,11 @@ body {
   height: auto;
   margin: auto;
 }
-.led_light.boat_type_icon{
-  margin:auto 10px auto 0;
+
+.led_light.boat_type_icon {
+  /* margin:auto 10px auto 0; */
+  width: 200px;
+  height: 200px;
 }
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -309,33 +339,54 @@ body {
   -o-animation: blinkRed 0.5s infinite;
   animation: blinkRed 0.5s infinite;
 } */
-.boat_type_selector{
-  padding: 12px;
+.boat_type_selector {
+  /* padding: 12px;
   border-radius: 15px;
   border: 2px dotted white;
+  width: max-content;
+  margin: auto auto 4% auto; */
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-column-gap: 35px;
-  grid-row-gap: 15px;
+  grid-template-rows: 1fr 1fr;
   z-index: 2;
-  width: max-content;
-  margin: auto auto 4% auto;
-}
-.boat_type{
-  display: flex;
-  align-items: center;
+  padding: 290px 30% 68px 30%;
+  pointer-events: none;
+  opacity: 0;
   transition: 0.5s;
 }
-.boat_type .boat_icon{
+
+.all_types .boat_type_selector {
+  pointer-events: all;
+  opacity: 1;
+}
+
+.boat_type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s;
+}
+
+.boat_type .boat_icon {
   margin: auto 0;
   margin-right: 15px;
 }
-.boat_type_name{
-  font-family: "Lato Regular";
-  font-size: 16px;
-  color: white;
+
+.boat_type_name {
+  font-family: "Lato Bold";
+  font-size: 35px;
+  color: #D6001C;
+  text-transform: uppercase;
+  margin-top: 25px;
+  letter-spacing: 3px;
 }
-.boat_type.arrastrero .led_light,
+
+.boat_type_name_sm {
+  font-size: 25px;
+  margin-top: 0;
+}
+/* .boat_type.arrastrero .led_light,
 .boat_type.tipo_1 .led_light,
 .boat_position.tipo_1 .led_light{
   border-radius: 50%;
@@ -369,7 +420,7 @@ body {
   --tangonero_icon_size: 11px;
   width: var(--tangonero_icon_size);
   height: var(--tangonero_icon_size);
-}
+} */
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -383,6 +434,8 @@ body {
   height: var(--led_light_size);
   background-color: #FFFFFF;
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, rgba(255, 255, 255, 0.5) 0 2px 12px;
+
+  border-radius: 50%;
 }
 
 
@@ -668,7 +721,7 @@ body {
   display: block;
   width: 50px;
   position: absolute;
-  top: 70px;
+  bottom: 50px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
@@ -734,7 +787,7 @@ body {
 }
 
 .viday.play .close_boat_lightbox {
-  transform: translate(-50%, calc(-60px - 70px));
+  /* transform: translate(-50%, calc(-60px - 70px)); */
 
   opacity:0;
   pointer-events: none;
@@ -752,7 +805,7 @@ body {
 }
 .close_boat_lightbox{
   position: absolute;
-  bottom: -60px;
+  top: 83px;
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;
@@ -769,6 +822,7 @@ body {
   font-family: 'Lato Black';
   color: #D6001C;
   text-align: center;
+  max-width: 50%;
 }
 
 /* ---------------------------------------------------------------------------
@@ -906,7 +960,25 @@ body {
   }
 }
 
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.9) =close_boat_lightbox_around:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.close_boat_lightbox_around {
+  position: fixed;
+  width: 0;
+  height: 0;
+}
 
+.viday:not([class~="play"]) .close_boat_lightbox_around,
+.interactive_map:not([class="interactive_map"]) .close_boat_lightbox_around {
+  width: 100vw;
+  height: 100vh;
+  background: none;
+  top: calc((100vh - 58vh) / -2);
+  left: calc((100vw - 58vh) / -2);
+}
 
 
 
@@ -915,7 +987,7 @@ body {
                               5.4.1) =back_btn:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-[class="boat_positioning_layer"] .back_btn{
+[class="boat_positioning_layer"] .back_btn {
   /* width: 0; */
   opacity:0;
   pointer-events: none;
@@ -923,11 +995,16 @@ body {
   /* transition-delay: 0s; */
 }
 
+.all_types .back_btn {
+  width: 0;
+  opacity:0;
+  pointer-events: none;
+  margin-left: 0;
+}
+
 .back_btn {
   background: none;
   border: none;
-  margin-right: 0px;
-  margin-bottom: 12px;
   position: relative;
   top:20px;
   transition:.4s;
@@ -936,4 +1013,44 @@ body {
   width: 40px;
   opacity:1;
   pointer-events: all;
+  margin-left: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.4.2) =home_btn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.home_btn {
+  width: 40px;
+  display: block;
+}
+
+.home_btn img {
+  background-color: orange;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.5) =panel_buttons:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel_buttons {
+  display: grid;
+  grid-auto-flow: column;
+  margin-bottom: 12px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.6) =boat_type_name_single:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.boat_type_name_single {
+  opacity: 0;
+  transition: 0.5s;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
 }

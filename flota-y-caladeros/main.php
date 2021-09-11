@@ -41,9 +41,42 @@
 
 
 
+  <div class="interactive_map all_types">
+    <div class="boat_type_selector rowcol1">
+      <?php
+      // var_dump($ship_types[0]['tba_id']);
+        ?>
+      <?php foreach ($ship_types as $type) { ?>
+        <?php // var_dump($type) ?>
+        <?php $active = ".boat_positioning_layer.tipo_$type[tba_id] .boat_type.tipo_$type[tba_id] .led_light"; ?>
+        <style>
 
-  <div class="interactive_map">
-
+          <?= $active ?> {
+            background: currentColor;
+            -webkit-animation: blinkRed 0.5s infinite;
+            -moz-animation: blinkRed 0.5s infinite;
+            -ms-animation: blinkRed 0.5s infinite;
+            -o-animation: blinkRed 0.5s infinite;
+            animation: blinkRed 0.5s infinite;
+          }
+          /* No click en categoría activa */
+          /* .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
+            pointer-events: none;
+          } */
+        </style>
+        <div
+          class="boat_type <?= $type['slug'] ?> tipo_<?= $type['tba_id'] ?>"
+          onclick="
+            altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map', '<?= $type['slug'] ?>']);
+            altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $type['tba_id'] ?>']);"
+        >
+          <div class="led_light_wrapper">
+            <div class="led_light boat_type_icon"></div>
+          </div>
+          <p class="boat_type_name"><?= $type['tra_nombre_tba'] ?></p>
+        </div>
+      <?php } ?>
+    </div>
 
     <?php
     foreach ($ship_types as $type) {
@@ -73,30 +106,26 @@
           <img class="boax_perk_icon" src="<?=$DIR_ICONS?>localizacion-flota.svg" alt="Icono de un punto de ubicación">
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
-        <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')">
+        <!-- <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"> -->
+        <div class="close_boat_lightbox_around" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"></div>
         <button class="close_boat_lightbox_text" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"><?= $type['tra_descubre_tba'] ?></button>
       </div>
 
     <?php } ?>
 
     <div class="boat_positioning_layer">
-      <div class="panel">
-          <!-- TODO: mover este boton a donde corresponda -->
-          <button class="back_btn" onclick="altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer'])">
-            <img src="<?=$DIR_ICONS?>atras.svg">
-          </button>
+      <?php foreach ($ship_types as $type) { ?>
+        <div class="boat_type_name_single tipo_<?= $type['tba_id'] ?>">
+          <p class="boat_type_name boat_type_name_sm"><?= $type['slug'] ?></p>
+        </div>
 
-
-        <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
-        <p class="panel_text"><?= $ELEMS['TXT_BARCOS_FAENANDO'] ?></p>
-        <p class="panel_language">
-          <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
-          <span class="panel_stick">|</span>
-          <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
-          <span class="panel_stick">|</span>
-          <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-        </p>
-      </div>
+        <style>
+          [class="interactive_map"] .boat_positioning_layer.tipo_<?= $type['tba_id'] ?> .boat_type_name_single.tipo_<?= $type['tba_id'] ?> {
+            opacity: 1;
+          }
+        </style>
+      <?php } ?>
+      
       <?php $anim_delay = 0 ?>
 
       <?php
@@ -128,6 +157,10 @@
           }
           <?= $css_class_led_video ?> {
             background-color: #A00;
+          }
+
+          <?='.boat_positioning_layer.boat_' . $barco['bar_id']?> {
+            z-index: 5;
           }
 
           <?= $css_class_boat_video ?> path {
@@ -178,12 +211,13 @@
             ><?= $ELEMS['TXT_VIDEO'] ?></p>
           </div>
 
-          <img
+          <!-- <img
             class="close_boat_lightbox"
             src="<?=$DIR_ICONS?>cerrar-flota.svg"
             alt="Icono de equis para cerrar el Lightbox"
             onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"
-          >
+          > -->
+          <div class="close_boat_lightbox_around" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"></div>
 
           <img
             class="close_boat_lightbox back"
@@ -209,42 +243,46 @@
           </div>
         </div>
       <?php } ?>
-      <div class="boat_type_selector rowcol1">
-        <?php
-        // var_dump($ship_types[0]['tba_id']);
-         ?>
-        <?php foreach ($ship_types as $type) { ?>
-          <?php // var_dump($type) ?>
-          <?php $active = ".boat_positioning_layer.tipo_$type[tba_id] .boat_type.tipo_$type[tba_id] .led_light"; ?>
-          <style>
+    </div>
 
-            <?= $active ?> {
-              background: currentColor;
-              -webkit-animation: blinkRed 0.5s infinite;
-              -moz-animation: blinkRed 0.5s infinite;
-              -ms-animation: blinkRed 0.5s infinite;
-              -o-animation: blinkRed 0.5s infinite;
-              animation: blinkRed 0.5s infinite;
-            }
-            /* No click en categoría activa */
-            /* .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
-              pointer-events: none;
-            } */
-          </style>
-          <div
-            class="boat_type <?= $type['slug'] ?> tipo_<?= $type['tba_id'] ?>"
-            onclick="
-              altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map', ['interactive_map', '<?= $type['slug'] ?>']);
-              altClassFromSelector('tipo_<?= $type['tba_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $type['tba_id'] ?>']);"
-          >
-            <div class="led_light_wrapper">
-              <div class="led_light boat_type_icon"></div>
-            </div>
-            <p class="boat_type_name"><?= $type['tra_nombre_tba'] ?></p>
-          </div>
-        <?php } ?>
+
+
+
+
+
+
+
+    <div class="panel">
+      <!-- TODO: mover este boton a donde corresponda -->
+      
+      <div class="panel_buttons">
+        <a href="index.php" class="home_btn"><img src="<?=$DIR_ICONS?>atras.svg"></a>
+
+        <button class="back_btn" onclick="
+          altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer']);
+          altClassFromSelector('all_types', '.interactive_map', ['interactive_map']);"
+        >
+          <img src="<?=$DIR_ICONS?>atras.svg">
+        </button>
+      </div>
+    
+
+      <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
+
+      <div class="panel_text_1">
+        <p class="panel_text"><?= $ELEMS['TXT_BARCOS_FAENANDO'] ?></p>
+        <p class="panel_text panel_text_md"><?= $ELEMS["TXT_SELECCIONA_UNO"] ?></p>
+      </div>
+
+      <div class="panel_text_2">
+        <p class="panel_text panel_text_md"><?= $ELEMS["TXT_SELECCIONA_BARCO"] ?></p>
       </div>
     </div>
+
+
+
+
+    
 
 
     <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="Mapa de las ubicaciones de la flota en el mundo">
