@@ -14,6 +14,7 @@
   // $redirect_time = 10;
 
   // var_dump($ship_types[0]);
+  $buttons_color = 'white';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -125,7 +126,7 @@
           }
         </style>
       <?php } ?>
-      
+
       <?php $anim_delay = 0 ?>
 
       <?php
@@ -254,18 +255,20 @@
 
     <div class="panel">
       <!-- TODO: mover este boton a donde corresponda -->
-      
-      <div class="panel_buttons">
-        <a href="index.php" class="home_btn"><img src="<?=$DIR_ICONS?>atras.svg"></a>
 
-        <button class="back_btn" onclick="
+      <div class="panel_buttons">
+        <a href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+          <?php include $DIR_ICONS.'home.svg' ?>
+        </a>
+
+        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="
           altClassFromSelector('', '.boat_positioning_layer', ['boat_positioning_layer']);
           altClassFromSelector('all_types', '.interactive_map', ['interactive_map']);"
         >
-          <img src="<?=$DIR_ICONS?>atras.svg">
+          <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
       </div>
-    
+
 
       <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
 
@@ -282,7 +285,7 @@
 
 
 
-    
+
 
 
     <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="Mapa de las ubicaciones de la flota en el mundo">
