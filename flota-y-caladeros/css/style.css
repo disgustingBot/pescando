@@ -382,12 +382,13 @@ body {
   text-shadow: 0 0 1px #FFFFFF;
   text-transform: uppercase;
   margin-top: 40px;
-  letter-spacing: 3px;
+  letter-spacing: 4px;
 }
 
 .boat_type_name_sm {
-  font-size: 25px;
+  font-size: 18px;
   margin-top: 0;
+  letter-spacing: 6px;
 }
 
 .boat_type_figure {
@@ -1085,7 +1086,24 @@ body {
   opacity: 0;
   transition: 0.5s;
   position: absolute;
-  bottom: 5%;
+  bottom: 9.5%;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.7) =cross_positions:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.cross_positions {
+  width: 92vh;
+  z-index: 1;
+  margin: auto auto 40px auto;
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.interactive_map:not([class*="all_types"]) .cross_positions {
+  opacity: 1;
 }

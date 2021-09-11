@@ -293,6 +293,7 @@
 
 
     <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="Mapa de las ubicaciones de la flota en el mundo">
+    <img class="cross_positions rowcol1" src="<?=$DIR_ICONS?>cruces-posicion.svg" alt="Posición de cruces">
 
   </div>
 
