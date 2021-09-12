@@ -68,6 +68,8 @@ foreach ($barcos as $barco) {
         </div>
       </div>
 
+      <p class="top_panel_text_lg" >Selecciona la estancia que quieras visitar</p>
+
       <div class="turn">
         <div class="turn_caption">
           <!-- <h3 class="turn_txt">Cubierta</h3> -->
