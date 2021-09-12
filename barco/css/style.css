@@ -165,6 +165,25 @@ ul{
   font-family: var(--lato_light);
 }
 
+[class="shape_screen"] .top_panel_text_lg {
+  opacity: 0;
+  transition-delay: 0s;
+  top: -50px;
+}
+
+.top_panel_text_lg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 50px;
+  font-family: 'Lato-Regular';
+  color: #ffffff;
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 1s;
+}
+
 .top_panel .selected {
   font-family: var(--lato_black);
   color: rgb(214, 0, 28);
