@@ -15,6 +15,7 @@ $ELEMS      = get_strings();
 // $redirect_time = 60;
 
 $barcos = get_detalles();
+$ship_types = get_ship_types();
 
 $clickables = [];
 foreach ($barcos as $barco) {
@@ -58,13 +59,25 @@ foreach ($barcos as $barco) {
         </div>
         <div class="title_lang_grid">
           <h3 class="top_panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
-          <p class="top_panel_language">
+          
+          <?php foreach ($ship_types as $type) { ?>
+            <p class="boat_type_name type_<?= $type['slug'] ?>"><?= $type['tba_nombre'] ?></p>
+            <style>
+              .shape_screen.type_<?= $type['slug'] ?> .boat_type_name.type_<?= $type['slug'] ?> {
+                opacity: 1;
+                transform: translateY(0);
+                transition-delay: 0.5s;
+              }
+            </style>
+          <?php } ?>
+
+          <!-- <p class="top_panel_language">
             <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
             <span class="top_panel_stick">|</span>
             <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
             <span class="top_panel_stick">|</span>
             <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-          </p>
+          </p> -->
         </div>
       </div>
 
@@ -115,7 +128,18 @@ foreach ($barcos as $barco) {
         </style>
         <div class="boats_screen_boat <?= $barco['slug'] ?>">
           <?php if (count($barcos) > 1) { ?>
-            <img class="boats_screen_img rowcol1" src="<?= $DIR_IMG . $barco['bde_foto'] ?>" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)">
+            <?php
+            $all_types_id = array_column($ship_types, 'tba_id');
+            $type_id_key = array_search($barco['bde_tipo'], $all_types_id);
+            ?>
+            <img
+              class="boats_screen_img rowcol1"
+              src="<?= $DIR_IMG . $barco['bde_foto'] ?>"
+              onclick="
+                activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+                altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+              "
+            >
             <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
