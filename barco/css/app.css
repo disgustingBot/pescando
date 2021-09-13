@@ -10353,3 +10353,55 @@ html, body {
   width: 150px;
   height: 150px;
 }
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.4.2) =triangle_btn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.triangle_btn {
+  width: 24px;
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.8) =triangles:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.triangle_up { transform: rotate(90deg); }
+.triangle_down { transform: rotate(270deg); }
+.triangle_left { transform: rotate(0deg); }
+.triangle_right { transform: rotate(180deg); }
+
+.triangle_cross {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
+  padding: 68px;
+  pointer-events: none;
+}
+
+.triangle_cross_fade {
+  animation: fade 0.5s 5s forwards;
+}
+
+@keyframes fade {
+  to {
+    opacity: 0;
+  }
+}
+
+.triangle_cross_half {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  justify-content: space-between;
+  width: 100%;
+}
