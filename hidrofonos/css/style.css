@@ -140,9 +140,9 @@ ul{
 /* ?back_grid */
 .back_grid {
   display: grid;
-  grid-template-columns: min-content auto;
-  /* column-gap: 32px; */
+  grid-auto-flow: column;
   align-items: start;
+  grid-gap: 16px;
 }
 .back_grid_row{
   width: max-content;
@@ -150,7 +150,7 @@ ul{
 .back_btn {
   background: none;
   border: none;
-  margin-right: 32px;
+  /* margin-right: 32px; */
   position: relative;
   top:20px;
   transition:.4s;
@@ -181,7 +181,7 @@ ul{
   pointer-events: none;
 } */
 
-[class='hydrophone_main'] .back_btn {
+[class='hydrophone_main'] .back_btn:not(.home_btn) {
   width: 0px;
   margin-right: 0px;
   transition-delay: 0s;

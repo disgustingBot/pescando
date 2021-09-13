@@ -210,10 +210,11 @@ ul{
 --------------------------------------------------------------------------- */
 .back_grid {
   display: grid;
-  grid-template-columns: min-content auto;
+  /* grid-template-columns: min-content auto; */
   align-items: start;
+  grid-auto-flow: column;
+  grid-gap: 16px;
 }
-
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               4.4) =turn_grid:
@@ -454,19 +455,23 @@ ul{
                               5.5.1) =btn_back:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
-[class="screen_menu"] .btn_back {
+[class="screen_menu"] .back_btn:not(.home_btn) {
   width: 0;
   margin-right: 0;
   transition-delay: 0s;
 }
 
-.btn_back {
-  margin-right: 32px;
+.back_btn {
+  /* margin-right: 32px; */
   top:20px;
   transition:.4s;
   transition-delay: 1.2s;
   transform: translateY(-50%);
   width: 40px;
+  background: none;
+  border: none;
+  position: relative;
+  text-align: center;
 }
 
 .btn_back_bottom_left {

@@ -22,6 +22,9 @@ foreach ($barcos as $barco) {
   $clickables[$barco['bde_id']] = get_clickables($barco['bde_id']);
 }
 
+
+$buttons_color = 'white';
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,16 +53,31 @@ foreach ($barcos as $barco) {
   <section class="shape_screen">
     <div class="top_panel">
       <div class="back_grid">
+
+        <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+          <?php include $DIR_ICONS.'home.svg' ?>
+        </a>
         <div class="div" style="display:grid">
         <!-- <div class="back_btn"> -->
-          <img class="back_btn rowcol1 second_arrow" onclick="altClassFromSelector('step1', '.body')" src="<?=$DIR_ICONS?>atras.svg">
+
+
+          <span class="back_btn rowcol1 second_arrow" style="color: <?= $buttons_color ?>;" onclick="altClassFromSelector('step1', '.body')">
+            <?php include $DIR_ICONS.'atras.svg' ?>
+          </span>
+          <!-- <img class="back_btn rowcol1 second_arrow" onclick="altClassFromSelector('step1', '.body')" src="<?=$DIR_ICONS?>atras.svg"> -->
+
           <?php if (count($barcos) > 1) { ?>
-            <img class="back_btn rowcol1 first_arrow" onclick="back_btn()" src="<?=$DIR_ICONS?>atras.svg">
+            <span class="back_btn rowcol1 first_arrow" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
+              <?php include $DIR_ICONS.'atras.svg' ?>
+            </span>
+            <!-- <img class="back_btn rowcol1 first_arrow" onclick="back_btn()" src="<?=$DIR_ICONS?>atras.svg"> -->
           <?php } ?>
+
+
         </div>
         <div class="title_lang_grid">
           <h3 class="top_panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
-          
+
           <?php foreach ($ship_types as $type) { ?>
             <p class="boat_type_name type_<?= $type['slug'] ?>"><?= $type['tba_nombre'] ?></p>
             <style>
