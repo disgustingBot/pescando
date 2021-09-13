@@ -13,6 +13,7 @@
   $piscinas = get_piscinas();
   $videos = get_videos_big_data();
 
+  $buttons_color = 'white';
   // var_dump($videos);
   // var_dump($ELEMS);
 
@@ -33,15 +34,18 @@
   <main class="screen">
     <!-- Top panel -->
     <section class="panel panel_top">
+      <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+        <?php include $DIR_ICONS.'home.svg' ?>
+      </a>
       <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
 
-      <p class="panel_language">
+      <!-- <p class="panel_language">
         <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
         <span class="panel_stick">|</span>
         <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
         <span class="panel_stick">|</span>
         <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-      </p>
+      </p> -->
     </section>
 
     <!-- Right panel -->

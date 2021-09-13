@@ -196,8 +196,10 @@ ul{
 --------------------------------------------------------------------------- */
 .back_grid {
   display: grid;
-  grid-template-columns: min-content auto;
+  /* grid-template-columns: min-content auto; */
   align-items: start;
+  grid-auto-flow: column;
+  grid-gap: 16px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -802,7 +804,7 @@ ul{
 .back_btn {
   background: none;
   border: none;
-  margin-right: 32px;
+  /* margin-right: 32px; */
   position: relative;
   top:20px;
   transition:.4s;
@@ -816,7 +818,7 @@ ul{
 }
 [class="shape_screen"] .second_arrow{
   width: 40px;
-  margin-right: 32px;
+  /* margin-right: 32px; */
   transition-delay: 0s;
 }
 

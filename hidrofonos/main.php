@@ -12,6 +12,7 @@
   $sounds = get_sounds();
   // var_dump($sounds);
   // $redirect_time = 10;
+  $buttons_color = 'white';
 
 ?>
 <!DOCTYPE html>
@@ -36,18 +37,26 @@
 
               <div class="top_panel">
                 <div class="back_grid">
-                  <button class="back_btn" onclick="back_btn()">
+
+                    <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+                      <?php include $DIR_ICONS.'home.svg' ?>
+                    </a>
+                    <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
+                      <?php include $DIR_ICONS.'atras.svg' ?>
+                    </button>
+                  <!-- <button class="back_btn" onclick="back_btn()">
                     <img src="<?=$DIR_ICONS?>atras.svg">
-                  </button>
+                  </button> -->
+
                   <div>
                     <h3 class="title" onclick="audio.play()"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
-                    <p class="language">
+                    <!-- <p class="language">
                       <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
                       <span class="stick">|</span>
                       <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
                       <span class="stick">|</span>
                       <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-                    </p>
+                    </p> -->
                   </div>
                 </div>
               </div>

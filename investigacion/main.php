@@ -11,6 +11,7 @@
   $ELEMS = get_strings();
   $items = get_lineas();
 
+  $buttons_color = 'white';
   // $redirect_time = 10;
 ?>
 <!DOCTYPE html>
@@ -81,19 +82,26 @@
 
     <div class="panel panel_bottom">
       <div class="back_grid">
-        <button class="btn btn_back" onclick="back_btn()">
-          <img src="<?=$DIR_ICONS?>atras.svg">
+        <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+          <?php include $DIR_ICONS.'home.svg' ?>
+        </a>
+        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
+          <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
+
+        <!-- <button class="btn btn_back" onclick="back_btn()">
+          <img src="<?=$DIR_ICONS?>atras.svg">
+        </button> -->
 
         <div class="title_lang_grid">
           <h3 class="panel_title"><?=$ELEMS["TIT_INTERACTIVO"]?></h3>
-          <p class="panel_language">
+          <!-- <p class="panel_language">
             <a href="main.php?lang=esp" class="<?= ($_SESSION["lang"] == 'esp') ? 'selected' : '' ?>">Esp</a>
             <span class="panel_stick">|</span>
             <a href="main.php?lang=eng" class="<?= ($_SESSION["lang"] == 'eng') ? 'selected' : '' ?>">Eng</a>
             <span class="panel_stick">|</span>
             <a href="main.php?lang=glg" class="<?= ($_SESSION["lang"] == 'glg') ? 'selected' : '' ?>">Gal</a>
-          </p>
+          </p> -->
         </div>
       </div>
     </div>
