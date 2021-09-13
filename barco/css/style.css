@@ -181,7 +181,7 @@ ul{
   color: #ffffff;
   opacity: 1;
   transition: 0.5s;
-  transition-delay: 1s;
+  transition-delay: 0.75s;
 }
 
 .top_panel .selected {
@@ -209,16 +209,26 @@ ul{
   display: grid;
   grid-template-columns: min-content auto;
   align-items: center;
-  grid-gap: 20px;
+  /* grid-gap: 20px; */
 }
+
 .image_active .turn_icon{
   transform: scale(1);
 }
+
+[class="shape_screen"] .turn_icon {
+  opacity: 0;
+  transform: translateY(-100%);
+  transition-delay: 0s;
+}
+
 .turn_icon {
-  transition:.4s;
+  opacity: 1;
+  transition: 0.5s;
+  transition-delay: 1s;
   /* width: 72px; */
-  width: 52px;
-  transform: scale(1.38);
+  width: 130px;
+  transform: translateY(-10px);
 }
 
 .turn_caption{
