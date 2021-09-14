@@ -230,7 +230,7 @@
           > -->
           <div class="close_boat_lightbox_around" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"></div>
 
-          <img
+          <!-- <img
             class="close_boat_lightbox back"
             src="<?=$DIR_ICONS?>atras.svg"
             alt="Icono de equis para cerrar el Lightbox"
@@ -238,7 +238,16 @@
               altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');
               playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media', true);
             "
+          > -->
+          <div
+            class="close_boat_lightbox back"
+            onclick="
+              altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');
+              playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media', true);
+            "
           >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><path d="M15,2.05A13,13,0,1,1,2.05,15,13,13,0,0,1,15,2.05m0,28A15,15,0,1,0,0,15,15,15,0,0,0,15,30"/><path fill="currentColor" d="M13,21.42a1,1,0,0,0,1.45,0,1,1,0,0,0,0-1.45L10.49,16H21.92a1,1,0,0,0,0-2.06H10.49L14.44,10a1,1,0,0,0,0-1.45,1,1,0,0,0-.73-.3,1,1,0,0,0-.72.3l-5.7,5.69a1,1,0,0,0,0,1.46Z"/></svg>
+          </div>
         </div>
 
         <div

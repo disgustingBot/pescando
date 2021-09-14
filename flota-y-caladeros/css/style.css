@@ -852,6 +852,11 @@ body {
   pointer-events: all;
 }
 
+.close_boat_lightbox svg {
+  fill: #fff;
+  color: #fff;
+}
+
 .close_boat_lightbox_text {
   background: none;
   border: none;
