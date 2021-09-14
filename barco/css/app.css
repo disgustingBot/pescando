@@ -698,9 +698,13 @@ pre code {
   /* transform: scale(1.38); */
   width: 80px;
   pointer-events: none;
-  top: calc(68px);
+  top: 68px;
   left: calc(100% - 80px - 68px);
   transform: translate(0, -25%);
+}
+
+.turn_icon svg {
+  fill: #D6001C;
 }
 
 [class="turn_background"] .turn_icon {
@@ -709,6 +713,10 @@ pre code {
   left: 50%;
   transform: translate(-50%, -50%);
   animation: clickme 5s infinite;
+}
+
+[class="turn_background"] .turn_icon svg {
+  fill: #fff;
 }
 
 @keyframes clickme {
