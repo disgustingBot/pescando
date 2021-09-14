@@ -64,32 +64,36 @@ $object = array_values(array_filter( $clickables, function($obj){ global $c; ret
       </div>
     </div>
 
-    <div class="turn">
+    <!-- <div class="turn"> -->
       <div class="turn_caption">
         <h3 class="turn_txt" style="text-shadow: 1px 1px #666;"><?= $ELEMS[$object['slug']] ?></h3>
       </div>
-      <div class="turn_icon">
-        <img src="<?=$DIR_ICONS?>360-barco.svg">
-      </div>
-    </div>
+    <!-- </div> -->
   </div>
 
-  <div class="triangle_cross">
-    <div class="triangle_btn triangle_up">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
+  <div class="turn_background">
+    <div class="turn_icon turn_icon_full_screen">
+      <!-- <img src="<?=$DIR_ICONS?>360-barco.svg"> -->
+      <img src="<?=$DIR_ICONS?>360-blanco.svg">
     </div>
 
-    <div class="triangle_cross_half">
-      <div class="triangle_btn triangle_left">
+    <div class="triangle_cross">
+      <div class="triangle_btn triangle_up">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
       </div>
-      <div class="triangle_btn triangle_right">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
-      </div>
-    </div>
 
-    <div class="triangle_btn triangle_down">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
+      <div class="triangle_cross_half">
+        <div class="triangle_btn triangle_left">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
+        </div>
+        <div class="triangle_btn triangle_right">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
+        </div>
+      </div>
+
+      <div class="triangle_btn triangle_down">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27.51 55.02"><defs><style>.cls-1{fill:#f90022;}</style></defs><title>triangulao bolasRecurso 5</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><polygon class="cls-1" points="0 27.51 27.51 55.02 27.51 0 0 27.51"/></g></g></svg>
+      </div>
     </div>
   </div>
 
@@ -113,6 +117,7 @@ $object = array_values(array_filter( $clickables, function($obj){ global $c; ret
 </div>
 <canvas id="renderCanvas" class=""></canvas>
 <script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
 <script>
 $(document).ready(function() {
 
@@ -124,6 +129,11 @@ $(document).ready(function() {
 
 });
 
+  const IconFullScreen = () => {
+    altClassFromSelector('turn_background_off', '.turn_background', ['turn_background']);
+    window.removeEventListener('touchstart', IconFullScreen);
+  }
+  window.addEventListener('touchstart', IconFullScreen);
 </script>
 </body>
 </html>
