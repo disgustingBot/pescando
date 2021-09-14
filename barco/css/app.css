@@ -583,7 +583,7 @@ pre code {
   z-index: 12;
   display: flex;
   flex-direction: row;
-  align-items: start;
+  align-items: center;
   justify-content: space-between;
   pointer-events: none;
 }
@@ -687,23 +687,44 @@ pre code {
   align-items: center;
   grid-gap: 20px;
 }
-.image_active .turn_icon{
+
+/* .image_active .turn_icon{
   transform: scale(1);
-}
+} */
+
 .turn_icon {
-  transition:.4s;
-  width: 37px;
-  transform: scale(1.38);
+  transition: 0.5s;
+  position: fixed;
+  /* transform: scale(1.38); */
+  width: 80px;
+  pointer-events: none;
+  top: calc(68px);
+  left: calc(100% - 80px - 68px);
+  transform: translate(0, -25%);
 }
 
-.turn_caption{
+[class="turn_background"] .turn_icon {
+  width: 300px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.turn_icon * {
+  pointer-events: none;
+}
+
+.turn_caption {
   overflow:hidden;
+  margin-right: calc(80px + 20px); /* 80px = ancho del icono 360 */
   /* opacity: 0; */
 }
+
 .image_active .turn_txt{
   /* opacity:1; */
   /* transform: translateX(0); */
 }
+
 .turn_txt{
   font-family: var(--lato_bold);
   font-size: 25px;
@@ -713,6 +734,21 @@ pre code {
   width: max-content;
   /* margin-right: 20px; */
   /* transform: translateX(100%); */
+}
+
+.turn_background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #0d4f709f;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.turn_background_off {
+  background-color: #0d4f7000;
 }
 
 
@@ -10352,4 +10388,58 @@ html, body {
 .loader .play img {
   width: 150px;
   height: 150px;
+}
+
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.4.2) =triangle_btn:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.triangle_btn {
+  width: 24px;
+}
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              5.8) =triangles:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.triangle_up { transform: rotate(90deg); }
+.triangle_down { transform: rotate(270deg); }
+.triangle_left { transform: rotate(0deg); }
+.triangle_right { transform: rotate(180deg); }
+
+.triangle_cross {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: grid;
+  justify-items: center;
+  align-content: space-between;
+  padding: 68px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.turn_background_off .triangle_cross {
+  animation: fade 5s 0.5s forwards;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.triangle_cross_half {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  justify-content: space-between;
+  width: 100%;
 }
