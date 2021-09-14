@@ -233,6 +233,10 @@ ul{
   transform: translateY(-10px);
 }
 
+.turn_icon svg {
+  fill: #D6001C;
+}
+
 .turn_caption{
   overflow:hidden;
   /* opacity: 0; */

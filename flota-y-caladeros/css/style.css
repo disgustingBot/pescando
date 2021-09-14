@@ -650,7 +650,8 @@ body {
   font-family: 'Lato Bold';
 }
 .boax_deco{width:58%}
-.boax_main_icon{width:75px}
+.boax_main_icon{width:60px}
+.boax_main_icon svg { fill: #00587C; }
 
 .boax_txt{
   font-family: 'Lato Regular';
@@ -849,6 +850,11 @@ body {
   transition: 1s;
   opacity:1;
   pointer-events: all;
+}
+
+.close_boat_lightbox svg {
+  fill: #fff;
+  color: #fff;
 }
 
 .close_boat_lightbox_text {
