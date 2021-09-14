@@ -13,7 +13,7 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
     // dont_remove should be an array of classes to mantain, then remove all other classes
     if(dont_remove){
       let intersection = [...elemento.classList].filter(value => dont_remove.includes(value));
-      console.log(intersection);
+      // console.log(intersection);
       elemento.classList = []
       intersection.forEach( item => { elemento.classList.add(item) });
     }
