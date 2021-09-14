@@ -1,3 +1,0 @@
-<?php
-  $interactiu = 4;
-?>
