@@ -231,10 +231,7 @@ ul{
   /* width: 72px; */
   width: 130px;
   transform: translateY(-10px);
-}
-
-.turn_icon svg {
-  fill: #D6001C;
+  display: none;
 }
 
 .turn_caption{

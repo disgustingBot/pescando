@@ -14,17 +14,17 @@ alternates a class from a selector of choice, for example:
 const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
   const selected = [...document.querySelectorAll(selector)];
   selected.forEach(elemento => {
-    let has_class = (elemento.classList.contains(clase)) ? 1 : 0;
     // const x = d.querySelector(selector);
     // dont_remove should be an array of classes to mantain, then remove all other classes
     if(dont_remove){
       let intersection = [...elemento.classList].filter(value => dont_remove.includes(value));
-      console.log(intersection);
+      // console.log(intersection);
       elemento.classList = []
       intersection.forEach( item => { elemento.classList.add(item) });
     }
 
-    if(has_class){
+
+    if(elemento.classList.contains(clase)){
       if(dont_remove){
         if( dont_remove.findIndex( element => element == clase) == -1 ){
           elemento.classList.remove(clase)
@@ -103,7 +103,7 @@ if(typeof(redirect_time) !== 'undefined') {
 
   setInterval(() => {
     current_time++;
-// console.log(current_time+' >= '+redirect_time);
+    console.log(current_time+' >= '+redirect_time);
     if(current_time >= redirect_time) {
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());
