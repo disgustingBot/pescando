@@ -78,12 +78,16 @@
           <h3 class="top_panel_title"><?= $ELEMS['TIT_INTERACTIVO'] ?></h3>
 
           <?php foreach ($ship_types as $type) { ?>
-            <p class="boat_type_name type_<?= $type['slug'] ?>"><?= $type['tba_nombre'] ?></p>
             <style>
               .shape_screen.type_<?= $type['slug'] ?> .boat_type_name.type_<?= $type['slug'] ?> {
+                color: #fff;
+                font-family: var(--lato_regular);
+                font-size: 25px;
+                top: calc(68px + 34px + 5px);
+                left: calc(68px + 40px + 16px + 40px + 16px);
+                letter-spacing: 2px;
+                transform: translate(0, 0);
                 opacity: 1;
-                transform: translateY(0);
-                transition-delay: 0.5s;
               }
             </style>
           <?php } ?>
@@ -157,7 +161,10 @@
                 altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
               "
             >
-            <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button>
+            <!-- <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button> -->
+            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tba_nombre'] ?></p>
+            <p class="boat_name"><?= $barco['bde_nombre'] ?></p>
+            <p class="boat_zone">(Zone)</p>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <template class="template">
