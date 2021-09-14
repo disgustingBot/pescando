@@ -650,7 +650,8 @@ body {
   font-family: 'Lato Bold';
 }
 .boax_deco{width:58%}
-.boax_main_icon{width:75px}
+.boax_main_icon{width:60px}
+.boax_main_icon svg { fill: #00587C; }
 
 .boax_txt{
   font-family: 'Lato Regular';
