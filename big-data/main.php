@@ -34,7 +34,12 @@
   <main class="screen">
     <!-- Top panel -->
     <section class="panel panel_top">
-      <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+      <a
+        class="back_btn home_btn"
+        href="index.php"
+        style="color: <?= $buttons_color ?>;"
+        onclick="(() => { setCookie('slug', 'redirect_page', 1); })();"
+      >
         <?php include $DIR_ICONS.'home.svg' ?>
       </a>
       <h3 class="panel_title"><?= $ELEMS['MENU_TEXTO'] ?></h3>
