@@ -232,6 +232,7 @@
 
 
   <script type="text/javascript">
+let is_redirecting = false;
 
 $(document).ready(function() {
 <?php if ( isset($_GET['show']) && $_GET['show'] == 'video' ) { ?>
@@ -242,6 +243,7 @@ $(document).ready(function() {
   });
 
   $('#video1').on("ended", function() {
+    is_redirecting = true;
     location.href = './big.php';
   });
 
@@ -269,10 +271,20 @@ $(document).ready(function() {
       new_lang = getCookie('lang');
       if((last_slug!=new_slug) && (new_slug!=0)){
         // console.log('new slug: ', new_slug);
-        let url_no_params = location.protocol + '//' + location.host + location.pathname;
-        window.location.href = url_no_params + '?show=' + new_show + '&slug=' + new_slug + '&lang=' + new_lang
+        is_redirecting = true;
+
+        if(new_slug == 'redirect_page') {
+          setCookie('slug', 0, 1);
+          location.href = './big.php';
+        }
+
+        else {
+          let url_no_params = location.protocol + '//' + location.host + location.pathname;
+          window.location.href = url_no_params + '?show=' + new_show + '&slug=' + new_slug + '&lang=' + new_lang
+        }
       }
-      timer()
+
+      if(!is_redirecting) timer();
     },1000)}
     timer()
   </script>
