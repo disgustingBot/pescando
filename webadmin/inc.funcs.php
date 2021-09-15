@@ -410,7 +410,8 @@
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'pesca') as tra_pesca_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'barcos') as tra_barcos_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'descubre') as tra_descubre_tba
-                    FROM pesca_tipos_barcos WHERE tba_status = 'A'";
+                    FROM pesca_tipos_barcos WHERE tba_status = 'A'
+                    ORDER BY tba_orden";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
         $ship_types[] = $row;
@@ -471,10 +472,12 @@
     global $conn;
 
     $barcos = array();
-    $qry = "SELECT *, ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'imagen' ) as svg
-                    , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'tipobarco' ) as nombre
-                    FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
-
+    $qry = "SELECT *
+      , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'imagen' ) as svg
+      , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'pais' ) as pais
+      , ( SELECT value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = bde_tipo AND lang = '".$_SESSION["lang"]."' AND field = 'nombre' ) as nombre
+      FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
+    
     // aqui el vid_barco va es donde se elije el barco
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {

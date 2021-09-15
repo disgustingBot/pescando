@@ -903,9 +903,37 @@ ul{
   z-index: 1;
 }
 
+.img_container_for_after{
+  --size: 57vh;
+  position:relative;
+  margin-bottom: 60px;
+  width:  var(--size);
+  max-width:  calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant));
+  max-height: calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant));
+  height: var(--size);
+  pointer-events: none;
+}
+.img_container_for_after::after{
+  --border_width: 3px;
+  content:'';
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  width:calc(var(--size) * 0.97 - var(--border_width) * 2);
+  max-width:calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant) * 0.97 - var(--border_width) * 2);
+  height:calc(var(--size) * 0.97 - var(--border_width) * 2);
+  max-height:calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant) * 0.97 - var(--border_width) * 2);
+  border-radius: 50%;
+  position: absolute;
+  z-index: 3;
+  border: 3px #9BB7CC solid;
+}
+
 .boats_screen_img {
-  width: 57vh;
-  height: 57vh;
+  width:  var(--size);
+  max-width:  calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant));
+  max-height: calc((100vw - 1rem * (var(--cant) + 1)) / var(--cant));
+  height: var(--size);
   border-radius: 50%;
   opacity:1;
   pointer-events: all;
@@ -913,9 +941,7 @@ ul{
   transition-delay: .2s;
   z-index: 2;
   position: relative;
-  margin-bottom: 60px;
 }
-
 .boats_screen_boat {
   width: 0;
   max-height: 100vh;

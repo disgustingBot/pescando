@@ -27,6 +27,7 @@
   // var_dump($object);
   // echo "<br>";
   // echo "<br>";
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +48,8 @@
 <body class="barcos_hud">
   <div class="top_panel">
     <div class="back_grid">
-      <a class="back_btn" href="main.php?lang=<?= $_SESSION["lang"] ?>&barco=<?= $_GET['barco'] ?>">
-        <img src="<?=$DIR_ICONS?>atras.svg">
+      <a class="back_btn" href="main.php?lang=<?= $_SESSION["lang"] ?>&barco=<?= $_GET['barco'] ?>" style="color: <?= $buttons_color ?>;">
+        <?php include $DIR_ICONS.'atras.svg' ?>
       </a>
       <div class="title_lang_grid">
         <h3 class="top_panel_title" style="text-shadow: 1px 1px #666;"><?= $barco['nombre'] ?></h3>
