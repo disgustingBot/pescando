@@ -172,9 +172,18 @@
               >
             </div>
             <!-- <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button> -->
-            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tba_nombre'] ?></p>
-            <p class="boat_name"><?= $barco['bde_nombre'] ?></p>
-            <p class="boat_zone">(<?= $barco['pais'] ?>)</p>
+            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>" onclick="
+            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+            "><?= $ship_types[$type_id_key]['tba_nombre'] ?></p>
+            <p class="boat_name" onclick="
+            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+            "><?= $barco['bde_nombre'] ?></p>
+            <p class="boat_zone" onclick="
+            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+            ">(<?= $barco['pais'] ?>)</p>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <template class="template">
