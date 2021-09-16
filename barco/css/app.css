@@ -638,8 +638,9 @@ pre code {
 --------------------------------------------------------------------------- */
 .back_grid {
   display: grid;
-  grid-template-columns: min-content auto;
+  grid-auto-flow: column;
   align-items: start;
+  grid-gap: 16px;
 }
 
 /* ---------------------------------------------------------------------------
@@ -656,7 +657,6 @@ pre code {
 .back_btn {
   background: none;
   border: none;
-  margin-right: 32px;
   position: relative;
   top:20px;
   transition:.4s;
@@ -675,6 +675,7 @@ pre code {
   grid-auto-flow: row;
   grid-auto-rows: min-content;
   row-gap: 10px;
+  margin: auto auto 0 auto;
 }
 
 /* ---------------------------------------------------------------------------

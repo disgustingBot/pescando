@@ -48,6 +48,9 @@
 <body class="barcos_hud">
   <div class="top_panel">
     <div class="back_grid">
+      <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+        <?php include $DIR_ICONS.'home.svg' ?>
+      </a>
       <a class="back_btn" href="main.php?lang=<?= $_SESSION["lang"] ?>&barco=<?= $_GET['barco'] ?>" style="color: <?= $buttons_color ?>;">
         <?php include $DIR_ICONS.'atras.svg' ?>
       </a>
