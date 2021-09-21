@@ -13,11 +13,7 @@
   $piscinas = get_piscinas();
   $videos = get_videos_big_data();
 
-  $buttons_color = 'white';
-  // var_dump($videos);
-  // var_dump($ELEMS);
-
-  // $redirect_time = 15;
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 ?>
 <!DOCTYPE html>
 <html lang="en">

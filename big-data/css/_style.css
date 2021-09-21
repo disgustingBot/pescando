@@ -442,8 +442,7 @@ ul{
 }
 
 .widget_title {
-  /* color: #d6001c; */
-  color: white;
+  color: #d6001c;
   font-family: 'Lato Bold';
   letter-spacing: 3px;
   text-align: center;
@@ -490,9 +489,6 @@ ul{
 .widget_main .widget_footer_int {
   font-size: 55px;
   margin-bottom: 40px;
-}
-p.widget_footer_int {
-color: #91b6d8 !important;
 }
 
 .widget_main .widget_footer_low {

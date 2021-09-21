@@ -79,7 +79,7 @@
     <source src="<?= $DIR_MEDIA . $object['media'] ?>" type="video/mp4">
   </video>
 
-
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
 
 </body>
 </html>
