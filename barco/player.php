@@ -71,7 +71,7 @@
   </div>
 
 
-  <div class="turn_background">
+  <div class="turn_background" onclick="altClassFromSelector('turn_background_off', '.turn_background')">
     <div class="turn_icon turn_icon_full_screen">
       <!-- <img src="<?=$DIR_ICONS?>360-barco.svg"> -->
       <!-- <img src="<?=$DIR_ICONS?>360-blanco.svg"> -->
@@ -133,12 +133,12 @@ $(document).ready(function() {
 
 });
 
-  const IconFullScreen = () => {
-    altClassFromSelector('turn_background_off', '.turn_background', ['turn_background']);
-    window.removeEventListener('touchstart', IconFullScreen);
-  }
-  
-  window.addEventListener('touchstart', IconFullScreen);
+  // const IconFullScreen = () => {
+  //   altClassFromSelector('turn_background_off', '.turn_background', ['turn_background']);
+  //   window.removeEventListener('touchstart', IconFullScreen);
+  // }
+  //
+  // window.addEventListener('touchstart', IconFullScreen);
 </script>
 </body>
 </html>

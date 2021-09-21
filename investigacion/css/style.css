@@ -326,10 +326,19 @@ ul{
 }
 
 .lang_list .selected {
-  color: rgb(214, 0, 28);
   font-family: 'Lato Black';
 }
-
+.lang_selection_li{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.lang_screen_pointer{
+  color: rgb(214, 0, 28);
+  height: 35px;
+  width: auto;
+  margin: auto 0 auto auto;
+}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               5.3) =video:
@@ -420,7 +429,7 @@ ul{
 }
 
 .menem_next {
-  color: #fff;
+  color: #D6001C;
   filter: drop-shadow(0px 0px 1.5px #000);
   font-family: 'Lato Black';
   font-size: 18px;
@@ -492,7 +501,7 @@ ul{
   font-family: 'Lato Regular';
   font-size: 38px;
   line-height: 38px;
-  color: rgb(154, 183, 204);
+  color: rgb(214, 0, 28);
   text-transform: uppercase;
   filter: drop-shadow(0px 0px 1.5px #000);
   letter-spacing: 10px;

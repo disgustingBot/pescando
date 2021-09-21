@@ -154,18 +154,29 @@ ul{
   font-family: 'Lato Regular';
   font-size: 38px;
   font-weight: 600;
-  color: rgb(154, 183, 204);
+  color: rgb(214, 0, 28);
   text-transform: uppercase;
   filter: drop-shadow( 0px 0px 1.5px #000);
   letter-spacing: 10px;
   text-align: center;
+  margin: auto auto auto 0;
 }
 
 .lang_screen .selected {
-  color: rgb(214, 0, 28);
+  /* color: rgb(214, 0, 28); */
   font-family: 'Lato Black';
 }
-
+.lang_selection_li{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.lang_screen_pointer{
+  color: rgb(214, 0, 28);
+  height: 35px;
+  width: auto;
+  margin: auto 0 auto auto;
+}
 
 
 
@@ -286,7 +297,11 @@ ul{
   /* margin-bottom: 26px; */
 }
 
-
+.anakin_pointer{
+  height: 52px;
+  width: auto;
+  margin: auto;
+}
 
 
 
@@ -421,7 +436,8 @@ ul{
   height: 1rem;
   transition: .3s;
   transition-delay: 1s;
-  background-color: rgb(214, 0, 28);
+  /* background-color: rgb(214, 0, 28); */
+  background-color: white;
   border-radius: 50%;
   margin:auto;
   position: relative;

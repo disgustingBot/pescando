@@ -55,7 +55,7 @@
         <?= $self_awake ?> .menem_txt {
           font-size: 30px;
           line-height: 30px;
-          color: #D6001C;
+          color: white;
           right: 68px;
           bottom: 100px;
           transform: translateX(0);

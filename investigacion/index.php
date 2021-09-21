@@ -28,15 +28,16 @@
     <div class="lang_icon">
       <img src="<?=$DIR_ICONS?>dedo-click.svg">
     </div>
-    
+
     <h1 class="lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
     <ul class="lang_list">
     <?php foreach ( $LANG_MENU as $key => $value ) { ?>
-      <li>
+      <li class="lang_selection_li">
         <a
           href="main.php?lang=<?=$key?>"
           class="btn_lang <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>"><?=$value?>
         </a>
+        <img class="lang_screen_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
       </li>
     <?php } ?>
     </ul>
