@@ -399,7 +399,7 @@
   }
 
   /*
-   * Flota y caladeros
+   * Flota y caladeros & Barco
    */
   function get_ship_types() {
     global $conn;
@@ -477,7 +477,7 @@
       , ( SELECT value FROM pesca_textos WHERE referred = 'barcos-detalles' AND referred_id = bde_id AND lang = '".$_SESSION["lang"]."' AND field = 'pais' ) as pais
       , ( SELECT value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = bde_tipo AND lang = '".$_SESSION["lang"]."' AND field = 'nombre' ) as nombre
       FROM pesca_barcos_detalles WHERE bde_status = 'A' ORDER BY bde_orden";
-    
+
     // aqui el vid_barco va es donde se elije el barco
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
