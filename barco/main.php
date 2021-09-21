@@ -136,8 +136,11 @@
     <div class="info_content_box step1">
       <h1 class="info_content_box_title full_col_text"></h1>
 
-      <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_ENTRADA'] ?></p>
-      <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('step1', 'body')"><?= $ELEMS['TXT_SIGUIENTE'] ?></h3>
+      <div class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_ENTRADA'] ?></div>
+      <div class="info_content_cta_box">
+        <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('step1', 'body')"><?= $ELEMS['TXT_SIGUIENTE'] ?></h3>
+        <img class="info_content_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+      </div>
     </div>
 
 
@@ -178,16 +181,14 @@
             $all_types_id = array_column($ship_types, 'tba_id');
             $type_id_key = array_search($barco['bde_tipo'], $all_types_id);
             ?>
-            <div class="img_container_for_after rowcol1">
+            <div onclick="
+            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+            " class="img_container_for_after rowcol1">
 
               <img
               class="boats_screen_img rowcol1"
-              src="<?= $DIR_IMG . $barco['bde_foto'] ?>"
-              onclick="
-              activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
-              altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
-              "
-              >
+              src="<?= $DIR_IMG . $barco['bde_foto'] ?>">
             </div>
             <!-- <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button> -->
             <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tra_nombre_tba'] ?></p>

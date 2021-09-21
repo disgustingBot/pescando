@@ -112,6 +112,10 @@
         <?= $self_awake ?> .anakin_caption{
           transform: translateY(-280px);
         }
+        <?= $self_awake ?> .anakin_pointer{
+          opacity: 0;
+          pointer-events: none;
+        }
       </style>
       <div class="anakin_item <?= $category['slug'] ?>" onclick="open_category('<?= $category['slug'] ?>')" tabindex="1">
         <img class="anakin_img rowcol1" src="<?= $DIR_IMG ?><?= $category['esp_fondo'] ?>" alt="">
@@ -124,6 +128,8 @@
           </div>
 
           <h2 class="anakin_title"><?= $category['tra_nombre_esp'] ?></h2>
+          <img class="anakin_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+
         </div>
       </div>
     <?php } ?>

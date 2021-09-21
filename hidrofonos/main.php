@@ -65,7 +65,10 @@
       <h1 class="info_content_box_title full_col_text"><?= $ELEMS['TIT_INTERACTIVO'] ?></h1>
       <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_BLOQUE1'] ?></p>
       <p class="info_content_box_txt full_col_text"><?= $ELEMS['TXT_BLOQUE2'] ?></p>
-      <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('selector', '.hydrophone_main')"><?= $ELEMS['TXT_SELECCIONA'] ?></h3>
+      <div class="info_content_cta_box">
+        <h3 class="info_content_cta full_col_text" onclick="altClassFromSelector('selector', '.hydrophone_main')"><?= $ELEMS['TXT_SELECCIONA'] ?></h3>
+        <img class="info_content_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+      </div>
     </div>
 
     <!-- <div class="info_content_box step2">
@@ -104,6 +107,12 @@
                   transform: translate(calc(-100% - 68px), calc(-34px - 68px));
                 }
 
+                [class='full_screen_media_option_selector <?= $specie['slug'] ?>'] [data-specie=<?= $specie['slug'] ?>] .icon_sequence_pointer {
+                  transform: scaleX(0);
+                  pointer-events: none;
+                }
+
+
               </style>
 
               <video class="full_screen_media_video rowcol1" id="<?= $specie['slug'] ?>_sound" poster="<?= $DIR_IMG . $specie['son_fondo'] ?>">
@@ -118,6 +127,7 @@
                   <img class="icon_sequence_img wave_icon" src="<?=$DIR_ICONS?>onda.svg" alt="Icono de onda de audio">
                 </div>
                 <div class="icon_sequence_txt full_col_text"><?= $specie['tra_nombre_son'] ?></div>
+                <img class="icon_sequence_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
               </div>
             </div>
 

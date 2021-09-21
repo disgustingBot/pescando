@@ -705,7 +705,7 @@ pre code {
 }
 
 .turn_icon svg {
-  fill: #D6001C;
+  fill: white;
 }
 
 [class="turn_background"] .turn_icon {
@@ -736,7 +736,7 @@ pre code {
   font-family: var(--lato_bold);
   font-size: 25px;
   transition: .5s;
-  color: #D6001C;
+  color: white;
   line-height: 30px;
   width: max-content;
   /* margin-right: 20px; */
@@ -750,12 +750,12 @@ pre code {
   width: 100%;
   height: 100vh;
   background-color: #0d4f709f;
-  pointer-events: none;
   transition: 0.5s;
 }
 
 .turn_background_off {
   background-color: #0d4f7000;
+  pointer-events: none;
 }
 
 /* Red arrow */
