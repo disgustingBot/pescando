@@ -183,35 +183,23 @@ function in_animate_screen(e) {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-console.log(redirect_time);
 // Start interactivity timer
 if(typeof(redirect_time) !== 'undefined') {
   let current_time = 0;
   // is_playing_media = false;
 
   setInterval(() => {
-    if(!is_playing_media) current_time++;
+    var hay = getCookie('show');
+    if ( hay != 'video' ) {
+      if(!is_playing_media) current_time++;
 
-    if(current_time >= redirect_time) {
-      setCookie('slug', 0, 1);
-      // console.log(new_slug);
-      // console.log('HOY');
-      reset_current_time();
-      window.location.href = page;
-      // window.location.href = 'inc.session.end.php';
+      console.log(current_time+' >= '+redirect_time);
+      if(current_time >= redirect_time) {
+        setCookie('slug', 0, 1);
+        setCookie('show', '', 1);
+        reset_current_time();
+        window.location.href = page;
+      }
     }
   }, 1000);
 
@@ -232,7 +220,6 @@ if(typeof(redirect_time) !== 'undefined') {
       events.forEach(event => {
         media.addEventListener(event, () => {
          is_playing_media = is_playing;
-         console.log(event);
 
          if(is_playing_media) reset_current_time();
        });
@@ -247,7 +234,6 @@ if(typeof(redirect_time) !== 'undefined') {
     // Cada evento
     events.forEach(event => {
       video.addEventListener(event, () => {
-        console.log(event);
        is_playing_media = false;
        setCookie('slug', 0, 1);
        last_slug = getCookie('slug');

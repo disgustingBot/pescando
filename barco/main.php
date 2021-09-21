@@ -33,6 +33,24 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .info_content_box{
+      grid-template-columns: 1fr 10fr 1fr;
+    }
+    ul {
+      margin-top: -50px;
+      grid-column: 2;
+    }
+    ul li {
+      color: white;
+      font-family: 'Lato-Regular';
+      font-size: 38px;
+      list-style-image: url(../icons/rombo.svg);
+      margin-bottom: 1rem;
+      padding: 0px;
+      text-align: left;
+    }
+  </style>  
 </head>
 
 <body class="body<?= (!isset($_GET['barco'])) ? ' step1' : '' ?>">
@@ -102,7 +120,7 @@
         </div>
       </div>
 
-      <p class="top_panel_text_lg" >Selecciona la estancia que quieras visitar</p>
+      <p class="top_panel_text_lg" ><?=$ELEMS["TIT_SELECCIONA"]?></p>
 
       <div class="turn">
         <!-- <div class="turn_caption">
@@ -172,18 +190,9 @@
               >
             </div>
             <!-- <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button> -->
-            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>" onclick="
-            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
-            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
-            "><?= $ship_types[$type_id_key]['tba_nombre'] ?></p>
-            <p class="boat_name" onclick="
-            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
-            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
-            "><?= $barco['bde_nombre'] ?></p>
-            <p class="boat_zone" onclick="
-            activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
-            altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
-            ">(<?= $barco['pais'] ?>)</p>
+            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tra_nombre_tba'] ?></p>
+            <p class="boat_name"><?= $barco['bde_nombre'] ?></p>
+            <p class="boat_zone">(<?= $barco['pais'] ?>)</p>
           <?php } ?>
           <div class="shape_screen_img ponta rowcol1">
             <template class="template">
@@ -206,6 +215,8 @@
       <button class="triangle_btn triangle_down"></button>
     </div> -->
   </section>
+
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
 
     <!-- Redirect timer -->
     <script> redirect_time = <?= $redirect_time ?>; </script>
@@ -241,17 +252,7 @@
           let parent = document.querySelector( '.boats_screen_boat.' + slug + ' .shape_screen_img' );
           parent.insertBefore(draw, parent.children[ 0 ]);
           anim_texts();
-          // console.log(test);
         }
-
-
-
-
-        // let base_url = "http://localhost/pescando/barcos/player.php?"
-        // let base_url = "http://localhost/pescando/barcos/player.php?"
-
-        // let base_url = "https://mansilladisseny.com/pescanova/barcos/player.html?type=image&source=panorama8K.jpeg"
-
 
         </script>
 

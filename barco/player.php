@@ -122,6 +122,7 @@
 <script type="text/javascript" src="js/app.js"></script>
 <script> redirect_time = <?= $redirect_time ?>; </script>
 <script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="../js/scripts_nosocket.js"></script>
 <script>
 $(document).ready(function() {
 

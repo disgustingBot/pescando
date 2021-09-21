@@ -41,6 +41,20 @@
     </ul>
   </section>
 
+  <script language="Javascript">
+
+    function setCookie(name,value,days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days*24*60*60*1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+    setCookie('slug', 'redirect_page', 1);
+    setCookie('show', '', 1);
+  </script>
   <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
 </body>
 </html>

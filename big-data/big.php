@@ -26,8 +26,6 @@
   }
 
 
-  // $redirect_time = 15;
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -40,10 +38,12 @@
 
 
   <script>
-    redirect_time = <?=$redirect_time?>;
+    //redirect_time = 166000;
+    //redirect_time = 0;
     page = 'big.php';
     is_playing_media = false;
     <?php if ($video) { ?>
+      //redirect_time = 0;
       is_playing_media = true;
     <?php } ?>
   </script>
@@ -56,19 +56,29 @@
 
 
     <section class="screen screen_lang rowcol1" style="background: url('icons/fondo.jpg') no-repeat center center;">
+<?php if ( !$video && !$piscina ) { ?>
+      <video id="video0" autoplay loop>
+        <source src="<?= $DIR_MEDIA.$ELEMS['VIDEO_INICIAL'] ?>" type="video/mp4">
+      </video>
+<?php } ?>
+<?php /*
+  
+
       <div class="screen_lang_icon">
         <!-- <img src="<?=$DIR_ICONS?>dedo-click.svg"> -->
         <img src="../icons/dedo-click.svg">
       </div>
 
       <h1 class="screen_lang_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
+*/ ?>      
+
     </section>
 
 
 
   <?php if ($video) { ?>
   <main class="video rowcol1">
-    <video id="video1" autoplay>
+    <video class="mainvideo" id="video1" autoplay>
       <source src="<?= $DIR_MEDIA.$video['video'] ?>" type="video/mp4">
     </video>
   </main>
@@ -78,11 +88,16 @@
   <!-- Widget screens -->
   <main class="screen rowcol1">
     <section class="screen_widgets rowcol1">
-      <div class="set_widgets set_widgets_title">
+      <div class="set_widgets set_widgets_title" style="column-gap: 60px;">
         <h3 class="panel_title"><?=$ELEMS["TIT_BIG_DATA"]?></h3>
         <div class="widget widget_status">
           <header class="widget_header">
-            <h1 class="widget_title"><?=$ELEMS["TIT_ECUADOR"]?><h1>
+            <h1 class="widget_title"><?=$ELEMS["TIT_GRANJA"]?></h1>
+          </header>
+        </div>
+        <div class="widget widget_status">
+          <header class="widget_header">
+            <h1 class="widget_title"><?= $piscina['title'] ?></h1>
           </header>
         </div>
       </div>
@@ -90,7 +105,7 @@
       <div class="set_widgets set_widgets_md">
         <section class="widget widget_main">
           <header class="widget_header">
-            <h1 class="widget_title"><?= $piscina['title'] ?></h1>
+            <h1 class="widget_title"><?=$ELEMS["TIT_ECUADOR"]?></h1>
             <img class="widget_header_icon" src="icons/meteo/<?= $clima['icon'] ?>.svg">
           </header>
 
@@ -237,6 +252,8 @@ let is_redirecting = false;
 $(document).ready(function() {
 <?php if ( isset($_GET['show']) && $_GET['show'] == 'video' ) { ?>
 
+  console.log('Is playing? '+is_playing_media);
+  
   $('#play').on("click", function () {
     $('#video1').get(0).load();
     $('#video1').get(0).play();
@@ -244,6 +261,7 @@ $(document).ready(function() {
 
   $('#video1').on("ended", function() {
     is_redirecting = true;
+    setCookie('show', '', 1);
     location.href = './big.php';
   });
 
@@ -256,7 +274,7 @@ $(document).ready(function() {
     last_slug = getCookie('slug');
     last_lang = getCookie('lang');
 
-    console.log(last_slug);
+    //console.log('Last slug: '+last_slug);
     <?php if ($video || $piscina) { ?>
       if (last_slug != 0) {
         console.log('no mostrar pantalla pausa');
@@ -270,10 +288,10 @@ $(document).ready(function() {
       new_show = getCookie('show');
       new_lang = getCookie('lang');
       if((last_slug!=new_slug) && (new_slug!=0)){
-        // console.log('new slug: ', new_slug);
         is_redirecting = true;
 
         if(new_slug == 'redirect_page') {
+          setCookie('show', '', 1);
           setCookie('slug', 0, 1);
           location.href = './big.php';
         }
