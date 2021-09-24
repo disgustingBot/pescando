@@ -50,7 +50,7 @@
       padding: 0px;
       text-align: left;
     }
-  </style>  
+  </style>
 </head>
 
 <body class="body<?= (!isset($_GET['barco'])) ? ' step1' : '' ?>">
@@ -106,6 +106,9 @@
                 letter-spacing: 2px;
                 transform: translate(0, 0);
                 opacity: 1;
+              }
+              .shape_screen.type_<?= $type['slug'] ?> .boat_type_name.type_<?= $type['slug'] ?> .boat_type_name_pointer{
+                opacity: 0;
               }
             </style>
           <?php } ?>
@@ -191,7 +194,12 @@
               src="<?= $DIR_IMG . $barco['bde_foto'] ?>">
             </div>
             <!-- <button class="boats_screen_title rowcol1" onclick="activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>)"><?= $barco['nombre'] ?></button> -->
-            <p class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tra_nombre_tba'] ?></p>
+            <div class="boat_type_name_box">
+              <p onclick="
+              activate_barco('<?= $barco['slug'] ?>', <?= $barco['bde_id'] ?>);
+              altClassFromSelector('type_<?= $ship_types[$type_id_key]['slug'] ?>', '.shape_screen', ['shape_screen', '<?= $barco['slug'] ?>']);
+              " class="boat_type_name type_<?= $ship_types[$type_id_key]['slug'] ?>"><?= $ship_types[$type_id_key]['tra_nombre_tba'] ?> <img class="boat_type_name_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg"></p>
+            </div>
             <p class="boat_name"><?= $barco['bde_nombre'] ?></p>
             <p class="boat_zone">(<?= $barco['pais'] ?>)</p>
           <?php } ?>
