@@ -31,11 +31,12 @@
 
     <ul class="screen_lang_list">
     <?php foreach ( $LANG_MENU as $key => $value ) { ?>
-      <li>
+      <li class="lang_selection_li">
         <a
           href="main.php?lang=<?=$key?>"
           class="screen_lang_btn <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>"><?=$value?>
         </a>
+        <img class="lang_screen_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
       </li>
     <?php } ?>
     </ul>
