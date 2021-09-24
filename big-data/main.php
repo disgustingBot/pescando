@@ -97,6 +97,7 @@
             <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path:last-of-type" ?> {
               fill: white;
               stroke: white;
+              filter: drop-shadow(0px 0px 8px white);
             }
             </style>
           <?php } ?>
