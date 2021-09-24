@@ -105,13 +105,16 @@
         <!-- <img class="boax_main_icon" src="<?=$DIR_ICONS?>barco-flota-azul-oscuro.svg" alt="Icono de bote"> -->
         <p class="boax_title"><?= $type['tra_nombre_tba'] ?></p>
         <img class="boax_deco" src="<?=$DIR_ICONS?>onda-flota.svg" alt="Decoración de ondas maritimas">
+        <div class="boax_type_icon">
+          <?= file_get_contents($DIR_ICONS . 'icono-' . $type['slug'] . '.svg') ?>
+        </div>
         <p class="boax_txt"><?= $type['tra_descr_tba'] ?></p>
         <div class="boax_perk">
-          <img class="boax_perk_icon" src="<?=$DIR_ICONS?>pez-flota.svg" alt="Icono de un pez">
+          <div class="boax_perk_icon"><?= file_get_contents($DIR_ICONS . 'pez-flota.svg') ?></div>
           <p class="boax_perk_txt"><?= $type['tra_pesca_tba'] ?></p>
         </div>
         <div class="boax_perk">
-          <img class="boax_perk_icon" src="<?=$DIR_ICONS?>localizacion-flota.svg" alt="Icono de un punto de ubicación">
+          <div class="boax_perk_icon"><?= file_get_contents($DIR_ICONS . 'localizacion-flota.svg') ?></div>
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
         <!-- <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"> -->
