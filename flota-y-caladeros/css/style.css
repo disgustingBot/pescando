@@ -589,7 +589,7 @@ body {
   border-radius: 50%;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   display:grid;
-  grid-gap: 20px;
+  grid-gap: 10px;
   height: var(--size);
   margin:auto;
   place-items: center;
@@ -642,16 +642,17 @@ body {
   width:  calc(100% - var(--margin) * 2);
 }
 
-.boax_title{
-  color: #d6001c;
+.boax_title {
+  color: #00587C;
   font-size: 24px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  font-family: 'Lato Bold';
+  font-family: 'Lato Black';
+  margin-top: 15px;
 }
-.boax_deco{width:58%}
-.boax_main_icon{width:60px}
-.boax_main_icon svg { fill: #00587C; }
+.boax_deco{ width: 40% }
+.boax_main_icon{width:40px}
+.boax_main_icon svg { fill: #D6001C; }
 
 .boax_txt{
   font-family: 'Lato Regular';
@@ -668,10 +669,11 @@ body {
   align-items: center;
   width: 50%;
 }
-.boax_perk_icon{
+.boax_perk_icon svg {
   height: 25px;
   width: auto;
   object-fit: contain;
+  stroke: #00587C;
 }
 .boax_perk_txt{
   text-align: left;
@@ -681,6 +683,8 @@ body {
 }
 .boax_perk_txt strong{color:#00587C}
 .dark_blue_color{color:#00587C;}
+.boax_type_icon svg { height: 12vh; }
+.boax_type_icon svg .cls-1 { stroke: #00587C }
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
