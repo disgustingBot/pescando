@@ -429,9 +429,15 @@ ul{
   text-align: center;
 }
 
+.viday_btn_play svg .cls-1 {
+  fill:currentColor;
+  transition: .4s;
+}
 .viday_btn_play {
   position: absolute;
   pointer-events: none;
+  color:red;
+  /* transition: .3s; */
   top: 50%;
   left: 50%;
   transform: translate(-40%, -50%);

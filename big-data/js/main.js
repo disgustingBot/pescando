@@ -71,7 +71,9 @@ const video_click = (slug, lang) => {
   setCookie('show', 'video', 1);
   setCookie('slug', slug, 1);
   setCookie('lang', lang, 1);
-  altClassFromSelector('', 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])
+  // altClassFromSelector('', 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])
+  altClassFromSelector(slug, '.screen', ['screen'])
+  // console.log(slug);
 }
 
 

@@ -51,9 +51,18 @@
 
     <!-- Right panel -->
     <section class="panel panel_right">
-      <?php foreach ($videos as $video) { ?>
+      <?php foreach ($videos as $video) {
+        $self_awake = ".screen.$video[slug] .viday.$video[slug]";
+        ?>
 
-        <div class="viday">
+        <style media="screen">
+          <?= $self_awake ?> .viday_btn_play {
+            color:white;
+          }
+
+        </style>
+
+        <div class="viday <?= $video['slug'] ?>">
           <div class="viday_media">
 
             <div class="viday_video" poster="" onclick="video_click('<?= $video['slug'] ?>', '<?= $_SESSION['lang'] ?>')">
@@ -61,7 +70,8 @@
             </div>
 
             <div class="viday_btn_play">
-              <img src="icons/otrosbig/triangulo-play.svg">
+              <?php include 'icons/otrosbig/triangulo-play.svg'; ?>
+              <!-- <img src="icons/otrosbig/triangulo-play.svg"> -->
             </div>
 
           </div>
@@ -80,7 +90,7 @@
           let piscinas = <?= json_encode($piscinas) ?>;
           piscinas.forEach( piscina => {
             document.querySelector('#'+piscina.slug).onclick = _ => {
-              altClassFromSelector(piscina.slug, 'div.screen_pools_interactive', ['screen_pools_interactive', 'rowcol1'])
+              altClassFromSelector(piscina.slug, '.screen', ['screen'])
               setCookie('show', 'piscina', 1);
               setCookie('slug', piscina.slug, 1);
               setCookie('lang', '<?=$_SESSION["lang"]?>', 1);
@@ -89,12 +99,12 @@
           </script>
           <?php foreach ($piscinas as $piscina) { ?>
             <style>
-            <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path" ?> {
+            <?= ".screen.$piscina[slug] #$piscina[slug] path" ?> {
               stroke: white;
               fill: #0875bd36;
             }
 
-            <?= ".screen_pools_interactive.$piscina[slug] #$piscina[slug] path:last-of-type" ?> {
+            <?= ".screen.$piscina[slug] #$piscina[slug] path:last-of-type" ?> {
               fill: white;
               stroke: white;
               filter: drop-shadow(0px 0px 8px white);
