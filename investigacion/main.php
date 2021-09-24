@@ -61,6 +61,9 @@
           transform: translateX(0);
           letter-spacing: 2px;
         }
+        <?= $self_awake ?> .menem_txt .menem_txt_pointer {
+          display: none;
+        }
         <?= $self_awake ?> .menem_next {
           transform: translateX(0);
           transition-delay: .8s;
@@ -74,7 +77,10 @@
             <!-- <source src="<?= $DIR_VIDEOS.$item['are_video'] ?>" type="video/mp4"> -->
             <source src="<?= $DIR_MEDIA.$item['are_video'] ?>" type="video/mp4">
           </video>
-          <p class="menem_txt" onclick="play_video('<?= $item['slug'] ?>')"><?= $item['tra_nombre_area'] ?></p>
+          <p class="menem_txt" onclick="play_video('<?= $item['slug'] ?>')">
+            <?= $item['tra_nombre_area'] ?>
+            <img class="menem_txt_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+          </p>
           <p class="menem_next" onclick="back_btn();play_video('<?= $items[ ($i+1) % count($items) ]['slug'] ?>')">Ver <?= $items[ ($i+1) % count($items) ]['tra_nombre_area'] ?></p>
         </li>
       <?php $i+=1;} ?>

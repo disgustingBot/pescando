@@ -1183,6 +1183,7 @@ ul{
                               5.71) =boat_type_name:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
+
 .boat_type_name {
   color: #D6001C;
   font-size: 38px;
@@ -1197,8 +1198,14 @@ ul{
   left: 50%;
   transform: translate(-50%, -150%);
   opacity: 0;
+  display: flex;
 }
-
+.boat_type_name_pointer{
+  height: 32px;
+  width: auto;
+  margin: auto auto auto 5px;
+  transition: .5s;
+}
 [class="shape_screen"] .boat_type_name {
   opacity: 1;
 }
