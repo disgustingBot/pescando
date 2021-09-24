@@ -38,7 +38,7 @@
 
   <section class="screen_menu first_video">
 
-    <video class="first_video video_player rowcol1" playsinline autoplay muted poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
+    <video class="first_video video_player rowcol1" playsinline autoplay poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
       <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
     </video>
 
@@ -70,7 +70,7 @@
         </style>
         <li class="menem <?= $item['slug'] ?>">
 
-          <video class="video_player rowcol1" muted poster="<?= $DIR_IMG.$item['are_fondo'] ?>" onclick="play_video('<?= $item['slug'] ?>')">
+          <video class="video_player rowcol1" poster="<?= $DIR_IMG.$item['are_fondo'] ?>" onclick="play_video('<?= $item['slug'] ?>')">
             <!-- <source src="<?= $DIR_VIDEOS.$item['are_video'] ?>" type="video/mp4"> -->
             <source src="<?= $DIR_MEDIA.$item['are_video'] ?>" type="video/mp4">
           </video>

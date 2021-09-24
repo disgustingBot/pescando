@@ -388,7 +388,7 @@ ul{
   z-index: 2;
 }
 [class="screen_menu"] .menem{
-  height:calc((100vh - 190px) / 3);
+  height:calc((100vh - 190px) / 4);
 }
 .menem {
   display: grid;
@@ -421,7 +421,8 @@ ul{
   /* margin-left:auto; */
   right: 50vw;
   /* margin-top: auto; */
-  bottom: calc((100vh - 190px) / 6);
+  /* bottom: calc((100vh - 190px) / 6); */
+  bottom: 50%;
   transform: translate(50%, 50%);
   transition: .8s;
   text-transform: uppercase;
