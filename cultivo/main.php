@@ -15,7 +15,8 @@
   $species    = get_species();
   $ELEMS      = get_strings();
 
-  $buttons_color = 'white';
+  // $buttons_color = 'white';
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 
  // $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
   // if ( isset($_GET['central']) ) {

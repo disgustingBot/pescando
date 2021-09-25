@@ -12,7 +12,7 @@
   $sounds = get_sounds();
   // var_dump($sounds);
   // $redirect_time = 10;
-  $buttons_color = 'white';
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 
 ?>
 <!DOCTYPE html>

@@ -188,14 +188,11 @@ ul{
   transition-delay: 1s;
 }
 
-/* .screen.Pools .screen_pools {
-  opacity: 1;
-  pointer-events: all;
-} */
 
 .screen_pools_interactive {
   display: flex;
   align-items: flex-end;
+  margin-top:auto;
 }
 
 .screen_pools_interactive g path {
@@ -203,21 +200,11 @@ ul{
   transition: 0.25s;
 }
 
-/* .screen_pools_interactive g.selected path {
-  stroke: #d6001c;
-  fill: #0875bd36;
-} */
-
 .screen_pools_interactive path:last-of-type {
   stroke: #d6001c;
+  fill: #d6001c;
   filter: drop-shadow(0px 0px 8px #d6001c);
 }
-
-
-/*.screen_pools_interactive g.selected path:last-of-type {
-  fill: #d6001c;
-  stroke: white;
-}*/
 
 .screen_pools_interactive g text {
   font-family: 'Lato Bold';
@@ -391,6 +378,7 @@ ul{
   --size: 15vh;
   height: var(--size);
   width: var(--size);
+  color:red;
   position: relative;
   border-radius: 50%;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -404,7 +392,8 @@ ul{
   top:0;
   left:0;
   border-radius: 50%;
-  border: solid 2px #d3e6f3;
+  border: solid 2px currentColor;
+  /* border: solid 2px #d3e6f3; */
   box-sizing: border-box;
   height: calc(100% - var(--margin) * 2);
   margin: var(--margin);
@@ -436,7 +425,6 @@ ul{
 .viday_btn_play {
   position: absolute;
   pointer-events: none;
-  color:red;
   /* transition: .3s; */
   top: 50%;
   left: 50%;

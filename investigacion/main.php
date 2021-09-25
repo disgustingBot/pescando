@@ -11,7 +11,7 @@
   $ELEMS = get_strings();
   $items = get_lineas();
 
-  $buttons_color = 'white';
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
   // $redirect_time = 10;
 ?>
 <!DOCTYPE html>
