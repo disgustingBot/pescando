@@ -262,7 +262,7 @@
           style="top:<?= $barco['cal_posy'] ?>%;left:<?= $barco['cal_posx'] ?>%;transition-delay:<?= $anim_delay += 0.1 ?>s"
           >
           <div class="boat_icon">
-            <?= file_get_contents($DIR_ICONS . 'barco-flota-blanco.svg') ?>
+            <?php include $DIR_ICONS . 'barco-flota-blanco.svg' ?>
           </div>
           <div class="led_light_wrapper">
             <div class="led_light"></div>
