@@ -301,6 +301,7 @@ body {
   transform: translate(-50%, -50%);
   pointer-events: none;
   display: grid;
+  color:#fff;
   grid-row-gap: 10px;
   position: absolute;
   transition: 0.5s;
@@ -338,26 +339,7 @@ body {
 --------------------------------------------------------------------------- */
 
 /* 4.7) =led_light: */
-/* .led_light{
-  margin:auto;
-  --led_light_size: 12px;
-  width: var(--led_light_size);
-  height: var(--led_light_size);
-  background-color: #FFFFFF;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #bdbdbd 0 -1px 9px, rgba(255, 255, 255, 0.5) 0 2px 12px;
-  -webkit-animation: blinkRed 0.5s infinite;
-  -moz-animation: blinkRed 0.5s infinite;
-  -ms-animation: blinkRed 0.5s infinite;
-  -o-animation: blinkRed 0.5s infinite;
-  animation: blinkRed 0.5s infinite;
-} */
 .boat_type_selector {
-  /* padding: 12px;
-  border-radius: 15px;
-  border: 2px dotted white;
-  width: max-content;
-  margin: auto auto 4% auto; */
-
   z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -440,41 +422,6 @@ body {
   width: 1px;
 }
 
-/* .boat_type.arrastrero .led_light,
-.boat_type.tipo_1 .led_light,
-.boat_position.tipo_1 .led_light{
-  border-radius: 50%;
-}
-.boat_type.potero .led_light,
-.boat_type.tipo_3 .led_light,
-.boat_position.tipo_3 .led_light{
-  transform: rotate(45deg);
-  --led_potero_size: calc(var(--led_light_size) * 0.8);
-  width: var(--led_potero_size);
-  height: var(--led_potero_size);
-}
-.boat_type.palangrero .led_light_wrapper,
-.boat_type.tipo_4 .led_light_wrapper,
-.boat_position.tipo_4 .led_light_wrapper{
-  filter: drop-shadow(-1px 0px 1px rgba(255, 255, 255, 0.2))
-  drop-shadow(0 2px 12px rgba(255, 255, 255, 0.5));
-}
-.boat_type.palangrero .led_light,
-.boat_type.tipo_4 .led_light,
-.boat_position.tipo_4 .led_light{
-  border-radius: 0;
-  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
-  --led_potero_size:calc(var(--led_light_size) * 1.1);
-  width: var(--led_potero_size);
-  height: var(--led_potero_size);
-}
-.boat_type.tangonero .led_light,
-.boat_type.tipo_2 .led_light,
-.boat_position.tipo_2 .led_light{
-  --tangonero_icon_size: 11px;
-  width: var(--tangonero_icon_size);
-  height: var(--tangonero_icon_size);
-} */
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
@@ -486,52 +433,14 @@ body {
   --led_light_size: 12px;
   width: var(--led_light_size);
   height: var(--led_light_size);
-  background-color: #FFFFFF;
+  color:#FFFFFF;
+  background:currentColor;
+  /* background-color: #FFFFFF; */
   box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, rgba(255, 255, 255, 0.5) 0 2px 12px;
 
   border-radius: 50%;
 }
 
-
-/* Red light */
-
-/* .led_light{
-  margin:auto;
-  width: 12px;
-  height: 12px;
-  background-color: #F00;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
-  -webkit-animation: blinkRed 0.5s infinite;
-  -moz-animation: blinkRed 0.5s infinite;
-  -ms-animation: blinkRed 0.5s infinite;
-  -o-animation: blinkRed 0.5s infinite;
-  animation: blinkRed 0.5s infinite;
-} */
-@-webkit-keyframes blinkRed {
-    from { color: #F00; }
-    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { color: #F00; }
-}
-@-moz-keyframes blinkRed {
-    from { color: #F00; }
-    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { color: #F00; }
-}
-@-ms-keyframes blinkRed {
-    from { color: #F00; }
-    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { color: #F00; }
-}
-@-o-keyframes blinkRed {
-    from { color: #F00; }
-    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { color: #F00; }
-}
-@keyframes blinkRed {
-    from { color: #F00; }
-    50% { color: #A00; box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;}
-    to { color: #F00; }
-}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                           4.8) =in_animate_screen:
@@ -691,7 +600,8 @@ body {
   height: 25px;
   width: auto;
   object-fit: contain;
-  stroke: #00587C;
+  color: #00587C;
+  /* stroke: #00587C; */
 }
 .boax_perk_txt{
   text-align: left;

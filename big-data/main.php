@@ -56,7 +56,7 @@
         ?>
 
         <style media="screen">
-          <?= $self_awake ?> .viday_btn_play {
+          <?= $self_awake ?> .viday_media {
             color:white;
           }
 

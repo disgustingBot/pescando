@@ -52,14 +52,6 @@
   </style>
   <main class="index_body">
 
-
-
-
-
-
-
-
-
     <ul class="index_menu">
       <h1 class="index_menu_title"><img src="images/pescanova-biomarine-center.png" width="300" height="111" alt="" title="Pescanova Biomarine Center"></h1>
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="webadmin/">Backend access</a></li>
@@ -70,7 +62,6 @@
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="hidrofonos/">Hidrofonos</a></li>
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="investigacion/">Investigacion</a></li>
     </ul>
-
 
   </main>
 </body>

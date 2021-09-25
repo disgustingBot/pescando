@@ -14,7 +14,8 @@
   // $redirect_time = 10;
 
   // var_dump($ship_types[0]);
-  $buttons_color = 'white';
+  // $buttons_color = 'white';
+  $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,12 +60,7 @@
         <style>
 
           <?= $active ?> {
-            background: currentColor;
-            -webkit-animation: blinkRed 0.5s infinite;
-            -moz-animation: blinkRed 0.5s infinite;
-            -ms-animation: blinkRed 0.5s infinite;
-            -o-animation: blinkRed 0.5s infinite;
-            animation: blinkRed 0.5s infinite;
+            /* background: currentColor; */
           }
           /* No click en categoría activa */
           /* .boat_positioning_layer[class*='tipo_<?= $type['tba_id'] ?>'][class*='boat_']:not([class="boat_positioning_layer"]) <?= ".$type[slug]" ?> {
@@ -109,15 +105,15 @@
         <p class="boax_title"><?= $type['tra_nombre_tba'] ?></p>
         <img class="boax_deco" src="<?=$DIR_ICONS?>onda-flota.svg" alt="Decoración de ondas maritimas">
         <div class="boax_type_icon">
-          <?= file_get_contents($DIR_ICONS . 'icono-' . $type['slug'] . '.svg') ?>
+          <?php include $DIR_ICONS . "icono-$type[slug].svg" ?>
         </div>
         <p class="boax_txt"><?= $type['tra_descr_tba'] ?></p>
         <div class="boax_perk">
-          <div class="boax_perk_icon"><?= file_get_contents($DIR_ICONS . 'pez-flota.svg') ?></div>
+          <div class="boax_perk_icon"><?php include $DIR_ICONS . 'pez-flota.svg' ?></div>
           <p class="boax_perk_txt"><?= $type['tra_pesca_tba'] ?></p>
         </div>
         <div class="boax_perk">
-          <div class="boax_perk_icon"><?= file_get_contents($DIR_ICONS . 'localizacion-flota.svg') ?></div>
+          <div class="boax_perk_icon"><?php include $DIR_ICONS . 'localizacion-flota.svg' ?></div>
           <p class="boax_perk_txt"><?= $type['tra_barcos_tba'] ?></p>
         </div>
         <!-- <img class="close_boat_lightbox" src="<?=$DIR_ICONS?>cerrar-flota.svg" alt="Icono de equis para cerrar el Lightbox" onclick="altClassFromSelector('<?= $type['slug'] ?>', '.interactive_map')"> -->
@@ -163,7 +159,9 @@
             transition: all 0.5s var(--normal_curve), opacity 0.5s;
             overflow: visible;
           }
-          <?= $self_filtered ?> { z-index: 5 }
+          <?= $self_filtered ?> {
+            z-index: 5;
+          }
 
           [class='interactive_map'] .boat_positioning_layer:not(<?='.boat_' . $barco['bar_id']?>)<?= $self_filtered ?> {
             pointer-events: all;
@@ -180,19 +178,13 @@
             z-index: 5;
           }
 
-          <?= $css_class_boat_video ?> path {
-            fill: currentColor;
-            -webkit-animation: blinkRed 0.5s infinite;
-            -moz-animation: blinkRed 0.5s infinite;
-            -ms-animation: blinkRed 0.5s infinite;
-            -o-animation: blinkRed 0.5s infinite;
-            animation: blinkRed 0.5s infinite;
+          <?= $css_class_boat_video ?> {
+            color: <?= $buttons_color ?>;
           }
 
           <?php $css_class_boat_played = ".boat_positioning_layer.tipo_$barco[bar_tipo] .viday.boat_$barco[bar_id].PLAYED_VIDEO + .boat_position.tipo_$barco[bar_tipo] .boat_icon"; ?>
-          <?= $css_class_boat_played ?> path {
-            fill: #A00;
-            animation: none;
+          <?= $css_class_boat_played ?> {
+            color: #A00;
           }
 
           <?php $css_class_no_types_on_video = "boat_positioning_layer tipo_$barco[bar_tipo] boat_$barco[bar_tipo]" ?>
@@ -227,24 +219,7 @@
               "
             ><?= $ELEMS['TXT_VIDEO'] ?></p>
           </div>
-
-          <!-- <img
-            class="close_boat_lightbox"
-            src="<?=$DIR_ICONS?>cerrar-flota.svg"
-            alt="Icono de equis para cerrar el Lightbox"
-            onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"
-          > -->
           <div class="close_boat_lightbox_around" onclick="altClassFromSelector('boat_<?= $barco['bar_id'] ?>', '.boat_positioning_layer', ['boat_positioning_layer', 'tipo_<?= $barco['bar_tipo'] ?>']);"></div>
-
-          <!-- <img
-            class="close_boat_lightbox back"
-            src="<?=$DIR_ICONS?>atras.svg"
-            alt="Icono de equis para cerrar el Lightbox"
-            onclick="
-              altClassFromSelector('play', '.viday.boat_<?= $barco['bar_id']  ?>');
-              playAudioFromSelector('.viday.boat_<?=$barco['bar_id']?> .viday_media', true);
-            "
-          > -->
           <div
             class="close_boat_lightbox back"
             onclick="
