@@ -39,7 +39,7 @@
     <h1 class="lang_screen_title"><?= $ELEMS['INDEX_TITLE'] ?></h1>
     <ul class="lang_screen_list">
     <?php foreach ( $LANG_MENU as $key => $value ) { ?>
-      <li class="lang_selection_li">
+      <li class="lang_screen_li">
         <a
           href="main.php?lang=<?=$key?>"
           class="lang_screen_btn <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>">

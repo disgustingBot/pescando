@@ -223,22 +223,22 @@ body {
 .lang_screen_btn {
   background: none;
   border: none;
-  font-family: 'Lato Regular';
+  font-family: 'Lato';
   font-size: 38px;
   font-weight: 600;
-  /* color: rgb(154, 183, 204); */
   color: rgb(214, 0, 28);
   text-transform: uppercase;
   filter: drop-shadow( 0px 0px 1.5px #000);
   letter-spacing: 10px;
   text-align: center;
+  margin: auto auto auto 0;
 }
 
 .lang_screen .selected {
   /* color: rgb(214, 0, 28); */
   font-family: 'Lato Black';
 }
-.lang_selection_li{
+.lang_screen_li{
   display: flex;
   align-items: center;
   width: 100%;
@@ -249,7 +249,6 @@ body {
   width: auto;
   margin: auto 0 auto auto;
 }
-
 
 
 /* ---------------------------------------------------------------------------
@@ -396,12 +395,18 @@ body {
   text-transform: uppercase;
   margin-top: 40px;
   letter-spacing: 4px;
+  display: flex;
 }
-
+.boat_type_pointer{
+  height: 22px;
+  width: auto;
+  margin: auto auto auto 4px;
+}
 .boat_type_name_sm {
   font-size: 18px;
   margin-top: 0;
   letter-spacing: 6px;
+  color: white;
 }
 
 .boat_type_figure {

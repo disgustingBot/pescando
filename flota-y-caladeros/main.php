@@ -81,7 +81,10 @@
             <div class="led_light boat_type_icon"></div>
           </div> -->
           <img src="<?= $DIR_ICONS ?>icono-<?= $type['slug'] ?>.svg" class="boat_type_figure">
-          <p class="boat_type_name"><?= $type['tra_nombre_tba'] ?></p>
+          <p class="boat_type_name">
+            <?= $type['tra_nombre_tba'] ?>
+            <img class="boat_type_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+          </p>
         </div>
       <?php } ?>
     </div>

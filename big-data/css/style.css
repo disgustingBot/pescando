@@ -209,7 +209,7 @@ ul{
 } */
 
 .screen_pools_interactive path:last-of-type {
-  stroke: rgb(153, 182, 203);
+  stroke: #d6001c;
   filter: drop-shadow(0px 0px 8px #d6001c);
 }
 

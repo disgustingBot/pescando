@@ -427,6 +427,13 @@ ul{
   transition: .8s;
   text-transform: uppercase;
   /* margin */
+  display: flex;
+  color: rgb(214, 0, 28);
+}
+.menem_txt_pointer{
+  height: 40px;
+  width: auto;
+  margin: auto auto auto 10px;
 }
 
 .menem_next {
