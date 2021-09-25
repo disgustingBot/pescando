@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Pescanova Biomarine Center - Menu</title>
-  
+
   <link rel="icon" type="image/vnd.microsoft.icon" href="favicon.ico" sizes="36x36">
 </head>
 <body>
@@ -51,30 +51,27 @@
 
   </style>
   <main class="index_body">
+
+
+
+
+
+
+
+
+
     <ul class="index_menu">
-      <h1 class="index_menu_title"><img src="images/pescanova-biomarine-center.png"></h1>
-      <li class="index_menu_item">
-        <a href="flota-y-caladeros/" target="_blank" class="index_menu_link">Flota y caladeros</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="cultivo/" target="_blank" class="index_menu_link">Cultivo</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="hidrofonos/" target="_blank" class="index_menu_link">Hidrofonos</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="barco/" target="_blank" class="index_menu_link">Barcos</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="barcos/" target="_blank" class="index_menu_link">Barcos (player360)</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="investigacion/" target="_blank" class="index_menu_link">Investigacion</a>
-      </li>
-      <li class="index_menu_item">
-        <a href="webadmin/" target="_blank" class="index_menu_link">Backend access</a>
-      </li>
+      <h1 class="index_menu_title"><img src="images/pescanova-biomarine-center.png" width="300" height="111" alt="" title="Pescanova Biomarine Center"></h1>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="webadmin/">Backend access</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="barco/">Barcos</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="big-data/">Big Data</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="cultivo/">Cultivo</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="flota-y-caladeros/">Flota y caladeros</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="hidrofonos/">Hidrofonos</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="investigacion/">Investigacion</a></li>
     </ul>
+
+
   </main>
 </body>
 </html>
