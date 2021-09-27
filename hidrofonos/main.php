@@ -117,14 +117,13 @@
 
               <video class="full_screen_media_video rowcol1" id="<?= $specie['slug'] ?>_sound" poster="<?= $DIR_IMG . $specie['son_fondo'] ?>">
                 <source src="<?= $DIR_MEDIA . $specie['son_video'] ?>" type="video/mp4">
-                <!-- <source src="videos/HIDROFONO_PULPO_01.mp4" type="video/mp4"> -->
               </video>
 
               <div class="icon_sequence_container rowcol1">
                 <div class="icon_sequence">
-                  <img class="icon_sequence_img audio_icon" src="<?=$DIR_ICONS?>altavoz.svg" alt="Icono de altavoz">
-                  <img class="icon_sequence_img fish_icon" src="<?= $DIR_IMG.$specie['son_icono'] ?>" alt="Icono de animalito">
-                  <img class="icon_sequence_img wave_icon" src="<?=$DIR_ICONS?>onda.svg" alt="Icono de onda de audio">
+                  <img class="icon_sequence_img audio_icon" src="<?=$DIR_ICONS?>altavoz.svg" alt="" title="" />
+                  <img class="icon_sequence_img fish_icon" src="<?= $DIR_IMG.$specie['son_icono'] ?>" alt="" title="" />
+                  <img class="icon_sequence_img wave_icon" src="<?=$DIR_ICONS?>onda.svg" alt="" title="" />
                 </div>
                 <div class="icon_sequence_txt full_col_text"><?= $specie['tra_nombre_son'] ?></div>
                 <img class="icon_sequence_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
@@ -145,8 +144,7 @@
     </div> -->
   </section>
 
-
-
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>

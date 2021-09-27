@@ -158,7 +158,7 @@ if(typeof(redirect_time) !== 'undefined') {
   setInterval(() => {
     if(!is_playing_media) current_time++;
     // current_time++;
-    // console.log(current_time+' >= '+redirect_time);
+    console.log(current_time+' >= '+redirect_time);
 
     if(current_time >= redirect_time) {
       reset_current_time();

@@ -12,8 +12,6 @@
 
   $ELEMS      = get_strings();
 
-  // $redirect_time = 60;
-
   $barcos = get_detalles();
   $ship_types = get_ship_types();
 
@@ -38,7 +36,8 @@
       grid-template-columns: 1fr 10fr 1fr;
     }
     ul {
-      margin-top: -50px;
+      margin: auto;
+      margin-left: 150px;
       grid-column: 2;
     }
     ul li {
@@ -81,13 +80,11 @@
           <span class="back_btn rowcol1 second_arrow" style="color: <?= $buttons_color ?>;" onclick="altClassFromSelector('step1', '.body')">
             <?php include $DIR_ICONS.'atras.svg' ?>
           </span>
-          <!-- <img class="back_btn rowcol1 second_arrow" onclick="altClassFromSelector('step1', '.body')" src="<?=$DIR_ICONS?>atras.svg"> -->
 
           <?php if (count($barcos) > 1) { ?>
             <span class="back_btn rowcol1 first_arrow" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
               <?php include $DIR_ICONS.'atras.svg' ?>
             </span>
-            <!-- <img class="back_btn rowcol1 first_arrow" onclick="back_btn()" src="<?=$DIR_ICONS?>atras.svg"> -->
           <?php } ?>
 
 

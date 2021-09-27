@@ -7,7 +7,6 @@
 
   $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
   $current_url_no_params = "https://".$_SERVER["HTTP_HOST"]."$uri_parts[0]";
-  // $lang = isset($_GET['lang']) ? $_GET['lang'] : false;
 
   $alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -15,19 +14,10 @@
   $species    = get_species();
   $ELEMS      = get_strings();
 
-  // $buttons_color = 'white';
   $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 
- // $central = (isset($_GET['central'])) ? intval(trim($_GET["central"])) : 0;
-  // if ( isset($_GET['central']) ) {
-  //   $central = intval(trim($_GET["central"]));
-  //   $_SESSION["central"] = $central;
-  // }
-
-  // $redirect_time = 10;
   $is_center_screen = ( (isset($_SESSION['central']) && $_SESSION["central"] == 1) ? True : False );
   $timer_ficha_in_seconds = 5;
-  // var_dump($is_center_screen);
 
 ?>
 <!DOCTYPE html>
@@ -125,7 +115,6 @@
           <p class="anakin_description"><?=$ELEMS["TXT_ESPECIES_CULTIVO"]?></p>
           <div class="anakin_icon">
             <img src="<?= $DIR_IMG.$category['esp_icono'] ?>">
-            <?php // include_once("<?= $DIR_IMG$category[esp_icono]") ?>
           </div>
 
           <h2 class="anakin_title"><?= $category['tra_nombre_esp'] ?></h2>
@@ -178,7 +167,6 @@
             font-family: 'Lato Black';
           }
           </style>
-          <?php // var_dump($specie) ?>
           <li
             class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>"
             data-code="<?= 'PBCanimal'.$specie['ani_id'].strtoupper($_SESSION['lang']) ?>"
@@ -287,8 +275,7 @@
 
            <?php if ($specie['tra_pais_ani'] == true) { ?>
            <div class="leia_location_grid">
-            <svg class="leia_location_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.61 20.05"><defs><style>.cls-1{fill:#c40000;}</style></defs><title>3Recurso 6</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><path class="cls-1" d="M6.81,11A3.48,3.48,0,0,1,3.41,7.4a3.48,3.48,0,0,1,3.4-3.56A3.48,3.48,0,0,1,10.2,7.4,3.48,3.48,0,0,1,6.81,11m0-11A7,7,0,0,0,0,7.14a7.25,7.25,0,0,0,1.26,4.12l5.55,8.79,5.55-8.79a7.24,7.24,0,0,0,1.25-4.12A7,7,0,0,0,6.81,0"/></g></g></svg>
-            <?php /* <!-- <p class="leia_location">Lugar lorem ipsum</p> --> */ ?>
+            <svg class="leia_location_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13.61 20.05"><defs><style>.cls-1{fill:#d6001c;}</style></defs><title>3Recurso 6</title><g id="Capa_2" data-name="Capa 2"><g id="Layer_1" data-name="Layer 1"><path class="cls-1" d="M6.81,11A3.48,3.48,0,0,1,3.41,7.4a3.48,3.48,0,0,1,3.4-3.56A3.48,3.48,0,0,1,10.2,7.4,3.48,3.48,0,0,1,6.81,11m0-11A7,7,0,0,0,0,7.14a7.25,7.25,0,0,0,1.26,4.12l5.55,8.79,5.55-8.79a7.24,7.24,0,0,0,1.25-4.12A7,7,0,0,0,6.81,0"/></g></g></svg>
              <p class="leia_location"><?= $specie['tra_pais_ani'] ?></p>
            </div>
            <?php } ?>
@@ -300,7 +287,7 @@
 
   </section>
 
-
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>
