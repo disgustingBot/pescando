@@ -81,7 +81,7 @@
             <?= $item['tra_nombre_area'] ?>
             <img class="menem_txt_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
           </p>
-          <p class="menem_next" onclick="back_btn();play_video('<?= $items[ ($i+1) % count($items) ]['slug'] ?>')">Ver <?= $items[ ($i+1) % count($items) ]['tra_nombre_area'] ?></p>
+          <p class="menem_next" onclick="back_btn();play_video('<?= $items[ ($i+1) % count($items) ]['slug'] ?>')"><?=$ELEMS["TXT_SEE_LINK"]?> <?= $items[ ($i+1) % count($items) ]['tra_nombre_area'] ?></p>
         </li>
       <?php $i+=1;} ?>
     </ul>
@@ -114,7 +114,7 @@
 
   </section>
 
-
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>

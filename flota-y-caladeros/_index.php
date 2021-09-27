@@ -42,7 +42,7 @@
       <li class="lang_screen_li">
         <a
           href="main.php?lang=<?=$key?>"
-          class="lang_screen_btn">
+          class="lang_screen_btn <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>">
           <?=$value?>
         </a>
         <img class="lang_screen_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">

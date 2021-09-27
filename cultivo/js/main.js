@@ -297,7 +297,7 @@ if(typeof(redirect_time) !== 'undefined') {
 
   setInterval(() => {
     current_time++;
-    // console.log(current_time+' >= '+redirect_time);
+    console.log(current_time+' >= '+redirect_time);
     if(current_time >= redirect_time) {
       const urlSearchParams = new URLSearchParams(window.location.search);
       const params = Object.fromEntries(urlSearchParams.entries());

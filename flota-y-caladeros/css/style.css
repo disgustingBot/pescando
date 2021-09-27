@@ -223,21 +223,23 @@ body {
 .lang_screen_btn {
   background: none;
   border: none;
-  font-family: 'Lato';
+  font-family: 'Lato Regular';
   font-size: 38px;
   font-weight: 600;
   color: rgb(214, 0, 28);
   text-transform: uppercase;
-  filter: drop-shadow( 0px 0px 1.5px #000);
+  filter: drop-shadow( 0px 0px 1.5px #666);
   letter-spacing: 10px;
   text-align: center;
   margin: auto auto auto 0;
 }
 
+/*
 .lang_screen .selected {
-  /* color: rgb(214, 0, 28); */
+  color: rgb(214, 0, 28);
   font-family: 'Lato Black';
 }
+*/
 .lang_screen_li{
   display: flex;
   align-items: center;
@@ -371,12 +373,12 @@ body {
 
 .boat_type_name {
   font-family: "Lato Bold";
-  font-size: 25px;
+  font-size: 22px;
   color: #D6001C;
-  text-shadow: 0 0 1px #FFFFFF;
+  text-shadow: 0 0 1px #666;
   text-transform: uppercase;
   margin-top: 40px;
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   display: flex;
 }
 .boat_type_pointer{
@@ -571,11 +573,11 @@ body {
 
 .boax_title {
   color: #00587C;
-  font-size: 24px;
-  letter-spacing: 4px;
+  font-size: 20px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   font-family: 'Lato Black';
-  margin-top: 15px;
+  margin-top: 35px;
 }
 .boax_deco{ width: 40% }
 .boax_main_icon{width:40px}
@@ -584,9 +586,9 @@ body {
 .boax_txt{
   font-family: 'Lato Regular';
   font-size: 16px;
-  line-height: 22px;
+  line-height: 18px;
   margin: 12px auto;
-  width: 60%;
+  width: 80%;
   text-align: center;
 }
 .boax_perk{
@@ -594,7 +596,7 @@ body {
   grid-auto-flow: column;
   grid-gap:15px;
   align-items: center;
-  width: 50%;
+  width: 60%;
 }
 .boax_perk_icon svg {
   height: 25px;

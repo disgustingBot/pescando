@@ -11,10 +11,7 @@
   $ELEMS  = get_strings();
   $ships = get_ships();
   $ship_types = get_ship_types();
-  // $redirect_time = 10;
 
-  // var_dump($ship_types[0]);
-  // $buttons_color = 'white';
   $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 ?>
 <!DOCTYPE html>
@@ -282,18 +279,12 @@
       </div>
     </div>
 
-
-
-
-
-
-
-    <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="Mapa de las ubicaciones de la flota en el mundo">
-    <img class="cross_positions rowcol1" src="<?=$DIR_ICONS?>cruces-posicion.svg" alt="Posición de cruces">
+    <img class="map rowcol1" src="<?=$DIR_IMG?>mapa.jpg" alt="" title="">
+    <img class="cross_positions rowcol1" src="<?=$DIR_ICONS?>cruces-posicion.svg" alt="" title="">
 
   </div>
 
-
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
   <script type="text/javascript" src="js/main.js"></script>

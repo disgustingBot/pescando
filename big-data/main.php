@@ -115,6 +115,7 @@
     </div>
   </main>
 
+  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script>
     var redirect_time = <?= $redirect_time ?>;
@@ -122,7 +123,6 @@
     is_playing_media = false;
     page = 'inc.session.end.php';
   </script>
-  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <script type="text/javascript" src="js/main.js"></script>
 
 </body>

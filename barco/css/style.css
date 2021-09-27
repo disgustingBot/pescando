@@ -312,16 +312,18 @@ ul{
   font-weight: 600;
   color: rgb(214, 0, 28);
   text-transform: uppercase;
-  filter: drop-shadow( 0px 0px 1.5px #000);
+  filter: drop-shadow( 0px 0px 1.5px #666);
   letter-spacing: 10px;
   text-align: center;
   margin: auto auto auto 0;
 }
 
+/*
 .lang_screen .selected {
-  /* color: rgb(214, 0, 28); */
+  color: rgb(214, 0, 28);
   font-family: var(--lato_black);
 }
+*/
 .lang_selection_li{
   display: flex;
   align-items: center;
@@ -1041,7 +1043,7 @@ ul{
   font-size: 40px;
   color: rgb(214, 0, 28);
   text-align: center;
-  text-shadow: 0 0 15px rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.1);
+  /* text-shadow: 0 0 15px rgba(255,255,255,.1), 0 0 10px rgba(255,255,255,.1); */
 }
 .info_content_pointer{
   height: 38px;
@@ -1186,12 +1188,12 @@ ul{
 
 .boat_type_name {
   color: #D6001C;
-  font-size: 38px;
+  font-size: 32px;
   text-transform: uppercase;
   transition: 0.5s;
   transition-delay: 0s;
-  letter-spacing: 5px;
-  filter: drop-shadow(0 0 3px #000);
+  letter-spacing: 2px;
+  /* filter: drop-shadow(0 0 3px #000); */
   position: absolute;
   font-family: var(--lato_black);
   top: calc(100% - 30px - 20px);
@@ -1213,10 +1215,10 @@ ul{
 .boat_name {
   font-family: var(--lato_bold);
   color: #fff;
-  font-size: 30px;
-  letter-spacing: 4px;
+  font-size: 29px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  filter: drop-shadow(0 0 3px #000);
+  filter: drop-shadow(0 0 3px #666);
   margin-top: calc(38px + 10px);
   margin-bottom: 6px;
   opacity: 0;
@@ -1233,7 +1235,7 @@ ul{
   font-size: 20px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  filter: drop-shadow(0 0 3px #000);
+  filter: drop-shadow(0 0 3px #666);
   opacity: 0;
   transition: 0.5s;
 }

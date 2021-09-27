@@ -325,9 +325,11 @@ ul{
   justify-items: center;
 }
 
+/*
 .lang_list .selected {
   font-family: 'Lato Black';
 }
+*/
 .lang_selection_li{
   display: flex;
   align-items: center;
@@ -409,12 +411,12 @@ ul{
 
 .menem_txt {
   color: #fff;
-  filter: drop-shadow(0px 0px 1.5px #000);
+  filter: drop-shadow(0px 0px 1.5px #666);
   font-family: 'Lato Black';
   font-size: 45px;
   grid-column: 1;
   grid-row: 1;
-  letter-spacing: 9px;
+  letter-spacing: 4px;
   position: absolute;
   /* text-align: center; */
   width: max-content;
@@ -511,7 +513,7 @@ ul{
   line-height: 38px;
   color: rgb(214, 0, 28);
   text-transform: uppercase;
-  filter: drop-shadow(0px 0px 1.5px #000);
+  filter: drop-shadow(0px 0px 1.5px #666);
   letter-spacing: 10px;
   font-weight: 600;
 }

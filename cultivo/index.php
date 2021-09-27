@@ -14,7 +14,6 @@
     $_SESSION["central"] = intval(trim($_GET["central"]));
   }
 
-  // var_dump($_SESSION);
 ?>
 <!DOCTYPE html>
 <html lang="en">
