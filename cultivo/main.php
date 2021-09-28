@@ -17,7 +17,9 @@
   $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 
   $is_center_screen = ( (isset($_SESSION['central']) && $_SESSION["central"] == 1) ? True : False );
-  $timer_ficha_in_seconds = 5;
+  // $timer_ficha_in_seconds = 5;
+  $timer_ficha_in_seconds = 2;
+  $timer_logo_in_seconds = 3;
 
 ?>
 <!DOCTYPE html>
@@ -38,6 +40,7 @@
   </script>
 </head>
 <body class="general">
+  <div class="blockade"></div>
   <div class="in_animate_screen in_animate_screen_display">
     <svg class="in_screen_icon in_screen_icon_animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.26 52">
       <title>Cangrejo</title>
@@ -170,7 +173,7 @@
           <li
             class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>"
             data-code="<?= 'PBCanimal'.$specie['ani_id'].strtoupper($_SESSION['lang']) ?>"
-            onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + 500) : '' ?>);"
+            onclick="alt_ficha('<?= $specie['slug'] ?>'<?= ($is_center_screen) ? ", " . ($timer_ficha_in_seconds * 1000 + $timer_logo_in_seconds * 1000) : '' ?>);"
           >
           <?php /* <!-- <li class="luke_specie <?= $specie['slug'] ?> <?= $specie['category'] ?> <?= $specie['slug'][0] ?>" onclick="altClassFromSelector('<?= $specie['slug'] ?>', '.general', ['general']); setTimeout(()=>{ set_obses() },1400)"> --> */ ?>
             <p><?= $specie['tra_nombre_ani'] ?></p>
@@ -201,7 +204,7 @@
       <?= $self_awake ?> .leia_content {
         <?php if ($is_center_screen){ ?>
           transform: translateY(0);
-          margin-top: -100vh;
+          margin-top: -200vh;
           /* transition-delay: transform .5s, margin-top 1s; */
           transition: transform .5s .5s, margin-top .5s <?= $timer_ficha_in_seconds ?>s;
         <?php } else { ?>
@@ -211,6 +214,7 @@
       }
       </style>
        <div class="leia <?= $specie['slug'] ?>">
+         <?php include $DIR_ICONS.'logobiomarine.svg' ?>
          <div class="leia_content">
            <div class="magnified_map">
              <svg class="close_magified_map" onclick="altClassFromSelector('active', '.magnified_map')" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
