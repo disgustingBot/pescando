@@ -40,7 +40,9 @@
   </script>
 </head>
 <body class="general">
-  <div class="blockade"></div>
+  <?php if ($is_center_screen) { ?>
+    <div class="blockade"></div>
+  <?php } ?>
   <div class="in_animate_screen in_animate_screen_display">
     <svg class="in_screen_icon in_screen_icon_animate" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.26 52">
       <title>Cangrejo</title>
