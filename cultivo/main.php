@@ -19,7 +19,7 @@
   $is_center_screen = ( (isset($_SESSION['central']) && $_SESSION["central"] == 1) ? True : False );
   // $timer_ficha_in_seconds = 5;
   $timer_ficha_in_seconds = 2;
-  $timer_logo_in_seconds = 3;
+  $timer_logo_in_seconds = 2;
 
 ?>
 <!DOCTYPE html>
@@ -203,6 +203,12 @@
         width:50%;
         z-index: 2;
       }
+      <?= $self_awake ?> > svg {
+        /* transform: translate(50%, 0); */
+        /* transform: translate(50%, -50%); */
+        margin-top:50vh;
+        transition:.5s .5s;
+      }
       <?= $self_awake ?> .leia_content {
         <?php if ($is_center_screen){ ?>
           transform: translateY(0);
@@ -216,7 +222,12 @@
       }
       </style>
        <div class="leia <?= $specie['slug'] ?>">
-         <?php include $DIR_ICONS.'logobiomarine.svg' ?>
+
+          <?php
+          if ($is_center_screen) {
+            include $DIR_ICONS.'logobiomarine.svg';
+          }
+          ?>
          <div class="leia_content">
            <div class="magnified_map">
              <svg class="close_magified_map" onclick="altClassFromSelector('active', '.magnified_map')" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
