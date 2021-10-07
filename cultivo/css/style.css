@@ -571,9 +571,15 @@ ul{
   z-index: 1;
 }
 .leia > svg{
-  width:80%;
+  /* width:75%; */
+  position: absolute;
+  right:25vw;
+  width:576px;
   height:auto;
   margin:auto;
+  transform: translate(50%, -50%);
+  margin-top:150vh;
+  transition:0s 1s;
   grid-column:1;
   grid-row:1;
 }
