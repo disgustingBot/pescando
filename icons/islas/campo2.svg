@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 827.2 375.1" style="enable-background:new 0 0 827.2 375.1;" xml:space="preserve">
+<style type="text/css">
+	.color-claro{fill:#C46E6B;}
+	.campo-linea-a{fill:none;stroke:#B60121;stroke-width:3;stroke-miterlimit:10;}
+	.campo-linea-b{fill:none;stroke:#B60121;stroke-width:1.5;stroke-miterlimit:10;}
+	.linea-a{fill:none;stroke:#FFFFFF;}
+	.linea-b{fill:#FFFFFF;}
+</style>
+<g id="datos-atlantico">
+	<g id="atlantico-sur">
+		<g id="campo">
+			<rect x="1.5" y="220.8" class="color-claro" width="242.6" height="152.8"/>
+			<rect x="1.5" y="220.8" class="campo-linea-a" width="242.6" height="152.8"/>
+			<path class="campo-linea-b" d="M1.2,367.2c3.6,0,6.4,2.9,6.4,6.4c0,0,0,0,0,0 M237.7,373.6c0-3.6,2.9-6.5,6.4-6.5c0,0,0,0,0,0 M244.1,227.2
+				c-3.6,0-6.4-2.9-6.4-6.4 M7.7,220.8c0,3.6-2.9,6.4-6.4,6.4c0,0,0,0,0,0"/>
+			<path class="color-claro" d="M145.3,297.2c0,12.5-10.1,22.6-22.6,22.6s-22.6-10.1-22.6-22.6c0-12.5,10.1-22.6,22.6-22.6
+				S145.3,284.7,145.3,297.2L145.3,297.2"/>
+			<path class="campo-linea-b" d="M145.3,297.2c0,12.5-10.1,22.6-22.6,22.6s-22.6-10.1-22.6-22.6c0-12.5,10.1-22.6,22.6-22.6
+				S145.3,284.7,145.3,297.2L145.3,297.2z"/>
+			<path class="campo-linea-b" d="M14.6,315.6H1.2v-36.8h13.4V315.6z M122.7,220.8v152.8"/>
+			<path class="color-claro" d="M39.8,277.8v38.9c10.7-6.4,14.3-20.2,7.9-31C45.7,282.4,43,279.7,39.8,277.8"/>
+			<path class="campo-linea-b" d="M39.8,277.8v38.9c10.7-6.4,14.3-20.2,7.9-31C45.7,282.4,43,279.7,39.8,277.8L39.8,277.8z"/>
+			<path class="campo-linea-b" d="M230.7,278.8h13.4v36.8h-13.4V278.8z M39.7,333.7H1.2v-73h38.5L39.7,333.7z"/>
+			<path class="color-claro" d="M205.6,316.6v-38.9c-10.7,6.4-14.3,20.2-7.9,31C199.7,312,202.4,314.7,205.6,316.6"/>
+			<path class="campo-linea-b" d="M205.6,316.6v-38.9c-10.7,6.4-14.3,20.2-7.9,31C199.7,312,202.4,314.7,205.6,316.6z"/>
+			<rect x="205.6" y="260.7" class="campo-linea-b" width="38.5" height="73"/>
+		</g>
+		<g id="linea">
+			<polyline class="linea-a" points="827.2,120.4 72.2,120.4 72.2,255.4 			"/>
+			<path class="linea-b" d="M72.2,261.4c3.3,0,6-2.7,6-6c0-3.3-2.7-6-6-6s-6,2.7-6,6C66.2,258.7,68.9,261.4,72.2,261.4"/>
+		</g>
+	</g>
+</g>
+</svg>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="datos-pacifico-sur" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 847.4 327.1" style="enable-background:new 0 0 847.4 327.1;" xml:space="preserve">
+<style type="text/css">
+	.color-claro{fill:#C46E6B;}
+	.campo-linea-a{fill:none;stroke:#B60121;stroke-width:3;stroke-miterlimit:10;}
+	.campo-linea-b{fill:none;stroke:#B60121;stroke-width:1.5;stroke-miterlimit:10;}
+	.linea-a{fill:none;stroke:#FFFFFF;}
+	.linea-b{fill:#FFFFFF;}
+</style>
+<g id="Layer_piscina">
+	<g id="pacifico-sur">
+		<rect x="1.5" y="203.7" class="color-claro" width="243.1" height="121.9"/>
+		<rect x="1.5" y="203.7" class="campo-linea-a" width="243.1" height="121.9"/>
+		<path class="campo-linea-b" d="M1.5,215.9h243.1 M1.5,228.1h243.1 M1.5,240.3h243.1 M1.5,252.5h243.1 M1.5,264.7h243.1 M1.5,276.9h243.1
+			 M1.5,289.1h243.1 M1.5,301.3h243.1 M1.5,313.5h243.1"/>
+		<polyline class="linea-a" points="847.4,120.4 92.4,120.4 92.4,255.4 		"/>
+		<path class="linea-b" d="M92.4,261.4c3.3,0,6-2.7,6-6c0-3.3-2.7-6-6-6s-6,2.7-6,6C86.4,258.7,89.1,261.4,92.4,261.4"/>
+	</g>
+</g>
+</svg>

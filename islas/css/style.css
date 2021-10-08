@@ -1,0 +1,335 @@
+/*
+Author: Tres Pi
+*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img{object-fit:cover;width:100%;display:block}
+video{object-fit:cover;height:100%;width:100%;display:block}
+
+a{text-decoration:none; color:inherit;}
+ul{
+  list-style: none;
+}
+.rowcol1{grid-row:1;grid-column:1}
+
+:root {
+  font-size: 20px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          3) =FONTS:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Lato-Black";
+  src: url("../../fonts/Lato-Black.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Bold";
+  src: url("../../fonts/Lato-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Regular";
+  src: url("../../fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Lato-Light";
+  src: url("../../fonts/Lato-Light.ttf");
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.1) =panel:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.panel {
+  position: absolute;
+  left: 68px;
+  right: 68px;
+  top: 68px;
+  z-index: 12;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.panel_title {
+  font-family: 'Lato-Bold';
+  font-size: 28px;
+  line-height: 28px;
+  color: #fff;
+}
+.panel_description {
+  font-family: 'Lato-Regular';
+  font-size: 60px;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+.ISLANDS_MAP .panel_description { opacity: 1 }
+.panel_icon {
+  width: 5rem;
+  opacity: 0;
+}
+.ISLANDS_MAP .panel_icon { opacity: 1 }
+
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.2) =lang_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.lang_screen {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+.lang_screen_icon {
+  width: 8.2rem;
+  transform: translate(-25px, -35px);
+  filter: drop-shadow(0px 0px 1.5px #fff);
+  margin-bottom: 20px;
+}
+.lang_screen_title {
+  font-family: 'Lato-Bold';
+  color: #fff;
+  font-size: 95px;
+  filter: drop-shadow( 0px 0px 1.5px #fff);
+  width: 75%;
+  margin: 0 auto;
+  text-align: center;
+}
+.lang_screen_title_sm {
+  font-size: 80px;
+  margin-bottom: 65px;
+  font-family: 'Lato-Light';
+}
+.lang_screen_list {
+  list-style: none;
+  display: grid;
+  row-gap: 20px;
+  justify-items: center;
+}
+.lang_screen_btn {
+  background: none;
+  border: none;
+  font-family: 'Lato-Regular';
+  font-size: 38px;
+  font-weight: 600;
+  color: rgb(214, 0, 28);
+  text-transform: uppercase;
+  filter: drop-shadow( 0px 0px 1.5px #666);
+  letter-spacing: 10px;
+  text-align: center;
+  margin: auto auto auto 0;
+}
+.lang_selection_li{
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.lang_screen_pointer{
+  color: rgb(214, 0, 28);
+  height: 35px;
+  width: auto;
+  margin: auto 0 auto auto;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.3) =back_grid:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.back_grid {
+  display: grid;
+  grid-auto-flow: column;
+  align-items: start;
+  grid-gap: 16px;
+}
+.back_btn {
+  background: none;
+  border: none;
+  position: relative;
+  top:20px;
+  transition:.4s;
+  transition-delay: 1.2s;
+  transform: translateY(-50%);
+  width: 40px;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                          4.4) =in_animate_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.in_animate_screen {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  z-index: -1;
+  transition: 0.5s;
+}
+.in_animate_screen_display {
+  z-index: 100;
+  background-color: #00587C;
+}
+.in_screen_icon {
+  width: 250px;
+  fill: transparent;
+  position: absolute;
+  transition: 0.5s;
+  offset-path: path('m 971.37629,582.30242 c 53.02041,-4.21783 85.39191,-56.45153 79.44671,-109.30715 -5.4653,-48.58887 -61.91697,-85.76602 -110.77863,-83.96544 -50.55685,1.86303 -108.82271,76.97131 -108.6099,127.56203 0.23708,56.36021 83.75859,70.17991 139.94182,65.71056 z');
+  offset-rotate: 0deg;
+}
+.in_animate_screen_display .in_screen_icon {
+  fill: #fff;
+}
+.in_screen_icon_animate {
+  animation: octopus 2s ease-in-out infinite;
+}
+
+@keyframes octopus {
+  0% {
+    transform: scale(1.1, 0.9);
+  }
+
+  12.5% {
+    transform: scale(1);
+  }
+
+  25% {
+    offset-distance: 25%;
+    transform: scale(1.1, 0.9);
+  }
+
+  37.5% {
+    transform: scale(1);
+  }
+
+  50% {
+    offset-distance: 50%;
+    transform: scale(1.1, 0.9);
+
+  }
+
+  62.5% {
+    transform: scale(1);
+  }
+
+  75% {
+    offset-distance: 75%;
+    transform: scale(1.1, 0.9);
+  }
+
+  87.5% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1, 0.9);
+    offset-distance: 100%;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.5) =bubble:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+/* https://css-tricks.com/almanac/properties/o/offset-path/ */
+.bubble {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 10px #fff;
+  position: absolute;
+  transform: scale(0);
+  opacity: 0;
+  transition: 0.5s;
+}
+
+.in_animate_screen_display .bubble {
+  animation: bubble 1s ease-in-out;
+}
+
+@keyframes bubble {
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+    top: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.7) =islands_main:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.islands_main {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.8) =full_video_screen:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.full_video_screen { opacity: 0; z-index: -1 }
+.FULL_VIDEO .full_video_screen { opacity: 1; z-index: 1 }
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.9) =islands_map:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.islands_map { display: grid; opacity: 0; z-index: -1; }
+.ISLANDS_MAP .islands_map { opacity: 1; z-index: 1; }
+.islands_map tspan { font-family: 'Lato-Black' }
+.islands_map g { filter: drop-shadow(0px 0px 5px #c2f1ff25) }
+.islands_map_menu { padding: 390px 68px 0px 68px }
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.9) =islands_question:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.islands_question { display: grid; opacity: 0; z-index: -1; }
+.ISLANDS_QUESTION .islands_question { opacity: 1; z-index: 1; }
+.islands_question_box { padding: 180px 68px 68px 68px }
+.islands_question_vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+.islands_question_title {
+  color: #d6001c;
+  font-size: 98px;
+  font-family: 'Lato-Regular';
+  font-weight: normal;
+}
+.islands_question_left_info {
+  color: #fff;
+  font-size: 40px;
+  font-family: 'Lato-Regular';
+}
+.islands_question_left_info span { font-weight: 800; font-size: 60px; }
