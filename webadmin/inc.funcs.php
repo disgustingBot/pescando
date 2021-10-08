@@ -405,7 +405,8 @@
     global $conn;
 
     $ship_types = array();
-    $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_tba
+    $qry = "SELECT *, tba_slug as slug
+                    , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'descr') as tra_descr_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'pesca') as tra_pesca_tba
                     , ( select value FROM pesca_textos WHERE referred = 'tipos-barcos' AND referred_id = tba_id AND lang='".$_SESSION["lang"]."' and field = 'barcos') as tra_barcos_tba
@@ -417,10 +418,12 @@
         $ship_types[] = $row;
       }
     }
+    /*
     $ship_types = array_map(function($specie){
       $specie['slug']     = LimpiaNombre($specie['tra_nombre_tba']);
       return $specie;
     }, $ship_types);
+    */
     return $ship_types;
   }
 
@@ -741,4 +744,32 @@
 
     return $video;
   }
+
+  /*
+   * Islas de plástico
+   */
+  function get_islas_full() {
+    global $conn;
+
+    $islas = array();
+    $qry = "SELECT *, isl_slug as slug
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as nombre
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'txtarriba') as tra_txtarriba
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'txtabajo') as tra_txtabajo
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'pregunta') as tra_pregunta
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'opciona') as tra_opciona
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'opcionb') as tra_opcionb
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'opcionc') as tra_opcionc
+                    , ( select value FROM pesca_textos WHERE referred = 'islas' AND referred_id = isl_id AND lang='".$_SESSION["lang"]."' and field = 'respuesta') as tra_respuesta
+                    FROM pesca_islas WHERE isl_status = 'A'
+                    ORDER BY isl_orden";
+    if ( $result = mysqli_query($conn, $qry) ) {
+      while ( $row = mysqli_fetch_assoc($result) ) {
+        $islas[] = $row;
+      }
+    }
+    return $islas;
+  }
+    
+
 ?>

@@ -61,6 +61,7 @@
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="flota-y-caladeros/">Flota y caladeros</a></li>
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="hidrofonos/">Hidrofonos</a></li>
       <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="investigacion/">Investigacion</a></li>
+      <li class="index_menu_item"><a target="_blank" class="index_menu_link" href="islas/">Islas</a></li>
     </ul>
 
   </main>

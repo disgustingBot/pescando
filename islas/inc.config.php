@@ -1,0 +1,3 @@
+<?php
+  $interactiu = 7;
+?>

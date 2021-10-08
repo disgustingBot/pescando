@@ -21,11 +21,10 @@ const altClassFromSelector = ( clase, selector, dont_remove = false )=>{
     // const x = d.querySelector(selector);
     // dont_remove should be an array of classes to mantain, then remove all other classes
     if(dont_remove){
-      elemento.classList.forEach( item =>{
-        if( dont_remove.findIndex( element => element == item) == -1 && item!=clase ){
-          elemento.classList.remove(item);
-        }
-      });
+      let intersection = [...elemento.classList].filter(value => dont_remove.includes(value));
+      // console.log(intersection);
+      elemento.classList = []
+      intersection.forEach( item => { elemento.classList.add(item) });
     }
 
     if(elemento.classList.contains(clase)){

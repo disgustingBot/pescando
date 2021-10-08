@@ -1,3 +1,23 @@
+<?php
+require_once("inc.config.php");
+require_once("../inc.basic.php");
+require_once("../inc.registra_visita.php");
+require_once("../inc.salvapantallas.php");
+require_once("../inc.alive.php");
+
+$uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
+$current_url_no_params = $SERVER_URL.$uri_parts[0];
+
+$ELEMS = get_strings();
+
+$islas = get_islas_full();
+
+$buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
+// var_dump($ELEMS);
+// var_dump($islas[0]);
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,13 +39,14 @@
   <section class="islands_main FULL_VIDEO">
     <div class="panel">
       <div class="back_grid">
-        <a class="back_btn home_btn" href="index.php" class="home_btn">
-          <?= file_get_contents('./../icons/home.svg') ?>
+        <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
+          <?php include $DIR_ICONS.'home.svg' ?>
         </a>
-        <button class="back_btn">
-          <?= file_get_contents('./../icons/atras.svg') ?>
+        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="altClassFromSelector('', '.islands_main', ['islands_main'])">
+          <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
-        <h3 class="panel_title">Las islas de plástico</h3>
+        <h3 class="panel_title"><?=$ELEMS['TIT_INTERACTIVO']?></h3>
+        <!-- <h3 class="panel_title">Las islas de plástico</h3> -->
       </div>
 
       <p class="panel_description">Selecciona una isla de plástico</p>
@@ -36,7 +57,7 @@
     <!-- Video screen -->
     <div class="full_video_screen rowcol1">
       <video class="full_video" autoplay>
-        <source src="" type="video/mp4">
+        <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
       </video>
     </div>
 
@@ -50,19 +71,34 @@
     </div>
 
     <!-- Islands question -->
-    <div class="islands_question rowcol1">
-      <img class="rowcol1" src="./../images/islas/fondo-islas2.jpg">
+    <?php
+    foreach ($islas as $isla) {
+      $self_awake = ".$isla[slug] .islands_question.$isla[slug]";
+      ?>
+      <style media="screen">
+      <?= $self_awake ?> {
+        opacity: 1;
+        z-index: 1;
+        pointer-events: all;
+      }
+      </style>
+      <?php // var_dump($isla); ?>
+      <div class="islands_question <?= $isla['slug'] ?>">
+        <img class="rowcol1" src="./../images/islas/fondo-islas2.jpg">
 
-      <div class="islands_question_box rowcol1">
-        <div class="islands_question_vertical">
-          <h1 class="islands_question_title">Pacífico Norte</h1>
-          <p class="islands_question_left_info"><span>1,8 billones</span><br>de plásticos y microplásticos</p>
+        <div class="islands_question_box rowcol1">
+          <div class="islands_question_vertical">
+            <h1 class="islands_question_title"><?= $isla['nombre'] ?></h1>
+            <!-- <h1 class="islands_question_title">Pacífico Norte</h1> -->
+            <p class="islands_question_left_info"><?= $isla['tra_txtabajo'] ?></p>
+            <!-- <p class="islands_question_left_info"><span>1,8 billones</span><br>de plásticos y microplásticos</p> -->
+          </div>
         </div>
       </div>
-    </div>
+    <?php } ?>
   </section>
 
-  <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
+  <!-- <script type="text/javascript" src="../js/scripts_nosocket.js"></script> -->
   <!-- Redirect timer -->
   <!-- <script> redirect_time = <?= $redirect_time ?>; </script> -->
   <script type="text/javascript" src="js/main.js"></script>
