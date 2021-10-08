@@ -62,25 +62,27 @@ const playAudioFromSelector = (selector, alt = false) => {
 
 
 const back_btn = () => {
-
+  console.log('test');
+  altClassFromSelector('', '.islands_main', ['islands_main']);
 }
 
 
 
 const end_full_video = () => {
   let video = document.querySelector('.full_video');
-
-  ['emptied', 'ended', 'error'].forEach((event) => {
-    video.addEventListener(event, () => {
-      video_to_map();
-    });
+  event_list = ['emptied', 'ended', 'error'];
+  event_list.forEach( event => {
+    video.onclick = _ => {altClassFromSelector('FULL_VIDEO', '.islands_main', ['islands_main'])}
+    // video.addEventListener(event, _ => {
+    //   video_to_map();
+    // });
   });
 
   if(typeof(video.lastChild.src) == 'undefined') { video_to_map() }
 
   function video_to_map() {
     altClassFromSelector('FULL_VIDEO', '.islands_main', ['islands_main']);
-    altClassFromSelector('ISLANDS_MAP', '.islands_main', ['islands_main']);
+    // altClassFromSelector('ISLANDS_MAP', '.islands_main', ['islands_main']);
   }
 }
 end_full_video();
@@ -94,8 +96,10 @@ const clicks_islas = () => {
 
   islas_btns.forEach((isla) => {
     isla.onclick = () => {
-      altClassFromSelector('ISLANDS_QUESTION', '.islands_main', ['islands_main']);
-      altClassFromSelector(isla.id, '.islands_question', ['islands_question', 'rowcol1']);
+      console.log(isla.id);
+      // altClassFromSelector('ISLANDS_QUESTION', '.islands_main', ['islands_main']);
+      altClassFromSelector(isla.id, '.islands_main',     ['islands_main']);
+      // altClassFromSelector(isla.id, '.islands_question', ['islands_question']);
     }
   });
 }
