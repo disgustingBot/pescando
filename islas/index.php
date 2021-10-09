@@ -15,7 +15,7 @@
     </div>
 
     <h1 class="lang_screen_title">Las Islas de plástico</h1>
-    <h1 class="lang_screen_title lang_screen_title_sm">La contaminación de nuestros oceános</h1>
+    <h1 class="lang_screen_title lang_screen_title_sm">La contaminación de nuestros océanos</h1>
     <ul class="lang_screen_list">
       <li class="lang_selection_li">
         <a
