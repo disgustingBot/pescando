@@ -124,6 +124,10 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                 <span class="question_box_optletter">c:</span>
                 <span class="question_box_opttxt"><?= $isla['tra_opcionc'] ?></span>
               </button>
+
+              <!-- <p class="question_box_ans">
+                <?= $isla['tra_respuesta'] ?>
+              </p> -->
               
               <script>
                 (() => {
