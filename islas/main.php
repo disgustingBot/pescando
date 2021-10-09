@@ -93,6 +93,66 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
             <p class="islands_question_left_info"><?= $isla['tra_txtabajo'] ?></p>
             <!-- <p class="islands_question_left_info"><span>1,8 billones</span><br>de plásticos y microplásticos</p> -->
           </div>
+
+          <div class="islands_question_vertical islands_question_vertical_lg">
+            <div class="islands_question_txticon">
+              <h2 class="islands_question_txtarriba"><?= $isla['tra_txtarriba'] ?></h2>
+              <div class="islands_question_icon">
+                <?php include $DIR_ICONS.'islas/plasticos.svg' ?>
+              </div>
+            </div>
+
+            <div class="question_box">
+              <div class="question_box_txticon">
+                <p class="question_box_que"><?= $isla['tra_pregunta'] ?></p>
+                <div class="question_box_icon">
+                  <?php include $DIR_ICONS.'islas/icono-pregunta.svg' ?>
+                </div>
+              </div>
+
+              <button class="question_box_btn" id="ans_A">
+                <span class="question_box_optletter">a:</span>
+                <span class="question_box_opttxt"><?= $isla['tra_opciona'] ?></span>
+              </button>
+
+              <button class="question_box_btn" id="ans_B">
+                <span class="question_box_optletter">b:</span>
+                <span class="question_box_opttxt"><?= $isla['tra_opcionb'] ?></span>
+              </button>
+
+              <button class="question_box_btn" id="ans_C">
+                <span class="question_box_optletter">c:</span>
+                <span class="question_box_opttxt"><?= $isla['tra_opcionc'] ?></span>
+              </button>
+
+              <!-- <p class="question_box_ans">
+                <?= $isla['tra_respuesta'] ?>
+              </p> -->
+              
+              <script>
+                (() => {
+                  let question_options = document.querySelectorAll('.<?= $isla["slug"] ?> .question_box_btn');
+                  let is_answered = false;
+                  
+                  question_options.forEach((option) => {
+                    option.addEventListener('click', () => {
+                      if(is_answered) return;
+
+                      if(option.id === 'ans_<?= $isla['isl_opcionbuena'] ?>') {
+                        altClassFromSelector('ans_correct', '.islands_main .<?= $isla["slug"] ?> .question_box_btn#' + option.id, ['question_box_btn']);
+                      }
+
+                      else {
+                        altClassFromSelector('ans_incorrect', '.islands_main .<?= $isla["slug"] ?> .question_box_btn#' + option.id, ['question_box_btn']);
+                      }
+
+                      is_answered = true;
+                    });
+                  }); 
+                })();
+              </script>
+            </div>
+          </div>
         </div>
       </div>
     <?php } ?>
