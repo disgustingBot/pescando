@@ -85,6 +85,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
         <img class="rowcol1" src="./../images/islas/fondo-islas2.jpg">
+        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . 'islas/peninsula2.svg' ?>">
 
         <div class="islands_question_box rowcol1">
           <div class="islands_question_vertical">

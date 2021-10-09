@@ -386,6 +386,12 @@ ul{
   grid-auto-columns: min-content;
   margin-right: 8rem;
 }
+.islands_question_peninsula_icon {
+  position: absolute;
+  top: 80px;
+  right: 225px;
+  width: 800px;
+}
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
