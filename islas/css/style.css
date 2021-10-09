@@ -435,11 +435,11 @@ ul{
 .question_box_opttxt { color: #00587C }
 .question_box_btn.ans_correct {
   border: solid #f9f9f9 3px;
-  background-color: #13e953;
+  background-color: #b4e1a8;
 }
 .question_box_btn.ans_incorrect {
   border: solid #f9f9f9 3px;
-  background-color: #ec3a3a;
+  background-color: #df6e6a;
 }
 .question_box_ans {
   font-family: 'Lato-Black';
