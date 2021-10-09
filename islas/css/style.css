@@ -310,7 +310,7 @@ ul{
 
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
-                              4.9) =islands_question:
+                              4.10) =islands_question:
 ------------------------------------------------------------------------------
 --------------------------------------------------------------------------- */
 .islands_question {
@@ -367,6 +367,7 @@ ul{
   color: #fff;
   font-size: 40px;
   font-family: 'Lato-Regular';
+  line-height: 1;
 }
 .islands_question_left_info b {
   display: block;
@@ -379,5 +380,54 @@ ul{
 .islands_question_txticon {
   display: grid;
   grid-auto-flow: column;
+  column-gap: 2rem;
+  grid-auto-columns: min-content;
+  margin-left: 4rem;
+}
+
+/* ---------------------------------------------------------------------------
+------------------------------------------------------------------------------
+                              4.11) =question_box:
+------------------------------------------------------------------------------
+--------------------------------------------------------------------------- */
+.question_box {
+  display: grid;
+  row-gap: 1rem;
+  max-width: 900px;
+}
+.question_box_que {
+  color: #d6001c;
+  font-size: 45px;
+  font-family: 'Lato-Black';
+}
+.question_box_txticon {
+  display: grid;
+  grid-auto-flow: column;
   column-gap: 1rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+.question_box_btn {
+  border: solid #00587C 3px;
+  border-radius: 30px;
+  background-color: #9AB7CC;
+  padding: 0.5rem 1rem;
+  font-family: 'Lato-Black';
+  font-size: 30px;
+
+  display: grid;
+  grid-auto-flow: column;
+  column-gap: 1rem;
+  grid-template-columns: min-content max-content;
+}
+.question_box_icon { width: 3rem }
+.question_box_optletter { color: #f9f9f9; text-transform: uppercase; }
+.question_box_opttxt { color: #00587C }
+.question_box_btn.ans_correct {
+  border: solid #f9f9f9 3px;
+  background-color: #13e953;
+}
+.question_box_btn.ans_incorrect {
+  border: solid #f9f9f9 3px;
+  background-color: #ec3a3a;
 }
