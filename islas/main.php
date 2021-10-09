@@ -93,6 +93,19 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
             <p class="islands_question_left_info"><?= $isla['tra_txtabajo'] ?></p>
             <!-- <p class="islands_question_left_info"><span>1,8 billones</span><br>de plásticos y microplásticos</p> -->
           </div>
+
+          <div class="islands_question_vertical islands_question_vertical_lg">
+            <div class="islands_question_txticon">
+              <h2 class="islands_question_txtarriba"><?= $isla['tra_txtarriba'] ?></h2>
+              <div class="islands_question_icon">
+                <?php include $DIR_ICONS.'islas/plasticos.svg' ?>
+              </div>
+            </div>
+
+            <div class="question_box">
+              
+            </div>
+          </div>
         </div>
       </div>
     <?php } ?>
