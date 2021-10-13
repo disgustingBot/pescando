@@ -42,7 +42,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
         <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
           <?php include $DIR_ICONS.'home.svg' ?>
         </a>
-        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="altClassFromSelector('', '.islands_main', ['islands_main'])">
+        <button class="back_btn" style="color: <?= $buttons_color ?>;" onclick="back_btn()">
           <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
         <h3 class="panel_title"><?=$ELEMS['TIT_INTERACTIVO']?></h3>
@@ -51,22 +51,22 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
 
       <p class="panel_description">Selecciona una isla de plástico</p>
 
-      <img class="panel_icon" src="./../icons/islas/icono-basura.svg">
+      <img class="panel_icon" src="./../icons/icono-basura.svg">
     </div>
 
     <!-- Video screen -->
-    <div class="full_video_screen rowcol1">
+    <!-- <div class="full_video_screen rowcol1">
       <video class="full_video" autoplay>
         <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
       </video>
-    </div>
+    </div> -->
 
     <!-- Islands map -->
     <div class="islands_map rowcol1">
-      <img class="rowcol1" src="./../images/islas/fondo-menu.jpg">
+      <img class="rowcol1" src="./../images/fondo-menu.jpg">
 
       <div class="islands_map_menu rowcol1">
-        <?= file_get_contents('./../icons/islas/isla-menu.svg') ?>">
+        <?php include $DIR_ICONS.'isla-menu.svg' ?>
       </div>
     </div>
 
@@ -84,8 +84,8 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       </style>
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
-        <img class="rowcol1" src="./../images/islas/fondo-islas2.jpg">
-        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . 'islas/peninsula2.svg' ?>">
+        <img class="rowcol1" src="./../images/fondo-islas2.jpg">
+        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . 'peninsula2.svg' ?>">
 
         <div class="islands_question_box rowcol1">
           <div class="islands_question_vertical">
@@ -99,59 +99,63 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
             <div class="islands_question_txticon">
               <h2 class="islands_question_txtarriba"><?= $isla['tra_txtarriba'] ?></h2>
               <div class="islands_question_icon">
-                <?php include $DIR_ICONS.'islas/plasticos.svg' ?>
+                <?php include $DIR_ICONS.'plasticos.svg' ?>
               </div>
             </div>
 
-            <div class="question_box">
+            <div class="question_box" data-42="ans_<?= strtolower($isla['isl_opcionbuena']) ?>">
               <div class="question_box_txticon">
                 <p class="question_box_que"><?= $isla['tra_pregunta'] ?></p>
                 <div class="question_box_icon">
-                  <?php include $DIR_ICONS.'islas/icono-pregunta.svg' ?>
+                  <?php include $DIR_ICONS.'icono-pregunta.svg' ?>
                 </div>
               </div>
+              <?php
+              $options = ['a', 'b', 'c'];
+              foreach ($options as $option) {
+                $awake         = ".$isla[slug] .ans_$option .ans.ans_$option";
+                $correct       = ".$isla[slug] .ans_".$option."[data-42='ans_$option']";
+                $correct_awake = ".$isla[slug] .ans_".$option."[data-42='ans_$option'] .ans.ans_$option";
+                $incorrect     = ".$isla[slug] .ans_".$option.":not([data-42='ans_$option']) .ans.ans_$option";
+                ?>
 
-              <button class="question_box_btn" id="ans_A">
-                <span class="question_box_optletter">a:</span>
-                <span class="question_box_opttxt"><?= $isla['tra_opciona'] ?></span>
-              </button>
+                <style media="screen">
+                <?= $awake ?> .question_box_btn {
+                  height:50px;
+                }
+                <?= $correct ?> .question_box_btn {
+                  height:0;
+                  padding: 0 2rem;
+                  /* border: solid #f9f9f9 3px; */
+                  /* background-color: #b4e1a8; */
+                }
+                <?= $correct_awake ?> .question_box_btn {
+                  height:50px;
+                  border: solid #f9f9f9 3px;
+                  background-color: #b4e1a8;
+                }
+                <?= $correct ?> .question_box_ans {
+                  height:200px;
+                  padding:2rem;
+                }
+                <?= $incorrect ?> .question_box_btn {
+                  border: solid #f9f9f9 3px;
+                  background-color: #df6e6a;
+                }
+                </style>
+                <div class="ans ans_<?= $option ?>" onclick="altClassFromSelector('ans_<?= $option ?>', '.question_box', ['question_box'])">
+                  <button class="question_box_btn">
+                    <span class="question_box_optletter"><?= $option ?>:</span>
+                    <span class="question_box_opttxt"><?= $isla['tra_opcion'.$option] ?></span>
+                  </button>
+                  <?php if ($option == strtolower($isla['isl_opcionbuena'])) { ?>
+                    <p class="question_box_ans">
+                      <?= $isla['tra_respuesta'] ?>
+                    </p>
+                  <?php } ?>
+                </div>
+              <?php } ?>
 
-              <button class="question_box_btn" id="ans_B">
-                <span class="question_box_optletter">b:</span>
-                <span class="question_box_opttxt"><?= $isla['tra_opcionb'] ?></span>
-              </button>
-
-              <button class="question_box_btn" id="ans_C">
-                <span class="question_box_optletter">c:</span>
-                <span class="question_box_opttxt"><?= $isla['tra_opcionc'] ?></span>
-              </button>
-
-              <!-- <p class="question_box_ans">
-                <?= $isla['tra_respuesta'] ?>
-              </p> -->
-              
-              <script>
-                (() => {
-                  let question_options = document.querySelectorAll('.<?= $isla["slug"] ?> .question_box_btn');
-                  let is_answered = false;
-                  
-                  question_options.forEach((option) => {
-                    option.addEventListener('click', () => {
-                      if(is_answered) return;
-
-                      if(option.id === 'ans_<?= $isla['isl_opcionbuena'] ?>') {
-                        altClassFromSelector('ans_correct', '.islands_main .<?= $isla["slug"] ?> .question_box_btn#' + option.id, ['question_box_btn']);
-                      }
-
-                      else {
-                        altClassFromSelector('ans_incorrect', '.islands_main .<?= $isla["slug"] ?> .question_box_btn#' + option.id, ['question_box_btn']);
-                      }
-
-                      is_answered = true;
-                    });
-                  }); 
-                })();
-              </script>
             </div>
           </div>
         </div>
