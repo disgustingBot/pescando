@@ -342,7 +342,7 @@ ul{
   align-items: flex-end;
 }
 .islands_question_title {
-  color: #d6001c;
+  color: #f9f9f9;
   font-size: 98px;
   font-family: 'Lato-Regular';
   font-weight: normal;
@@ -404,7 +404,7 @@ ul{
   max-width: 840px;
 }
 .question_box_que {
-  color: #d6001c;
+  color: #f9f9f9;
   font-size: 40px;
   font-family: 'Lato-Regular';
   font-weight: 800;
@@ -430,18 +430,19 @@ ul{
   display: grid;
   font-family: 'Lato-Regular';
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 600;
   grid-auto-flow: column;
   grid-template-columns: min-content max-content;
-  /* padding: 0 2rem; */
-  padding: 0.5rem 2rem;
+  padding: 0 2rem;
+  /* padding: 0.5rem 2rem; */
   transition:.4s;
   width: 100%;
   overflow: hidden;
+  align-items: center;
 }
 .question_box_icon { width: 3rem }
 .question_box_optletter { color: #f9f9f9; text-transform: uppercase; }
-.question_box_opttxt { color: #00587C }
+.question_box_opttxt { color: #d6001c }
 /* .question_box_btn.ans_correct {
   border: solid #f9f9f9 3px;
   background-color: #b4e1a8;

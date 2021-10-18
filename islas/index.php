@@ -1,3 +1,12 @@
+<?php
+require_once("inc.config.php");
+require_once("../inc.basic.php");
+require_once("../inc.registra_visita.php");
+require_once("../inc.salvapantallas.php");
+require_once("../inc.alive.php");
+
+$ELEMS      = get_strings();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,9 +18,9 @@
 </head>
 
 <body>
-  <section class="lang_screen" style="background-image: url('./../images/islas/fondo-inicio.jpg')">
+  <section class="lang_screen" style="background-image: url('<?= $DIR_IMG ?>fondo-inicio.jpg')">
     <div class="lang_screen_icon">
-      <img src="../icons/dedo-click.svg">
+      <img src="<?= $DIR_ICONS ?>dedo-click.svg">
     </div>
 
     <h1 class="lang_screen_title">Las Islas de plástico</h1>
@@ -22,21 +31,21 @@
           href="main.php?lang=es"
           class="lang_screen_btn">Español
         </a>
-        <img class="lang_screen_pointer" src="../icons/dedo-rojo.svg">
+        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
       </li>
       <li class="lang_selection_li">
         <a
           href="main.php?lang=es"
           class="lang_screen_btn">English
         </a>
-        <img class="lang_screen_pointer" src="../icons/dedo-rojo.svg">
+        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
       </li>
       <li class="lang_selection_li">
         <a
           href="main.php?lang=es"
           class="lang_screen_btn">Galego
         </a>
-        <img class="lang_screen_pointer" src="../icons/dedo-rojo.svg">
+        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
       </li>
     </ul>
   </section>

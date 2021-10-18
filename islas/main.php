@@ -51,7 +51,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
 
       <p class="panel_description">Selecciona una isla de plástico</p>
 
-      <img class="panel_icon" src="./../icons/icono-basura.svg">
+      <img class="panel_icon" src="<?= $DIR_ICONS ?>icono-basura.svg">
     </div>
 
     <!-- Video screen -->
@@ -63,7 +63,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
 
     <!-- Islands map -->
     <div class="islands_map rowcol1">
-      <img class="rowcol1" src="./../images/fondo-menu.jpg">
+      <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-menu.jpg">
 
       <div class="islands_map_menu rowcol1">
         <?php include $DIR_ICONS.'isla-menu.svg' ?>
@@ -84,7 +84,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       </style>
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
-        <img class="rowcol1" src="./../images/fondo-islas2.jpg">
+        <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-islas2.jpg">
         <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . 'peninsula2.svg' ?>">
 
         <div class="islands_question_box rowcol1">
@@ -129,6 +129,9 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                   /* border: solid #f9f9f9 3px; */
                   /* background-color: #b4e1a8; */
                 }
+                <?= $correct ?> .question_box_btn .question_box_opttxt {
+                  color: #00587C;
+                }
                 <?= $correct_awake ?> .question_box_btn {
                   height:50px;
                   border: solid #f9f9f9 3px;
@@ -141,6 +144,9 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                 <?= $incorrect ?> .question_box_btn {
                   border: solid #f9f9f9 3px;
                   background-color: #df6e6a;
+                }
+                <?= $incorrect ?> .question_box_btn .question_box_opttxt {
+                  color: #00587C;
                 }
                 </style>
                 <div class="ans ans_<?= $option ?>" onclick="altClassFromSelector('ans_<?= $option ?>', '.question_box', ['question_box'])">
