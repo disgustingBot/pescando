@@ -72,7 +72,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
 
     <!-- Islands question -->
     <?php
-    foreach ($islas as $isla) {
+    foreach ($islas as $key => $isla) {
       $self_awake = ".$isla[slug] .islands_question.$isla[slug]";
       ?>
       <style media="screen">
@@ -126,20 +126,30 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                 <?= $correct ?> .question_box_btn {
                   height:0;
                   padding: 0 2rem;
+                  opacity: 0;
                   /* border: solid #f9f9f9 3px; */
                   /* background-color: #b4e1a8; */
                 }
                 <?= $correct ?> .question_box_btn .question_box_opttxt {
                   color: #00587C;
                 }
+                <?= $correct ?> .islands_question_txticon_next{
+                  opacity: 1;
+                  transform: translateX(0);
+                }
+                <?= $correct ?> .question_box_ans {
+                  height:200px;
+                  padding: 2rem;
+                  border-bottom: solid #b4e1a8 10px;
+                }
+                <?= $correct ?> .question_box_txticon {
+                  opacity: 0;
+                }
                 <?= $correct_awake ?> .question_box_btn {
                   height:50px;
                   border: solid #f9f9f9 3px;
                   background-color: #b4e1a8;
-                }
-                <?= $correct ?> .question_box_ans {
-                  height:200px;
-                  padding:2rem;
+                  opacity: 1;
                 }
                 <?= $incorrect ?> .question_box_btn {
                   border: solid #f9f9f9 3px;
@@ -161,7 +171,10 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                   <?php } ?>
                 </div>
               <?php } ?>
-
+              <div class="islands_question_txticon_next">
+                <?php $next_isla = ($key+1 < count($islas) ? $islas[$key+1] : $islas[0]) ?>
+                <p onclick="back_btn(); altClassFromSelector('<?= $next_isla['isl_slug'] ?>', '.islands_main', ['islands_main']);">Ver <?= $next_isla['nombre'] ?></p>
+              </div>
             </div>
           </div>
         </div>
