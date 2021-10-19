@@ -126,6 +126,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                 <?= $correct ?> .question_box_btn {
                   height:0;
                   padding: 0 2rem;
+                  opacity: 0;
                   /* border: solid #f9f9f9 3px; */
                   /* background-color: #b4e1a8; */
                 }
@@ -138,12 +139,17 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
                 }
                 <?= $correct ?> .question_box_ans {
                   height:200px;
-                  padding:2rem;
+                  padding: 2rem;
+                  border-bottom: solid #b4e1a8 10px;
+                }
+                <?= $correct ?> .question_box_txticon {
+                  opacity: 0;
                 }
                 <?= $correct_awake ?> .question_box_btn {
                   height:50px;
                   border: solid #f9f9f9 3px;
                   background-color: #b4e1a8;
+                  opacity: 1;
                 }
                 <?= $incorrect ?> .question_box_btn {
                   border: solid #f9f9f9 3px;

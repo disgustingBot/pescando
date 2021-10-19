@@ -376,6 +376,7 @@ ul{
   display: block;
   font-weight: 800;
   font-size: 60px;
+  line-height: 1.3;
 }
 .islands_question_icon { width: 5rem }
 .islands_question_icon svg { transform: translateY(-40%); }
@@ -398,7 +399,7 @@ ul{
 .islands_question_txticon_next p {
   color: #d6001c;
   font-family: 'Lato-Regular';
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 .islands_question_peninsula_icon {
   position: absolute;
@@ -429,6 +430,8 @@ ul{
   column-gap: 5rem;
   align-items: end;
   margin-bottom: 1rem;
+  opacity: 1;
+  transition: 0.5s;
 }
 /* [class="question_box"] .question_box_btn {
   height:50px;
