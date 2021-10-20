@@ -54,11 +54,11 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <img class="panel_icon" src="<?= $DIR_ICONS ?>icono-basura.svg">
     </div>
     <!-- Video screen -->
-    <!-- <div class="full_video_screen rowcol1">
+    <div class="full_video_screen rowcol1">
       <video class="full_video" autoplay>
         <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
       </video>
-    </div> -->
+    </div>
 
     <!-- Islands map -->
     <div class="islands_map rowcol1">
@@ -84,7 +84,10 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
         <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-islas2.jpg">
-        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . $isla['isl_fondo'] ?>">
+        
+        <?php if($isla['isl_slug'] != 'atlantico-norte') { ?>
+          <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . $isla['isl_slug'] ?>.svg">
+        <?php } ?>
 
         <div class="islands_question_box rowcol1">
           <div class="islands_question_vertical">
