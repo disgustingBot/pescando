@@ -65,6 +65,11 @@ const back_btn = () => {
   altClassFromSelector('', '.islands_main', ['islands_main']);
   console.log(document.querySelectorAll('.question_box'));
   altClassFromSelector('', '.question_box', ['question_box']);
+
+  // if(document.querySelector('.islands_main').className == 'islands_main') {
+  //   altClassFromSelector('FULL_VIDEO', '.islands_main', ['islands_main']);
+  //   document.querySelector('.full_video').play();
+  // }
 }
 
 
