@@ -53,7 +53,6 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
 
       <img class="panel_icon" src="<?= $DIR_ICONS ?>icono-basura.svg">
     </div>
-
     <!-- Video screen -->
     <!-- <div class="full_video_screen rowcol1">
       <video class="full_video" autoplay>
@@ -85,7 +84,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
         <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-islas2.jpg">
-        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . 'peninsula2.svg' ?>">
+        <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . $isla['isl_fondo'] ?>">
 
         <div class="islands_question_box rowcol1">
           <div class="islands_question_vertical">
