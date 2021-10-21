@@ -1,6 +1,5 @@
 let is_loaded = false;
 
-
 window.onload=()=>{
   // alert('hi there')
 }
@@ -103,8 +102,18 @@ const play_video = slug => {
 
 
 function first_vid_init () {
-  // First video ended
   let first_vid = document.querySelector('video.first_video');
+
+  if(!has_video || first_vid == null) {
+    window.addEventListener('load', () => {
+      is_loaded = true;
+      altClassFromSelector('first_video', '.screen_menu');
+    });
+
+    return;
+  }
+
+  // First video ended
   first_vid.addEventListener('ended', () => {
     altClassFromSelector('first_video', '.screen_menu');
   });

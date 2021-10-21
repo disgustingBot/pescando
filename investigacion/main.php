@@ -120,6 +120,8 @@
   <script type="text/javascript" src="js/main.js"></script>
 
   <script>
+    has_video = false;
+
     first_vid_init();
     animate_bubbles();
   </script>
