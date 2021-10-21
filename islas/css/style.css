@@ -157,6 +157,11 @@ ul{
   align-items: center;
   grid-auto-rows: min-content;
   grid-gap: 16px;
+  transition: 0.5s;
+  opacity: 1;
+}
+.islands_main[class*="FULL_VIDEO"] .back_grid{
+  opacity: 0;
 }
 .back_btn {
   background: none;
@@ -167,6 +172,13 @@ ul{
   transition-delay: 1.2s;
   transform: translateY(-50%);
   width: 40px;
+  opacity: 1;
+  transition: 0.5s;
+}
+.islands_main[class*="FULL_VIDEO"] .back_btn:not(.home_btn){
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
 }
 
 /* ---------------------------------------------------------------------------
