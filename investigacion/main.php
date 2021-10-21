@@ -13,6 +13,7 @@
 
   $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
   // $redirect_time = 10;
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -22,6 +23,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title><?=$ELEMS["TIT_INTERACTIVO"]?></title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+  [class="screen_menu"] .menem{
+    height:calc((100vh - 190px) / <?=count($items)?>);
+  }
+  </style>  
 </head>
 
 <body>
@@ -41,7 +47,6 @@
     <video class="first_video video_player rowcol1" playsinline autoplay poster="<?=$DIR_IMG?>background/investigacion-video.png" onclick="this.play()">
       <source src="<?=$DIR_MEDIA.$ELEMS["VIDEO_INICIAL"]?>" type="video/mp4">
     </video>
-
     <ul class="menem_container">
       <?php
       $i=0;
@@ -117,6 +122,10 @@
   <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
   <script> redirect_time = <?= $redirect_time ?>; </script>
+  <script>
+    var has_video = <?=$ELEMS["VIDEO_INICIAL_ACTIVO"]?>;
+  </script>
+  
   <script type="text/javascript" src="js/main.js"></script>
 
   <script>

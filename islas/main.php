@@ -84,9 +84,9 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <?php // var_dump($isla); ?>
       <div class="islands_question <?= $isla['slug'] ?>">
         <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-islas2.jpg">
-        
-        <?php if($isla['isl_slug'] != 'atlantico-norte') { ?>
-          <img class="islands_question_peninsula_icon" src="<?= $DIR_ICONS . $isla['isl_slug'] ?>.svg">
+
+        <?php if($isla['isl_fondo'] != '') { ?>
+          <img class="islands_question_peninsula_icon" src="<?= $DIR_IMG . $isla['isl_fondo'] ?>">
         <?php } ?>
 
         <div class="islands_question_box rowcol1">
@@ -177,6 +177,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
               <?php }} ?>
               <div class="islands_question_txticon_next">
                 <?php $next_isla = ($key+1 < count($islas) ? $islas[$key+1] : $islas[0]) ?>
+                <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path></svg>
                 <p onclick="back_btn(); altClassFromSelector('<?= $next_isla['isl_slug'] ?>', '.islands_main', ['islands_main']);">Ver <?= $next_isla['nombre'] ?></p>
               </div>
             </div>

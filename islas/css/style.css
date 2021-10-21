@@ -401,15 +401,21 @@ ul{
 }
 .islands_question_txticon_next {
   display: grid;
+  color: #d6001c;
   column-gap: 0.5rem;
+  grid-auto-flow: column;
   margin-left: auto;
-  grid-auto-columns: max-content;
+  /* grid-auto-columns: max-content; */
   opacity: 0;
   transform: translateX(100%);
   transition: 0.5s;
 }
+.islands_question_txticon_next svg {
+  height: 18px;
+  margin:auto;
+  width: auto;
+}
 .islands_question_txticon_next p {
-  color: #d6001c;
   font-family: 'Lato-Regular';
   font-size: 0.9rem;
 }
