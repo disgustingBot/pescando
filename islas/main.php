@@ -36,7 +36,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
     </svg>
   </div>
 
-  <section class="islands_main FULL_VIDEO">
+  <section class="islands_main<?= ($ELEMS["VIDEO_INICIAL"] != '') ? ' FULL_VIDEO' : '' ?>">
     <div class="panel">
       <div class="back_grid">
         <a class="back_btn home_btn" href="index.php" class="home_btn" style="color: <?= $buttons_color ?>;">
