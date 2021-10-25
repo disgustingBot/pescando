@@ -27,7 +27,7 @@
   [class="screen_menu"] .menem{
     height:calc((100vh - 190px) / <?=count($items)?>);
   }
-  </style>  
+  </style>
 </head>
 
 <body>
@@ -121,11 +121,11 @@
 
   <script type="text/javascript" src="../js/scripts_nosocket.js"></script>
   <!-- Redirect timer -->
-  <script> redirect_time = <?= $redirect_time ?>; </script>
   <script>
+    redirect_time = <?= $redirect_time ?>;
     var has_video = <?=$ELEMS["VIDEO_INICIAL_ACTIVO"]?>;
   </script>
-  
+
   <script type="text/javascript" src="js/main.js"></script>
 
   <script>
