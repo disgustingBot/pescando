@@ -26,27 +26,16 @@ $ELEMS      = get_strings();
     <h1 class="lang_screen_title">Las Islas de plástico</h1>
     <h1 class="lang_screen_title lang_screen_title_sm">La contaminación de nuestros océanos</h1>
     <ul class="lang_screen_list">
-      <li class="lang_selection_li">
-        <a
-          href="main.php?lang=es"
-          class="lang_screen_btn">Español
-        </a>
-        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
-      </li>
-      <li class="lang_selection_li">
-        <a
-          href="main.php?lang=es"
-          class="lang_screen_btn">English
-        </a>
-        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
-      </li>
-      <li class="lang_selection_li">
-        <a
-          href="main.php?lang=es"
-          class="lang_screen_btn">Galego
-        </a>
-        <img class="lang_screen_pointer" src="<?= $DIR_ICONS ?>dedo-rojo.svg">
-      </li>
+
+      <?php foreach ( $LANG_MENU as $key => $value ) { ?>
+        <li class="lang_selection_li">
+          <a
+            href="main.php?lang=<?=$key?>"
+            class="btn_lang <?= ($_SESSION["lang"] == $key) ? 'selected' : '' ?>"><?=$value?>
+          </a>
+          <img class="lang_screen_pointer" src="<?=$DIR_ICONS?>dedo-rojo.svg">
+        </li>
+      <?php } ?>
     </ul>
   </section>
 
