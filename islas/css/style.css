@@ -121,7 +121,7 @@ ul{
   row-gap: 20px;
   justify-items: center;
 }
-.lang_screen_btn {
+.btn_lang {
   background: none;
   border: none;
   font-family: 'Lato-Regular';

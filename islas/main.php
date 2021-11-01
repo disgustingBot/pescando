@@ -4,6 +4,7 @@ require_once("../inc.basic.php");
 require_once("../inc.registra_visita.php");
 require_once("../inc.salvapantallas.php");
 require_once("../inc.alive.php");
+require_once("menu_svg.php");
 
 $uri_parts = explode('?', $_SERVER['REQUEST_URI'], 2);
 $current_url_no_params = $SERVER_URL.$uri_parts[0];
@@ -15,7 +16,9 @@ $islas = get_islas_full();
 $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"white");
 // var_dump($ELEMS);
 // var_dump($islas[0]);
- ?>
+$names = [];
+foreach ($islas as $isla) {$names[$isla['slug']] = $isla['nombre'];}
+?>
 
 
 <!DOCTYPE html>
@@ -46,10 +49,9 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
           <?php include $DIR_ICONS.'atras.svg' ?>
         </button>
         <h3 class="panel_title"><?=$ELEMS['TIT_INTERACTIVO']?></h3>
-        <!-- <h3 class="panel_title">Las islas de plástico</h3> -->
       </div>
 
-      <p class="panel_description">Selecciona una isla de plástico</p>
+      <div class="panel_description"><?= $ELEMS['TXT_SELECCIONA'] ?></div>
 
       <img class="panel_icon" src="<?= $DIR_ICONS ?>icono-basura.svg">
     </div>
@@ -65,12 +67,17 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
       <img class="rowcol1" src="<?= $DIR_IMG ?>fondo-menu.jpg">
 
       <div class="islands_map_menu rowcol1">
-        <?php include $DIR_ICONS.'isla-menu.svg' ?>
+        <?php
+        // include $DIR_ICONS.'isla-menu.svg';
+        get_menu_svg($names);
+
+        ?>
       </div>
     </div>
 
     <!-- Islands question -->
     <?php
+
     foreach ($islas as $key => $isla) {
       $self_awake = ".$isla[slug] .islands_question.$isla[slug]";
       ?>
@@ -178,7 +185,7 @@ $buttons_color = ( isset($ELEMS["BUTTONS_COLOR"]) ? $ELEMS["BUTTONS_COLOR"]:"whi
               <div class="islands_question_txticon_next">
                 <?php $next_isla = ($key+1 < count($islas) ? $islas[$key+1] : $islas[0]) ?>
                 <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path></svg>
-                <p onclick="back_btn(); altClassFromSelector('<?= $next_isla['isl_slug'] ?>', '.islands_main', ['islands_main']);">Ver <?= $next_isla['nombre'] ?></p>
+                <p onclick="back_btn(); altClassFromSelector('<?= $next_isla['isl_slug'] ?>', '.islands_main', ['islands_main']);"><?= $ELEMS['TXT_SEE_LINK'] ?> <?= $next_isla['nombre'] ?></p>
               </div>
             </div>
           </div>
