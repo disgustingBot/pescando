@@ -373,7 +373,7 @@
     while ( $res && $row = mysqli_fetch_assoc($res) ) {
       $strings[$row["field"]] = $row["value"];
     }
-    mysqli_free_result($res);
+    if ( $res ) @mysqli_free_result($res);
     return $strings;
   }
 
@@ -455,16 +455,20 @@
     $lineas = array();
     $qry = "SELECT *, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area, ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'nombre') as tra_nombre_area
                     , ( select value FROM pesca_textos WHERE referred = 'areas' AND referred_id = are_id AND lang='".$_SESSION["lang"]."' and field = 'video') as are_video
+					, are_slug as slug
                     FROM pesca_areas WHERE are_status = 'A' ORDER BY are_orden";
     if ( $result = mysqli_query($conn, $qry) ) {
       while ( $row = mysqli_fetch_assoc($result) ) {
         $lineas[] = $row;
       }
     }
+	
+	/*
     $lineas = array_map(function($linea){
       $linea['slug'] = LimpiaNombre($linea['tra_nombre_area']);
       return $linea;
     }, $lineas);
+	*/
     return $lineas;
   }
 
