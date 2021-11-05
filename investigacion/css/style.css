@@ -124,7 +124,7 @@ ul{
   padding-top: 465px;
   justify-items: center;
   grid-auto-rows: min-content;
-  background: url('../../images/background/investigacion-home.png') no-repeat center center;
+  background: url('../../images/background/fondo-investigacion.jpg') no-repeat center center;
 }
 
 /* ---------------------------------------------------------------------------
@@ -161,12 +161,15 @@ ul{
   height:190px;
   z-index: 8;
 }
-
+[class="screen_menu"] .panel_title {
+  color: #fff;
+}
 .panel_title {
   font-family: 'Lato Bold';
   font-size: 28px;
   line-height: 28px;
-  color: #fff;
+  color: #9AB7CC;
+  text-shadow: 1px 1px #333;
 }
 
 .panel_language {
@@ -420,7 +423,7 @@ ul{
   grid-row: 1;
   letter-spacing: 4px;
   position: absolute;
-  /* text-align: center; */
+  text-align: center;
   width: max-content;
   /* margin-left:auto; */
   right: 50vw;
@@ -458,7 +461,11 @@ ul{
   pointer-events: none;
 }
 
-
+.menem_next svg{
+  display:inline-block;
+  height:18px;
+  width:auto;
+}
 /* ---------------------------------------------------------------------------
 ------------------------------------------------------------------------------
                               5.5) =BUTTONS:
