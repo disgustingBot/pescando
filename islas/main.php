@@ -183,7 +183,7 @@ foreach ($islas as $isla) {$names[$isla['slug']] = $isla['nombre'];}
                   </div>
               <?php }} ?>
               <div class="islands_question_txticon_next">
-                <?php $next_isla = ($key+1 < count($islas) ? $islas[$key+1] : $islas[0]) ?>
+                <?php $next_isla = $islas[$key+1 % count($islas)] ?>
                 <svg aria-hidden="true" focusable="false" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M384 44v424c0 6.6-5.4 12-12 12h-48c-6.6 0-12-5.4-12-12V291.6l-195.5 181C95.9 489.7 64 475.4 64 448V64c0-27.4 31.9-41.7 52.5-24.6L312 219.3V44c0-6.6 5.4-12 12-12h48c6.6 0 12 5.4 12 12z"></path></svg>
                 <p onclick="back_btn(); altClassFromSelector('<?= $next_isla['isl_slug'] ?>', '.islands_main', ['islands_main']);"><?= $ELEMS['TXT_SEE_LINK'] ?> <?= $next_isla['nombre'] ?></p>
               </div>
